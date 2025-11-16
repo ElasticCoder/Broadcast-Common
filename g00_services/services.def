@@ -1,0 +1,7 @@
+; services.def : Declares the module parameters for the DLL.
+
+;LIBRARY      "SERVICES"
+DESCRIPTION  'SERVICES Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here

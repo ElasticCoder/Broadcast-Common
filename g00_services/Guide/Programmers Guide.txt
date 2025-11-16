@@ -1,0 +1,41 @@
+This is a draft document detailing how to use SERVICES.DLL
+The purpose of the document is to inform programmers of some of the technicalities of using SERVICES.DLL
+
+Background
+-----------------
+
+o There are two types of message queues: GUI message queues and non-GUI message queues.
+
+o If a message is to be sent to a GUI thread then a GUI message queue must be configured.
+
+o If a message is to be sent to a non-GUI thread then a non-GUI message queue must be configured.
+
+
+Requirements for threads using SERVICES.DLL
+--------------------------------------------------------------------
+
+o Each thread that uses SERVICES.DLL should be registered using g00_register_thread()
+
+o The threads should exist before message queues are initialised for sending data to them
+
+o GUI threads do not need read queues. The messages are sent via Windows messages. However the message must be freed once it has been read by using free_msg_data()
+
+o If a non-GUI thread reads messages from another thread, then the read queue should be initialised using C_itrq::initialise(). The HWND parameter should be NULL.
+
+
+Notes on using SERVICES.DLL
+-------------------------------------------
+
+Messages to non-GUI threads
+o There are two pairs of overloaded functions for performing read and write. One pair has more parameters than the other. The pairs MUST be matched.
+o The write() function with the greater number of parameters allocates memory for the messages, the other DOESN'T. If you don't use the function that allocates memory, you must allocate it yourself.
+
+Error messages
+---------------------------------------
+
+- Corrupt data sentinel
+
+When allocating memory for messages SERVICES places a marker before and after the data
+bytes. If these are not found when sending or receiving a message then this error is raised.
+
+If this message is raised when a message is sent, then memory has not been allocated for the message. Allocate the memory manually, or call the appropriate write() function that allocates memory automatically.

@@ -1,0 +1,8 @@
+; SNMPErrorReporting.def : Declares the module parameters for the DLL.
+
+LIBRARY      "SNMPErrorReporting"
+DESCRIPTION  'SNMPErrorReporting Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	ReportSNMPError @1 

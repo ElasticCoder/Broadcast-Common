@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.36602.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "services", "services.vcxproj", "{60B982CB-006F-42BF-B4F5-3B35DC95945C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Unicode Debug|Win32 = Unicode Debug|Win32
+		Unicode Release|Win32 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Debug|Win32.Build.0 = Debug|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Release|Win32.ActiveCfg = Release|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Release|Win32.Build.0 = Release|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Unicode Debug|Win32.ActiveCfg = Unicode Debug|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Unicode Debug|Win32.Build.0 = Unicode Debug|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Unicode Release|Win32.ActiveCfg = Unicode Release|Win32
+		{60B982CB-006F-42BF-B4F5-3B35DC95945C}.Unicode Release|Win32.Build.0 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07208F8D-CE1F-4966-A3DE-3F52026F4B6C}
+	EndGlobalSection
+EndGlobal

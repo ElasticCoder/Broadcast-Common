@@ -1,0 +1,7 @@
+; services_dbg.def : Declares the module parameters for the DLL.
+
+;LIBRARY      "SERVICES_DBG"
+DESCRIPTION  'SERVICES Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
