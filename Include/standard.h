@@ -1,0 +1,41 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (c) 1996; Sony BPE
+// All rights Reserved
+//
+///////////////////////////////////////////////////////////////////////////////
+//
+// System Name : PLATO
+// Subsystem   : Services
+// File Name   : standard.h
+// File Type   : C++ Header
+// Description : Standard definitions
+// Author      : Duncan Olesen
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#ifndef _STANDARD_H
+#define _STANDARD_H
+
+// Set up for 32 bit windows
+#ifndef _Win32
+#define _Win32
+#endif
+
+// Enable exception stack unwinding
+#ifndef _CPPUWIND
+#define _CPPUWIND
+#endif  // _CPPUWIND
+
+// Set up the number of bytes per character
+#ifdef UNICODE
+#define RAW_BYTES_PER_CHAR   2
+#else
+#define RAW_BYTES_PER_CHAR   1
+#endif  // UNICODE
+
+#endif  // _STANDARD_H
+
+///////////////////////////////////////////////////////////////////////////////////
+// End of File
+///////////////////////////////////////////////////////////////////////////////////
