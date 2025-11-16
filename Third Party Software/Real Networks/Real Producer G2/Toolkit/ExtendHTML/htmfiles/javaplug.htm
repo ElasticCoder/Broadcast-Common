@@ -1,0 +1,119 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="activex.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1014546"></a>
+ Chapter 1: 	Using JavaScript and the Netscape 
+Plug-In
+
+</h1>
+<p><a name="1013226"></a>You can use JavaScript with the RealPlayer G2 Netscape plug-in with the following browsers:</p>
+<ul>
+<p><li><a name="1013227"></a>Netscape Navigator 3.0, 4.0, and higher
+<p><li><a name="1013228"></a>Microsoft Internet Explorer 3.0 and 4.0
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013298"></a>
+<I>RealSystem G2 Production Guide</I> available at <a href="http://
+service.real.com/help/library/index.html" target="_top">http://
+service.real.com/help/library/index.html</a> explains 
+the basics of embedding a presentation with the 
+Netscape plug-in.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="1013547"></a> Naming a Plug-in Instance</h1>
+<p><a name="1013548"></a>To refer to an embedded instance with JavaScript, you include a <code>NAME</code> parameter in the <code>&lt;EMBED&gt;</code> tag:</p>
+<pre><a name="1013549"></a>
+&lt;EMBED <code><b>NAME=vid</b></code> SRC="..." WIDTH=300 HEIGHT=134&gt;
+</pre>
+<p><a name="1013550"></a>You can then refer to the instance through a JavaScript command such as this:</p>
+<pre><a name="1013551"></a>
+&lt;Input Type="button" Value="play" onClick="document.vid.DoPlay()"&gt;
+</pre>
+<h1><a name="1013538"></a> Using RealPlayer Methods through JavaScript</h1>
+<p><a name="1013236"></a>To extend RealPlayer's Netscape plug-in functionality with JavaScript, you first embed the source file in an HTML page with the <code>&lt;EMBED&gt;</code> tag:</p>
+<pre><a name="1013036"></a>
+&lt;EMBED NAME=javademo<br>    SRC="demo.rpm"<br>    WIDTH=220 HEIGHT=180<br>    CONSOLE=one<br>    CONTROLS=ImageWindow<br>    BACKGROUNDCOLOR=white<br>    CENTER=true<br>    &gt;
+</pre>
+<p><a name="1012959"></a>In the <code>&lt;EMBED&gt;</code> tag, the <code>NAME</code> parameter provides the name used by the JavaScript functions. For JavaScript to function with RealPlayer, the <code>&lt;EMBED&gt;</code> tag must <strong>not</strong> contain the parameter <code>NOJAVA=true</code>. That parameter prevents the browser's Java Virtual Machine from starting up.</p>
+<p><a name="1012995"></a>You can then use JavaScript to issue RealPlayer commands to control the embedded presentation. The following example shows a simple form that provides a Play, Pause, and Stop button for the embedded presentation. <a href="../media/javaemb.htm">Click here</a> to see this presentation.</p>
+<pre><a name="1013073"></a>
+&lt;FORM&gt;<br>&lt;INPUT TYPE="button" VALUE="Play" onClick="document.javademo.DoPlay()"&gt;<br>&lt;INPUT TYPE="button" VALUE="Pause" onClick="document.javademo.DoPause()"&gt;<br>&lt;INPUT TYPE="button" VALUE="Stop" onClick="document.javademo.DoStop()"&gt;<br>&lt;/FORM&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013121"></a>
+The section <a href="methods.htm#1019460">"Methods"</a> lists the RealPlayer methods.
+</td></tr>
+</table></p>
+<h1><a name="1013677"></a> Handling URLs through &lt;EMBED&gt;</h1>
+<p><a name="1013722"></a>You can use the <code>AUTOGOTOURL</code> parameter in the <code>&lt;EMBED&gt;</code> tag to determine how URLs in the presentation are handled. The default value of true applies if you leave the parameter out. In this case any URL embedded in the presentation goes to the browser. If you set this parameter to false, RealPlayer sends the URL to the Java applet or application with the <code>OnGotoURL()</code> call.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1013734"></a>
+The <code><a href="methods.htm#1014396">SetAutoGoToURL()</a></code> method can override the 
+<code>AUTOGOTOURL</code> parameter. <code>AUTOGOTOURL</code> is not compatible 
+with the RealPlayer 5.0 Netscape plug-in, however, so 
+use <code><a href="methods.htm#1014396">SetAutoGoToURL()</a></code> when planning backwards-
+compatibility.
+</td></tr>
+</table></p>
+<h1><a name="1013693"></a> Using PREFETCH with &lt;EMBED&gt;</h1>
+<p><a name="1013694"></a>The <code>PREFETCH</code> parameter causes RealPlayer G2 to get the stream description information before the stream starts. You can use this to find out the size and width of an embedded clip, for example, then dynamically create the <code>&lt;EMBED&gt;</code> tag for the image window, using the clip's native size for the <code>WIDTH</code> and <code>HEIGHT</code> parameters. To do this, you would embed a control, such as the default control panel, and set <code>PREFETCH</code> to true:</p>
+<pre><a name="1013695"></a>
+&lt;EMBED NAME=console<br>    SRC="demo.rpm"<br>    WIDTH=400 HEIGHT=100<br>    CONSOLE=one<br>    CONTROLS=All<br>    PREFETCH=true<br>    &gt;
+</pre>
+<p><a name="1013696"></a>The control fetches the stream information, then responds with the callback <code><a href="events.htm#1012879">OnPreFetchComplete()</a></code>. You next use <code><a href="methods.htm#1014752">GetClipWidth()</a></code> and <code><a href="methods.htm#1014754">GetClipHeight()</a></code> to determine the native size of the image window. Through a means such as DHTML, you can then create the image window control. If the width and height were 320 by 240, respectively, you could generate an <code>&lt;EMBED&gt;</code> tag like the following:</p>
+<pre><a name="1013712"></a>
+&lt;EMBED NAME=image<br>    SRC="demo.rpm"<br>    WIDTH=320 HEIGHT=240<br>    CONSOLE=one<br>    CONTROLS=ImageWindow<br>    &gt;
+</pre>
+<h1><a name="1013304"></a> Receiving Callbacks</h1>
+<p><a name="1012872"></a>When using JavaScript and the Netscape plug-in, you use LiveConnect to receive callbacks. LiveConnect is described at <a href="http://home.netscape.com/navigator/v3.0/liveconnect.html" target="_top">http://home.netscape.com/navigator/v3.0/liveconnect.html</a>. The <kbd>java</kbd> directory of this manual contains <a href="../java/callback.java"><kbd>callback.java</kbd></a>, which is a sample Java class used to create a Java callback object. You can modify this class as necessary to get notifications from RealPlayer's <kbd>RMObserver</kbd> or <kbd>RAObserver</kbd> interface, both of which are included in the <kbd>rpcl3260.zip</kbd> file installed in the RealPlayer folder:</p>
+<ul>
+<p><li><a name="1013157"></a><kbd>RMObserver.class</kbd>
+<p><a name="1013191"></a>RMObserver is a Java interface for events coming from RealPlayer G2 (but not RealPlayer 5.0). Any object implementing this interface may register itself into RealPlayer G2 to get a large set of notifications. To see how this is done, view the <strong>adviseG2()</strong> function in <kbd>RAPlayer.java</kbd>, which is included in the ZIP file.</p>
+<p><li><a name="1013169"></a><kbd>RAObserver.class</kbd>
+<p><a name="1012876"></a>RAObserver is a Java interface for events coming from RealPlayer 5.0. Any object implementing this interface may register itself into RealPlayer G2 or 5.0 to get a small set of notifications. To see how this is done, view the <strong>advise()</strong> function in <kbd>RAPlayer.java</kbd>, which is included in the ZIP file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013214"></a>
+The section <a href="events.htm#1014246">"CallBack Methods"</a> lists the RealPlayer 
+callback events.
+</td></tr>
+</table></p>
+</ul>
+<p><a name="1012868"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:51:29.</font>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="activex.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

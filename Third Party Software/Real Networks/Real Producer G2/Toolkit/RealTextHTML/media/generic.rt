@@ -1,0 +1,12 @@
+<window duration="30" bgcolor="yellow">
+Mary had a little lamb,
+<br/><time begin="3"/>little lamb,
+<br/><time begin="6"/>little lamb.
+<br/><time begin="9"/>Mary had a little lamb,
+<br/><time begin="12"/>whose fleece was white as snow.
+<br/><time begin="15"/><clear/>Everywhere that Mary went,
+<br/><time begin="18"/>Mary went,
+<br/><time begin="21"/>Mary went,
+<br/><time begin="24"/>Everywhere that Mary went,
+<br/><time begin="27"/>That lamb was sure to go.
+</window>

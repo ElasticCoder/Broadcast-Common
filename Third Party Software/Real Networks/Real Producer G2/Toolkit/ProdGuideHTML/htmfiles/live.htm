@@ -1,0 +1,166 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="server.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="quick.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="15510"></a>
+ Chapter 11: 	Broadcasting a Presentation
+
+</h1>
+<p><a name="9665"></a>The Internet is swiftly becoming the next great broadcast medium. RealSystem G2 lets you broadcast live or prerecorded presentations over the Internet or an intranet. This chapter provides background on using broadcast applications and RealServer G2 to broadcast media. Refer to your tools and RealServer manuals for explicit instructions on setting up a broadcast.</p>
+<h1><a name="10455"></a> Broadcasting vs. On-demand Delivery</h1>
+<p><a name="10456"></a>When a streaming presentation is delivered on demand, it starts from its beginning when the viewer clicks the presentation link in a Web page. Each viewer can receive the presentation at any time and use RealPlayer's controls to fast-forward or rewind through the presentation.</p>
+<p><a name="11467"></a>In a streaming broadcast, however, the user hosting the broadcast starts the presentation at a certain time. Viewers who click the presentation link join the broadcast in progress. Before the broadcast begins and after it completes, the presentation URL is not valid. During the broadcast the RealPlayer fast-forward and rewind controls do not function.</p>
+<p><a name="11474"></a>To make an analogy, on-demand content is like a movie on videotape. The viewer can see it at any time, skip forward, rewind, and pause. A streaming broadcast, though, is like a movie shown on a television channel. As with a TV broadcast, there are two types of streaming media broadcasts:</p>
+<ul>
+<p><li><a name="10447"></a>Live content
+<p><a name="11564"></a>Live content is broadcast as it occurs. For example, you can broadcast the output of a video camera across the Internet or an intranet. RealSystem encodes the content as RealVideo in real-time without writing the content to a RealVideo clip first.</p>
+<p><li><a name="10450"></a>Prerecorded content
+<p><a name="11562"></a>Prerecorded content consists of video or audio you record and write to a digitized clip. You can then edit the clip before converting it to a streaming format and broadcasting it across a network. To the viewer, the presentation looks just like a live broadcast.</p>
+</ul>
+<h5><a name="16768"></a>
+ Broadcasting Live or Prerecorded Content</h5>
+<p><a name="16772"></a>
+<img src="../graphics/brdcstov.gif"></p>
+<h2><a name="10451"></a> Broadcasting Tools</h2>
+<p><a name="10439"></a>To broadcast a presentation, you need the tools described in the following sections.</p>
+<h4><a name="10421"></a> Source Capture Equipment</h4>
+<p><a name="10422"></a>This equipment captures the broadcast content. It is typically a microphone or video camera connected to an audio or video capture card. For text it could be a live text feed coming in over a network.</p>
+<h4><a name="12141"></a> Editing Equipment</h4>
+<p><a name="12151"></a>When you broadcast prerecorded content, you first write the source to a digitized file. You can then use editing software to optimize the file for broadcast. When broadcasting live content, though, content goes directly from the capture equipment to the broadcast application.</p>
+<h4><a name="11680"></a> Broadcast Application</h4>
+<p><a name="10424"></a>The broadcast application takes the live source and encodes it in the appropriate streaming format, sending the output to RealServer. A RealVideo broadcast application, for example, encodes a camera's video output as RealVideo in real-time. A broadcast application typically runs on a separate machine that has a network connection to the RealServer machine. To broadcast prerecorded content, you typically do not need a broadcast application because RealServer can broadcast the clips itself.</p>
+<p><a name="11994"></a>RealNetworks encoding tools have live broadcast capability for audio and RGB or YUV video. They guide you through the broadcast process and let you connect to RealServer easily. RealSystem's open architecture also lets you build a broadcast application to send RealServer any type of data for broadcast. To build a broadcast application, you need the <a href="intro.htm#14672">RealSystem G2 Software Development Kit (SDK)</a>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="11944"></a>
+Visit <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a> for 
+information on RealNetworks broadcast tools. The SDK 
+is available at <a href="http://www.real.com/devzone/" target="_top">http://www.real.com/devzone/</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="14815"></a>
+<I>RealPix Authoring Guide</I> and <I>RealText Authoring Guide</I> 
+contain broadcast applications for images and text. To 
+get the applications, download the HTML guides at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="10426"></a> RealServer G2</h4>
+<p><a name="11697"></a>RealServer streams the broadcast to RealPlayer. The RealServer administrator can give you the broadcast URL and parameters for connecting a broadcast application to RealServer. Because each RealServer has a limit on the number of streams it can produce, verify that the RealServer you intend to use has broadcast capabilities appropriate for your anticipated audience size.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="13307"></a>
+Real Broadcast Network (RBN) provides full services for 
+broadcasting small and large events. For details, see 
+<a href="http://www.real.com/rbn" target="_top">http://www.real.com/rbn</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="13276"></a>
+For information on configuring a broadcast, get 
+<I><a href="intro.htm#11240">RealServer Administration Guide</a></I>, available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h1><a name="12127"></a> Preparing a Broadcast</h1>
+<p><a name="12109"></a>The following are tips for preparing a live or prerecorded broadcast. See the manual or online help for your broadcast application for explicit instructions on how to encode and broadcast content.</p>
+<h4><a name="12208"></a> Use SureStream with RealSystem G2 Codecs</h4>
+<p><a name="12264"></a>SureStream technology and RealSystem G2 codecs let you broadcast RealAudio or RealVideo at multiple bandwidths. Each viewer's RealPlayer selects an encoding appropriate for its connection speed. RealNetworks encoding tools let you specify SureStream when you begin the broadcast.</p>
+<h5><a name="15381"></a>
+ SureStream Broadcasts Multiple Bandwidths</h5>
+<p><a name="15389"></a>
+<img src="../graphics/brdsure.gif"></p>
+<p><a name="12509"></a>To broadcast without using SureStream and the RealSystem G2 codecs, you need a separate broadcast application running on a separate computer for each bandwidth connection you intend to support. This is required because older codecs require more CPU for each encoding than do RealSystem G2 codecs. You then connect each broadcast application to RealServer and broadcast the different encodings under different URLs.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="13355"></a>
+For more on codecs, see <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a> 
+and <a href="video.htm#16859">"Choosing RealVideo Codecs"</a>.
+</td></tr>
+</table></p>
+<h4><a name="12353"></a> Verify that the Broadcast Machine has Enough CPU Power</h4>
+<p><a name="13326"></a>RealNetworks tools can broadcast a SureStream clip for several different bandwidths in real-time using just a moderately powerful PC. Refer to your broadcast application's manual or online help for guidelines on machine requirements for broadcasting.</p>
+<h4><a name="12927"></a> Decide Whether to Archive a Live Broadcast</h4>
+<p><a name="12354"></a>RealNetworks encoding tools let you write a live broadcast to a file. RealServer can also archive the broadcast to a file. The latter optional may be the better solution if your broadcast is long and your broadcast machine has limited disk space. The RealServer administrator can set up RealServer to archive the live broadcast.</p>
+<h4><a name="12375"></a> Get the Broadcast URL and RealServer Parameters</h4>
+<p><a name="12564"></a>The RealServer administrator can give you the parameters you need to connect a broadcast application to RealServer. The administrator will also provide the broadcast URL or URLs.</p>
+<h4><a name="12563"></a> Perform a Trial Run of a Live Broadcast</h4>
+<p><a name="12376"></a>When you broadcast live content, you don't get a second chance. It's good practice to perform a trial run to ensure that the equipment works properly and the broadcast results are what you expect. Because you can't edit a live broadcast the way you can edit a prerecorded file, it's important to set your audio levels and plan your video shots carefully in advance.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="15238"></a>
+For pointers on producing audio, see <a href="audio.htm#9661">"Capturing 
+Audio"</a>. For video, see <a href="video.htm#20306">"Recording Video"</a>.
+</td></tr>
+</table></p>
+<p><a name="12996"></a>During both the trial run and the live broadcast, view the broadcast output with RealPlayer. When RealPlayer connects, check that the buffering time for receiving a live stream does not exceed 5-10 seconds. Throughout the presentation, keep an eye on the broadcast quality.</p>
+<p><a name="15221"></a>If you experience problems with the broadcast output, use the broadcast application to lower the video frame size and frame rate (fps), or select lower-bandwidth codecs. If these adjustments do not help, you may need to run your broadcast application on a more powerful machine.</p>
+<h4><a name="12381"></a> Create a SMIL File for a Multipart Presentation</h4>
+<p><a name="12382"></a>Using SMIL, you can easily embed your broadcast in a multiclip presentation. You might use a SMIL file, for example, to create a video region for your live broadcast and a RealPix region that features rotating ads. The SMIL file then uses the broadcast URL for the video region and a standard URL to the RealPix clip.</p>
+<p><a name="12760"></a>Keep in mind, however, that SMIL does not synchronize on-demand clips with the broadcast. When the SMIL presentation starts, the viewer begins to receive the on-demand clips in the order they are defined by the SMIL grouping and timing tags. The viewer joins into the broadcast in progress, however. So if you set up ad rotation through SMIL, viewers receive ads relative to the time they click the presentation link. Thus all viewers will not see the same ads at the same points during the broadcast.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="12740"></a>
+See <a href="smil.htm#100023">Chapter 7</a> for more on SMIL. <a href="ads.htm#12177">Chapter 9</a> tells how to 
+include ads with clips. To get <I><a href="intro.htm#11238">RealPix Authoring Guide</a></I>, 
+visit 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="12278"></a> Advertise a Public Broadcast Event</h4>
+<p><a name="12361"></a>If you are broadcasting content that has wide public appeal, advertise your event on RealGuide (<a href="http://www.real.com/realguide/" target="_top">http://www.real.com/realguide/</a>), the online guide to RealAudio and RealVideo.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="10539"></a>
+<a href="server.htm#18572">"Advertising on RealGuide"</a>.
+</td></tr>
+</table></p>
+<p><a name="10418"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:39.</font>
+<center><a href="server.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="quick.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

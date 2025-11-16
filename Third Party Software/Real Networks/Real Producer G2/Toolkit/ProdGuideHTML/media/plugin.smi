@@ -1,0 +1,15 @@
+<smil>
+	<head>
+		<meta name="title" content="RealPlayer Controls Embedded with the Netscape Plug-in"/>
+		<meta name="copyright" content="(c)1998 RealNetworks, Inc."/>
+	</head>
+	<body>
+		<par>
+			<animation src="animate1.swf"
+				title="RealPlayer Controls Embedded with the Netscape Plug-in"
+				author="Produced by RealNetworks"
+				copyright="(c)1998 RealNetworks, Inc."/>
+			<audio src="thanks.rm"/>
+		</par>
+	</body>
+</smil>

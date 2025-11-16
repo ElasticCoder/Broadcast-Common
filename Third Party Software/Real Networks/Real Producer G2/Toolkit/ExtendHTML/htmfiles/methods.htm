@@ -1,0 +1,456 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="activex.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="events.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1019460"></a>
+ Chapter 3: 	Methods
+
+</h1>
+<p><a name="1019451"></a>An application, applet, or control can use the following methods to communicate with RealPlayer G2. For method data types, refer to <kbd>RAPlayer.java</kbd>, included in the <kbd>rpcl3260.zip</kbd> file installed in the RealPlayer folder. RealPlayer 5.0 supports a limited set of these methods as described in <a href="methods.htm#1012912">"RealPlayer 5.0 Compatibility"</a>.</p>
+<h1><a name="1013249"></a> Playback Commands</h1>
+<h4><a name="1013303"></a> DoPlay()</h4>
+<p><a name="1013304"></a>Plays the current clip. Equivalent to clicking the Play button.</p>
+<h4><a name="1013305"></a> CanPlay()</h4>
+<p><a name="1013306"></a>Returns <code>TRUE</code> or <code>FALSE</code>. Returns <code>TRUE</code> if the player is currently paused or stopped, and current source file is valid.</p>
+<h4><a name="1013463"></a> DoStop()</h4>
+<p><a name="1013464"></a>Stops the clip. Equivalent to clicking the Stop button. This method is backwards-compatible with RealPlayer 5.0.</p>
+<h4><a name="1013466"></a> CanStop()</h4>
+<p><a name="1013467"></a>Returns <code>TRUE</code> if RealPlayer is currently playing a clip or is paused. This method is backwards-compatible with RealPlayer 5.0.</p>
+<h4><a name="1013307"></a> DoPause()</h4>
+<p><a name="1013308"></a>Pauses the current clip. Equivalent to clicking the Pause button.</p>
+<h4><a name="1013309"></a> CanPause()</h4>
+<p><a name="1013310"></a>Returns <code>TRUE</code> if the player is currently playing a clip.</p>
+<h4><a name="1016923"></a> CanPlayPause()</h4>
+<p><a name="1016944"></a>Returns <code>TRUE</code> if the player is currently playing, paused, or stopped, and current source file is valid. Backwards-compatible with RealPlayer 5.0. If supporting only RealPlayer G2, use <code>CanPause()</code> and <code>CanPlay()</code> instead.</p>
+<h4><a name="1018045"></a> DoPlayPause()</h4>
+<p><a name="1018046"></a>Plays or pauses the current clip. Backwards-compatible with RealPlayer 5.0. If supporting only RealPlayer G2, use <code>DoPause()</code> and <code>DoPlay()</code> instead.</p>
+<h1><a name="1013311"></a> PlayState Information</h1>
+<h4><a name="1013478"></a> GetPlayState()</h4>
+<p><a name="1013312"></a>Returns the current state of the RealPlayer. Values are numerical, with the following meanings:</p>
+<pre><a name="1018344"></a>
+0 Stopped<br>1 Contacting<br>2 Buffering<br>3 Playing<br>4 Paused<br>5 Seeking
+</pre>
+<h4><a name="1016594"></a> GetBufferingTimeElapsed()</h4>
+<p><a name="1016608"></a>Returns number of milliseconds of elapsed buffering time.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1021728"></a>
+The <code>GetBufferingtimeElapsed()</code> method is not currently 
+supported. It will be supported in an upcoming release.
+</td></tr>
+</table></p>
+<h4><a name="1013510"></a> GetBufferingTimeRemaining()</h4>
+<p><a name="1013511"></a>Returns estimated remaining buffering time in milliseconds.</p>
+<h1><a name="1013522"></a> Attributes</h1>
+<h4><a name="1015580"></a> GetPreFetch()</h4>
+<p><a name="1015581"></a>Returns whether or not PreFetch is enabled.</p>
+<h4><a name="1015582"></a> SetPreFetch()</h4>
+<p><a name="1016533"></a>Enables/disables PreFetch playback mode. Valid values are <code>TRUE</code> and <code>FALSE</code> with <code>FALSE</code> as the default.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1016540"></a>
+See <a href="javaplug.htm#1013693">"Using PREFETCH with &lt;EMBED&gt;"</a> or <a href="activex.htm#1013039">"Using 
+PREFETCH with &lt;OBJECT&gt;"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1016541"></a> GetControls()</h4>
+<p><a name="1014223"></a>Returns the visible components of the control. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1014224"></a>
+For valid control names, see the chapter on Web page 
+playback in <I>RealSystem G2 Production Guide</I> at <a href="http://
+service.real.com/help/library/index.html" target="_top">http://
+service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="1015661"></a> SetControls()</h4>
+<p><a name="1016003"></a>Sets the visible components of the control. Compatible only with RealPlayer G2.</p>
+<h4><a name="1016041"></a> SetControlString()</h4>
+<p><a name="1016042"></a>Sets the visible components of the control. Method is identical to <code>SetControls()</code>, but is compatible with RealPlayer 5.0 Netscape Plug-in (though not the 5.0 ActiveX control). If supporting only RealPlayer G2, use <code>SetControls()</code> instead.</p>
+<h4><a name="1014228"></a> GetConsole()</h4>
+<p><a name="1014229"></a>Returns a console name used to link multiple control instances. Call this function once for each instance of a control you want to link.</p>
+<h4><a name="1014231"></a> SetConsole()</h4>
+<p><a name="1014232"></a>Sets a console name used to link multiple control instances. Call this once for each instance of a control you want to link. All controls with the same console name work together. For example, if you have multiple Play and Stop buttons on the same page, a shared console name enables them to control the same clip. The console name <code>_master</code> links to all instances. The console name <code>_unique</code> links to no other instances.</p>
+<h4><a name="1015683"></a> SetConsoleName()</h4>
+<p><a name="1015684"></a>Functionally identical to <code>SetConsole()</code>, but backwards-compatible with RealPlayer 5.0 Netscape plug-in (though not the 5.0 ActiveX control). If supporting only RealPlayer G2, use <code>SetConsole()</code> instead.</p>
+<h4><a name="1014320"></a> SetAutoStart(boolean autoStart)</h4>
+<p><a name="1014321"></a>Sets whether or not the control automatically starts playing once the source data is available. Valid values are <code>TRUE</code> and <code>FALSE</code>. This method is compatible with the RealPlayer 5.0 Netscape Plug-in but not its ActiveX control.</p>
+<h4><a name="1014352"></a> GetAutoStart()</h4>
+<p><a name="1014353"></a>Returns whether or not playback will start automatically.</p>
+<h4><a name="1014396"></a> SetAutoGoToURL()</h4>
+<p><a name="1014397"></a>Specifies how a URL will be handled. This method is backwards-compatible with RealPlayer 5.0. Valid values are:</p>
+<ul>
+<p><li><a name="1014398"></a> <code>TRUE</code>
+<p><a name="1014399"></a>RealPlayer plug-in automatically forwards URL event to browser.</p>
+<p><li><a name="1014400"></a><code>FALSE</code>
+<p><a name="1014401"></a><strong>onGoToURL()</strong> event handled by Java applet or VBScript instead.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1017805"></a>
+With RealPlayer G2, this can also be set with the 
+<code>AUTOGOTOURL</code> parameter in the <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag. 
+See <a href="javaplug.htm#1013677">"Handling URLs through &lt;EMBED&gt;"</a> or <a href="activex.htm#1013156">"Handling 
+URLs through &lt;OBJECT&gt;"</a>.
+</td></tr>
+</table></p>
+</ul>
+<h4><a name="1014354"></a> GetAutoGotoURL()</h4>
+<p><a name="1014355"></a>Returns whether or not AutoGotoURL property is enabled.</p>
+<h4><a name="1018106"></a> DoGoToURL(url, target)</h4>
+<p><a name="1018124"></a>For the RealPlayer 5.0 and G2 ActiveX control only, this method causes the control to attempt a navigation to the specified URL in the specified frame target. The container must support URL browsing. Parameters are:</p>
+<pre><a name="1018263"></a>
+string U<code>RL</code>
+</pre>
+<p><a name="1018287"></a><code>string ta</code>rget</p>
+<h4><a name="1014421"></a> SetLoop()</h4>
+<p><a name="1014422"></a>Specifies whether the clip will loop or not. Valid values are <code>TRUE</code> (loops until play is interrupted) and <code>FALSE</code> (default).</p>
+<h4><a name="1014423"></a> GetLoop()</h4>
+<p><a name="1014424"></a>Returns whether the clip has been set to loop.</p>
+<h4><a name="1014425"></a> SetNumLoop()</h4>
+<p><a name="1014426"></a>Sets number of times to loop the clip. Takes an integer as its parameter.</p>
+<h4><a name="1014427"></a> GetNumLoop()</h4>
+<p><a name="1014428"></a>Returns number of loops set in <code>SetNumLoop()</code>.</p>
+<h4><a name="1014463"></a> SetCenter()</h4>
+<p><a name="1014464"></a>Sets whether or not the visual datatype should be centered at its natural size within the image window. Valid values are <code>TRUE</code> and <code>FALSE</code> (default).</p>
+<h4><a name="1014465"></a> GetCenter()</h4>
+<p><a name="1014466"></a>Returns whether or not the visual datatype will be centered within the image window. Valid values are <code>TRUE</code> and <code>FALSE</code>.</p>
+<h4><a name="1014467"></a> SetMaintainAspect()</h4>
+<p><a name="1014468"></a>Maintains correct aspect ratio of source within image window when stretched. Valid values are <code>TRUE</code> and <code>FALSE</code> (default).</p>
+<h4><a name="1014469"></a> GetMaintainAspect()</h4>
+<p><a name="1014470"></a>Returns whether or not the aspect ratio of the visual datatype will be maintained.</p>
+<h4><a name="1014471"></a> SetBackgroundColor()</h4>
+<p><a name="1018450"></a>Specifies the desired background color for the image window control. Valid values are a RGB hexadecimal color value in the format <code>#RRGGBB</code>, or the following color names, shown here with their corresponding RGB values:<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+<tr><a name="1018453"></a><TD bgcolor=#FFFFFF><FONT COLOR="#000000"><code>white (#FFFFFF)</code></FONT></TD><code></code><a name="1018455"></a><TD bgcolor=#C0C0C0><FONT COLOR="#000000"><code>silver (#C0C0C0)</code></FONT></TD><code></code><a name="1018457"></a><TD bgcolor=#808080><FONT COLOR="#FFFFFF"><code>gray (#808080)</code></FONT></TD><code></code><a name="1018459"></a><TD bgcolor=#000000><FONT COLOR="#FFFFFF"><code>black (#000000)</code></FONT></TD><code></code></tr>
+<tr><a name="1018461"></a><TD bgcolor=#FFFF00><FONT COLOR="#000000"><code>yellow (#FFFF00)</code></FONT></TD><code></code><a name="1018463"></a><TD bgcolor=#FF00FF><FONT COLOR="#FFFFFF"><code>fuchsia (#FF00FF)</code></FONT></TD><code></code><a name="1018465"></a><TD bgcolor=#FF0000><FONT COLOR="#FFFFFF"><code>red (#FF0000)</code></FONT></TD><code></code><a name="1018467"></a><TD bgcolor=#800000><FONT COLOR="#FFFFFF"><code>maroon (#800000)</code></FONT></TD><code></code></tr>
+<tr><a name="1018469"></a><TD bgcolor=#00FF00><FONT COLOR="000000"><code>lime (#00FF00)</code></FONT></TD><code></code><a name="1018471"></a><TD bgcolor=#808000><FONT COLOR="#FFFFFF"><code>olive (#808000)</code></FONT></TD><code></code><a name="1018473"></a><TD bgcolor=#008000><FONT COLOR="#FFFFFF"><code>green (#008000)</code></FONT></TD><code></code><a name="1018475"></a><TD bgcolor=#800080><FONT COLOR="#FFFFFF"><code>purple (#800080)</code></FONT></TD><code></code></tr>
+<tr><a name="1018477"></a><TD bgcolor=#00FFFF><FONT COLOR="#000000"><code>aqua (#00FFFF)</code></FONT></TD><code></code><a name="1018479"></a><TD bgcolor=#008080><FONT COLOR="#FFFFFF"><code>teal (#008080)</code></FONT></TD><code></code><a name="1018481"></a><TD bgcolor=#0000FF><FONT COLOR="#FFFFFF"><code>blue (#0000FF)</code></FONT></TD><code></code><a name="1018483"></a><TD bgcolor=#000080><FONT COLOR="#FFFFFF"><code>navy (#000080)</code></FONT></TD><code></code></tr>
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="1014473"></a> GetBackgroundColor()</h4>
+<p><a name="1014474"></a>Returns hexadecimal value for current background color.</p>
+<h4><a name="1014475"></a> SetNoLogo()</h4>
+<p><a name="1014476"></a>Determines whether to suppress the display of RealLogo in image window control. Image window defaults to black unless a background color has been specified. Valid values are <code>TRUE</code> and <code>FALSE</code> (default).</p>
+<h4><a name="1014477"></a> GetNoLogo()</h4>
+<p><a name="1014478"></a>Returns whether or not the RealLogo will be displayed in the image window.</p>
+<h4><a name="1014540"></a> SetNoLabels()</h4>
+<p><a name="1014541"></a>Suppresses the Title, Author, and Copyright label text in the controls window of RealPlayer 5.0. The content text strings are still displayed. This method does not affect RealPlayer G2 but is compatible with it.</p>
+<h4><a name="1014578"></a> GetNoLabels()</h4>
+<p><a name="1014579"></a>Returns whether or not Title, Author, and Copyright labels will be suppressed.</p>
+<h4><a name="1014580"></a> SetShuffle()</h4>
+<p><a name="1014581"></a>Randomizes playback of all clips, excluding clips that have already played. Works for multiclip RAM files (<code>.ram</code> or <code>.rpm</code>) or SMIL files that contain only a sequence of clips. Valid values are <code>TRUE</code> and <code>FALSE</code>.</p>
+<h4><a name="1014582"></a> GetShuffle()</h4>
+<p><a name="1014583"></a>Returns whether shuffle play is enabled.</p>
+<h4><a name="1014610"></a> SetSource(String Source)</h4>
+<p><a name="1014611"></a>Specifies the URL of the clip to play. The source URL can begin with <code>rtsp://</code>, <code>http://</code>, <code>pnm://</code>, or <code>file://</code>. This method is backwards-compatible with the RealPlayer 5.0 Netscape plug-in, though not the 5.0 ActiveX control.</p>
+<h4><a name="1014612"></a> GetSource()</h4>
+<p><a name="1014613"></a>Returns the URL of the playing clip.</p>
+<h4><a name="1014619"></a> SetCanSeek()</h4>
+<p><a name="1014620"></a>Sets whether the user can seek within the clip through the user interface. Valid values are <code>TRUE</code> (default) and <code>FALSE</code>. Live or simulated live clips are always <code>FALSE</code>.</p>
+<h4><a name="1013519"></a> GetCanSeek()</h4>
+<p><a name="1014616"></a>Live or simulated live clips return <code>FALSE</code>.</p>
+<h1><a name="1014497"></a> Clip Position</h1>
+<h4><a name="1013322"></a> GetPosition()</h4>
+<p><a name="1016169"></a>Returns the current position in the clip in milliseconds. Valid values will be <code>&gt;=0</code> and <code>&lt;=</code><code><I>total clip length</I></code>.</p>
+<h4><a name="1013327"></a> SetPosition()</h4>
+<p><a name="1013328"></a>Seeks into the clip the specified point in milliseconds. Valid values are <code>=0</code> and <code>&lt;</code><code><I>total clip length.</I></code></p>
+<p><a name="1013332"></a>If an attempt is made to set the position <code>&gt;total length</code>, then <code>SetPosition()</code> will equal total length.</p>
+<h4><a name="1013333"></a> GetLength()</h4>
+<p><a name="1013335"></a>Returns the total length of the clip in milliseconds. Valid values are <code>&gt;=0</code>.</p>
+<h1><a name="1014663"></a> Clip/TAC Information</h1>
+<h4><a name="1014710"></a> GetTitle()</h4>
+<p><a name="1014711"></a>Returns the current clip's title string.</p>
+<h4><a name="1014712"></a> SetTitle()</h4>
+<p><a name="1014713"></a>Sets the current clip's title string, overriding any existing title information. <code>GetTitle()</code> subsequently returns this new value.</p>
+<h4><a name="1014714"></a> GetAuthor()</h4>
+<p><a name="1014715"></a>Returns the current clip's author string.</p>
+<h4><a name="1014716"></a> SetAuthor()</h4>
+<p><a name="1014717"></a>Sets the current clip's author string, overriding any existing author information. <code>GetAuthor()</code> subsequently returns this new value.</p>
+<h4><a name="1014718"></a> GetCopyright()</h4>
+<p><a name="1014719"></a>Returns the current clip's copyright string.</p>
+<h4><a name="1014750"></a> SetCopyright()</h4>
+<p><a name="1014751"></a>Sets the current clip's copyright string, overriding any existing copyright information. <code>GetCopyright()</code> subsequently returns this new value.</p>
+<h4><a name="1014752"></a> GetClipWidth()</h4>
+<p><a name="1014753"></a>Returns the width of the clip window in pixels.</p>
+<h4><a name="1014754"></a> GetClipHeight()</h4>
+<p><a name="1014755"></a>Returns the height of the clip window in pixels.</p>
+<h1><a name="1014696"></a> Playlist/Multiclip</h1>
+<h4><a name="1014795"></a> HasNextEntry()</h4>
+<p><a name="1014796"></a>Tests if the next clip function is available. The next clip function is available when the connected source is a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips and the current clip is not the last clip in the RAM or SMIL file. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip. Returns <code>TRUE</code> or <code>FALSE</code>. </p>
+<h4><a name="1021389"></a> HasNextItem()</h4>
+<p><a name="1021411"></a>Tests if the next clip function is available. The next clip function is available when the connected source is a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips and the current clip is not the last clip in the RAM or SMIL file. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>HasNextEntry()</code> instead.</p>
+<h4><a name="1014810"></a> DoNextEntry()</h4>
+<p><a name="1014811"></a>Skips to the next clip in the RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip.</p>
+<h4><a name="1021442"></a> DoNextItem()</h4>
+<p><a name="1021443"></a>Skips to the next clip in the RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>DoNextEntry()</code> instead.</p>
+<h4><a name="1014831"></a> HasPrevEntry()</h4>
+<p><a name="1014832"></a>Tests if the previous clip function is available. The previous clip function is available when the connected source is a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips and the current clip is not the first clip in the RAM file. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip. Returns <code>TRUE</code> or <code>FALSE</code>.</p>
+<h4><a name="1021482"></a> HasPrevItem()</h4>
+<p><a name="1021483"></a>Tests if the previous clip function is available. The previous clip function is available when the connected source is a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips and the current clip is not the first clip in the RAM file. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip. Returns <code>TRUE</code> or <code>FALSE</code>. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>HasPrevEntry()</code> instead.</p>
+<h4><a name="1008937"></a> DoPrevEntry()</h4>
+<p><a name="1016646"></a>Skips to the previous clip in a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip.</p>
+<h4><a name="1021572"></a> DoPrevItem()</h4>
+<p><a name="1021573"></a>Skips to the previous clip in a RAM (<code>.ram</code> or <code>.rpm</code>) or SMIL file that contains multiple clips. In a SMIL file, a <code>&lt;par&gt;</code> group is treated as a single clip. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>DoPrevEntry()</code> instead.</p>
+<h4><a name="1016647"></a> GetCurrentEntry()</h4>
+<p><a name="1016648"></a>Returns the number of the entry currently playing.</p>
+<h4><a name="1014922"></a> GetNumEntries()</h4>
+<p><a name="1014923"></a>Returns the total number of entries in the playlist.</p>
+<h4><a name="1014924"></a> GetEntryTitle()</h4>
+<p><a name="1014925"></a>Returns the Title for the specified playlist entry.</p>
+<h4><a name="1014926"></a> GetEntryAuthor()</h4>
+<p><a name="1014927"></a>Returns the Author for the specified playlist entry.</p>
+<h4><a name="1014928"></a> GetEntryCopyright()</h4>
+<p><a name="1014929"></a>Returns the Copyright for the specified playlist entry.</p>
+<h4><a name="1014930"></a> GetEntryAbstract()</h4>
+<p><a name="1014944"></a>Returns the Abstract for the specified playlist entry.</p>
+<h1><a name="1014960"></a> Live Playback</h1>
+<h4><a name="1014968"></a> GetLiveState()</h4>
+<p><a name="1014969"></a>Returns whether the current clip is live. Valid values are <code>TRUE</code> or <code>FALSE</code>.</p>
+<h1><a name="1014986"></a> User Interface Components</h1>
+<h4><a name="1015016"></a> SetShowStatistics()</h4>
+<p><a name="1015017"></a>Sets the RealPlayer Statistics dialog box to visible. Valid values are <code>TRUE</code> or <code>FALSE</code>. </p>
+<h4><a name="1015018"></a> GetShowStatistics()</h4>
+<p><a name="1015019"></a>Returns whether or not the RealPlayer Statistics dialog box is visible.</p>
+<h4><a name="1017052"></a> HideShowStatistics()</h4>
+<p><a name="1017066"></a>Sets the RealPlayer Statistics dialog box to visible. Valid values are <code>TRUE</code> (hidden) or <code>FALSE</code>. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>SetShowStatistics()</code> instead.</p>
+<h4><a name="1017091"></a> IsStatisticsVisible()</h4>
+<p><a name="1017101"></a>Returns whether or not the RealPlayer Statistics dialog box is visible. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>GetShowStatistics()</code> instead.</p>
+<h4><a name="1015020"></a> SetShowPreferences()</h4>
+<p><a name="1015021"></a>Displays the RealPlayer Preferences dialog box.</p>
+<h4><a name="1015022"></a> GetShowPreferences()</h4>
+<p><a name="1015023"></a>Returns whether or not the Preferences dialog box is visible.</p>
+<h4><a name="1017034"></a> EditPreferences()</h4>
+<p><a name="1017035"></a>Displays the RealPlayer Preferences dialog box. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>SetShowPreferences()</code> instead.</p>
+<h4><a name="1015024"></a> SetShowAbout()</h4>
+<p><a name="1015025"></a>Displays the RealPlayer About dialog box. Use with RealPlayer G2 only.</p>
+<h4><a name="1016676"></a> AboutBox()</h4>
+<p><a name="1016704"></a>Displays the RealPlayer About dialog box. Use with RealPlayer G2 and 5.0. If supporting only RealPlayer G2, use <code>SetShowAbout()</code> instead.</p>
+<h4><a name="1015026"></a> GetShowAbout()</h4>
+<p><a name="1015027"></a>Returns whether or not the About box is open.</p>
+<h1><a name="1015085"></a> Error Handling</h1>
+<h4><a name="1015179"></a> SetWantErrors()</h4>
+<p><a name="1015180"></a>Sets error sink. Valid values are <code>TRUE</code> (errors trapped, no error dialogs in player) and <code>FALSE</code> (error dialogs in player).</p>
+<h4><a name="1015181"></a> GetWantErrors()</h4>
+<p><a name="1015182"></a>Returns whether error dialogs will be displayed.</p>
+<h4><a name="1015086"></a> GetLastErrorMoreInfoURL()</h4>
+<p><a name="1015087"></a>Returns the "more info" URL from the last error. May return nothing.</p>
+<h4><a name="1015088"></a> GetLastErrorRMACode()</h4>
+<p><a name="1015089"></a>Returns RMA error code from the last error. RMA error codes are described in the header file <kbd>pnresult.h</kbd> in the RealSystem G2 SDK available at <a href="http://www.real.com/devzone/" target="_top">http://www.real.com/devzone/</a>. In normal operation, all RealSystem components need to be able to handle the following basic codes that may be returned by the RealSystem system: </p>
+<ul>
+<p><li><a name="1021212"></a>PNR_FAIL-Operation failed.
+<p><li><a name="1021213"></a>PNR_OK-Operation succeeded.
+<p><li><a name="1021214"></a> PNR_UNEXPECTED-Call was unexpected or method is not implemented. 
+</ul>
+<h4><a name="1015090"></a> GetLastErrorSeverity()</h4>
+<p><a name="1015091"></a>Returns error level for last error.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1020770"></a>
+ Error Levels </caption>
+<tr>
+<th align=left valign=bottom><a name="1020776"></a>Level </th>
+<th align=left valign=bottom><a name="1020778"></a>Condition</th>
+<th align=left valign=bottom><a name="1020780"></a>Usage </th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020782"></a>0</td>
+<td align=left valign=top><a name="1020784"></a>Panic</td>
+<td align=left valign=top><a name="1020786"></a>Error potentially causing a system failure. RealSystem takes actions necessary to correct the problem. This may include shutting down the presentation.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020788"></a>1</td>
+<td align=left valign=top><a name="1020790"></a>Severe</td>
+<td align=left valign=top><a name="1020792"></a>Error requiring immediate user intervention to prevent a problem. RealSystem will shut down the presentation if necessary. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020794"></a>2</td>
+<td align=left valign=top><a name="1020796"></a>Critical</td>
+<td align=left valign=top><a name="1020798"></a>Error that may require user intervention to correct. RealSystem will shut down the presentation if necessary. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020800"></a>3</td>
+<td align=left valign=top><a name="1021049"></a>General</td>
+<td align=left valign=top><a name="1020804"></a>Error that does not cause a significant problem with normal system operation.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020806"></a>4</td>
+<td align=left valign=top><a name="1020808"></a>Warning</td>
+<td align=left valign=top><a name="1020810"></a>Warning about a condition that does not cause system problems but may require attention. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020812"></a>5 </td>
+<td align=left valign=top><a name="1020814"></a>Notice</td>
+<td align=left valign=top><a name="1020816"></a>Notice about a condition that does not cause system problems but should be noted. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020818"></a>6 </td>
+<td align=left valign=top><a name="1020820"></a>Informational</td>
+<td align=left valign=top><a name="1020822"></a>Informational message only. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1020824"></a>7</td>
+<td align=left valign=top><a name="1020826"></a>Debug</td>
+<td align=left valign=top><a name="1020828"></a> Information of use only when debugging a program.</td>
+</tr>
+</table>
+</p>
+<h4><a name="1015092"></a> GetLastErrorUserCode()</h4>
+<p><a name="1015093"></a>Returns user error code from last error.</p>
+<h4><a name="1015094"></a> GetLastErrorUserString()</h4>
+<p><a name="1015095"></a>Returns error string from last error dialog. May return nothing.</p>
+<h4><a name="1015096"></a> GetLastStatus()</h4>
+<p><a name="1015097"></a>Returns text of last status message.</p>
+<h1><a name="1008942"></a> Display State</h1>
+<h4><a name="1009249"></a> SetOriginalSize()</h4>
+<p><a name="1009503"></a>Sets the image window to its original size.</p>
+<h4><a name="1009250"></a> GetOriginalSize()</h4>
+<p><a name="1009507"></a>Returns whether the image is currently in its original size. <code>TRUE</code> indicates original size.</p>
+<h4><a name="1009251"></a> SetDoubleSize()</h4>
+<p><a name="1009511"></a>Sets the image window to double size.</p>
+<h4><a name="1009252"></a> GetDoubleSize()</h4>
+<p><a name="1009515"></a>Returns whether or not image is currently in double-size mode.  <code>TRUE</code> indicates double size.</p>
+<h4><a name="1009253"></a> SetFullScreen()</h4>
+<p><a name="1009519"></a>Sets the image to full-screen mode.</p>
+<h4><a name="1009254"></a> GetFullScreen()</h4>
+<p><a name="1009523"></a>Returns whether or not image is currently in full-screen mode.  <code>TRUE</code> indicates full-screen mode.</p>
+<h1><a name="1013374"></a> Volume/Mute Control</h1>
+<h4><a name="1009264"></a> SetVolume()</h4>
+<p><a name="1009563"></a>Sets the volume level. Valid values are 0-100. </p>
+<h4><a name="1009265"></a> GetVolume()</h4>
+<p><a name="1009567"></a>Returns current volume level.</p>
+<h4><a name="1009266"></a> SetMute()</h4>
+<p><a name="1009571"></a>Sets the mute state. Valid values are <code>TRUE</code> and <code>FALSE</code>.</p>
+<h4><a name="1009267"></a> GetMute()</h4>
+<p><a name="1009575"></a>Returns whether or not the volume has been muted.</p>
+<h4><a name="1015293"></a> GetStereoState()</h4>
+<p><a name="1015294"></a>Returns whether the current clip is in stereo. Returns <code>TRUE</code> for stereo or <code>FALSE</code> for mono.</p>
+<h1><a name="1015258"></a> Context Menu</h1>
+<h4><a name="1015259"></a> SetEnableContextMenu()</h4>
+<p><a name="1015260"></a>Specifies whether the control will display the default context menu when the right mouse button is clicked. Valid values are <code>TRUE</code> (enabled, default) and <code>FALSE</code> (disabled).</p>
+<h4><a name="1015261"></a> GetEnableContextMenu()</h4>
+<p><a name="1015262"></a>Returns whether or not contextual menu is currently enabled. Returns <code>TRUE</code> (enabled, default) or <code>FALSE</code> (disabled).</p>
+<h4><a name="1015263"></a> SetEnableOriginalSize()</h4>
+<p><a name="1015264"></a>Enables the original size option on contextual menu. Valid values are <code>TRUE</code> (default) and <code>FALSE</code>.</p>
+<h4><a name="1015265"></a> GetEnableOriginalSize()</h4>
+<p><a name="1015266"></a>Returns whether the original size option is enabled on the contextual menu. </p>
+<h4><a name="1015267"></a> SetEnableDoubleSize()</h4>
+<p><a name="1015268"></a>Enables the double size option on contextual menu. Valid values are <code>TRUE</code> and <code>FALSE </code>(default).</p>
+<h4><a name="1015269"></a> GetEnableDoubleSize()</h4>
+<p><a name="1015270"></a>Returns whether or not the double size option is enabled on the contextual menu.</p>
+<h4><a name="1015271"></a> SetEnableFullScreen()</h4>
+<p><a name="1015272"></a>Enables the full screen option on contextual menu. Valid values are <code>TRUE </code>(default) and <code>FALSE.</code></p>
+<h4><a name="1015273"></a> GetEnableFullScreen()</h4>
+<p><a name="1015274"></a>Returns whether or not the full screen option is enabled on the contextual menu.</p>
+<h4><a name="1015275"></a> SetImageStatus()</h4>
+<p><a name="1015276"></a>Sets whether Status text should be written to the image window.</p>
+<h4><a name="1017777"></a> GetImageStatus()</h4>
+<p><a name="1017778"></a>Returns whether Status text is written to the image window.</p>
+<h1><a name="1009283"></a> Network Information</h1>
+<h4><a name="1013548"></a> GetSourceTransport()</h4>
+<p><a name="1013549"></a>Returns a string with the source protocol used for playback. Takes as value an integer from <code>1</code> to <code><I>n</I></code>, where <code><I>n</I></code> is the number of sources returned by <code>GetNumSources()</code>.</p>
+<h4><a name="1015301"></a> GetNumSources()</h4>
+<p><a name="1015302"></a>Returns number of sources in the presentation.</p>
+<h4><a name="1009285"></a> GetPacketsTotal()</h4>
+<p><a name="1010289"></a>Returns total number of packets in the presentation.</p>
+<h4><a name="1009286"></a> GetPacketsReceived()</h4>
+<p><a name="1009631"></a>Returns the total packets received from the server.</p>
+<h4><a name="1009287"></a> GetPacketsOutofOrder()</h4>
+<p><a name="1009635"></a>Returns the total packets received from the server out of order.</p>
+<h4><a name="1009288"></a> GetPacketsMissing()</h4>
+<p><a name="1009639"></a>Returns the total packets not received from the server in time to play. </p>
+<h4><a name="1009289"></a> GetPacketsEarly()</h4>
+<p><a name="1009643"></a>Returns the total packets received from the server before they are ready to play. </p>
+<h4><a name="1009290"></a> GetPacketsLate()</h4>
+<p><a name="1009647"></a>Returns the total packets received from the server that are too late to play. </p>
+<h4><a name="1009291"></a> GetBandwidthAverage()</h4>
+<p><a name="1009651"></a>Returns the average amount of bandwidth available. </p>
+<h4><a name="1009292"></a> GetBandwidthCurrent()</h4>
+<p><a name="1009655"></a>Returns the current amount of bandwidth available. </p>
+<h1><a name="1009301"></a> Version Information</h1>
+<h4><a name="1009318"></a> GetVersionInfo()</h4>
+<p><a name="1009719"></a>Returns major and minor version information for the embedded RealPlayer (not the parent RealPlayer), such as <code>6.0.0.128</code>.</p>
+<h4><a name="1015313"></a> GetIsPlus()</h4>
+<p><a name="1015314"></a>Returns whether the client is RealPlayer Plus.</p>
+<h1><a name="1015319"></a> Event Flags</h1>
+<h4><a name="1015324"></a> SetWantKeyboardEvents()</h4>
+<p><a name="1015325"></a>Sets whether keyboard events will be sent. Valid values are <code>TRUE</code> and <code>FALSE</code> (default).</p>
+<h4><a name="1015326"></a> GetWantKeyboardEvents()</h4>
+<p><a name="1015327"></a>Returns whether keyboard events will be sent.</p>
+<h4><a name="1015328"></a> SetWantMouseEvents()</h4>
+<p><a name="1015339"></a>Sets whether mouse events will be sent. Valid values are <code>TRUE</code> and <code>FALSE</code> (default).</p>
+<h4><a name="1015330"></a> GetWantMouseEvents()</h4>
+<p><a name="1015345"></a>Returns whether mouse events will be sent.</p>
+<h1><a name="1013974"></a> User Preference Settings</h1>
+<h4><a name="1015910"></a> GetConnectionBandwidth()</h4>
+<p><a name="1015911"></a>Returns the normal, maximum bandwidths settings as set by the user in the RealPlayer preferences.</p>
+<h4><a name="1013984"></a> GetPreferedLanguageString()</h4>
+<p><a name="1014007"></a>Returns the preferred language for content as set by the user in the RealPlayer preferences.</p>
+<h4><a name="1015362"></a> GetPreferedLanguageID()</h4>
+<p><a name="1015363"></a>Returns the preferred language ID. For a list of language codes, see the SMIL language codes appendix in <I>RealSystem G2 Production Guide</I>.</p>
+<h4><a name="1014011"></a> GetUserCountryID()</h4>
+<p><a name="1014012"></a>Returns the country that the user selected during electronic registration.</p>
+<h1><a name="1012912"></a> RealPlayer 5.0 Compatibility</h1>
+<p><a name="1012913"></a>The following methods are used with RealPlayer G2 and RealPlayer 5.0. To support both versions of RealPlayer, your application can issue only this set of commands:</p>
+<ul>
+<p><li><a name="1016436"></a><a href="methods.htm#1013463">DoStop()</a>
+<p><li><a name="1016498"></a><a href="methods.htm#1013466">CanStop()</a>
+<p><li><a name="1017233"></a><a href="methods.htm#1016923">CanPlayPause()</a>
+<p><li><a name="1018306"></a><a href="methods.htm#1018045">DoPlayPause()</a>
+<p><li><a name="1018313"></a><a href="methods.htm#1018106">DoGoToURL(url, target)</a> (ActiveX control only)
+<p><li><a name="1018323"></a><a href="methods.htm#1016041">SetControlString()</a> (Netscape Plug-in only)
+<p><li><a name="1018320"></a><a href="methods.htm#1015683">SetConsoleName()</a> (Netscape Plug-in only)
+<p><li><a name="1016467"></a><a href="methods.htm#1014320">SetAutoStart(boolean autoStart)</a> (Netscape Plug-in only)
+<p><li><a name="1016474"></a><a href="methods.htm#1014396">SetAutoGoToURL()</a>
+<p><li><a name="1012933"></a><a href="methods.htm#1014540">SetNoLabels()</a> (Netscape Plug-in only)
+<p><li><a name="1016486"></a><a href="methods.htm#1014610">SetSource(String Source)</a> (Netscape Plug-in only)
+<p><li><a name="1021638"></a><a href="methods.htm#1021389">HasNextItem()</a>
+<p><li><a name="1012953"></a><a href="methods.htm#1021572">DoPrevItem()</a>
+<p><li><a name="1021650"></a><a href="methods.htm#1021482">HasPrevItem()</a>
+<p><li><a name="1015724"></a><a href="methods.htm#1021572">DoPrevItem()</a>
+<p><li><a name="1012969"></a><a href="methods.htm#1016676">AboutBox()</a>
+<p><li><a name="1012973"></a><a href="methods.htm#1017034">EditPreferences()</a>
+<p><li><a name="1012977"></a><a href="methods.htm#1017052">HideShowStatistics()</a>
+<p><li><a name="1012981"></a><a href="methods.htm#1017091">IsStatisticsVisible()</a>
+</ul>
+<p><a name="1015368"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:51:30.</font>
+<center><a href="activex.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="events.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

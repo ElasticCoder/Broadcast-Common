@@ -1,0 +1,9 @@
+<window type="tickertape" duration="1:00" width="350"
+loop="true" underline_hyperlinks="false" link="white">
+<br/><b>
+<tu><a href="http://www.dowjones.com/">DJIA</a></tu>
+<tl>7168.35 +36.52 </tl>
+<tu>NIKEI 225 Index</tu>
+<tl>20603.71 +203.11</tl>
+</b> 
+</window> 

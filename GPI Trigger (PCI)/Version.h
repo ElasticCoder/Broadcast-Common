@@ -1,0 +1,7 @@
+const unsigned long SD_AUTO_BUILD_NUMBER = 3;
+
+const WORD SD_BUILD_YEAR = 2002;
+const WORD SD_BUILD_MONTH = 8;
+const WORD SD_BUILD_DAY = 14;
+const WORD SD_BUILD_HOUR = 9;
+const WORD SD_BUILD_MINUTE = 3;

@@ -1,0 +1,1188 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="animate.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="control.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="100023"></a>
+ Chapter 7: 	Assembling a Presentation with 
+SMIL
+
+</h1>
+<p><a name="8724"></a>When your multimedia presentation contains multiple clips-such as a slideshow and a video played together-you use Synchronized Multimedia Integration Language (SMIL) to coordinate the parts. Pronounced "smile," SMIL uses a simple but powerful mark-up language for specifying how and when clips play. After writing the SMIL file, you put it on RealServer and link your Web page to it as described in <a href="server.htm#32401">Chapter 10</a>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="53336"></a>
+If you have just one clip in your presentation, such as a 
+single RealVideo clip, you don't need to create a SMIL 
+file. Just link your Web page to the media clip as 
+explained in <a href="server.htm#32401">Chapter 10</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="115442"></a>
+Once you are familiar with SMIL, refer to <a href="smilref.htm#997503">"Appendix C: 
+SMIL Quick Reference"</a>.
+</td></tr>
+</table></p>
+<h1><a name="8591"></a> Creating a SMIL File</h1>
+<p><a name="8923"></a>You can create a SMIL file (extension <code>.smil</code>) with any text editor or word processor that can save output as plain text. If you are familiar with HTML mark-up, you will pick up SMIL quickly. In its simplest form, a SMIL file lists multiple media clips played in sequence:</p>
+<pre><a name="33548"></a>
+&lt;smil&gt;<br>  &lt;body&gt;<br>    &lt;audio src="rtsp://realserver.company.com/one.rm"/&gt;<br>    &lt;audio src="rtsp://realserver.company.com/two.rm"/&gt;<br>    &lt;audio src="rtsp://realserver.company.com/three.rm"/&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<h2><a name="33551"></a> SMIL General Rules</h2>
+<p><a name="41851"></a>SMIL has many similarities to HTML, but also some important differences. When you create your SMIL file, keep the following general rules in mind.</p>
+<h4><a name="109293"></a> Mark-up Starts with &lt;smil&gt; and Ends with &lt;/smil&gt;</h4>
+<p><a name="41852"></a>The SMIL mark-up must start with a <code>&lt;smil&gt;</code> tag and end with the <code>&lt;/smil&gt;</code> closing tag. All other mark-up appears between these two tags:</p>
+<pre><a name="13835"></a>
+&lt;smil&gt;<br> <code><I>...all other SMIL mark-up...<br></I></code>&lt;/smil&gt;
+</pre>
+<h4><a name="109316"></a> Body Section is Required but Header Section is Optional</h4>
+<p><a name="13190"></a>A SMIL file can include an optional header section defined by <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code> tags. It requires a body section defined by <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code> tags:</p>
+<pre><a name="92477"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>     .<code><I>..optional section with all header mark-up...<br></I></code>  &lt;/head&gt;<br>  &lt;body&gt;<br>     .<code><I>..required section with all body mark-up...<br></I></code>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="109329"></a>The header section is used to specify presentation information, as noted in <a href="smil.htm#112115">"Adding Presentation Information"</a>, and to define clip layout, as described in <a href="smil.htm#8639">"Laying Out Multiple Clips"</a>.</p>
+<h4><a name="109318"></a> Lowercase Text for Tags and Attributes</h4>
+<p><a name="25961"></a>SMIL tags and attributes must be lowercase.</p>
+<h4><a name="109319"></a> Some Tags Must Close with a Forward Slash</h4>
+<p><a name="13217"></a>A tag that does not have a corresponding end tag (for example, the <code>&lt;smil&gt;</code> tag has the end tag <code>&lt;/smil&gt;</code>), must close with a forward slash. For example:</p>
+<pre><a name="13233"></a>
+&lt;audio src="first.rm"<code><b>/</b></code>&gt;
+</pre>
+<h4><a name="109325"></a> Attribute Values Enclosed in Double Quotation Marks</h4>
+<p><a name="13120"></a>Attribute values, such as "<kbd>first.rm</kbd>" shown above, must be enclosed in double quotation marks. File names in SMIL must reflect the file name exactly as it appears on the server. They can use upper, lower, or mixed case.</p>
+<h4><a name="109326"></a> SMIL Files Use the Extension .smi or .smil</h4>
+<p><a name="15281"></a>Save your SMIL file with the extension <code>.smi</code> or <code>.smil</code>. The latter extension (<code>.smil</code>) is preferred to avoid possible conflict with other files. Do not include spaces in the file name. For example, you can have the file <kbd>my_presentation.smil </kbd>but not the file <kbd>my presentation.smil</kbd>.</p>
+<h4><a name="109364"></a> Coded Characters Used in Header</h4>
+<p><a name="19251"></a>You need to use codes to add quotation marks, apostrophes, ampersands, or angle brackets to content in a SMIL header, such as a presentation title. See <a href="smil.htm#112160">"Using Coded Characters"</a>.</p>
+<h4><a name="109383"></a> HTML-Style Comments Allowed</h4>
+<p><a name="37948"></a>As in HTML, the SMIL comment tag starts with <code><b>&lt;!--</b></code> and ends with <code><b>--&gt;</b></code>. The ending does not include a forward slash:</p>
+<pre><a name="19252"></a>
+&lt;!-- This is a comment --&gt;
+</pre>
+<h4><a name="109397"></a> Indentation Recommended</h4>
+<p><a name="34641"></a>Although examples in this chapter indent SMIL tags to various levels to illustrate the SMIL structure, indentation is not required. Indenting your SMIL files like the examples shown below will help you keep track of the SMIL functions, though.</p>
+<h1><a name="53618"></a> Specifying Clip Locations</h1>
+<p><a name="53619"></a>To add a clip to the presentation, you include in the SMIL body section a clip source tag that describes the clip type and location:</p>
+<pre><a name="13415"></a>
+&lt;audio src="rtsp://realserver.company.com/audio/first.rm"/&gt;
+</pre>
+<p><a name="26449"></a>The tag begins with one of the clip type attributes listed in the following table.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="38362"></a>
+ Source Clip Attributes </caption>
+<tr>
+<th align=left valign=bottom><a name="28950"></a>Clip Attribute</th>
+<th align=left valign=bottom><a name="28952"></a>Used For</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="28954"></a><code>animation</code></td>
+<td align=left valign=top><a name="28956"></a>Animation clips, such as Shockwave Flash (<kbd>.swf</kbd>) used in RealFlash.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28958"></a><code>audio</code></td>
+<td align=left valign=top><a name="28960"></a>Audio clips such as RealAudio (<kbd>.rm</kbd>).</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28962"></a><code>img</code></td>
+<td align=left valign=top><a name="78800"></a>JPEG (<kbd>.jpg</kbd>) or GIF images (<kbd>.gif</kbd>). See also <a href="smil.htm#78643">"Defining Image Options"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28966"></a><code>ref</code></td>
+<td align=left valign=top><a name="28968"></a>Any clip type not covered by other attributes, such as a RealPix file (<kbd>.rp</kbd>).</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28970"></a><code>text</code></td>
+<td align=left valign=top><a name="28972"></a>Static text clips (<kbd>.txt</kbd>).</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28974"></a><code>textstream</code></td>
+<td align=left valign=top><a name="28976"></a>Streaming RealText clips (<kbd>.rt</kbd>).</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28978"></a><code>video</code></td>
+<td align=left valign=top><a name="28980"></a>Video or other clips that display continuous motion, such as RealVideo (<kbd>.rm</kbd>).</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="53647"></a>
+For a list of supported streaming formats, see 
+<a href="realsys.htm#36850">"Choosing Media to Stream"</a>.
+</td></tr>
+</table></p>
+<p><a name="92633"></a>Although a source clip tag must start with a clip type attribute, attributes do not affect playback because RealPlayer determines the clip type through other means. Specifying a text clip as <code>audio</code>, for example, does not adversely affect playback. Although using the different clip attributes helps you keep track of the media types, you could specify all clips with <code>ref</code>, for example.</p>
+<p><a name="26451"></a>After the clip type attribute, the <code>src</code> attribute lists the clip location. How you specify this location depends on whether you will stream the presentation with RealServer, download the clip from a Web server, or play clips back from a local computer.</p>
+<h2><a name="14604"></a> Linking to Clips on RealServer</h2>
+<p><a name="97056"></a>When a RealSystem G2 presentation streams over a network, the media clips reside on RealServer. Each source clip's <code>src</code> attribute gives the clip's URL:</p>
+<pre><a name="97057"></a>
+&lt;audio src="rtsp://realserver.company.com:554/audio/first.rm"/&gt;
+</pre>
+<p><a name="97058"></a>The following table explains the URL components in the example above. Contact your RealServer administrator to get the RealServer address, RTSP port, and directory structure.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="97064"></a>
+ RealServer URL Components </caption>
+<tr>
+<th align=left valign=bottom><a name="97068"></a>Component</th>
+<th align=left valign=bottom><a name="97070"></a>Meaning</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="97072"></a><code>rtsp://</code></td>
+<td align=left valign=top><a name="97074"></a>RTSP streaming protocol. In contrast, URLs in Web pages start with <code>http://</code>. Although RealServer also supports HTTP, RealServer clips should always use RTSP.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="97076"></a><code>realserver.company.com</code></td>
+<td align=left valign=top><a name="97078"></a>RealServer address. This varies for each RealServer. It typically uses an identifier such as <code>realserver</code> instead of <code>www</code>. Or it may use a TCP/IP address such as <code>172.2.16.230</code> instead of a name.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="97080"></a><code>:554</code></td>
+<td align=left valign=top><a name="97082"></a>RealServer port for RTSP connections. Port <code>554</code> is the default, so you can leave this out of URLs unless the RealServer administrator changed the RTSP port. If the port number is required, separate it from the address with a colon.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="97084"></a><code>/audio/</code></td>
+<td align=left valign=top><a name="97086"></a>RealServer directory that holds the clip. The directory structure may be several levels deep.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="97088"></a><code>first.rm</code></td>
+<td align=left valign=top><a name="97090"></a>Clip file name.</td>
+</tr>
+</table>
+</p>
+<h3><a name="33571"></a> Creating Relative URLs</h3>
+<p><a name="33572"></a>If your presentation includes many clips that are on the same server, you can make each URL relative to a base target that you define in the header:</p>
+<pre><a name="17389"></a>
+&lt;head&gt;<br>  <code><b>&lt;meta name=</b></code>"<code><b>base</b></code>"<code><b> content=</b></code>"<code><b>rtsp://realserver.company.com/</b></code>"<code><b>/&gt;<br></b></code>&lt;/head&gt;<br>&lt;body&gt;<br>  &lt;audio src="audio/first.rm"/&gt;<br>  &lt;audio src="audio/second.rm"/&gt;<br>  &lt;audio src="rtsp://realserver.real.com/audio/third.rm"/&gt;<br>&lt;/body&gt;
+</pre>
+<p><a name="17825"></a>Because the third clip has a full URL specified for it, the base target is ignored. For the first two clips, however, the <code>src</code> values are appended to the base target, effectively giving the clips these URLs:</p>
+<pre><a name="17841"></a>
+rtsp://realserver.company.com/audio/first.rm<br>rtsp://realserver.company.com/audio/second.rm
+</pre>
+<p><a name="80258"></a>If no base target is given, RealPlayer assumes that the clip paths are relative to the location of the SMIL file. In the example above, therefore, you could leave the base target out if the SMIL file itself resides in a directory that contains the <kbd>audio</kbd> subdirectory that in turn holds the RealAudio clips.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="33582"></a>
+The relative syntax for SMIL files works like relative 
+links in HTML, so you can use directory notation such 
+as "<code>../</code>". You can find additional information about this 
+topic in an HTML reference guide.
+</td></tr>
+</table></p>
+<h2><a name="33583"></a> Linking to Clips on a Web Server</h2>
+<p><a name="64789"></a>To use a clip hosted on a Web server, use a standard HTTP URL such as the following in a clip source tag:</p>
+<pre><a name="64776"></a>
+&lt;img src="http://www.company.com/images/logo.gif"/&gt;
+</pre>
+<p><a name="64762"></a>URLs to clips on a Web server can also be relative to a base target as described above. Keep in mind that although a Web server can host any clip, a Web server cannot perform all the functions of RealServer.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="93350"></a>
+See <a href="realsys.htm#34033">"Hosting a Presentation on a Server"</a> and 
+<a href="server.htm#14811">"Limitations on Web Server Playback"</a>.
+</td></tr>
+</table></p>
+<h2><a name="64697"></a> Linking to Local Clips</h2>
+<p><a name="33584"></a>If your presentation clips will reside on the user's local computer (as with a multimedia tutorial included with a software application, for example), you include the SMIL file locally as well. The <code>src</code> attributes in the SMIL file list presentation clips in this format:</p>
+<pre><a name="17108"></a>
+src="audio/first.rm"
+</pre>
+<p><a name="17109"></a>This example is a local, relative link to a clip that resides one level below the SMIL file in the <kbd>audio</kbd> directory. For local access, you typically want to use relative links because you cannot be sure where users will place clips on their machines.</p>
+<p><a name="17110"></a>Alternately, you can use absolute, local links to specify exact locations. The syntax for absolute links is the same as with HTML. It varies with operating systems, however, and you should be familiar with the directory syntax for the system you're using. For example, the following absolute link syntax works for Windows machines, but not UNIX or Macintosh:</p>
+<pre><a name="17111"></a>
+src="file://c:\audio\first.rm"
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/warning.gif"></th>
+<th align=left class=warn>Warning</th>
+<tr><td class=note>
+<a name="22404"></a>
+Microsoft Internet Explorer 3.0 tries to display local 
+SMIL files as HTML. To support this browser, omit the 
+<code>&lt;head&gt;</code> tag or launch the presentation through a Ram 
+file as described in <a href="server.htm#14171">"Creating a Ram File Manually"</a>. 
+This problem does not occur with Netscape Navigator 
+or Internet Explorer 4.0. Nor does it occur when you 
+stream clips from a server to Internet Explorer 3.0.
+</td></tr>
+</table></p>
+<h1><a name="9241"></a> Grouping Clips</h1>
+<p><a name="9285"></a>With the SMIL <code>&lt;seq&gt;</code> and <code>&lt;par&gt;</code> tags, you can create groups that structure your presentation. The following sections explain how to play clips in sequence or parallel, as well as how to repeat groups or clips within groups.</p>
+<h2><a name="8610"></a> Playing Clips in Sequence</h2>
+<p><a name="8611"></a>Use the <code>&lt;seq&gt;</code> tag to play clips in sequence. In the following example, the second clip begins when the first clip finishes.</p>
+<pre><a name="8612"></a>
+&lt;seq&gt;<br>  &lt;audio src="audio/newsong.rm"/&gt;<br>  &lt;audio src="audio/oldsong.rm"/&gt;<br>&lt;/seq&gt;
+</pre>
+<p><a name="19644"></a>If your presentation included just the clips above, you wouldn't need to use the <code>&lt;seq&gt;</code> tag. You could simply list the clips in order and RealPlayer would play them in sequence. The <code>&lt;seq&gt;</code> tag is most commonly combined with <code>&lt;par&gt;</code> to create combinations of sequential and parallel clips.</p>
+<h2><a name="8613"></a> Playing Clips in Parallel</h2>
+<p><a name="8614"></a>You can play two or more clips at the same time through the <code>&lt;par&gt;</code> tag. For example, the following combines a RealVideo clip with a RealText clip:</p>
+<pre><a name="9548"></a>
+&lt;par&gt;<br>  &lt;video src="videos/newsong.rm"/&gt;<br>  &lt;textstream src="lyrics/newsong.rt"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="11688"></a>When you play clips in parallel, be sure that they do not exceed the presentation bandwidth as described in <a href="bandwdth.htm#997462">"Choosing a Target Bandwidth"</a>. When RealServer G2 streams parallel groups, it ensures that the clips stay synchronized. If some video frames don't arrive, for example, RealServer either drops those frames or halts playback until the frames arrive.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="42394"></a>
+When multiple visual clips play in parallel, you need to 
+define each clip's playback region. For more 
+information, see <a href="smil.htm#8639">"Laying Out Multiple Clips"</a>.
+</td></tr>
+</table></p>
+<h3><a name="67746"></a> Ending a Parallel Group on a Specific Clip</h3>
+<p><a name="67786"></a>By default, a <code>&lt;par&gt;</code> group ends once all clips finish playing back. You can modify this with an <code>end</code> timing value as described in <a href="smil.htm#8620">"Setting Begin and End Times"</a>. Or you can use the <code>endsync</code> attribute to stop the group when a specific clip finishes playback:</p>
+<pre><a name="67807"></a>
+&lt;par endsync="first"&gt;<br>  ...<br>&lt;/par&gt;
+</pre>
+<h4><a name="67895"></a> first</h4>
+<p><a name="67896"></a>Use the attribute <code>endsync="first"</code> to stop the <code>&lt;par&gt;</code> group the first time a clip in the group ends playback. All other clips in the group stop playing at that point regardless of their playback status and any timing parameters specified for them.</p>
+<h4><a name="67908"></a> last</h4>
+<p><a name="67917"></a>The attribute <code>endsync="last"</code> causes the <code>&lt;par&gt;</code> group to conclude when all clips have finished playing. Because this is the default value, you can omit the <code>endsync</code> attribute from the <code>&lt;par&gt;</code> tag to achieve this effect.</p>
+<h4><a name="67950"></a> id(clip id)</h4>
+<p><a name="67988"></a>The attribute <code>endsync="id(</code><code><I>clip id</I></code><code>)"</code> causes the <code>&lt;par&gt;</code> group to conclude when the specified clip reaches its end. All other clips in the group stop playing at that point regardless of their playback status and any timing parameters specified for them. The specified clip must have a corresponding <code>id</code> value in its source tag:</p>
+<pre><a name="68048"></a>
+&lt;par <code><b>endsync="id(vid)"</b></code>&gt;<br>  &lt;video <code><b>id="vid"</b></code> src="videos/newsong.rm"/&gt;<br>  &lt;textstream src="lyrics/newsong.rt"/&gt;<br>&lt;/par&gt;
+</pre>
+<h2><a name="68936"></a> Repeating a Clip or Group</h2>
+<p><a name="68937"></a>The <code>repeat="n"</code> attribute makes a clip or group play a specified number of times. You can add it to a clip source tag, for example:</p>
+<p><a name="68938"></a>&lt;video src="videos/newsong.rm" <code><b>repeat="4"</b></code>/&gt;</p>
+<p><a name="68939"></a>You can also add it to a <code>&lt;seq&gt;</code> or <code>&lt;par&gt;</code> group to make the entire group repeat:</p>
+<pre><a name="68940"></a>
+&lt;par <code><b>repeat="3"</b></code>&gt;<br>  &lt;video src="videos/newsong.rm"/&gt;<br>  &lt;textstream src="lyrics/newsong.rt"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="68941"></a>In the following example, a video clip within a <code>&lt;par&gt;</code> group plays twice. Assuming the video lasts longer than the text stream, the <code>&lt;par&gt;</code> group ends when the video concludes its second playback:</p>
+<pre><a name="69020"></a>
+&lt;par&gt;<br>  &lt;video src="videos/newsong.rm" <code><b>repeat="2"</b></code>/&gt;<br>  &lt;textstream src="lyrics/newsong.rt"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="69234"></a>In the following <code>&lt;seq&gt;</code> group, the second video plays only after the first video plays twice:</p>
+<pre><a name="69235"></a>
+&lt;seq&gt;<br>  &lt;video src="videos/newsong.rm" <code><b>repeat="2"</b></code>/&gt;<br>  &lt;video src="videos/newsong2.rm"/&gt;<br>&lt;/seq&gt;
+</pre>
+<h2><a name="55186"></a> Combining &lt;seq&gt; and &lt;par&gt; Tags</h2>
+<p><a name="55187"></a>You can combine and nest <code>&lt;seq&gt;</code> and <code>&lt;par&gt;</code> tags as needed. Note that the organization of these tags greatly affects the presentation playback:</p>
+<pre><a name="55188"></a>
+&lt;seq&gt;<br>    <I>clip 1<br></I>    &lt;par&gt;<br>      <I>clip 2<br></I>      <I>clip 3<br></I>    &lt;/par&gt;<br>    <I>clip 4<br></I>&lt;/seq&gt;
+</pre>
+<p><a name="55189"></a>In the example above, clip 1 plays first. When it finishes, clip 2 and clip 3 play together. When both clip 2 and clip 3 have finished, clip 4 plays. You get very different results, though, if you switch the <code>&lt;seq&gt;</code> and <code>&lt;par&gt;</code> groupings:</p>
+<pre><a name="55190"></a>
+&lt;par&gt;<br>    <I>clip 1<br></I>    &lt;seq&gt;<br>      <I>clip 2<br></I>      <I>clip 3<br></I>    &lt;/seq&gt;<br>    <I>clip 4<br></I>&lt;/par&gt;
+</pre>
+<p><a name="55191"></a>In this example, clip 1, clip 2, and clip 4 all begin at the same time. When clip 2 finishes, clip 3 starts. The following figure illustrates the difference between these different groupings.</p>
+<h5><a name="82834"></a>
+ Different Playback Results with &lt;seq&gt; and &lt;par&gt; Groups</h5>
+<p><a name="55195"></a>
+<img src="../graphics/groups.gif"></p>
+<h1><a name="18718"></a> Specifying Timing</h1>
+<p><a name="79276"></a>SMIL timing elements let you specify when a clip or group starts playing and how long it plays. All timing elements are optional. If you do not set them, clips start and stop according to their normal timelines and their positions within <code>&lt;par&gt;</code> and <code>&lt;seq&gt;</code> groups. The easiest way to designate a time is with shorthand markers of <code>h</code>, <code>min</code>, <code>s</code>, and <code>ms</code> as illustrated in the following table.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="38370"></a>
+ Timing Shorthand Examples </caption>
+<tr>
+<th align=left valign=bottom><a name="31485"></a>Shorthand Example</th>
+<th align=left valign=bottom><a name="31487"></a>Value</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="31489"></a><code>2.5h</code></td>
+<td align=left valign=top><a name="31491"></a>2 hours, 30 minutes</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31493"></a><code>2.75min</code></td>
+<td align=left valign=top><a name="31495"></a>2 minutes, 45 seconds</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31497"></a><code>15.55s</code></td>
+<td align=left valign=top><a name="31499"></a>15 seconds, 550 milliseconds</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31501"></a><code>670.2ms</code></td>
+<td align=left valign=top><a name="31503"></a>670.2 milliseconds</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="31437"></a>
+Decimal values are not required. You can express two 
+seconds as <code>"2s"</code> or <code>"2.0s"</code>, for example.
+</td></tr>
+</table></p>
+<h4><a name="105856"></a> Normal Play Time Format</h4>
+<p><a name="105857"></a>You can also express time elements in a <code>hh:mm:ss.xy</code> format. Here, <code>hh</code> is hours, <code>mm</code> is minutes, <code>ss</code> is seconds, <code>x</code> is tenths of seconds, and <code>y</code> is hundredths of seconds. In this example:</p>
+<pre><a name="31290"></a>
+begin="02:34.0"
+</pre>
+<p><a name="31292"></a>the time value is 2 minutes, 34 seconds. If the value does not include a decimal point, RealPlayer takes the last value to be seconds. So it reads the following value as 2 minutes, 34 seconds rather than as 2 hours, 34 minutes:</p>
+<pre><a name="31418"></a>
+begin="02:34"
+</pre>
+<h2><a name="8620"></a> Setting Begin and End Times</h2>
+<p><a name="9743"></a>The <code>begin</code> attribute works for any clip or group. You can use it to start a clip at a specific point within the timeline:</p>
+<pre><a name="10191"></a>
+&lt;video src="videos/newsong.rm" <code><b>begin="20.5s"</b></code>/&gt;
+</pre>
+<p><a name="33599"></a>Were this clip in a <code>&lt;par&gt;</code> group, the <code>begin</code> attribute would start the clip playing back 20.5 seconds after the group becomes active. If the clip were in a <code>&lt;seq&gt;</code> group, the attribute would delay the clip's normal playback by inserting 20.5 seconds of blank time before the clip starts. Hence timing is relative to the start of the <code>&lt;seq&gt;</code> or <code>&lt;par&gt;</code> group, not the start of the overall presentation.</p>
+<p><a name="83129"></a>Additionally, you can set an <code>end</code> attribute alone or combined with a <code>begin</code> attribute as shown here:</p>
+<pre><a name="83130"></a>
+&lt;video src="videos/newsong.rm" begin="20.5s" <code><b>end="62.7s"</b></code>/&gt;
+</pre>
+<p><a name="83396"></a>In this example, the clip ends at 62.7 seconds into its part of the presentation timeline, playing a total of 42.2 seconds regardless of the length of its internal timeline. If the video's internal timeline is shorter (30 seconds, for example) the <code>fill</code> attribute determines what happens onscreen after the video stops playing but before the <code>end</code> time is reached.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="84028"></a>
+<a href="smil.htm#29686">"Setting a Fill"</a>.
+</td></tr>
+</table></p>
+<h3><a name="83398"></a> Using Begin and End Times with Groups</h3>
+<p><a name="83231"></a>You can use <code>begin</code> or <code>end</code> with a <code>&lt;par&gt;</code> or <code>&lt;seq&gt;</code> group:</p>
+<pre><a name="83243"></a>
+&lt;par begin= "5s" end= "3.5min"&gt;<br>  ...<br>&lt;/par&gt;
+</pre>
+<p><a name="83261"></a>This <code>begin</code> value delays group playback until 5 seconds after the preceding group or clip finishes. The end time means all clips in the group stop playing after 3.5 minutes regardless of their states. If all clips reach their normal conclusion by 3 minutes and 20 seconds after the group starts, for example, the next group or clip starts after 10 seconds of blank time.</p>
+<p><a name="85644"></a>If you use an end time and a repeat attribute as described in <a href="smil.htm#68936">"Repeating a Clip or Group"</a>, the group repeats only after the end time elapses. You should not set an end time along with an <code>endsync</code> attribute in a <code>&lt;par&gt;</code> group, as this sets up conflicting end times.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="85713"></a>
+For more on <code>endsync</code>, see <a href="smil.htm#67746">"Ending a Parallel Group on a 
+Specific Clip"</a>.
+</td></tr>
+</table></p>
+<h2><a name="82624"></a> Setting Internal Clip Begin and End Times</h2>
+<p><a name="82625"></a>The <code>clip-begin</code> and <code>clip-end</code> attributes specify a clip's internal timing marks where playback begins and ends. You can use them with clips that have internal timelines, such as audio, video, and animation. Do not use them with groups or static clips such as still images. Here is an example:</p>
+<pre><a name="82626"></a>
+&lt;video src="videos/newsong.rm" <code><b>clip-begin="10.5s" clip-end="50.7s"</b></code>/&gt;
+</pre>
+<p><a name="82627"></a>Here, the clip starts playing at its internal 10.5-second mark rather than at its normal beginning. It stops when it reaches its 50.7-second mark, playing for a total of 40.2 seconds.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="116279"></a>
+Do not use <code>clip-begin</code> and <code>clip-end</code> when playing clips 
+back from a Web server. For more information, see 
+<a href="server.htm#14811">"Limitations on Web Server Playback"</a>.
+</td></tr>
+</table></p>
+<h3><a name="83717"></a> Combining clip-begin and clip-end with begin and end</h3>
+<p><a name="83595"></a>You can combine <code>clip-begin</code> and <code>clip-end</code> attributes with <code>begin</code> and <code>end</code> attributes. Here, a begin time has been added to the clip example shown above:</p>
+<pre><a name="83602"></a>
+&lt;video src="videos/newsong.rm" clip-begin="10.5s" clip-end="50.7s"<code><b> begin="5s"</b></code>/&gt;
+</pre>
+<p><a name="83600"></a>The <code>begin</code> time delays the clip's normal starting point by five seconds. When this time elapses, the clip starts at its 10.5 second internal timeline marker, then plays for 40.2 seconds. In this case, the <code>clip-end</code> attribute determines how long the video is active. But you could also add an <code>end</code> attribute as shown here to modify this behavior:</p>
+<pre><a name="84849"></a>
+&lt;video src="videos/newsong.rm" clip-begin="10.5s" clip-end="50.7s" begin="5s"<br>  <code><b>end="50s"</b></code>/&gt;
+</pre>
+<p><a name="84776"></a>Combined with <code>begin</code>, the <code>end</code> value of 50 means the clip's "window" within the presentation is 45 seconds. Because the clip stops playing after 40.2 seconds, there is an extra 4.8 seconds during which the clip does not play but remains active. How the video window appears during these final seconds depends on the <code>fill</code> attribute.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="83999"></a>
+<a href="smil.htm#29686">"Setting a Fill"</a>.
+</td></tr>
+</table></p>
+<h2><a name="69771"></a> Setting Durations</h2>
+<p><a name="68345"></a>The <code>dur</code> attribute controls how long a clip or group appears after it starts to play back. It is useful with graphic images, as shown in this example:</p>
+<pre><a name="68346"></a>
+&lt;img src="graphics/poster.jpg" <code><b>dur="14.5s"</b></code>/&gt;
+</pre>
+<p><a name="84054"></a>This <code>dur</code> time makes the graphic disappears 14.5 seconds after it appears. You can also use <code>dur</code> in place of <code>end</code>. For example, in the following clip:</p>
+<pre><a name="84126"></a>
+&lt;video src="videos/newsong.rm" begin="20.5s" <code><b>end="62.7s"</b></code>/&gt;
+</pre>
+<p><a name="84117"></a>you can substitute a <code>dur</code> attribute for the <code>end</code> attribute to achieve the same result:</p>
+<p><a name="84131"></a>&lt;video src="videos/newsong.rm" begin="20.5s" <code><b>dur="42.2s"</b></code>/&gt;</p>
+<p><a name="68347"></a>In both examples, the clips stop playback 42.2 seconds after starting. With the <code>end</code> attribute, the total playing time is the <code>end</code> value minus the <code>begin</code> value. The <code>dur</code> attribute ignores the <code>begin</code> value, stopping the clip 42.2 seconds after it starts. Use either <code>end</code> or <code>dur</code>, therefore, depending on how you want to measure time. Do not use both attributes in the same tag, however.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="84676"></a>
+The <code>dur</code> attribute can function like <code>end</code> in a group, too. 
+For more information, see <a href="smil.htm#83398">"Using Begin and End Times 
+with Groups"</a>.
+</td></tr>
+</table></p>
+<h2><a name="29686"></a> Setting a Fill</h2>
+<p><a name="29749"></a>The <code>fill</code> attribute determines what happens to the clip immediately after it plays to its normal end point, or its specified end time or duration elapses. The <code>fill</code> value can be <code>remove</code> or <code>freeze</code>.</p>
+<h4><a name="29621"></a> remove</h4>
+<p><a name="29638"></a>The default value <code>fill="remove"</code> removes the clip. When this attribute is used with a still image, the image disappears once the end time has elapsed.</p>
+<h4><a name="29628"></a> freeze</h4>
+<p><a name="68608"></a>Use <code>fill="freeze"</code> to freeze the clip on its last frame. When used with a video, the video's last frame stays on the screen. Suppose that you have a 20-second video and specify a 30-second duration with <code>freeze</code>:</p>
+<pre><a name="68609"></a>
+&lt;video src="videos/newsong.rm" dur="30s" fill="freeze"/&gt;
+</pre>
+<p><a name="68610"></a>After the video plays, its last frame displays for 10 seconds. The video disappears when the end time elapses. The <code>fill="freeze"</code> attribute has no effect on audio. Do not use <code>fill="freeze"</code> for a graphic image that also uses a <code>dur</code> attribute.</p>
+<h2><a name="9656"></a> Clip Timing Example</h2>
+<p><a name="10075"></a>The following example shows two audio clips with different timing options:</p>
+<pre><a name="8622"></a>
+&lt;par&gt;<br>  &lt;audio src="song1.rm" clip-begin="30.4s" dur="30s"/&gt;<br>  &lt;audio src="song2.rm" begin="28s" clip-begin="2.4s"clip-end="13.7s"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="8623"></a>The timing options modify the <code>&lt;par&gt;</code> tag so that the two clips start at different times. The first clip begins to play immediately, but starts at 30.4 seconds into its timeline, playing for exactly 30 seconds.</p>
+<p><a name="10146"></a>The second clip is delayed for 28 seconds. That means it overlaps the first clip by 2 seconds. It starts at 2.4 seconds into its timeline and ends at 13.7 seconds into its timeline, thus playing for 11.3 seconds. The total playing time for this group is 30 seconds for the first clip, plus 11.3 seconds for the second clip, minus the 2 second overlap: 39.3 seconds. The following figure illustrates the relationships of the clip timelines to the overall presentation timeline.</p>
+<h5><a name="88180"></a>
+ Clip Timing Example</h5>
+<p><a name="88200"></a>
+<img src="../graphics/timeline.gif"></p>
+<h1><a name="10370"></a> Switching Between Alternate Choices</h1>
+<p><a name="8630"></a>With the <code>&lt;switch&gt;</code> tag, you can specify multiple options that RealPlayer can choose between. The <code>&lt;switch&gt;</code> group specifies any number of choices in this form:</p>
+<pre><a name="55791"></a>
+&lt;switch&gt;<br>  &lt;<code><I>choice1 test-attribute="value1"</I></code>/&gt;<br>  &lt;<code><I>choice2 test-attribute="value2"</I></code>/&gt;<br>  ...<br>&lt;/switch&gt;
+</pre>
+<p><a name="55792"></a>RealPlayer looks at choices in order, evaluating each test attribute and its value to determine which clip to choose. The choices are typically clip source tags such as <code>&lt;video </code><code><I>test-attribute</I></code><code>="</code><code><I>value</I></code><code>"/&gt;</code>, but RealPlayer can also choose between groups when test attributes appear in <code>&lt;par&gt;</code> or <code>&lt;seq&gt;</code> tags.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="82214"></a>
+Every RealPlayer must have a viable choice within a 
+<code>&lt;switch&gt;</code> statement. RealPlayer will not play any clip in 
+the <code>&lt;switch&gt;</code> group if it finds no satisfactory test 
+attribute. The following sections explain how to 
+guarantee that every RealPlayer has a viable option.
+</td></tr>
+</table></p>
+<h2><a name="33667"></a> Setting Language Choices</h2>
+<p><a name="52197"></a>When the <code>&lt;switch&gt;</code> group test attribute is <code>system-language</code>, each source clip is for a different language. The following example shows a video slideshow with separate audio narrations in French, German, Spanish, and English. Based on the language preference set through its <strong>Options</strong> menu, as well as the <code>system-language</code> code defined in the SMIL file, RealPlayer chooses a clip to play:</p>
+<pre><a name="55786"></a>
+&lt;par&gt;<br>  &lt;video src="slides/seattle.rm"/&gt;<br>  &lt;!-- select audio based on RealPlayer language preference setting --&gt;<br>  &lt;switch&gt;<br>    &lt;audio src="french/seattle.rm" system-language="fr"/&gt;<br>    &lt;audio src="german/seattle.rm" system-language="de"/&gt;<br>    &lt;audio src="spanish/seattle.rm" system-language="es"/&gt;<br>    &lt;audio src="english/seattle.rm"/&gt;<br>  &lt;/switch&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="79704"></a>Because the last option does not have a test attribute, a RealPlayer that does not have French, German, or Spanish explicitly set as its preferred language chooses the English clip regardless of its actual language setting. RealPlayer evaluates options in order, so the last option should be, as shown in this example, a default language that applies if no other option is viable. If you list no default option and certain RealPlayers prefer languages other than the ones you list, those RealPlayers will not play any of the clips.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="52315"></a>
+<a href="language.htm#1001361">Appendix E</a> lists the <code>system-language</code> codes such as <code>"fr"</code> 
+you use to designate content in different languages.
+</td></tr>
+</table></p>
+<h2><a name="10260"></a> Setting Bandwidth Choices</h2>
+<p><a name="16338"></a>To serve different clips to viewers with different connection speeds, use the <code>&lt;switch&gt;</code> tag to define options each RealPlayer can choose based on its available bandwidth. As shown below, you can group clips with <code>&lt;par&gt;</code> tags, using the <code>system-bitrate</code> attribute to list the approximate bandwidth (in Kbps) each group consumes:</p>
+<pre><a name="16176"></a>
+&lt;switch&gt;<br>  &lt;par system-bitrate="75000"&gt;<br>    &lt;!--for dual isdn and faster--&gt;<br>    &lt;audio src="audio/newsong1.rm"/&gt;<br>    &lt;video src="video/newsong1.rm"/&gt;<br>    &lt;textstream src="lyrics/newsong1.rt"/&gt;<br>  &lt;/par&gt;<br>  &lt;par system-bitrate="47000"&gt;<br>    &lt;!--for single isdn--&gt;<br>    &lt;audio src="audio/newsong2.rm"/&gt;<br>    &lt;video src="video/newsong2.rm"/&gt;<br>    &lt;textstream src="lyrics/newsong2.rt"/&gt;<br>  &lt;/par&gt;<br>  &lt;par system-bitrate="20000"&gt;<br>    &lt;!--for 28.8 modems--&gt;<br>    &lt;audio src="audio/newsong3.rm"/&gt;<br>    &lt;video src="video/newsong3.rm"/&gt;<br>    &lt;textstream src="lyrics/newsong3.rt"/&gt;<br>  &lt;/par&gt;<br>&lt;/switch&gt;
+</pre>
+<p><a name="16284"></a>Always list system bandwidth options from highest to lowest. RealPlayer evaluates options in the order listed, selecting the first viable option even if subsequent options suit it better. So if the 28.8 Kbps option is first, a RealPlayer with a dual-ISDN connection will choose that option because it is the first viable option listed.</p>
+<p><a name="25380"></a>Also ensure that the last option satisfies the lowest bandwidth connection you want to support. If you do not list an option suitable for 28.8 Kbps modems, for example, RealPlayers connected through those modems will not play the presentation.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="82037"></a>
+<a href="tips.htm#998641">"Writing Complex SMIL Switch Statements"</a> explains 
+how to use <code>&lt;switch&gt;</code> with SureStream clips, as well as 
+how to test for both language and bandwidth.
+</td></tr>
+</table></p>
+<h1><a name="112115"></a> Adding Presentation Information</h1>
+<p><a name="112116"></a>The SMIL file header can use <code>&lt;meta&gt;</code> tags to list presentation information such as title, author, and copyright:</p>
+<pre><a name="112117"></a>
+&lt;head&gt;<br>  &lt;meta name="title" content="Bob and Susan Discuss Streaming Media"/&gt;<br>  &lt;meta name="author" content="RealNetworks Media Productions"/&gt;<br>  &lt;meta name="copyright" content="(c)1998 RealNetworks"/&gt;<br>  &lt;meta name="abstract" content="Bob and Susan, two Internet technology <br>experts, discuss the future of streaming media."/&gt;<br> &lt;/head&gt;
+</pre>
+<p><a name="112118"></a>This example defines a title, author, copyright, and abstract. You can define other values as well, such as an e-mail address, simply by adding an attribute such as <code>name="email"</code>. This information displays when the user gives the RealPlayer <strong>Help&gt;About this Presentation</strong> command. In addition, the title displays at the top of the RealPlayer window and in the run list under the RealPlayer <strong>File</strong> menu.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="112119"></a>
+Name values, as in<code> name="title"</code>, must be lowercase. 
+When defining long content such as an abstract, don't 
+use line breaks or tabs within a <code>content</code> value.
+</td></tr>
+</table></p>
+<h2><a name="112121"></a> Managing the Playlist</h2>
+<p><a name="112122"></a>In addition to the presentation information, RealPlayer keeps a playlist of clip titles. Through this playlist, users can play different parts of the SMIL presentation. The following example shows the same header information as above, but adds titles for each video clip in the body section:</p>
+<pre><a name="112123"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;meta name="title" content="Bob and Susan Discuss Streaming Media"/&gt;<br>    &lt;meta name="author" content="RealNetworks Media Productions"/&gt;<br>    &lt;meta name="copyright" content="(c)1998 RealNetworks"/&gt;<br>    &lt;meta name="abstract" content="Bob and Susan, two Internet technology<br>experts, discuss the future of streaming media."/&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;seq&gt;<br>      &lt;video src="clip1.rm" title="Bob Expounds his View"/&gt;<br>      &lt;video src="clip2.rm" title="Susan Responds with Another Perspective"/&gt;<br>      &lt;video src="clip3.rm" title="Summary: A Look at the Future"/&gt;<br>    &lt;/seq&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="112124"></a>The titles for the individual clips appear in RealPlayer's pull-down playlist as illustrated in the following figure. The user can also view the playlist with RealPlayer's <strong>File&gt;Playlist</strong> command.</p>
+<h5><a name="112125"></a>
+ RealPlayer's Pull-Down Playlist Showing Clip Titles</h5>
+<p><a name="112129"></a>
+<img src="../graphics/playlist.gif"></p>
+<p><a name="112130"></a>Only the clip titles affect the playlist, but you can also define an author, copyright, and abstract for each clip. As illustrated below, clip information appears when the RealPlayer user gives the <strong>Help&gt;About this Presentation</strong> command while the clip plays.</p>
+<h5><a name="112131"></a>
+ Presentation and Clip Information</h5>
+<p><a name="112135"></a>
+<img src="../graphics/presinfo.gif"></p>
+<p><a name="112136"></a>Note that in this figure, the clip information section shows the clip title defined in the SMIL file, but also includes author and copyright information not defined through SMIL. The author and copyright information is encoded in the clip.</p>
+<h4><a name="112137"></a> Tips for Defining Clip Information</h4>
+<p><a name="112138"></a>The following points explain the relationship between clip information set through SMIL and information encoded in a clip.</p>
+<ul>
+<p><li><a name="112139"></a>Clips may include their own title, author, and copyright information. With RealVideo, for example, this information is encoded within the clip. For RealPix, it is set within the RealPix text file.
+<p><li><a name="112140"></a>You can override any title, author, or copyright information encoded in a clip by adding <code>title</code>, <code>author</code>, and <code>copyright</code> attributes to the clip's SMIL source tag:
+<pre class=indent><a name="112141"></a>
+<code>&lt;ref src="..." title="</code><code><I>title</I></code><code>" author="</code><code><I>name</I></code><code>" copyright="</code><code><I>copyright</I></code><code>"/&gt;</code>
+</pre>
+<p><li><a name="112145"></a>To make the playlist useful, always define a title for each clip through SMIL. RealPlayer reads the SMIL titles when the presentation begins. It reads a clip's encoded title only when the clip starts playback. So if you define titles through SMIL, RealPlayer can immediately build a playlist that allows the user to choose different clips.
+<p><li><a name="112146"></a>You can set a clip abstract only through SMIL by adding the <code>abstract</code> attribute and its appropriate value to the clip's source tag:
+<pre class=indent><a name="112147"></a>
+<code>&lt;ref src="..." abstract="</code><code><I>abstract</I></code><code>"/&gt;</code>
+</pre>
+<p><li><a name="112148"></a>Only <code>title</code>, <code>author</code>, <code>copyright</code>, and <code>abstract</code> attributes are supported for clips. For the entire presentation, however, you can define any information through the header section <code>&lt;meta.../&gt;</code> tags. See <a href="smil.htm#112115">"Adding Presentation Information"</a> for more information.
+<p><li><a name="112149"></a>For a parallel group, use <code>title</code>, <code>author</code>, <code>copyright</code>, and <code>abstract</code> attributes in the <code>&lt;par&gt;</code> tag instead of the clip source tags. For more on <code>&lt;par&gt;</code>, see <a href="smil.htm#8613">"Playing Clips in Parallel"</a>.
+<p><li><a name="112156"></a>A <code>title</code>, <code>author</code>, <code>copyright</code>, or <code>abstract</code> attribute in a <code>&lt;seq&gt;</code> tag is ignored. This information must be defined for individual clips or parallel groups.
+<p><li><a name="112157"></a>Although it's easier to set clip information through SMIL, it's good practice to encode the title, author, and copyright information in the clip as well. This preserves the clip information in case you stream the clip without using a SMIL file.
+</ul>
+<h2><a name="112160"></a> Using Coded Characters</h2>
+<p><a name="112161"></a>In a header, SMIL interprets quotation marks, apostrophes, ampersands, and angle brackets as syntax markers. To have these characters show up as text in RealPlayer, you use codes in the header. As shown in the following table, codes begin with an ampersand ("&amp;") and end with a semicolon (";"). SMIL interprets these codes the same way as popular Web browsers.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="112167"></a>
+ SMIL Coded Characters </caption>
+<tr>
+<th align=left valign=bottom><a name="112173"></a>Code</th>
+<th align=left valign=bottom><a name="112175"></a>Character</th>
+<th align=left valign=bottom><a name="112177"></a>Example</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="112179"></a><code>&amp;quot;</code></td>
+<td align=left valign=top><a name="112181"></a>quotation mark</td>
+<td align=left valign=top><a name="112183"></a>"</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="112185"></a><code>&amp;amp;</code></td>
+<td align=left valign=top><a name="112187"></a>ampersand</td>
+<td align=left valign=top><a name="112189"></a>&amp;</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="112191"></a><code>&amp;apos;</code></td>
+<td align=left valign=top><a name="112193"></a>apostrophe</td>
+<td align=left valign=top><a name="112195"></a>'</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="112197"></a><code>&amp;lt;</code></td>
+<td align=left valign=top><a name="112199"></a>left angle bracket ("less than" sign)</td>
+<td align=left valign=top><a name="112201"></a>&lt;</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="112203"></a><code>&amp;gt;</code></td>
+<td align=left valign=top><a name="112205"></a>right angle bracket ("greater than" sign)</td>
+<td align=left valign=top><a name="112207"></a>&gt;</td>
+</tr>
+</table>
+</p>
+<p><a name="112217"></a>For example, to add the following as a title:</p>
+<pre><a name="112218"></a>
+  "Multimedia's &lt;smil&gt; &amp; you"
+</pre>
+<p><a name="112219"></a>You enter this in the SMIL file header:</p>
+<pre><a name="112220"></a>
+&lt;meta name="title" content=<br>  "&amp;quot;Multimedia&amp;apos;s &amp;lt;smil&amp;gt; &amp;amp; you&amp;quot;"/&gt;
+</pre>
+<h1><a name="8639"></a> Laying Out Multiple Clips</h1>
+<p><a name="58103"></a>If your presentation plays only one clip at a time, you do not need to create a layout. Each clip automatically plays in the main RealPlayer window, the window resizing automatically for each new clip. If you want to keep the playback area stable in size as different clips play back, or if your presentation displays several clips at a time, you can define playback areas called "regions" within the main RealPlayer window:</p>
+<ol>
+<p><li><a name="26625"> </a>In the SMIL file header, you create a<code> &lt;layout</code>&gt; group, using<code> &lt;region&gt;</code> tags to name playback regions and define their sizes and locations within the RealPlayer main window. See <a href="smil.htm#10926">"Defining the Layout"</a> below.
+<p><li><a name="26652"> </a>In the SMIL file body, you use <code>region</code> attributes to specify which source clips play in which regions. See <a href="smil.htm#10966">"Assigning Clips to Regions"</a>.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="53373"></a>
+See <a href="control.htm#20082">"Laying out SMIL Presentations"</a> for instructions on 
+using RealPlayer's Netscape plug-in or ActiveX control 
+to lay out the presentation in a Web page instead of in 
+RealPlayer.
+</td></tr>
+</table></p>
+</ol>
+<h2><a name="10926"></a> Defining the Layout</h2>
+<p><a name="10899"></a>When you lay out regions, you create a root-layout region that defines the size of the RealPlayer main window. You then create other regions using a simple coordinate system measured across and down from the top, left-hand corner of the root-layout region. All measurements are in pixels or percentages, with zero pixels as the default. The following table lists the attributes that define region size and placement.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="95489"></a>
+ Region Size and Placement Attributes </caption>
+<tr>
+<th align=left valign=bottom><a name="95497"></a>Attribute</th>
+<th align=left valign=bottom><a name="95499"></a>Sets</th>
+<th align=left valign=bottom><a name="95501"></a>Pixel Example</th>
+<th align=left valign=bottom><a name="95503"></a>Percentage Example</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="95505"></a><code>top</code></td>
+<td align=left valign=top><a name="95507"></a>offset from top of window</td>
+<td align=left valign=top><a name="95509"></a><code>top="60"</code></td>
+<td align=left valign=top><a name="95511"></a><code>top="10%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="95513"></a><code>left</code></td>
+<td align=left valign=top><a name="95515"></a>offset from left side of window</td>
+<td align=left valign=top><a name="95517"></a><code>left="120"</code></td>
+<td align=left valign=top><a name="95519"></a><code>left="20%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="95521"></a><code>width</code></td>
+<td align=left valign=top><a name="95523"></a>region width</td>
+<td align=left valign=top><a name="95525"></a><code>width="240"</code></td>
+<td align=left valign=top><a name="95527"></a><code>width="40%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="95529"></a><code>height</code></td>
+<td align=left valign=top><a name="95531"></a>region height</td>
+<td align=left valign=top><a name="95533"></a><code>height="180"</code></td>
+<td align=left valign=top><a name="95535"></a><code>height="30%"</code></td>
+</tr>
+</table>
+</p>
+<p><a name="96752"></a>The next figure illustrates the layout of a single playback region within a root-layout region.</p>
+<h5><a name="96781"></a>
+ Basic Region Layout</h5>
+<p><a name="96802"></a>
+<img src="../graphics/laybase.gif"></p>
+<h3><a name="33716"></a> Setting the Root Layout Region</h3>
+<p><a name="33717"></a>With the &lt;<code>root-layout.../&gt;</code> tag, you specify the size of the entire playback area in pixels (percentages are not accepted for the root-layout region). You cannot display images or play clips in the root-layout region, as it is meant to set the overall playback area. The example shown below creates a root-layout region 250 pixels wide by 230 pixels high. When the presentation begins, the RealPlayer window expands to this size. Other regions measure their top and left offsets from the upper, left-hand corner of this root-layout region:</p>
+<pre><a name="95600"></a>
+<strong></strong>&lt;head&gt;<br>  &lt;layout&gt;<br>    <code><b>&lt;root-layout width="250" height="230"/&gt;<br></b></code>    <code><I>...other regions defined here...<br></I></code>  &lt;/layout&gt;<br>&lt;/head&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="26972"></a>
+Although you can omit <code>root-layout</code> to have RealPlayer 
+calculate the playback area based on the sizes of the 
+other regions, it is better to define <code>root-layout</code> to avoid 
+unexpected results.
+</td></tr>
+</table></p>
+<h3><a name="26901"></a> Defining Playback Regions</h3>
+<p><a name="105673"></a><strong></strong>You create playback regions for media clips with <code>&lt;region&gt;</code> tags. These regions must lay within the root-layout region. Any part of a region that lays outside the root-layout region is cut off. Each <code>&lt;region.../&gt;</code> tag must define <code>top</code>, <code>left</code>, <code>width</code>, and <code>height</code> attributes. The example below defines two regions named "videoregion" and "textregion":</p>
+<pre><a name="95807"></a>
+&lt;head&gt;<br>  &lt;layout&gt;<br>    &lt;root-layout background-color="maroon" width="250" height="230"/&gt;<br>    <code><b>&lt;region id="videoregion" top="5" left="5" width="240" height="180"/&gt;<br>    &lt;region id="textregion" top="200" left="5" width="240" height="20"/&gt;<br></b></code>  &lt;/layout&gt;<br>&lt;/head&gt;
+</pre>
+<p><a name="95820"></a>In this example, both regions are offset 5 pixels to the right of the root-layout region's left edge. The video region displays 5 pixels down from the top of the root-layout region, and the text region displays 200 pixels down. The following figure illustrates this placement.</p>
+<h5><a name="82844"></a>
+ SMIL Sample Layout with Video and Text Windows</h5>
+<p><a name="11035"></a>
+<img src="../graphics/layout1.gif"></p>
+<h4><a name="95761"></a> Tips for Defining Regions</h4>
+<p><a name="95842"></a>Note the following about SMIL regions:</p>
+<ul>
+<p><li><a name="95854"></a>All regions used in the presentation must be defined in the header. All regions are created at the beginning of the presentation, so regions containing background colors as described in <a href="smil.htm#96074">"Adding a Background Color"</a> may obscure other regions they overlap.
+<p><li><a name="95915"></a>Using region transparency and the <code>z-index</code> attribute, you can emulate dynamic creation and destruction of regions. For details, see <a href="tips.htm#997866">"Hiding Regions with z-index"</a>.
+<p><li><a name="95837"></a>To use a graphic image such as a GIF or a JPEG as a background, define a playback region the same size as the root-layout region. Display the image in this region and use the <code>z-index</code> attribute to make it display behind other regions. 
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="95847"></a>
+See <a href="smil.htm#71245">"Ordering Overlapping Regions with z-index"</a>.
+</td></tr>
+</table></p>
+</ul>
+<h3><a name="11133"></a> Using Percentage Values for Regions</h3>
+<p><a name="95701"></a>For a region's height, width, and offset measurements, you can use percentages that reflect a fraction of the root-layout region's size. The following example uses percentages to define playback areas similar to those shown in the sample above:</p>
+<pre><a name="58629"></a>
+&lt;head&gt;<br>  &lt;layout&gt;<br>    &lt;root-layout background-color="maroon" width="250" height="230"/&gt;<br>    &lt;region id="videoregion" <code><b>top="2%" left="2%" width="96%" height="78%"</b></code>/&gt;<br>    &lt;region id="textregion" <code><b>top="80%" left="2%" width="96%" height="18%"</b></code>/&gt;<br>  &lt;/layout&gt;<br>&lt;/head&gt;
+</pre>
+<h4><a name="95709"></a> Tips for Using Percentage Values</h4>
+<p><a name="58682"></a>Note the following when using percentage values to define regions:</p>
+<ul>
+<p><li><a name="58725"></a>You must include a root-layout region defined in pixels when specifying region measurements in percentages.
+<p><li><a name="58683"></a>You can mix pixels and percentages. You could define the <code>top</code> and <code>left</code> offset measurements in percentages, for example, while specifying the <code>width</code> and <code>height</code> measurements in pixels.
+<p><li><a name="58805"></a>You can use whole and decimal values for percentages. For example, the values "4%" and "4.5%" are both valid.
+<p><li><a name="69720"></a>Because a region is clipped at the boundary of the root-layout region, no percentage value can effectively be more than 100%.
+</ul>
+<h3><a name="96074"></a> Adding a Background Color</h3>
+<p><a name="96075"></a>By default, the root-layout region is black. All other regions use transparency as their default. In the SMIL layout, you can specify another background color for any region:</p>
+<pre><a name="96076"></a>
+&lt;layout&gt;<br>  &lt;root-layout background-color="maroon"/&gt;<br>  &lt;region id="videoregion" background-color="silver".../&gt;<br>  &lt;region id="textregion" background-color="#C2EBD7".../&gt;<br>&lt;/layout&gt;
+</pre>
+<p><a name="96077"></a>For the color value, use any RGB hexadecimal value (#RRGGBB) supported by HTML, or one of the following predefined color names, listed here with their corresponding hexadecimal values:<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+<tr><a name="96080"></a><TD bgcolor=#FFFFFF><FONT COLOR="#000000"><code>white (#FFFFFF)</code></FONT></TD><code></code><a name="96082"></a><TD bgcolor=#C0C0C0><FONT COLOR="#000000"><code>silver (#C0C0C0)</code></FONT></TD><code></code><a name="96084"></a><TD bgcolor=#808080><FONT COLOR="#FFFFFF"><code>gray (#808080)</code></FONT></TD><code></code><a name="96086"></a><TD bgcolor=#000000><FONT COLOR="#FFFFFF"><code>black (#000000)</code></FONT></TD><code></code></tr>
+<tr><a name="96088"></a><TD bgcolor=#FFFF00><FONT COLOR="#000000"><code>yellow (#FFFF00)</code></FONT></TD><code></code><a name="96090"></a><TD bgcolor=#FF00FF><FONT COLOR="#FFFFFF"><code>fuchsia (#FF00FF)</code></FONT></TD><code></code><a name="96092"></a><TD bgcolor=#FF0000><FONT COLOR="#FFFFFF"><code>red (#FF0000)</code></FONT></TD><code></code><a name="96094"></a><TD bgcolor=#800000><FONT COLOR="#FFFFFF"><code>maroon (#800000)</code></FONT></TD><code></code></tr>
+<tr><a name="96096"></a><TD bgcolor=#00FF00><FONT COLOR="000000"><code>lime (#00FF00)</code></FONT></TD><code></code><a name="96098"></a><TD bgcolor=#808000><FONT COLOR="#FFFFFF"><code>olive (#808000)</code></FONT></TD><code></code><a name="96100"></a><TD bgcolor=#008000><FONT COLOR="#FFFFFF"><code>green (#008000)</code></FONT></TD><code></code><a name="96102"></a><TD bgcolor=#800080><FONT COLOR="#FFFFFF"><code>purple (#800080)</code></FONT></TD><code></code></tr>
+<tr><a name="96104"></a><TD bgcolor=#00FFFF><FONT COLOR="#000000"><code>aqua (#00FFFF)</code></FONT></TD><code></code><a name="96106"></a><TD bgcolor=#008080><FONT COLOR="#FFFFFF"><code>teal (#008080)</code></FONT></TD><code></code><a name="96108"></a><TD bgcolor=#0000FF><FONT COLOR="#FFFFFF"><code>blue (#0000FF)</code></FONT></TD><code></code><a name="96110"></a><TD bgcolor=#000080><FONT COLOR="#FFFFFF"><code>navy (#000080)</code></FONT></TD><code></code></tr>
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="96112"></a> Using Transparency</h4>
+<p><a name="96113"></a>A region is transparent if you do not define its background color. You can also specify "transparent" as a region background color. Transparency means that the region is not visible until a clip starts to play in it. However, this is not true transparency. If the media clip contains transparency too, you will not see through the clip and region to the root-layout region.</p>
+<h3><a name="69721"></a> Fitting Clips to Regions</h3>
+<p><a name="69722"></a>When a media clip is encoded at a size different from the playback region's defined size, the <code>fit</code> attribute determines how the clip fits the region:</p>
+<pre><a name="27150"></a>
+&lt;region id="videoregion" width="128" height="64" <code><b>fit="meet"</b></code>/&gt;
+</pre>
+<p><a name="27306"></a>The <code>fit</code> attribute uses one of the values described in the following table. If you do not specify a <code>fit</code> attribute, the clip uses the default value <code>hidden</code>. In no case will media display outside the playback region's boundaries.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="38366"></a>
+ Region Fit Attributes </caption>
+<tr>
+<th align=left valign=bottom><a name="29362"></a>Attribute</th>
+<th align=left valign=bottom><a name="29364"></a>Action</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="27380"></a><code>fill</code></td>
+<td align=left valign=top><a name="27382"></a>Scale the clip so that it fills the region exactly. Image distortion occurs if the encoded clip and playback region have different height-to-width ratios.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27384"></a><code>hidden</code><a name="67180"></a>(default)</td>
+<td align=left valign=top><a name="27386"></a>Keep the clip at its encoded size and place it at the region's upper, left-hand corner. If the clip is smaller than the region, fill remaining space with the region's background color. If the clip is larger than the region, crop out the area that doesn't fit.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27388"></a><code>meet</code></td>
+<td align=left valign=top><a name="27390"></a>Place the clip at the region's upper, left-hand corner. Scale the clip and preserve its height/width ratio until one dimension is equal to the region's size and the other dimension is within the region's boundaries. Fill empty space with the region's background color.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27392"></a><code>slice</code></td>
+<td align=left valign=top><a name="27394"></a>Place the clip at the region's upper, left-hand corner. Scale the clip and preserve its height/width ratio until one dimension is equal to the region's size and the other dimension overflows the region's boundaries. Crop the overflow.</td>
+</tr>
+</table>
+</p>
+<p><a name="27452"></a>The following figure illustrates the effect that <code>fit</code> attributes have on a source clip that plays in windows with different sizes and aspect ratios.</p>
+<h5><a name="82855"></a>
+ Different Clip Scaling Results Based on "fit" Attribute</h5>
+<p><a name="77378"></a>
+<img src="../graphics/fitclip.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="77371"></a>
+When scaling media inside a region, keep in mind that 
+different types of content scale with different results. A 
+video scaled larger than its encoded size may not look 
+good. Vector-based media such as RealFlash animation 
+scale more easily to fit different region sizes, however. 
+Also, scaling a clip consumes CPU on the RealPlayer 
+machine.
+</td></tr>
+</table></p>
+<h3><a name="71245"></a> Ordering Overlapping Regions with z-index</h3>
+<p><a name="11942"></a>If regions overlap, you can use the <code>z-index</code> attribute to determine which regions appear in front. The following example creates a video region that overlaps an image region:</p>
+<pre><a name="27632"></a>
+&lt;layout&gt;<br>  &lt;root-layout background-color="gray" width="280" height="220"/&gt;<br>  &lt;region id="image" top="10" left="10" width="260" height="200" <code><b>z-index="0"</b></code>/&gt;<br>  &lt;region id="video" top="20" left="20" width="240" height="180" <code><b>z-index="1"</b></code>/&gt;<br>&lt;/layout&gt;
+</pre>
+<p><a name="27614"></a>This example defines a gray root-layout region 220 pixels high by 280 pixels wide. A smaller image region is centered within this gray background. Its <code>z-index</code> value of zero makes it display behind all other regions, but not behind the root-layout region. The video region centered in the image region appears on top of that region because of its higher value for <code>z-index</code>. Another region could overlap the video region with <code>z-index</code> set, for instance, to 2, 5, or 29. The following figure illustrates these regions.</p>
+<h5><a name="96708"></a>
+ Regions Overlapping through z-index</h5>
+<p><a name="96709"></a>
+<img src="../graphics/rootlay.gif"></p>
+<h4><a name="27864"></a> Tips for Defining Z-Index Values</h4>
+<p><a name="58815"></a>The following are points to observe when using <code>z-index</code>:</p>
+<ul>
+<p><li><a name="27831"></a>The root-layout region is always behind all other regions and does not use <code>z-index</code>.
+<p><li><a name="12832"></a>The <code>z-index</code> values can include negative integers (such as -4), 0 (zero), and positive integers (such as 5). A region with a <code>z-index</code> value of -4, for example, displays behind a region with a value of 0, which displays behind a region with a value of 5.
+<p><li><a name="19905"></a>The default value of 0 (zero) applies if you don't specify <code>z-index</code>.
+<p><li><a name="12839"></a>Using strictly sequential values such as 0, 1, 2, 3, 4 helps you keep track of the layers, but is not necessary. A sequence such as 0, 1, 6, 19, 34 works just as well, and leaving gaps in the sequence makes it easier to insert layers later.
+<p><li><a name="12833"></a>Nonoverlapping clips can have the same values. Side-by-side videos can both have <code>z-index="3"</code>, for example.
+<p><li><a name="12848"></a>When overlapping clips have the same value, the clip that starts later in the presentation appears in front.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="72114"></a>
+See <a href="tips.htm#997866">"Hiding Regions with z-index"</a> for information on 
+using <code>z-index</code> to make regions appear to come and go 
+dynamically.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="10966"></a> Assigning Clips to Regions</h2>
+<p><a name="11045"></a>After you define the layout in the header section as described in<a href="smil.htm#10926">"Defining the Layout"</a>, you use <code>region</code> attributes within source tags to associate each clip with a region. In the following example, the video and text clips are assigned to the video and text regions defined in the header:</p>
+<pre><a name="96201"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;layout&gt;<br>      &lt;root-layout background-color="maroon" width="250" height="230"/&gt;<br>      &lt;region <code><b>id="videoregion</b></code>" top="5" left="5" width="240" height="180"/&gt;<br>      &lt;region <code><b>id="textregion"</b></code> top="200" left="5" width="240" height="20"/&gt;<br>    &lt;/layout&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;par&gt;<br>      <code><b>&lt;video src="video.rm" region="videoregion"/&gt;<br></b></code>      &lt;audio src="audio.rm"/&gt;<br>     <code><b> &lt;textstream src="text.rt" region="textregion"/&gt;<br></b></code>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="8644"></a>You can reuse regions by assigning sequential clips to them. For example, you can play a video clip in a region, then display another clip in that region after the first clip finishes. Don't assign the same region to two clips that play at the same time, however. You don't assign audio clips to regions at all because audio does not require a display region.</p>
+<h2><a name="8652"></a> SMIL Layout Example</h2>
+<p><a name="11126"></a><strong></strong>The following example displays three regions: a news region, a video region, and a stock ticker region. The news and video regions are arranged side by side at the top of the RealPlayer display window. The stock ticker region appears below them.</p>
+<pre><a name="39045"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;!--presentation with 2 text clips and 1 video clip--&gt;<br>    &lt;meta name="title" content="Music of the Week"/&gt;<br>    &lt;layout&gt;<br>      &lt;root-layout width="430" height="165"/&gt;<br>      &lt;region id="newsregion" top="0" left="0" width="250" height="144"/&gt;<br>      &lt;region id="videoregion" top="0" left="250"width="180" height="144"/&gt;<br>      &lt;region id="stockregion" top="145" left="0"width="430" height="20"/&gt;<br>    &lt;/layout&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;par&gt; <br>      &lt;!--play these 3 clips simultaneously--&gt;<br>      &lt;textstream src="news.rt" region="newsregion"/&gt;<br>      &lt;video src="newsvid.rm" region="videoregion"/&gt;<br>      &lt;textstream src="stocks.rt" region="stockregion"/&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="8654"></a>The following figure illustrates the design of these regions.</p>
+<h5><a name="82903"></a>
+ SMIL Sample Layout with Text, Video, and Stock Ticker Windows</h5>
+<p><a name="11344"></a>
+<img src="../graphics/layout2.gif"></p>
+<h1><a name="39148"></a> Linking to Other Media</h1>
+<p><a name="39213"></a>A SMIL file can define links to other media. A video might link to a second video, for example. When the viewer clicks the link, the second video replaces the first. Or the video could link to an HTML page that opens in the viewer's browser. You can even define areas as hot spots with links that vary over time. The bottom corner of a video can link to a different URL every ten seconds, for instance.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="45181"></a>
+Some media clips can also define hyperlinks. A RealText 
+clip, for example, can define hyperlinks for portions of 
+text. When a viewer clicks an area where a media clip 
+link and a SMIL file link overlap, the SMIL link is used.
+</td></tr>
+</table></p>
+<h2><a name="39164"></a> Making a Source Clip a Link </h2>
+<p><a name="39172"></a>The simplest type of link connects an entire media source clip to another clip. As in HTML, you define the link with <code>&lt;a&gt;</code> and <code>&lt;/a&gt;</code> tags. But whereas you enclose text between <code>&lt;a&gt;</code> and <code>&lt;/a&gt;</code> in HTML, you enclose a media source tag between <code>&lt;a&gt;</code> and <code>&lt;/a&gt;</code> in SMIL:</p>
+<pre><a name="39279"></a>
+&lt;a href="rtsp://realserver.company.com/video2.rm"&gt; <br>  &lt;video src="video.rm" region="videoregion"/&gt;<br>&lt;/a&gt;
+</pre>
+<p><a name="41936"></a>The example above links the source clip <kbd>video.rm</kbd> to the target clip <kbd>video2.rm</kbd>. When a viewer moves the cursor over the source clip as it plays, the cursor turns to a hand icon to indicate that the clip is a link. When the viewer clicks <kbd>video.rm</kbd> as it plays, <kbd>video2.rm</kbd> replaces it. The URL begins with <code>rtsp://</code> if the linked clip streams to RealPlayer from RealServer, or <code>http://</code> if the file downloads to the browser from a Web server. When targeting a browser, be sure to include the <code>show</code> attribute as described below.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="41946"></a>
+For information on RTSP URLs, see <a href="smil.htm#14604">"Linking to Clips 
+on RealServer"</a>.
+</td></tr>
+</table></p>
+<h2><a name="39189"></a> Targeting RealPlayer or a Browser</h2>
+<p><a name="39194"></a>An <code>&lt;a&gt;</code> tag or <code>&lt;anchor&gt;</code> tag (see <a href="smil.htm#39150">"Defining Hot Spot Links"</a>) can include a <code>show</code> attribute that determines where a linked clip displays:</p>
+<pre><a name="41913"></a>
+&lt;a href="http://www.company.com/index.htm" <code><b>show="new"</b></code>&gt; <br>  &lt;video src="video.rm" region="videoregion"/&gt;<br>&lt;/a&gt;
+</pre>
+<h4><a name="41915"></a> replace</h4>
+<p><a name="45172"></a>The default attribute <code>show="replace"</code> causes the linked clip to replace the source clip in RealPlayer. This default behavior also occurs if you do not include the <code>show</code> attribute in the link. The following are important differences between RealPlayer and Web browsers to keep in mind when creating links:</p>
+<ul>
+<p><li><a name="42053"></a>RealPlayer does not include a <strong>Back</strong> button that allows the viewer to return to the link source clip after clicking the link.
+<p><li><a name="42069"></a>Only one instance of RealPlayer can run at a time. You therefore cannot open a SMIL link in a new RealPlayer window the way you can open an HTML link in a new browser window.
+<p><li><a name="47074"></a>Clicking a link to another SMIL file or clip removes any existing regions. If you have three regions defined and the viewer clicks a link in one region, for example, the target clip replaces all media clips in all regions. You can preserve regions by targeting a SMIL file that defines the same set of regions. You cannot preserve the timeline positions of clips playing in those regions when the viewer clicks the link, however.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="47232"></a>
+<a href="smil.htm#46603">"Linking to a SMIL File"</a>.
+</td></tr>
+</table></p>
+</ul>
+<h4><a name="39418"></a> new, pause</h4>
+<p><a name="42105"></a>The values <code>new</code> and <code>pause</code> both open the linked clip in the viewer's default browser. The source clip continues to play in RealPlayer if you use <code>show="new"</code>. With <code>show="pause"</code>,<code> </code>the source clip pauses in RealPlayer. The viewer can restart playback at any time, though, by clicking RealPlayer's <strong>Play</strong> button.</p>
+<p><a name="42090"></a>Use either <code>show="new"</code> or <code>show="pause"</code> to open a Web page or another clip viewable within a browser. You can use these attributes to link a RealSystem presentation to your home page, for example. Do not use them to link to another media clip played in RealPlayer, however, such as a SMIL file or a RealVideo clip.</p>
+<h2><a name="39150"></a> Defining Hot Spot Links</h2>
+<p><a name="45514"></a>Within a SMIL file you can define hot spots using an <code>&lt;anchor&gt;</code> tag. Whereas the <code>&lt;a&gt;</code> tag turns the entire media source clip into a link, the <code>&lt;anchor&gt;</code> tag turns only a defined area into a link. With <code>&lt;anchor&gt;</code> tags you can create links similar to those in HTML image maps. But SMIL links can be temporal as well as spatial. A link might be valid for just ten seconds during a source clip's timeline, for instance.</p>
+<h3><a name="45500"></a> Setting an Anchor</h3>
+<p><a name="45548"></a>The <code>&lt;anchor&gt;</code> tag differs from the <code>&lt;a&gt;</code> tag in that you place it within the media source tag rather than before it:</p>
+<pre><a name="45561"></a>
+&lt;video src="video.rm" region="videoregion"&gt;<br>  &lt;anchor href="rtsp://realserver.company.com/video2.rm" .../&gt;<br>&lt;/video&gt;
+</pre>
+<p><a name="45559"></a>An <code>&lt;anchor&gt;</code> tag ends with a closing slash. But the media source tag does not end with a closing slash as it normally would. Instead, the source tag and its subsequent <code>&lt;anchor&gt;</code> tags are followed by a closing source tag, such as <code>&lt;/video&gt;</code>. The <code>&lt;anchor&gt;</code> tag includes an <code>href</code> attribute that uses <code>rtsp://</code> if the linked clip streams from RealServer, or <code>http://</code> if the file downloads to the browser from a Web server</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="47409"></a>
+For information on RTSP URLs, see <a href="smil.htm#14604">"Linking to Clips 
+on RealServer"</a>. To target a browser with a link, see 
+<a href="smil.htm#39189">"Targeting RealPlayer or a Browser"</a>. 
+</td></tr>
+</table></p>
+<h3><a name="45527"></a> Defining Spatial Coordinates</h3>
+<p><a name="45584"></a>The <code>&lt;anchor&gt;</code> tag's <code>coords</code> attribute defines spatial coordinates for the hot spot rectangle. Coordinate values in pixels or percentages define the rectangle's offset from the upper, left-hand corner of the media source clip as shown in this example:</p>
+<pre><a name="47483"></a>
+&lt;video src="video.rm" region="videoregion"&gt;<br>  &lt;anchor href="..." <code><b>coords="20,40,80,120"</b></code>/&gt;<br>&lt;/video&gt;
+</pre>
+<p><a name="47478"></a>The coordinate values for the hot spot rectangle follow this order:</p>
+<ol>
+<p><li><a name="45847"> </a>left side pixel or percentage value
+<p><li><a name="45850"> </a>top pixel or percentage value
+<p><li><a name="45866"> </a>right side pixel or percentage value
+<p><li><a name="45867"> </a>bottom pixel or percentage value
+</ol>
+<p><a name="45877"></a>The sample above uses pixel values to define a hot spot 60 pixels wide (80 pixels minus 20 pixels) 80 pixels high (120 pixels minus 40 pixels). It produces a hot spot like that shown in the following figure.</p>
+<h5><a name="82906"></a>
+ Hot Spot (Hyperlink) Defined with SMIL</h5>
+<p><a name="59304"></a>
+<img src="../graphics/hotspot.gif"></p>
+<h4><a name="47511"></a> Percentage Values</h4>
+<p><a name="47569"></a>The <code>coords</code> attribute can also use percentage values to create hot spots relative to the source clip's size. The following sample places in the center of the source clip a hot spot that is a quarter the size of the source clip:</p>
+<pre><a name="46462"></a>
+&lt;video src="video.rm" region="videoregion"&gt;<br>  &lt;anchor href="..." <code><b>coords="25%,25%,75%,75%"</b></code>/&gt;<br>&lt;/video&gt;
+</pre>
+<p><a name="46771"></a>The following table lists sample percentage coordinates that define hot spots for a source clip. Each hot spot is a quarter the size of the source clip.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="46777"></a>
+ Sample Hot Spot Percentage Coordinates </caption>
+<tr>
+<th align=left valign=bottom><a name="46781"></a>Hot Spot Rectangle Position</th>
+<th align=left valign=bottom><a name="46783"></a>Coordinate Attribute</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="46785"></a>Upper, left-hand quadrant</td>
+<td align=left valign=top><a name="46787"></a><code>coords="0,0,50%,50%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="46789"></a>Upper, right-hand quadrant</td>
+<td align=left valign=top><a name="46791"></a><code>coords="50%,0,100%,50%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="46793"></a>Lower, left-hand quadrant</td>
+<td align=left valign=top><a name="46795"></a><code>coords="0,50%,50%,100%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="46797"></a>Lower, right-hand quadrant</td>
+<td align=left valign=top><a name="46799"></a><code>coords="50%,50%,100%,100%"</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="46801"></a>Center</td>
+<td align=left valign=top><a name="46803"></a><code>coords="25%,25%,75%,75%"</code></td>
+</tr>
+</table>
+</p>
+<h4><a name="46812"></a> Tips for Defining Anchor Coordinates</h4>
+<p><a name="46753"></a>Note the following when defining hot spots:</p>
+<ul>
+<p><li><a name="46251"></a>You can mix pixels and percentages. For example, the coordinates "50,50,100%,100%" place the hot spot's left and top boundaries in and down 50 pixels from the source clip's upper, left-hand corner, respectively. But the hot spot's right and bottom boundaries extend to the source clip's right and bottom edges, respectively, no matter the source clip's size.
+<p><li><a name="46308"></a>Values such as "30,30,10,10" are ignored. Here, the hot spot's left side is defined as farther to the right than its right side. As well, the top is defined to be below the bottom.
+<p><li><a name="59255"></a>You can use whole and decimal values for percentages. For example, the values "4%" and "4.5%" are both valid.
+<p><li><a name="46493"></a>A hot spot defined to extend beyond the source clip is clipped at the clip's edge. For example, if the hot spot has coordinates "50,50,300,300" but the source clip is 200 by 200 pixels, the hot spot's effective coordinates are "50,50,200,200". For this reason, no percentage value can effectively be more than 100%.
+</ul>
+<h3><a name="46747"></a> Setting Temporal Coordinates</h3>
+<p><a name="45528"></a>In addition to defining spatial coordinates, the <code>&lt;anchor&gt;</code> tag can set temporal attributes that specify when the link is active. If you do not include temporal attributes, the link stays active as long as the source clip appears on screen. To add timing attributes, use the SMIL <code>begin</code> and <code>end</code> values. (You cannot use <code>dur</code>, <code>clip-begin</code>, or <code>clip-end</code>.)</p>
+<p><a name="55734"></a>The following example creates two temporal links for the clip <kbd>video.rm</kbd>. The first link is active for the first five seconds of playback. The second link is active for the next five seconds. Because no spatial coordinates are given, the entire video is a link:</p>
+<pre><a name="46641"></a>
+&lt;video src="video.rm" region="videoregion"&gt;<br>  &lt;anchor href="rtsp://.../video2.rm" <code><b>begin="0s" end="5s"</b></code>/&gt;<br>  &lt;anchor href="rtsp://.../video3.rm" <code><b>begin="5s" end="10s</b></code>"/&gt;<br>&lt;/video&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="50153"></a>
+See <a href="smil.htm#8620">"Setting Begin and End Times"</a>. The attributes use 
+the SMIL timing values described in <a href="smil.htm#18718">"Specifying 
+Timing"</a>.
+</td></tr>
+</table></p>
+<h2><a name="46603"></a> Linking to a SMIL File</h2>
+<p><a name="46604"></a>A SMIL file can define a link to another SMIL file or another part of itself. For example, a video played through a SMIL file may link to another SMIL file so that when a viewer clicks the video, a new presentation starts up in RealPlayer. To do this, you simply set the <code>href</code> attribute for the <code>&lt;a&gt;</code> or <code>&lt;anchor&gt;</code> tag to the new SMIL file's URL.</p>
+<p><a name="47728"></a>You can also link to portions of a SMIL file. The following example from a target SMIL file uses <code>id</code> attributes (such as those used in regions to create region names) to define a target name for a <code>&lt;par&gt;</code> tag that groups a video and a text clip. This <code>id</code> attribute functions like a <code>name</code> attribute in an HTML <code>&lt;a&gt;</code> tag:</p>
+<pre><a name="46606"></a>
+&lt;par <code><b>id="text_and_video"</b></code>&gt;<br>  &lt;video src="video2.rm" region="newsregion"/&gt;<br>  &lt;textstream src="text.rt" region="textregion"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="46607"></a>You then link the source SMIL file to the named target by including a pound sign ("#") and the target name within the link URL. Assuming the target SMIL file is named <kbd>newmedia.smil</kbd>, the source file's link to the <code>&lt;par&gt;</code> group looks like this:</p>
+<pre><a name="49674"></a>
+&lt;a href="rtsp://realserver.company.com/<code><b>newmedia.smil#text_and_video</b></code>"&gt; <br>  &lt;video src="video.rm" region="videoregion"/&gt;<br>&lt;/a&gt;
+</pre>
+<p><a name="46646"></a>Note that the target SMIL file defines two regions, <code>newsregion</code> and <code>textregion</code>. When RealPlayer receives the new SMIL file, it creates those regions as specified in the file's header.</p>
+<h4><a name="47790"></a> Tips for Linking to a SMIL File</h4>
+<p><a name="47791"></a>Note the following when linking to another SMIL file:</p>
+<ul>
+<p><li><a name="46612"></a>You can link to any media clip or <code>&lt;par&gt;</code> or <code>&lt;seq&gt;</code> group by defining an <code>id</code> attribute for the clip or group. Do not link to an element in a SMIL file header, however. Although you can link to a <code>&lt;switch&gt;</code> group, do not link to a clip or group within a <code>&lt;switch&gt;</code> group.
+<p><li><a name="46613"></a>You cannot link to a media clip in a <code>&lt;par&gt;</code> group and exclude the other clips in that group. All clips in the group will play in their designated regions.
+<p><li><a name="50183"></a>If additional clips follow the target clip in the SMIL file, those clips play when the target clip finishes playback.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="49734"></a>
+If you want to link to a single clip but the SMIL file that 
+refers to that clip lists other clips as well, link to the clip 
+directly. Or create a new SMIL file that lists only the 
+single target clip.
+</td></tr>
+</table></p>
+<p><li><a name="46614"></a>To link to a target within the same SMIL file, simply set the <code>href</code> attribute value to the target <code>id</code>, such as <code>&lt;a href="#text_and_video"&gt;</code>. Be sure to include the pound sign before the <code>id</code> value.
+</ul>
+<h3><a name="46600"></a> Linking with a Timeline Offset</h3>
+<p><a name="50187"></a>You can use the <code>&lt;anchor&gt;</code> tag's time coordinates to create a timeline offset in a linked clip. Suppose you want to link a video to another video at 30 seconds into the second video's timeline. In the source SMIL file, you define an <code>&lt;a&gt;</code> or <code>&lt;anchor&gt;</code> link from the first video to a SMIL file that contains the second video. In the second SMIL file, the video's <code>&lt;anchor&gt;</code> tag defines the timeline offset using SMIL timing parameters.</p>
+<p><a name="47828"></a>Here is a sample of the link in the first SMIL file:</p>
+<pre><a name="46717"></a>
+&lt;a href="rtsp://realserver.company.com/<code><b>newmedia.smil#vid2</b></code>"&gt; <br>  &lt;video src="video.rm" region="videoregion"/&gt;<br>&lt;/a&gt;
+</pre>
+<p><a name="46715"></a>The following is the linked video clip in the second SMIL file, <kbd>newmedia.smil</kbd>:</p>
+<pre><a name="46727"></a>
+&lt;video src="video2.rm" region="newsregion"&gt;<br><code><b>  </b></code>&lt;<code><b>anchor id="vid2" begin="30s"</b></code>/&gt;<br>&lt;/video&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="46535"></a>
+<a href="smil.htm#18718">"Specifying Timing"</a> describes the SMIL timing values.
+</td></tr>
+</table></p>
+<h1><a name="78643"></a> Defining Image Options</h1>
+<p><a name="78644"></a>For a still image, you can use the following options to modify the image's streaming characteristics, or to link it to RealPlayer commands. These options are not SMIL parameters, but extensions to the image's SMIL source tag, which is described in <a href="smil.htm#53618">"Specifying Clip Locations"</a>. The following table summarizes the image options, which are described in detail below.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="79146"></a>
+ Options for Image Source Tag </caption>
+<tr>
+<th align=left valign=bottom><a name="79156"></a>Option</th>
+<th align=left valign=bottom><a name="79158"></a>Function</th>
+<th align=left valign=bottom><a name="79160"></a>Format</th>
+<th align=left valign=bottom><a name="79162"></a>Values</th>
+<th align=left valign=bottom><a name="79164"></a>Example</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="79166"></a><code>bitrate</code></td>
+<td align=left valign=top><a name="79168"></a>Sets streaming bit rate.</td>
+<td align=left valign=top><a name="79170"></a>all</td>
+<td align=left valign=top><a name="79172"></a>bits per second</td>
+<td align=left valign=top><a name="79174"></a><code>bitrate=1000</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="79186"></a>bgcolor</td>
+<td align=left valign=top><a name="79188"></a>Substitutes color for transparency.</td>
+<td align=left valign=top><a name="79190"></a>GIF</td>
+<td align=left valign=top><a name="79192"></a>color name or hex value</td>
+<td align=left valign=top><a name="79194"></a>bgcolor=black<br>bgcolor=AA3344</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="79196"></a>url</td>
+<td align=left valign=top><a name="79198"></a>Links to URL or a RealPlayer command.</td>
+<td align=left valign=top><a name="79200"></a>all</td>
+<td align=left valign=top><a name="79202"></a>URL or command</td>
+<td align=left valign=top><a name="79204"></a>url=http://www.real.com<br>url=command:stop()</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="88412"></a>target</td>
+<td align=left valign=top><a name="88414"></a>Sets browser or RealPlayer as target.</td>
+<td align=left valign=top><a name="88416"></a>all</td>
+<td align=left valign=top><a name="88418"></a>_browser<br>_player</td>
+<td align=left valign=top><a name="88420"></a>target=_browser<br>target=_player</td>
+</tr>
+</table>
+</p>
+<p><a name="88351"></a><strong></strong>A question mark operator ("?") separates image options from the image URL in the SMIL source tag. To use multiple image options, put a question mark before the first option, then separate the remaining options with ampersands ("&amp;"). The order of options does not matter. The following shows the general form for two image options added to the image source tag. Note that image options and values are not in quotation marks because they are part of the quoted <code>src</code> value:</p>
+<pre><a name="79252"></a>
+&lt;image src="<code><I>URL</I></code><code><b>?option=value&amp;option=value</b></code>"/&gt;
+</pre>
+<p><a name="78731"></a>Here is an example that combines bit rate and background color options:</p>
+<pre><a name="78732"></a>
+&lt;image src="ad1.gif?bitrate=1000&amp;bgcolor=blue"/&gt;
+</pre>
+<h2><a name="78735"></a> Setting Image Bit Rate</h2>
+<p><a name="78736"></a>By default, an image streams at 12 Kbps until RealPlayer receives it. You can set a higher bit rate to take advantage of bandwidth availability and stream an image quickly. Or you can set a lower bit rate when streaming images in parallel with another clip so that the other clip has enough bandwidth for uninterrupted playback. The following example shows three sequential image files set to stream at a low bit rate to ensure that a video playing in parallel does not stall:</p>
+<pre><a name="78737"></a>
+&lt;par&gt;<br>  &lt;video src="video.rm" region ="videoregion"/&gt;<br>  &lt;par&gt;<br>    &lt;seq&gt;<br>      &lt;image src="ad1.gif<code><b>?bitrate=1000</b></code>" begin="30s" dur="60s" region="adregion"/&gt;<br>      &lt;image src="ad2.gif<code><b>?bitrate=1000</b></code>" dur="120s" region="adregion"/&gt;<br>      &lt;image src="ad3.gif<code><b>?bitrate=1000</b></code>" dur="60s" region="adregion"/&gt;<br>    &lt;/seq&gt;<br>  &lt;/par&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="78738"></a>In this example, each GIF image is set to stream at 1 Kbps. This ensures that each image consumes a small amount of bandwidth and does not interfere with video playback. The <code>&lt;par&gt;</code> tag just outside the <code>&lt;seq&gt;</code> tag makes RealServer balance the bit rates of the images as a single group rather than as a discrete sequence.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="96487"></a>
+For more on using <code>&lt;par&gt;</code> to balance bandwidth, see 
+<a href="tips.htm#997665">"Smoothing Transitions between Clips"</a>.
+</td></tr>
+</table></p>
+<p><a name="78739"></a>Keep in mind that the image size divided by the maximum bit rate equals the minimum time for streaming the image. Assuming images in this example are 30 Kilobits, each image takes about 30 seconds to stream. For this reason, the first image is set to display 30 seconds after the video begins to play. If no begin time were defined, the video would be delayed up to 30 seconds while the first image streams to RealPlayer. As well, each successive image must be able to stream during the preceding image's duration.</p>
+<h2><a name="78749"></a> Overriding GIF Transparency</h2>
+<p><a name="78750"></a>For GIF images that include transparency, you can use <code>bgcolor</code> to substitute a color for the transparency. Color values are any hexadecimal color value without the leading pound sign ("#"), or a predefined color name as described in <a href="smil.htm#96074">"Adding a Background Color"</a>. If you do not set the color, the region's defined background color shows through transparent spots in the image. Here is an example:</p>
+<pre><a name="79495"></a>
+&lt;image src="ad1.gif?<code><b>bgcolor=BB21AA</b></code>"/&gt;
+</pre>
+<h2><a name="78752"></a> Linking to a URL</h2>
+<p><a name="88510"></a>The image <code>url</code> and <code>target</code> options let you link an image to a fully qualified URL so that when the viewer clicks the image, the URL opens in the viewer's browser or RealPlayer. The following example shows an image linked to a URL that opens in the viewer's default browser:</p>
+<pre><a name="88512"></a>
+&lt;image src="ad.gif?url=http://www.company.com&amp;target=_browser"<br>  region="ads"/&gt;
+</pre>
+<p><a name="88561"></a>This next example shows an image linked to a URL that opens in RealPlayer:</p>
+<pre><a name="88562"></a>
+&lt;image src="go.gif?url=rtsp://realserver.company.com/media.smil&amp;target=_player"<br>  region="next"/&gt;
+</pre>
+<p><a name="89735"></a>Keep in mind that opening a URL in RealPlayer replaces the current presentation with the new clip or SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="88535"></a>
+The image hyperlink options duplicate the SMIL 
+hyperlink features described in <a href="smil.htm#39148">"Linking to Other 
+Media"</a>. You can use either method depending on your 
+preference.
+</td></tr>
+</table></p>
+<h2><a name="89777"></a> Controlling RealPlayer</h2>
+<p><a name="89778"></a>With <code>url=command:</code><code><I>command</I></code><code>&amp;target=_player</code>, you can make the image a link that causes RealPlayer to stop, pause, play, or seek to a specific point in the presentation timeline. The following example shows three images set to appear in three separate SMIL regions. Each image issues a different RealPlayer command when clicked:</p>
+<pre><a name="79413"></a>
+&lt;par&gt;<br>  &lt;image src="play.gif<code><b>?url=command:play()&amp;target=_player</b></code>" region="play"/&gt;<br>  &lt;image src="pause.gif<code><b>?url=command:pause()&amp;target=_player</b></code>" region="pause"/&gt;<br>  &lt;image src="stop.gif<code><b>?url=command:stop()&amp;target=_player</b></code>" region="stop"/&gt;<br>&lt;/par&gt;
+</pre>
+<p><a name="96399"></a>An image can also issue a seek command that specifies a certain point in the presentation timeline:</p>
+<pre><a name="96400"></a>
+&lt;image src="seek.gif<code><b>?url=command:seek(1:35.4)&amp;target=_player</b></code>"<br>  region="seek"/&gt;
+</pre>
+<p><a name="79472"></a>In the example above, clicking the image instructs RealPlayer to seek to 1:35.4 into the presentation. This option does not use SMIL shorthand timing values such as <code>s</code> for seconds or <code>min</code> for minutes. Instead, the time format is like the <a href="smil.htm#105856">"Normal Play Time Format"</a>, except that it also accepts milliseconds and days as possible values.</p>
+<pre><a name="79478"></a>
+dd:hh:mm:ss.xyz
+</pre>
+<p><a name="79473"></a>Here, <code>dd</code> is days, <code>hh</code> is hours, <code>mm</code> is minutes, <code>ss</code> is seconds, <code>x</code> is tenths of seconds, <code>y</code> is hundredths of seconds, and <code>z</code> is milliseconds. Only the <code>ss</code> field is required.</p>
+<p><a name="116822"></a>When the time value does not include a decimal point, the last field is read as the seconds. For example, <code>1:30</code> means 1 minute and 30 seconds, whereas <code>1:30:00</code> means 1 hour and 30 minutes. Thus all the following values seek to the point in the timeline 90 minutes after the presentation begins:</p>
+<pre><a name="79475"></a>
+url=command:seek(1:30:00.0)<code>&amp;target=_player<br></code>url=command:seek(90:00)<code>&amp;target=_player<br></code>url=command:seek(5400)<code>&amp;target=_player</code>
+</pre>
+<p><a name="87238"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:33.</font>
+<center><a href="animate.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="control.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

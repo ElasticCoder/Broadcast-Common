@@ -1,0 +1,187 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="tags.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="livepix.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1018149"></a>
+ Chapter 3: 	Bandwidth Usage
+
+</h1>
+<p><a name="1009567"></a>When you stream your RealPix presentation to viewers over a network such as the World Wide Web, you need to consider the bandwidth (bit rate) the presentation will consume. You don't need to consider bandwidth if copies of the presentation files will reside on each viewer's desktop computer, however. This section helps you determine your presentation's bandwidth usage. It also gives tips for lowering bandwidth consumption.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1011810"></a>
+For an explanation of bandwidth in RealSystem G2, see 
+<I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h1><a name="1011015"></a> Targeting a Bit Rate</h1>
+<p><a name="1010985"></a>The following table lists the recommended maximum presentation bit rate for streaming files over different network connections. If you want to reach users with 28.8 Kbps modems, for example, your presentation should not consume more than 20 Kilobits of data per second. The full 28.8 Kbps is not available because bandwidth is required for noise, data loss, and packet overhead.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1009523"></a>
+ Bit Rates Available for Streaming Files </caption>
+<tr>
+<th align=left valign=bottom><a name="1009528"></a>Target Connection Speed</th>
+<th align=left valign=bottom><a name="1009530"></a>Suggested Maximum Bit <br>Rate for Streaming Files</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009532"></a>14.4 Kbps modem</td>
+<td align=left valign=top><a name="1009534"></a>10 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009536"></a>28.8 Kbps modem</td>
+<td align=left valign=top><a name="1009538"></a>20 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009540"></a>56.0 Kbps modem</td>
+<td align=left valign=top><a name="1009542"></a>34 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009544"></a>56.0 Kbps ISDN</td>
+<td align=left valign=top><a name="1009546"></a>45 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009548"></a>112 Kbps dual ISDN</td>
+<td align=left valign=top><a name="1009550"></a>80 Kbps</td>
+</tr>
+</table>
+</p>
+<p><a name="1009508"></a>You also need to consider bandwidth required by other clips in the presentation. If you target 28.8 Kbps modem connections, for example, and your presentation has a RealAudio soundtrack that consumes 5 Kbps, you have 15 Kbps left for RealPix. You should set this value in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag <code><a href="tags.htm#1028320">bitrate</a></code> attribute. This tells RealServer your target bandwidth value.</p>
+<p><a name="1011894"></a>The bandwidth your presentation actually requires, however, depends on the total size of the image files and the presentation length. To get a rough estimate of this bandwidth, add together the sizes of all image files used in the presentation. Convert this total to Kilobits using the chart below. Then divide by the RealPix presentation length in seconds.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1009478"></a>
+ Converting File Size to Kilobits </caption>
+<tr>
+<th align=left valign=bottom><a name="1009482"></a>Using This Measurement</th>
+<th align=left valign=bottom><a name="1009484"></a>Do This to Get Kilobits</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009486"></a>Megabytes</td>
+<td align=left valign=top><a name="1009488"></a>Multiply by 8192</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009490"></a>Kilobytes</td>
+<td align=left valign=top><a name="1009492"></a>Multiply by 8</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009494"></a>bytes</td>
+<td align=left valign=top><a name="1009496"></a>Divide by 128</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009498"></a>bits</td>
+<td align=left valign=top><a name="1009500"></a>Divide by 1024</td>
+</tr>
+</table>
+</p>
+<p><a name="1011923"></a>For example, if your image files add up to 200 Kilobytes, multiply 200 by 8 to get 1600 Kilobits. A presentation that lasts two minutes, for instance, uses an average of 13.3 Kilobits per second:</p>
+<pre><a name="1011924"></a>
+(200 Kilobytes x 8)/120 seconds = 13.3 Kilobits per second
+</pre>
+<p><a name="1011925"></a>If your RealPix target is 15 Kbps, your presentation should stream smoothly with bandwidth to spare.</p>
+<p><a name="1012003"></a>This simple estimate assumes that all images are each about the same size and are streamed at regular intervals. You run into bandwidth problems, however, if you use a lot of images near the start of the presentation. If the presentation begins by fading four big images into four quadrants of the display window, for example, RealServer needs to download a lot of image data before the presentation can begin. This results in a lengthy <I>preroll</I>.</p>
+<h2><a name="1012042"></a> What is Preroll?</h2>
+<p><a name="1012057"></a>Before it delivers a RealPix presentation, RealServer looks at the image sizes and the presentation timeline. Weighing these against the bit rate set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag, RealServer determines how much data RealPlayer must receive before it can start to play the presentation. This ensures that once RealPlayer commences playback, it does not need to halt the presentation while it receives more data. The initial data sent before playback is the preroll. As a general rule, you want the preroll under 15 seconds, ideally under 10 seconds.</p>
+<p><a name="1012146"></a>For example, if a RealPix presentation streams for 60 seconds at 20 Kbps, it can deliver up to 1200 Kb of data during playback. If the RealPix presentation requires 1400 Kb of data, at least 200 Kb of data must be sent as preroll. At 20 Kbps, this equals a 10 second preroll:</p>
+<pre><a name="1014565"></a>
+(1400 Kb - 1200 Kb)/20 Kbps = 10 seconds
+</pre>
+<p><a name="1014590"></a>As mentioned above, presentation size divided by presentation length is only a rough guide to preroll length. RealServer considers when each image is introduced in the timeline when it calculates preroll. The following sections give instructions for determining preroll more accurately and for reducing bandwidth consumption.</p>
+<h1><a name="1007894"></a> Calculating Bandwidth Use</h1>
+<p><a name="1017296"></a>The RealPix Bandwidth Calculator (<kbd><b>rpcalc.xls</b></kbd>) is a Microsoft Excel 97 spreadsheet included in the <kbd>utils</kbd> directory of this manual. Use the calculator to derive a detailed picture of RealPix bandwidth usage. You may want to do this if you experience high preroll when streaming your presentation. You can then determine where the problem occurs and resolve it by modifying image size or adjusting the timeline.</p>
+<p><a name="1017294"></a>In the calculator you can enter RealPix information manually, or read in a RealPix (<kbd>.rp</kbd>) file to gather the image file names and display times. The calculator will also load the image sizes automatically. To be read automatically, a RealPix file must meet these criteria:</p>
+<ul>
+<p><li><a name="1016280"></a>It must follow the guidelines in <a href="tags.htm#1013599">"Syntax Rules"</a>. All attribute values must be in double quotation marks, for example.
+<p><li><a name="1017684"></a>Comments must be in the form <code>&lt;!-- </code><code><I>comment</I></code><code> --&gt;</code> and not <code>&lt;!-- </code><code><I>comment</I></code><code> --/&gt;</code>.
+</ul>
+<p><a name="1016020"></a>In the calculator, make sure that the RealPix bit rate is set correctly. This reflects the RealPix bandwidth target set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag <code><a href="tags.htm#1028320">bitrate</a></code> attribute. The example below uses 20 Kbps, the bandwidth target for a presentation delivered over a 28.8 Kbps modem. Set the buffer time to your targeted preroll, which should be approximately 10 seconds.</p>
+<h5><a name="1018273"></a>
+ Presentation Information in RealPix Bandwidth Calculator</h5>
+<p><a name="1018245"></a>
+<img src="../graphics/calcset.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1016411"></a>
+See <a href="bandwdth.htm#1011015">"Targeting a Bit Rate"</a>.
+</td></tr>
+</table></p>
+<p><a name="1015963"></a>When setting values manually, enter file names (not shown below) and image sizes in Kilobytes, along with the times each image first displays. These values go in the white columns. The calculator computes the values in gray. When you load a RealPix file automatically, the calculator adds an entry for each effect. After the first effect that uses an image, though, RealPlayer has the image in memory, so the entries for subsequent effects show that image as 0 Kb. You can ignore these entries and examine only the initial appearance of each image.</p>
+<p><a name="1016613"></a>Based on the image sizes, the calculator computes the transmission time in seconds for each image. This is the time it takes RealServer to stream the image to RealPlayer at the presentation bit rate. The last column shows the earliest display time for each file. This reflects the earliest time in the RealPix timeline the image can appear. The calculator derives this time by subtracting the presentation preroll from the cumulative image transmission times.</p>
+<h5><a name="1018289"></a>
+ RealPix Bandwidth Calculator Showing Presentation that will not Stream Well</h5>
+<p><a name="1015970"></a>
+<img src="../graphics/calc1.gif"></p>
+<p><a name="1016710"></a>The example above illustrates a RealPix presentation that will not stream with the desired preroll of 10 seconds. It shows, for example, that the first image can display at 2.3 seconds into the timeline at the earliest. The image is slated to appear at 1 second after the start of playback, however. The calculator flags this display time in red to indicate the problem. As shown above, only the fifth image can display at its slated time of 84 seconds.</p>
+<p><a name="1016800"></a>Were it to stream this RealPix presentation, RealSystem would compensate with a preroll higher than the desired 10 seconds. Although the presentation would stream smoothly, viewers would have to wait too long for playback. (To determine the actual preroll for a presentation, increase the preroll value until all display time values turn black.) </p>
+<p><a name="1017428"></a>To improve a presentation's performance, you can take steps described in <a href="bandwdth.htm#1017490">"Lowering Bandwidth Consumption"</a>. Then reload the RealPix file into the spreadsheet or update the image sizes and display times manually. The following figure illustrates a revised presentation that makes better use of bandwidth.</p>
+<h5><a name="1018301"></a>
+ RealPix Bandwidth Calculator Showing Presentation that will Stream Well</h5>
+<p><a name="1015990"></a>
+<img src="../graphics/calc2.gif"></p>
+<p><a name="1017433"></a>In this example the preroll is still 10 seconds, but files 1 through 3 are reduced in size. The entire presentation is lengthened and the images appear at more even intervals within the timeline. All display time values are now in black. The first image shows its earliest display time in green as (1.1). This indicates that the preroll is 1.1 seconds longer than necessary to display this image. If the earliest display times for all images appears in green, the actual preroll will be lower than the value listed in the calculator.</p>
+<h2><a name="1017734"></a> Running JPEGTRAN from the Calculator</h2>
+<p><a name="1017737"></a>As described in <a href="realpix.htm#1016087">"Using JPEGTRAN"</a>, you run <kbd><b>JPEGTRAN</b></kbd> on JPEG images to prepare them for streaming. On Windows, you can run <kbd><b>JPEGTRAN</b></kbd> in a batch conversion mode from the RealPix spreadsheet as described below.</p>
+<h4><a name="1017777"></a>	 To run JPEGTRAN from the spreadsheet:</h4>
+<ol>
+<p><li><a name="1017811"> </a>Click the <strong>Find JPEGTran</strong> button and navigate to the directory that holds the executable program. Select the program and click <strong>Open</strong>.
+<p><li><a name="1017819"> </a>In the <strong>Output Directory</strong> field, enter the directory that will hold the processed files. The directory syntax can be absolute or relative to the directory that holds the spreadsheet.
+<p><li><a name="1017844"> </a>Click <strong>JPEGTran Images</strong> and select the images you want to process. A DOS command window pops-up momentarily for each image. Processed files appear in the specified output directory.
+</ol>
+<h1><a name="1017490"></a> Lowering Bandwidth Consumption</h1>
+<p><a name="1017491"></a>If your presentation requires too much initial buffering, you can take several steps to lower the preroll. You can modify your RealPix presentation or balance multiple media types so that initial presentation bandwidth needs are low. This gives RealSystem extra bandwidth when the presentation starts to stream the higher bit rate items required later in the timeline.</p>
+<h2><a name="1017492"></a> Lowering RealPix Preroll</h2>
+<p><a name="1017493"></a>Within the RealPix presentation, you can do the following to lower bandwidth consumption:</p>
+<ul>
+<p><li><a name="1017494"></a>Crop out unused portions of the source files. This lowers the source file sizes, making more efficient use of bandwidth than cropping images by defining source rectangles through RealPix mark-up tags.
+<p><li><a name="1017495"></a>Reduce the resolution and number of colors in images while maintaining satisfactory image quality. For JPEG files, experiment with higher compression rates.
+<p><li><a name="1017496"></a>Use smaller images at the beginning of the presentation. They will stream to RealPlayer faster and RealServer can use the extra bandwidth to start delivering larger files needed later.
+<p><li><a name="1017497"></a>Introduce images gradually over the timeline. Don't use rapid effects with a lot of images at the beginning of the presentation. Once you have displayed all images, however, you can use rapid effects because RealPlayer holds the image data in memory.
+<p><li><a name="1017498"></a>Increase the length of the presentation by, for example, adding an extra second to the duration time of each effect.
+</ul>
+<h2><a name="1017499"></a> Masking Preroll using Other Media</h2>
+<p><a name="1017500"></a>When you stream RealPix along with a low-bandwidth media file, you can mask the RealPix preroll so that it takes place while the other file plays. For example, start the presentation with RealText (to display opening credits, for example) or a low-bandwidth RealAudio file (as a narration, for instance) to consume from 1 to 5 Kbps at the start of the presentation.</p>
+<p><a name="1017501"></a>As these files play, RealServer takes advantage of the extra bandwidth available in the connection to stream the RealPix preroll. If RealPix starts 20 seconds after the RealAudio or RealText file, for example, you make 300 to 380 Kilobits available (at 20 Kbps) for the RealPix preroll. To do this, you assemble the overall presentation with a SMIL file, put all files in a <code>&lt;par&gt;</code> group, and set a 20-second delay for RealPix.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1017630"></a>
+For more on masking preroll, see the appendix on 
+advanced production techniques in <I>RealSystem G2 
+Production Guide. </I>For more on RealText, see <I>RealText 
+Authoring Guide</I>. You can download both guides from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<p><a name="1017487"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:28:47.</font>
+<center><a href="tags.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="livepix.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

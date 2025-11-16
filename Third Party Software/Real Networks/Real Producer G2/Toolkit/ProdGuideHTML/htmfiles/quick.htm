@@ -1,0 +1,331 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="live.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tips.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+<h1><a name="999580">
+ Appendix A: 	 Quick Steps for Streaming Clips
+
+</a></h1>
+<p><a name="999755"></a>This appendix provides examples that show how to set up some simple streaming presentations quickly. This information will aid you if you are a beginning user. Once you are familiar with the basic steps for hosting RealSystem G2 presentations, you can easily create more complex presentations.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="998620"></a>
+You will need to get the correct URLs for media clips 
+from the RealServer or Web server administrator. 
+Substitute those values for the example URLs shown 
+below.
+</td></tr>
+</table></p>
+<h1><a name="997654"></a> Streaming a RealAudio or RealVideo Clip</h1>
+<p><a name="997664"></a>It's simple to add a RealAudio or RealVideo clip to your Web page. Following the instructions below, you can stream the clip from RealServer G2 or download it from a Web server. The clip plays back in RealPlayer.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="999194"></a>
+Before using a Web server, read <a href="realsys.htm#34033">"Hosting a Presentation 
+on a Server"</a> and <a href="server.htm#14811">"Limitations on Web Server Playback"</a>.
+</td></tr>
+</table></p>
+<h4><a name="997685"></a>	 To create the clip:</h4>
+<ol>
+<p><li><a name="998198"> </a>Prepare your audio or video source file for encoding. This can include normalizing the audio source file or setting the video's window size.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998204"></a>
+<a href="audio.htm#27179">"Optimizing Audio"</a>. <a href="video.htm#11689">"Digitizing Video"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="998206"> </a>Use a RealNetworks encoding tool to encode the RealAudio or RealVideo clip from your audio or video source file. RealVideo and RealAudio clips use the file extension <kbd>.rm</kbd>.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1003599"></a>
+Encoding tools are available for free download or 
+purchase at <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>.
+</td></tr>
+</table></p>
+</ol>
+<h4><a name="997699"></a>	 To stream the clip from RealServer G2 using Ramgen:</h4>
+<ol>
+<p><li><a name="997711"> </a>Transfer the clip to the RealServer G2 directory prepared by the RealServer administrator.
+<p><li><a name="997727"> </a>Link your Web page to the clip with an HTML hyperlink that specifies the RealServer address, the <code>ramgen</code> parameter, and the HTTP protocol. You can get this information from the RealServer administrator. In your HTML source file, the link will look like this example:
+<pre class=indent><a name="997752"></a>
+&lt;a href="http://realserver.company.com:8080/ramgen/content/myclip.rm"&gt;<br>Click here&lt;/a&gt; to see my RealVideo presentation.
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998227"></a>
+<a href="server.htm#25299">"Streaming Clips from RealServer G2"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="997807"> </a>In your Web browser, click the link to verify that it works. RealPlayer will launch as a helper application and, after a few seconds of buffering, will play the streaming clip.
+</ol>
+<h4><a name="997778"></a>	 To play the clip back from a Web server:</h4>
+<ol>
+<p><li><a name="997873"> </a>With any text editor, open a new file and enter the URL your clip will have on the Web server. For example:
+<pre class=indent><a name="997882"></a>
+http://www.company.com/media/myclip.rm
+</pre>
+<p><li><a name="998176"> </a>Save this file as plain text with the file extension <kbd>.ram</kbd>. This is your Ram file.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998342"></a>
+<a href="server.htm#14171">"Creating a Ram File Manually"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="997916"> </a>Transfer the media clip and the Ram file to the appropriate directory on the Web server.
+<p><li><a name="997780"> </a>Link your Web page to the Ram file (not the media clip) with a standard HTML hyperlink like this:
+<pre class=indent><a name="997781"></a>
+&lt;a href="http://www.company.com/media/myclip.ram"&gt;<br>Click here&lt;/a&gt; to see my RealVideo presentation.
+</pre>
+<p><li><a name="997819"> </a>In your Web browser, click the link to verify that it works. RealPlayer will launch as a helper application and, after a few seconds of buffering, will play the clip.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998369"></a>
+<a href="server.htm#16649">"Playing Clips from a Web Server"</a>.
+</td></tr>
+</table></p>
+</ol>
+<h1><a name="997673"></a> Embedding a RealVideo Clip in a Web Page</h1>
+<p><a name="998498"></a>Using RealPlayer's Netscape plug-in, you can embed a RealVideo clip directly in your Web page. The following example assumes that the video is 176 pixels wide by 132 pixels high. It places the video window and the full RealPlayer control panel in your Web page.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998706"></a>
+See <a href="control.htm#65923">"Chapter 8: Playing a Presentation in a Web Page"</a>.
+</td></tr>
+</table></p>
+<h4><a name="997935"></a>	 To embed the clip in your Web page:</h4>
+<ol>
+<p><li><a name="997940"> </a>In your Web page, add the <code>&lt;EMBED&gt;</code> tag with the RealVideo URL, window size, and <code>ImageWindow</code> control. The following example assumes RealServer G2 will stream the presentation:
+<pre class=indent><a name="998003"></a>
+&lt;EMBED WIDTH=176 HEIGHT=132 <br>SRC="http://realserver.company.com:8080/ramgen/content/myclip.rm?embed" <br>CONTROLS=ImageWindow CONSOLE=one&gt;
+</pre>
+<p><a name="998032"></a>If you intend to play the clip back from a Web server, use an HTTP URL and link to a Ram file with the extension <kbd>.rpm</kbd> (see below) as in the following example:</p>
+<pre class=indent><a name="998486"></a>
+&lt;EMBED WIDTH=176 HEIGHT=132 <br>SRC="http://www.company.com/media/myclip.rpm" <br>CONTROLS=ImageWindow CONSOLE=one&gt;
+</pre>
+<p><li><a name="998487"> </a>You can then add RealPlayer controls through additional <code>&lt;EMBED&gt;</code> tags that all use the same URL for the <code>SRC</code> parameter. The following example embeds the full RealPlayer control panel in the Web page, linking it to the image window through the same console. It assumes RealServer will stream the presentation:
+<pre class=indent><a name="998075"></a>
+&lt;EMBED WIDTH=375 HEIGHT=100 <br>SRC="http://realserver.company.com:8080/ramgen/content/myclip.rm?embed" <br>CONTROLS=All CONSOLE=one&gt;
+</pre>
+<p><a name="998076"></a>Use an <code>&lt;EMBED&gt;</code> tag like the following when playing the clip back from a Web server:</p>
+<pre class=indent><a name="998077"></a>
+&lt;EMBED WIDTH=375 HEIGHT=100 <br>SRC="http://www.company.com/media/myclip.rpm" <br>CONTROLS=All CONSOLE=one&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="998576"></a>
+Because you can place each <code>&lt;EMBED&gt;</code> tag anywhere on 
+your Web page, you can lay out the image window and 
+controls in any manner using HTML.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1003719"></a>
+If you have installed RealPlayer G2, <a 
+href="../media/plugin.htm" target="_new">click 
+here</a> to see a Web page with all the embedded 
+controls.
+</td></tr>
+</table></p>
+<p><li><a name="998000"> </a>Transfer the clip to the appropriate RealServer G2 or Web server directory. When streaming from G2, you are ready to test the clip because the Web page already contains the link to the RealVideo clip.
+</ol>
+<h4><a name="997944"></a>	 To create the Ram file when playing the clip back from a Web server:</h4>
+<ol>
+<p><li><a name="998559"> </a>With any text editor, open a new file and enter the URL your clip will have on the Web server, as in the following example:
+<pre class=indent><a name="998560"></a>
+http://www.company.com/media/myclip.rm
+</pre>
+<p><li><a name="998561"> </a>Save this file as plain text with the file extension <kbd>.rpm</kbd>. This is your Ram file.
+<p><li><a name="998145"> </a>Transfer the Ram file to the appropriate directory on the Web server.
+<p><li><a name="998146"> </a>In your Web browser, click the link to verify that it works.
+</ol>
+<h1><a name="998713"></a> URL Reference</h1>
+<p><a name="1000810"></a>As explained throughout this manual, URLs to files and clips vary depending on what kind of file or clip you link to and what type of file contains the link. The table below provides a quick reference for the protocol used for various types of links. It also shows whether the link should invoke RealServer's Ramgen utility. This table assumes that the presentation is for RealPlayer G2 and not earlier versions of RealPlayer.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1001021"></a>
+ Quick URL Reference </caption>
+<tr>
+<th align=left valign=bottom><a name="1001031"></a>Link from</th>
+<th align=left valign=bottom><a name="1001033"></a>Link to</th>
+<th align=left valign=bottom><a name="1001604"></a>Located on</th>
+<th align=left valign=bottom><a name="1001035"></a>Protocol</th>
+<th align=left valign=bottom><a name="1001037"></a>Ramgen?</th>
+<th align=left valign=bottom><a name="1001039"></a>Reference</th>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001041"></a>Web page</td>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001043"></a>Media clip</td>
+<td align=left valign=top><a name="1001606"></a>RealServer</td>
+<td align=left valign=top><a name="1001045"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001047"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="1001049"></a><a href="server.htm#25299">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001658"></a>Web server</td>
+<td align=left valign=top><a name="1001660"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001662"></a>no</td>
+<td align=left valign=top><a name="1001664"></a><a href="server.htm#16649">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001051"></a>Web page</td>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001053"></a>SMIL file</td>
+<td align=left valign=top><a name="1001608"></a>RealServer</td>
+<td align=left valign=top><a name="1001055"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001057"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="1001059"></a><a href="server.htm#25299">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001702"></a>Web server</td>
+<td align=left valign=top><a name="1001704"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001706"></a>no</td>
+<td align=left valign=top><a name="1001708"></a><a href="server.htm#16649">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001061"></a>Web page</td>
+<td colspan=1 rowspan=2 align=left valign=top><a name="1001063"></a>Ram file (<code>.ram</code> or <code>.rpm</code>)</td>
+<td align=left valign=top><a name="1001610"></a>RealServer</td>
+<td align=left valign=top><a name="1001065"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001067"></a>no</td>
+<td align=left valign=top><a name="1001069"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001734"></a>Web server</td>
+<td align=left valign=top><a name="1001736"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001738"></a>no</td>
+<td align=left valign=top><a name="1001740"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1002029"></a>SMIL file</td>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1002031"></a>Media clip</td>
+<td align=left valign=top><a name="1002033"></a>RealServer</td>
+<td align=left valign=top><a name="1002035"></a><code>rtsp://</code></td>
+<td align=left valign=top><a name="1002037"></a>no</td>
+<td align=left valign=top><a name="1002039"></a><a href="smil.htm#14604">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1002045"></a>Web server</td>
+<td align=left valign=top><a name="1002047"></a><code>http://</code></td>
+<td align=left valign=top><a name="1002049"></a>no</td>
+<td align=left valign=top><a name="1002051"></a><a href="smil.htm#33583">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1002057"></a>Local host</td>
+<td align=left valign=top><a name="1002059"></a><code>file://</code></td>
+<td align=left valign=top><a name="1002061"></a>no</td>
+<td align=left valign=top><a name="1002063"></a><a href="smil.htm#64697">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1002073"></a>SMIL file</td>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1002075"></a>SMIL file</td>
+<td align=left valign=top><a name="1002077"></a>RealServer</td>
+<td align=left valign=top><a name="1002079"></a><code>rtsp://</code></td>
+<td align=left valign=top><a name="1002081"></a>no</td>
+<td align=left valign=top><a name="1002310"></a><a href="smil.htm#14604">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1002089"></a>Web server</td>
+<td align=left valign=top><a name="1002091"></a><code>http://</code></td>
+<td align=left valign=top><a name="1002093"></a>no</td>
+<td align=left valign=top><a name="1002318"></a><a href="smil.htm#33583">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1002101"></a>Local host</td>
+<td align=left valign=top><a name="1002103"></a><code>file://</code></td>
+<td align=left valign=top><a name="1002105"></a>no</td>
+<td align=left valign=top><a name="1002326"></a><a href="smil.htm#64697">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1001172"></a>Ram file (<code>.ram</code> or <code>.rpm</code>)</td>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1001073"></a>Media clip</td>
+<td align=left valign=top><a name="1001612"></a>RealServer</td>
+<td align=left valign=top><a name="1001075"></a><code>rtsp://</code></td>
+<td align=left valign=top><a name="1001077"></a>no</td>
+<td align=left valign=top><a name="1002342"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001797"></a>Web server</td>
+<td align=left valign=top><a name="1001799"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001801"></a>no</td>
+<td align=left valign=top><a name="1002358"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001809"></a>Local host</td>
+<td align=left valign=top><a name="1001811"></a><code>file://</code></td>
+<td align=left valign=top><a name="1001813"></a>no</td>
+<td align=left valign=top><a name="1002374"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1001977"></a>Ram file (<code>.ram</code> or <code>.rpm</code>)</td>
+<td colspan=1 rowspan=3 align=left valign=top><a name="1001979"></a>SMIL file</td>
+<td align=left valign=top><a name="1001981"></a>RealServer</td>
+<td align=left valign=top><a name="1001983"></a><code>rtsp://</code></td>
+<td align=left valign=top><a name="1001985"></a>no</td>
+<td align=left valign=top><a name="1002390"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1001993"></a>Web server</td>
+<td align=left valign=top><a name="1001995"></a><code>http://</code></td>
+<td align=left valign=top><a name="1001997"></a>no</td>
+<td align=left valign=top><a name="1002406"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1002005"></a>Local host</td>
+<td align=left valign=top><a name="1002007"></a><code>file://</code></td>
+<td align=left valign=top><a name="1002009"></a>no</td>
+<td align=left valign=top><a name="1002422"></a><a href="server.htm#14171">click here</a></td>
+</tr>
+</table>
+</p>
+<p><a name="1000826"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:39.</font>
+<center><a href="live.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tips.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

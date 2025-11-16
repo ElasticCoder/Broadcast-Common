@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<TITLE>Demonstration of Extended JavaScript Functionality</TITLE>
+</HEAD>
+<BODY BGCOLOR="white">
+<P>This example embeds a Shockwave Flash file in a Web page
+<BR>and uses a simple form to provide Play, Pause, and Stop buttons.
+<BR>The buttons link to the display through JavaScript. This example 
+<BR>plays in either Netscape Navigator or Internet Explorer.</P>
+
+<!-- Embedded Display Window -->
+
+<EMBED  NAME=javademo
+		SRC="demo.rpm"
+		WIDTH=220 HEIGHT=180
+		CONSOLE=one
+		CONTROLS=ImageWindow
+		BACKGROUNDCOLOR=white
+		CENTER=true
+		>
+
+<!-- Form Buttons using JavaScript Controls-->
+
+<P></P>
+<FORM>
+<INPUT TYPE="button" VALUE="Play"
+	onClick="document.javademo.DoPlay()">
+<INPUT TYPE="button" VALUE="Pause"
+	onClick="document.javademo.DoPause()">
+<INPUT TYPE="button" VALUE="Stop"
+	onClick="document.javademo.DoStop()">
+</FORM>
+
+</BODY>
+</HTML>

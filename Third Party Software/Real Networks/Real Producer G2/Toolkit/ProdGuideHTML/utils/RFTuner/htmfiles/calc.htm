@@ -1,0 +1,94 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center>
+<a href="tune.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center>
+
+<h1><a name="427823"></a> Bit Rate Calculation Spreadsheet</h1>
+<p><a name="427824"></a>The RealFlash bit rate spreadsheet indicates bandwidth spikes and shows how changing certain Flash attributes affects playback quality. This helps you determine the trade-off between bit rate and buffering. Use it to get an in-depth look at RealFlash playback. With this information, you can modify your presentation by changing the Flash source file. Using the spreadsheet is not necessary, however. You can simply use the RealFlash tuner to evaluate and adjust the presentation preroll.</p>
+<h2><a name="428023"></a> Importing RealFlash Data</h2>
+<h4><a name="427891"></a>	 To import presentation data into the spreadsheet:</h4>
+<ol>
+<p><li><a name="427966"> </a>Create a movie report when exporting your Shockwave Flash file.
+<p><li><a name="427950"> </a>In Microsoft Word, open the movie report, which is a text file in the directory where you exported the Shockwave Flash file.
+<p><li><a name="418274"> </a>Holding down <strong>Alt</strong> (Windows) or <strong>Option</strong> (Macintosh), click and drag to select the <strong>Frame Bytes</strong> column.
+<p><li><a name="418275"> </a>Choose <strong>Edit&gt;Copy</strong>.
+<p><li><a name="418276"> </a>In Microsoft Excel, open <kbd>flashspreadsheet.xlt</kbd>.
+<p><li><a name="418277"> </a>Place the cursor in the first cell of the <strong>Frame Bytes</strong> column as shown in the following figure and select <strong>Edit&gt;Paste</strong>.
+<h5><a name="425954"></a>
+ Pasting Frame Byte Information</h5>
+<p><a name="425955"></a>
+<img src="../graphics/sheet.gif"></p>
+<p><li><a name="418280"> </a>Choose <strong>NonBlanks</strong> from the pull-down menu at the top of the <strong>Frame Bytes</strong> column as shown in the next figure. This makes visible only the spreadsheet rows that have values.
+<h5><a name="426002"></a>
+ Choosing Nonblank Information</h5>
+<p><a name="426006"></a>
+<img src="../graphics/noblank.gif"></p>
+<p><li><a name="418283"> </a>Scroll down to determine the number of frames in the animation (highlighted in blue). Enter this value in the <strong>Total Number of Frames </strong>field.
+<h5><a name="426187"></a>
+ Total Number of Frames</h5>
+<p><a name="426191"></a>
+<img src="../graphics/fps.gif"></p>
+<p><li><a name="418284"> </a>Check that the <strong>FPS</strong> field has the appropriate frames per second rate, typically 7.
+<p><li><a name="418287"> </a>In the <strong>RealAudio Bit Rate</strong> field, enter the Kbps rating for the RealAudio codec you plan to use to encode the presentation soundtrack.
+</ol>
+<p><a name="418288"></a>After you have entered the initial spreadsheet data, you can analyze it and change the fields displayed in green to determine how to optimize your Flash file. The goal is to turn all values in the <strong>Bandwidth Available</strong> column to black. Red values indicate where buffering will occur. </p>
+<h2><a name="418289"></a> Spreadsheet Fields</h2>
+<p><a name="418290"></a>The following sections explain the spreadsheet fields in detail. Each section tells whether you can edit the field and explains what type of information the field contains.</p>
+<h4><a name="418291"></a> Frame # (not editable)</h4>
+<p><a name="418292"></a>Numbers in these fields correspond to the frame numbers in the Flash timeline.</p>
+<h4><a name="418293"></a> Second (not editable)</h4>
+<p><a name="418294"></a>Numbers in these fields tell at which second into the RealFlash presentation each frame appears.</p>
+<h4><a name="418295"></a> Frame Bytes (editable)</h4>
+<p><a name="418296"></a>These fields indicate the number of bytes consumed by each frame of the animation. You can change values manually to see how bandwidth consumption changes.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="418297"></a>
+Because Flash expresses frame size in bytes (1 byte 
+equals 8 bits), the spreadsheet uses bytes as the frame 
+size value, automatically converting between bytes and 
+Kilobits in the various fields as necessary.
+</td></tr>
+</table></p>
+<h4><a name="418298"></a> Bandwidth Available (not editable)</h4>
+<p><a name="418299"></a>These fields tell how much extra bandwidth in Kilobits is available during playback of the frame. If the number is black, the frame does not exceed the available bandwidth. If the number is red, the frame exceeds the available bandwidth and buffering will occur.</p>
+<p><a name="418300"></a>You can modify these values by adjusting the <strong>Buffer Time</strong> and <strong>Max Bandwidth</strong> fields. If certain frames consume a large amount of bandwidth, check the original movie report to determine what elements are downloaded in that frame. You may be able to edit the Flash source file to eliminate or modify those elements.</p>
+<h4><a name="418301"></a> FPS (editable)</h4>
+<p><a name="418302"></a>This field corresponds to the frames per second rate set in your Flash animation. </p>
+<h4><a name="418303"></a> Overhead (not editable)</h4>
+<p><a name="418304"></a>This field is a percentage of available bandwidth included to compensate for network packet data used in routing the presentation from RealServer to RealPlayer.</p>
+<h4><a name="418305"></a> SWF Bit Rate (not editable)</h4>
+<p><a name="418306"></a>This field gives the average bit rate of the Flash animation. It is calculated by dividing the file size in Kilobits by the number of seconds the presentation lasts.</p>
+<h4><a name="418307"></a> Total Bit Rate (not editable)</h4>
+<p><a name="418308"></a>This field indicates the Kilobit rate at which RealServer will stream the RealFlash presentation. This is a combined total for the Shockwave Flash and RealAudio streams.</p>
+<h4><a name="418309"></a> Total Number of Frames (editable)</h4>
+<p><a name="418310"></a>This field gives the total number of frames in the Flash file.</p>
+<h4><a name="418311"></a> Buffer Time (editable)</h4>
+<p><a name="418312"></a>This field indicates the number of seconds RealPlayer buffers data before beginning playback of the presentation. This buffering, also known as "preroll," is required for any presentation and should be under 10 seconds for optimal presentation performance. It should not exceed 15 seconds. You can adjust the preroll by changing the file bandwidth with the RealFlash bandwidth tuner.</p>
+<h4><a name="418313"></a> Audio Bit Rate (editable)</h4>
+<p><a name="418314"></a>This is the bit rate of the RealAudio file in Kilobits. The codec you use when encoding the file in the RealAudio format determines this rate. You can edit this field to see how encoding the audio with a different codec affects the bandwidth available for the animation stream.</p>
+<h4><a name="418315"></a> Max Bandwidth for the SWF File (editable)</h4>
+<p><a name="418316"></a>In this field, enter the maximum bandwidth in Kilobits you want to allocate to the animation stream. You can adjust this bandwidth in the file with the RealFlash bandwidth tuner.</p>
+<h4><a name="418317"></a> RealFlash Bytes Consumed (not editable)</h4>
+<p><a name="418318"></a>This graphic is available through a tab at the bottom of the spreadsheet. It is provided for informational use only and graphs the number of bytes each frame requires. These values correspond to the <strong>Frame Bytes</strong> column.</p>
+<h4><a name="418319"></a> RealFlash Available Bandwidth (not editable)</h4>
+<p><a name="418320"></a>This graphic is available through a tab at the bottom of the spreadsheet. For informational use only, it shows the Kilobytes of extra bandwidth available in each frame. These values correspond to the <strong>Bandwidth Available</strong> column.</p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 11/30/98 at 10:23:01.</font>
+<center>
+<a href="tune.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center></body>
+</html>

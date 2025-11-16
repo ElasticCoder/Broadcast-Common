@@ -1,0 +1,109 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="control.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="server.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="12177"></a>
+ Chapter 9: 	Inserting Ads in a Presentation
+
+</h1>
+<p><a name="8656"></a>SMIL makes it easy to include advertisements in your streaming presentation. You can lay out ad banners, supply ad URLs, and even specify the times when ads appear. This chapter provides examples of how you can use SMIL to include ads in your presentations. Before you start, you should have a thorough understanding of SMIL as described in <a href="smil.htm#100023">Chapter 7</a>.</p>
+<h1><a name="9689"></a> Placing Ads in Presentations</h1>
+<p><a name="9690"></a>With RealSystem G2, you can create ads in any format, whether video, audio, animation, or JPEG or GIF images. Using SMIL, you simply treat your ads the same way you treat your media clips. You lay out your presentation and time when each media clip and ad appears. Because a SMIL file lists separate URLs to each clip, your ads can be on any server, whether RealServer, a Web server, or an ad server. And because a SMIL file is a plain text file, you can dynamically generate it by any means to present different ads for each page visitor.</p>
+<h1><a name="9694"></a> Using an Ad Banner</h1>
+<p><a name="9911"></a>The following example creates a video region with an ad banner above it. When a user plays the presentation, the video plays uninterrupted while ads appear in the ad banner twice a minute. The video and ads are defined to play at the same time in a <code>&lt;par&gt;</code> group. Within that <code>&lt;par&gt;</code> group, ads are nested within a <code>&lt;seq&gt;</code> group and are each defined to stay onscreen for 30 seconds. Each ad links to a different HTML page that displays in the browser when the user clicks the ad graphic.</p>
+<pre><a name="11778"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;!--presentation with video clip and ad banner--&gt;<br>    &lt;layout&gt;<br>      &lt;root-layout width="330" height="330" background-color="black"/&gt;<br>      &lt;region id="adbanner" top="5" left="5" width="320" height="72"/&gt;<br>      &lt;region id="videoregion" top="85" left="5"width="320" height="240"/&gt;<br>    &lt;/layout&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;par&gt; <br>      &lt;video src="newsvid.rm" region="videoregion"/&gt;<br>      &lt;par&gt;<br>        &lt;seq&gt;<br>          &lt;!--Display new linked ad banner every 30 seconds--&gt;<br>          &lt;a href="http://www.company.com/ads/offer1.htm" show="new"&gt;<br>            &lt;img src="ad1.gif" region="adbanner" dur="30s"/&gt;&lt;/a&gt;<br>          &lt;a href="http://www.company.com/ads/offer2.htm" show="new"&gt;<br>            &lt;img src="ad2.gif?bitrate=1000" region="adbanner" dur="30s"/&gt;&lt;/a&gt;<br>          &lt;a href="http://www.company.com/ads/offer3.htm" show="new"&gt;<br>            &lt;img src="ad3.gif?bitrate=1000" region="adbanner" dur="30s"/&gt;&lt;/a&gt;<br>          &lt;a href="http://www.company.com/ads/offer4.htm" show="new"&gt;<br>            &lt;img src="ad4.gif?bitrate=1000" region="adbanner" dur="30s"/&gt;&lt;/a&gt;<br>        &lt;/seq&gt;<br>      &lt;/par&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<h5><a name="11442"></a>
+ Ad Banner Layout</h5>
+<p><a name="11443"></a>
+<img src="../graphics/adbanner.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="10832"></a>
+<a href="smil.htm#8639">"Laying Out Multiple Clips"</a> explains how to set up 
+regions. SMIL hyperlinking is described in <a href="smil.htm#39148">"Linking to 
+Other Media"</a>. For more on the image <code>bitrate</code> options, 
+see <a href="smil.htm#78643">"Defining Image Options"</a>.
+</td></tr>
+</table></p>
+<h1><a name="9696"></a> Inserting Ads in a Clip</h1>
+<p><a name="9693"></a>The following example inserts three ad videos into a long video called <kbd>news.rm</kbd>. The effect is like a television program with commercial breaks. Each ad video links to an HTML page that displays in the browser when the user clicks the ad:</p>
+<pre><a name="9932"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;!--video clip with commercial breaks--&gt;<br>    &lt;meta name="author" content="Jane Morales"/&gt;<br>    &lt;meta name="title" content="Technology in the News"/&gt;<br>    &lt;meta name="copyright" content="(c)1998 Jane Morales"/&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;seq&gt;<br>     &lt;video src="news.rm" clip-end="8.5min"/&gt;<br>       &lt;a href="http://www.company.com/ads/offer1.htm" show="new"&gt;<br>     &lt;video src="commercial1.rm"/&gt;&lt;/a&gt;<br>     &lt;video src="news.rm" clip-begin="8.5min" clip-end="16.75min"/&gt;<br>       &lt;a href="http://www.company.com/ads/offer2.htm" show="new"&gt;<br>     &lt;video src="commercial2.rm"/&gt;&lt;/a&gt;<br>     &lt;video src="news.rm" clip-begin="16.75min" clip-end="24.5min"/&gt;<br>       &lt;a href="http://www.company.com/ads/offer3.htm" show="new"&gt;<br>     &lt;video src="commercial3.rm"/&gt;&lt;/a&gt;<br>     &lt;video src="news.rm" clip-begin="24.5min"/&gt;<br>    &lt;/seq&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="9926"></a>As shown above, the three ad clips and the main video clip, <kbd>news.rm</kbd>, are in a <code>&lt;seq&gt;</code> group. The <kbd>news.rm</kbd> video begins at its normal beginning and plays for 8.5 minutes. It then stops while the <kbd>commercial1.rm</kbd> ad plays. The <kbd>news.rm</kbd> clip then resumes where it left off, breaking at later intervals for <kbd>commercial2.rm</kbd> and <kbd>commercial3.rm</kbd>. Because no timing elements are specified for the ads, they play from their normal beginnings to normal ends and may be any length.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="10968"></a>
+For more on clip timing, see <a href="smil.htm#82624">"Setting Internal Clip 
+Begin and End Times"</a>. SMIL hyperlinking is described 
+in <a href="smil.htm#39148">"Linking to Other Media"</a>. 
+</td></tr>
+</table></p>
+<h4><a name="10925"></a> Tips on Inserting Ads in Clips</h4>
+<p><a name="10934"></a>The following tips will help you create smoother transitions between media and ad clips:</p>
+<ul>
+<p><li><a name="10742"></a>If you do not define SMIL regions, encode all media clips at the same size so the window does not resize with each new clip. When using media at different sizes, define a region that all clips play in. This keeps the playback area stable.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="10996"></a>
+<a href="smil.htm#8639">"Laying Out Multiple Clips"</a> explains how to set up 
+regions.
+</td></tr>
+</table></p>
+<p><li><a name="10944"></a>If you experience unacceptable latency between clips, such as a long buffering time between a media clip and an ad clip, you can insert a small graphic between the clips to mask preroll. Or follow the instructions in <a href="tips.htm#997665">"Smoothing Transitions between Clips"</a> to reduce rebuffering between clips.
+</ul>
+<h1><a name="11497"></a> Using RealPix for Ads</h1>
+<p><a name="11498"></a>Instead of streaming ads to RealPlayer directly through SMIL, you can use RealPix to assemble JPEG and GIF images into ad presentations. Using RealPix gives you these advantages over streaming images directly through SMIL:</p>
+<ul>
+<p><li><a name="11501"></a>Create transitions between ad clips.
+<p><a name="11552"></a>RealPix lets you create exciting transitions, such as fades, wipes, zooms, and pans. You can create these effects through the RealPix mark-up with regular JPEG or GIF images. You do not need to use animated GIFs.</p>
+<p><li><a name="11522"></a>Cache images in RealPlayer memory.
+<p><a name="11523"></a>RealPlayer G2 does not maintain a disk cache, but caches images in memory for the duration of the RealPix presentation. A RealPix presentation that reuses an ad graphic does not use bandwidth after RealPlayer has received the graphic. Images streamed directly through SMIL are not cached, though, and RealServer must stream each image each time it appears in the presentation.</p>
+</ul>
+<p><a name="11614"></a>As described in <I>RealPix Authoring Guide,</I> the RealPix file contains mark-up that specifies the locations of image files and creates the desired transitions. Within the presentation SMIL file, you simply link to the RealPix file and assign it to appear in the appropriate region. The following example is the same as that used in <a href="ads.htm#9694">"Using an Ad Banner"</a>, except the individual GIF ads have been replaced with RealPix:</p>
+<pre><a name="11504"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;!--presentation with video clip and ad banner--&gt;<br>    &lt;layout&gt;<br>      &lt;root-layout width="330" height="330" background-color="black"/&gt;<br>      &lt;region id="adbanner" top="5" left="5" width="320" height="72"/&gt;<br>      &lt;region id="videoregion" top="85" left="5"width="320" height="240"/&gt;<br>    &lt;/layout&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;par&gt; <br>      &lt;video src="newsvid.rm" region="videoregion"/&gt;<br>      <code><b>&lt;ref src="adrotation.rp" region="adbanner"/&gt;<br></b></code>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="11883"></a>
+For more on RealPix, get <I>RealPix Authoring Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<p><a name="9688"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:38.</font>
+<center><a href="control.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="server.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

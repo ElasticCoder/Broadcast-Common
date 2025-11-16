@@ -1,0 +1,16 @@
+<smil>
+	<head>
+		<meta name="title" content="SMIL Layout Demonstration"/>
+		<meta name="copyright" content = "(c) 1998 RealNetworks, Inc."/>
+	</head>
+	<body>
+		<par title="SMIL Layout Demonstration" copyright="(c) 1998 RealNetworks, Inc." author="by RealNetworks">
+			<ref src="embed.rp" region="pix" fill="freeze"/>
+			<animation src="animate1.swf" region="animation" begin="8s" fill="freeze"/>
+			<audio src="thanks.rm" repeat="2"/>
+			<textstream src="embed.rt" region="text" fill="freeze"/>
+		</par>
+	</body>
+</smil>
+
+

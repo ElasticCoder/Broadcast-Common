@@ -1,0 +1,142 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center>
+<a href="methods.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center>
+
+<h1><a name="1014246"></a>
+ Chapter 4: 	CallBack Methods
+
+</h1>
+<p><a name="1014252"></a>This chapter describes the methods RealPlayer calls to inform an application of its state.</p>
+<h1><a name="1014255"></a> RealPlayer G2 Callbacks</h1>
+<h4><a name="1009045"></a> onClipOpened(shortClipName,URL)</h4>
+<p><a name="1012759"></a>Sent when a clip is opened by the control. Parameters:</p>
+<pre><a name="1012760"></a>
+string shortClipName
+</pre>
+<pre><a name="1012761"></a>
+string URL
+</pre>
+<h4><a name="1009046"></a> onClipClosed()</h4>
+<p><a name="1012773"></a>Sent to indicate that no clip is currently opened by the control. No parameters.</p>
+<h4><a name="1009047"></a> onShowStatus(statusText)</h4>
+<p><a name="1012784"></a>Sent to indicate that the status text is changing. Parameter:</p>
+<pre><a name="1012785"></a>
+string statusText
+</pre>
+<h4><a name="1009051"></a> onGoToURL(URL,target)</h4>
+<p><a name="1012815"></a>Sent when an URL event is encountered for the RealPlayer clip currently playing. This event occurs only if the <strong>AutoGotoURL</strong> property is <code>FALSE</code>. Parameters: </p>
+<pre><a name="1012816"></a>
+string URL
+</pre>
+<pre><a name="1012817"></a>
+string target
+</pre>
+<h4><a name="1014403"></a> OnPositionChange(current position, total length)</h4>
+<p><a name="1010532"></a>Called when the position in the clip changes. The current position of the clip (in milliseconds) is returned. Parameter:</p>
+<pre><a name="1012325"></a>
+long position
+</pre>
+<pre><a name="1014411"></a>
+long length
+</pre>
+<h4><a name="1010488"></a> OnLengthChange(length)</h4>
+<p><a name="1010538"></a>Called when the length of the clip changes, generally when a new clip is loaded. Parameter:</p>
+<pre><a name="1012326"></a>
+long length (in milliseconds)
+</pre>
+<h4><a name="1010489"></a> OnVolumeChange(volume)</h4>
+<p><a name="1010544"></a>Called when the volume level changes. The current volume level value is returned. The valid volume range is 0-100, where 0 represents no volume. Parameter: </p>
+<pre><a name="1012327"></a>
+short volume
+</pre>
+<h4><a name="1010490"></a> OnTitleChange(title)</h4>
+<p><a name="1010550"></a>Called when the title string changes. The new title string is returned. Parameter:</p>
+<pre><a name="1012328"></a>
+string title
+</pre>
+<h4><a name="1010491"></a> OnAuthorChange(author)</h4>
+<p><a name="1010556"></a>Called when the author string changes. The new author string is returned. Parameters:</p>
+<pre><a name="1012329"></a>
+string author
+</pre>
+<h4><a name="1010492"></a> OnCopyrightChange(copyright)</h4>
+<p><a name="1010562"></a>Called when the copyright string changes. The new copyright string is returned. Parameters: </p>
+<pre><a name="1012330"></a>
+string copyright
+</pre>
+<h4><a name="1010494"></a> OnPlayStateChange(newPlayState)</h4>
+<p><a name="1010574"></a>Called when the play state changes. See <code><a href="methods.htm#1013478">GetPlayState()</a></code> for play state values. Parameter:</p>
+<pre><a name="1012337"></a>
+long newPlayState
+</pre>
+<h4><a name="1010495"></a> OnErrorMessage(Severity, RMAErrorCode, UserErrorCode, messageText, MoreInfoURL)</h4>
+<p><a name="1010580"></a>Called when an error occurs. See <code><a href="methods.htm#1015088">GetLastErrorRMACode()</a></code> and <code><a href="methods.htm#1015090">GetLastErrorSeverity()</a></code> for more information on error codes and severities.</p>
+<h4><a name="1012852"></a> OnBuffering(int Flags, short PercentComplete)</h4>
+<p><a name="1012928"></a>Returns percentage of buffering complete.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1014362"></a>
+The <code>OnBuffering()</code> method is not currently supported. It 
+will be supported in an upcoming release.
+</td></tr>
+</table></p>
+<h4><a name="1012853"></a> OnContacting(String Hostname)</h4>
+<p><a name="1012927"></a>Called when RealPlayer contacts a host. Returns host name string.</p>
+<h4><a name="1013309"></a> OnKeyDown(int KeyCode)</h4>
+<p><a name="1013316"></a>Returns key code when user presses and holds down a keyboard key. Sent only when <code><a href="methods.htm#1015324">SetWantKeyboardEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1013317"></a> OnKeyPress(int KeyCode)</h4>
+<p><a name="1012924"></a>Returns key code when user presses and releases a keyboard key. Sent only when <code><a href="methods.htm#1015324">SetWantKeyboardEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012856"></a> OnKeyUp(int Keycode)</h4>
+<p><a name="1012925"></a>Returns key code when user releases keyboard key. Sent only when <code><a href="methods.htm#1015324">SetWantKeyboardEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012864"></a> OnLButtonDown(int nButtonFlags, int xPos, int yPos)</h4>
+<p><a name="1013361"></a>Returns mouse position and flags when user holds down the left mouse button. Sent only when <code><a href="methods.htm#1015328">SetWantMouseEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012868"></a> OnLButtonUp(int nButtonFlags, int xPos, int yPos)</h4>
+<p><a name="1013371"></a>Returns mouse position and flags when user releases the left mouse button. Sent only when <code><a href="methods.htm#1015328">SetWantMouseEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012886"></a> OnRButtonDblClk(int nButtonFlags, int xPos, int yPos)</h4>
+<p><a name="1013381"></a>Returns mouse position and flags when user double clicks the right mouse button. Sent only when <code><a href="methods.htm#1015328">SetWantMouseEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012888"></a> OnRButtonUp(int nButtonFlags, int xPos, int yPos)</h4>
+<p><a name="1013401"></a>Returns mouse position and flags when user releases the right mouse button. Sent only when <code><a href="methods.htm#1015328">SetWantMouseEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012874"></a> OnMouseMove(int nButtonFlags, int xPos, int yPos)</h4>
+<p><a name="1013411"></a>Returns mouse position and flags when user moves the mouse. Sent only when <code><a href="methods.htm#1015328">SetWantMouseEvents()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012862"></a> OnMute(boolean bIsMute)</h4>
+<p><a name="1012915"></a>Called when volume is muted.</p>
+<h4><a name="1012879"></a> OnPreFetchComplete()</h4>
+<p><a name="1012914"></a>Called when component has fetched the stream header information. Called if <code>PREFETCH</code> is set to true in the <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag or <code><a href="methods.htm#1015580">GetPreFetch()</a></code> is set to <code>TRUE</code>.</p>
+<h4><a name="1012898"></a> OnPreSeek(int OldTime, int NewTime)</h4>
+<p><a name="1012908"></a>Called when the user performs a seek by moving the presentation position slider. Returned values include the presentation time when the seek occured and the value for the seek-to time.</p>
+<h4><a name="1013251"></a> OnPostSeek(int OldTime, int NewTime)</h4>
+<p><a name="1013252"></a>Called when a seek completes. Returned values include the presentation time before the seek occured and the time value after the seek occurs.</p>
+<h4><a name="1012901"></a> OnPresentationClosed()</h4>
+<p><a name="1012907"></a>Called when the presentation stops.</p>
+<h4><a name="1012903"></a> OnPresentationOpened()</h4>
+<p><a name="1012906"></a>Called when the presentation starts.</p>
+<h1><a name="1012712"></a> RealPlayer 5.0 Compatibility</h1>
+<p><a name="1013512"></a>The following callback methods are used with RealPlayer G2 and RealPlayer 5.0. If you support both versions of RealPlayer, your application will receive only the following:</p>
+<ul>
+<p><li><a name="1012717"></a><a href="events.htm#1009045">onClipOpened(shortClipName,URL)</a>
+<p><li><a name="1012721"></a><a href="events.htm#1009046">onClipClosed()</a>
+<p><li><a name="1012725"></a><a href="events.htm#1009047">onShowStatus(statusText)</a>
+<p><li><a name="1012733"></a><a href="events.htm#1009051">onGoToURL(URL,target)</a>
+</ul>
+<p><a name="1012710"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:51:32.</font>
+<center>
+<a href="methods.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center></body>
+</html>

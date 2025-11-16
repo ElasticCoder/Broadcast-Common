@@ -1,0 +1,10 @@
+<window type="teleprompter" height="36" width="400" duration="16" bgcolor="black" wordwrap="false"> 
+	<center>
+	<font color="white" face="system">
+	<time begin="0"/><clear/>Welcome to RealSystem G2 and SMIL.
+	<time begin="4"/><clear/>To the left is RealPix, using one GIF image. 
+	<time begin="8"/><clear/>To the right is Flash animation.
+	<time begin="12"/><clear/>This text region displays RealText.
+	</font>
+	</center>
+</window>

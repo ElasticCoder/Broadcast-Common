@@ -1,0 +1,108 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="javaplug.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="methods.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1014176"></a>
+ Chapter 2: 	Using VBScript and the ActiveX 
+Control
+
+</h1>
+<p><a name="1013015"></a>You can use VBScript with the RealPlayer G2 ActiveX control to provide playback capabilities within these products:</p>
+<ul>
+<p><li><a name="1013016"></a>Internet Explorer 3.0 and 4.0
+<p><li><a name="1013017"></a>Any application that supports ActiveX controls, such as Visual Basic, Visual C++, Microsoft Access, and so on.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013029"></a>
+<I>RealSystem G2 Production Guide</I> available at <a href="http://
+service.real.com/help/library/index.html" target="_top">http://
+service.real.com/help/library/index.html</a> explains 
+the basics of embedding a presentation with the ActiveX 
+Control.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="1013008"></a> Using RealPlayer Methods through VBScript</h1>
+<p><a name="1012877"></a>To extend RealPlayer's ActiveX functionality on Internet Explorer, you first embed the source file in an HTML page with the <code>&lt;OBJECT&gt;</code> tag:</p>
+<pre><a name="1012920"></a>
+&lt;OBJECT ID=RVOCX CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" WIDTH=220 HEIGHT=180&gt;<br>&lt;PARAM NAME="SRC" VALUE="rtsp://realserver.company.com/media/animate.swf"&gt;<br>&lt;PARAM NAME="CONSOLE" VALUE="one"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="ImageWindow"&gt;<br>&lt;PARAM NAME="BACKGROUNDCOLOR" VALUE="white"&gt;<br>&lt;PARAM NAME="CENTER" VALUE="true"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<p><a name="1012880"></a>In the <code>&lt;OBJECT&gt;</code> tag, the <code>ID</code> parameter identifies the embedded clip for reference by VBScript parameters.</p>
+<p><a name="1012882"></a>You can then use VBScript to issue RealPlayer commands to control the embedded presentation. The following example shows a simple form that provides a Play, Pause, and Stop button for the embedded presentation. <a href="../media/axemb.htm">Click here</a> to see this presentation.</p>
+<pre><a name="1012964"></a>
+&lt;FORM&gt;<br>&lt;input TYPE="button" VALUE="Play" NAME="doplay"&gt;<br>  &lt;script LANGUAGE="VBScript" FOR="doplay" EVENT="onClick"&gt;<br>  RVOCX.DoPlay<br>  &lt;/script&gt;<br>&lt;input TYPE="button" VALUE="Pause" NAME="pause"&gt;<br>  &lt;script LANGUAGE="VBScript" FOR="pause" EVENT="onClick"&gt;<br>  RVOCX.DoPause<br>  &lt;/script&gt;<br>&lt;input TYPE="button" VALUE="Stop" NAME="stop"&gt;<br>  &lt;script LANGUAGE="VBScript" FOR="stop" EVENT="onClick"&gt;<br>  RVOCX.DoStop<br>  &lt;/script&gt;<br>&lt;/FORM&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1012890"></a>
+The section <a href="methods.htm#1019460">"Methods"</a> lists the RealPlayer methods.
+</td></tr>
+</table></p>
+<h1><a name="1013156"></a> Handling URLs through &lt;OBJECT&gt;</h1>
+<p><a name="1013157"></a>You can use the <code>AUTOGOTOURL</code> parameter in the <code>&lt;OBJECT&gt;</code> tag to determine how URLs in the presentation are handled. The default value of true applies if you leave the parameter out. In this case any URL embedded in the presentation goes to the browser. If you set this parameter to false, RealPlayer sends the URL to the application with the <code>OnGotoURL()</code> call.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1013203"></a>
+The <code><a href="methods.htm#1014396">SetAutoGoToURL()</a></code> method can override the 
+<code>AUTOGOTOURL</code> parameter.
+</td></tr>
+</table></p>
+<h1><a name="1013039"></a> Using PREFETCH with &lt;OBJECT&gt;</h1>
+<p><a name="1013040"></a>The <code>PREFETCH</code> parameter causes RealPlayer G2 to get the stream description information before the stream starts. You can use this to find out the size and width of an embedded clip, for example, then dynamically create the <code>&lt;OBJECT&gt;</code> tag for the image window, using the clip's native size for the <code>WIDTH</code> and <code>HEIGHT</code> parameters. To do this, you would embed a control, such as the default control panel, and set <code>PREFETCH</code> to true:</p>
+<pre><a name="1013070"></a>
+&lt;OBJECT ID=RVOCX CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" WIDTH=400 HEIGHT=100&gt;<br>&lt;PARAM NAME="SRC" VALUE="rtsp://realserver.company.com/media/animate.swf"&gt;<br>&lt;PARAM NAME="CONSOLE" VALUE="one"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="All"&gt;<br>&lt;PARAM NAME="PREFETCH" VALUE="true"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<p><a name="1013042"></a>The control fetches the stream information, then responds with the callback <code><a href="events.htm#1012879">OnPreFetchComplete()</a></code>. You next use <code><a href="methods.htm#1014752">GetClipWidth()</a></code> and <code><a href="methods.htm#1014754">GetClipHeight()</a></code> to determine the native size of the image window. Through a means such as DHTML, you can then create the image window control. If the width and height were 320 by 240, respectively, you could generate an <code>&lt;OBJECT&gt;</code> tag like the following:</p>
+<pre><a name="1013079"></a>
+&lt;OBJECT ID=RVOCX CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" WIDTH=320 HEIGHT=240&gt;<br>&lt;PARAM NAME="SRC" VALUE="rtsp://realserver.company.com/media/animate.swf"&gt;<br>&lt;PARAM NAME="CONSOLE" VALUE="one"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="ImageWindow"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<h1><a name="1013169"></a> Receiving Callbacks</h1>
+<p><a name="1013170"></a>To receive callbacks through VBScript, you use the <code>&lt;OBJECT&gt;</code> tag ID, shown here set to <code>RVOCX</code>:</p>
+<pre><a name="1013326"></a>
+&lt;OBJECT ID=RVOCX HEIGHT=256 WIDTH=256&gt;<br>  CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA"<br>&lt;PARAM NAME="controls" VALUE="all"&gt;<br>&lt;PARAM NAME="SRC" VALUE="http://www.company.com/sample.ram"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<p><a name="1013323"></a>You then use a <code>&lt;SCRIPT&gt;</code> tag to receive a VBScript callback. The following example shows a callback for <code><a href="events.htm#1009047">onShowStatus(statusText)</a></code>:</p>
+<pre><a name="1013248"></a>
+&lt;P&gt;<br>Status Text:<br>&lt;input type="text" name="statusText" size=100&gt;&lt;br&gt;<br>&lt;/P&gt;<br>&lt;SCRIPT language="VBS"&gt;<br>Sub RVOCX_OnShowStatus(byVal text)<br>  statusText.Value=text<br>End Sub<br>&lt;/SCRIPT&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013177"></a>
+The section <a href="events.htm#1014246">"CallBack Methods"</a> lists the RealPlayer 
+callback events.
+</td></tr>
+</table></p>
+<p><a name="1012875"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:51:29.</font>
+<center><a href="javaplug.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="methods.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

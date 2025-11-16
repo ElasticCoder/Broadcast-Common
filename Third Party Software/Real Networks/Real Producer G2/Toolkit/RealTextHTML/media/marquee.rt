@@ -1,0 +1,7 @@
+<window type="marquee" height="100" duration="10:00.5">
+This is a "Marquee" that has vertically-centered black text on a white background. It <u>loops</u>.
+<font size="+2" bgcolor="yellow">This is +2 text with a yellow background.</font>
+<font color="blue" size="+4">This is blue +4 text.</font>
+RealText font sizes are: <font size="-2">-2 <font size="-1">-1 </font></font>+0 <font size="+1">+1 
+<font size="+2">+2 <font size="+3">+3 <font size="+4">+4</font></font></font></font></font>
+</window>

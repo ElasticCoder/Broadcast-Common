@@ -1,0 +1,12 @@
+RAObserver
+// java interface for events coming from the RealAudio plugin 
+// any object implementing this interface may register itself into the 
+// RAPlayer to get notifications (see advise function in RAPlayer)
+
+public interface RAObserver
+{
+	public void onGoToURL(String v, String w);
+	public void onClipOpened(String v, String w);
+	public void onClipClosed();
+	public void onShowStatus(String v);
+}

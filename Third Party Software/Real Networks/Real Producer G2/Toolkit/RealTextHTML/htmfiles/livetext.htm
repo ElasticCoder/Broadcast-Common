@@ -1,0 +1,195 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="examples.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="windtabl.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1009802"></a>
+ Chapter 5: 	RealText Broadcast
+
+</h1>
+<p><a name="1009962"></a>Because RealServer can also broadcast RealText live, RealText is an ideal solution for delivering live stock market information or breaking news, for example. Because it is a true streaming server, RealServer streams the data as it comes in, instead of downloading blocks of data to users' computers for later display. This chapter explains how to use the RealText broadcast application included with this manual.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1009766"></a>
+<I>RealSystem G2 Production Guide</I> provides an overview of 
+broadcasting. For more on configuring a broadcast, see 
+<I>RealServer Administration Guide</I>. Both are available at 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a>.
+</td></tr>
+</table></p>
+<h1><a name="1008274"></a> Broadcast Application</h1>
+<p><a name="1007543"></a>You can broadcast RealText to multiple viewers with an application included in the <kbd>utils</kbd> directory of this manual. The broadcast application runs on any Windows 32-bit operating system. Its C++ source code is publicly available, though, and you can compile it on a different operating system as noted in <a href="livetext.htm#1003683">"Developing a Custom RealText Broadcast Application"</a>.</p>
+<p><a name="1010072"></a>The RealText broadcast application connects to RealServer G2 and polls a specified directory for an updated RealText file. When it finds an updated file, it sends the file to RealServer, which broadcasts the file contents to the connected RealPlayers.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1007979"></a>
+Available at <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>, 
+RealNetworks tools let you broadcast RealAudio and 
+RealVideo as well. For information on broadcasting 
+RealPix, download <I>RealPix Authoring Guide</I> from 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a>.
+</td></tr>
+</table></p>
+<h2><a name="1003297"></a> Installing the RealText Broadcast Application</h2>
+<p><a name="1003543"></a>The RealText broadcast application comprises the <kbd><b>exlvtxt2.exe</b></kbd> executable file and a few DLLs. These files must reside together, but you can move them from the <kbd>utils</kbd> directory to any directory on the RealText broadcast machine. You can broadcast on the RealServer G2 machine or any Windows 32-bit machine with a network connection to RealServer G2. RealText broadcast requires minimal system resources, but RealNetworks recommends using a Pentium 133 MHz or faster processor with at least 32 Megabytes of memory.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1006060"></a>
+The RealText broadcast application consumes unused 
+CPU for monitoring purposes but releases CPU as other 
+processes need it. On an otherwise idle machine, CPU 
+use for RealText broadcast may seem high, but the 
+actual CPU requirement for broadcasting is small.
+</td></tr>
+</table></p>
+<h1><a name="1008428"></a> Creating a Broadcast RealText Clip</h1>
+<p><a name="1006551"></a>Create a RealText clip for broadcast as a simple text file. Use the RealText mark-up tags described in <a href="texttag.htm#1019286">"Text Tags"</a> to format the display text. The file should not have <code>&lt;window&gt;</code> and <code>&lt;/window&gt;</code> tags. You set window attributes such as type, width, and height when you start the broadcast application. RealServer sends these attributes to each RealPlayer when it connects to the broadcast.</p>
+<h4><a name="1008820"></a> Tips for Creating Broadcast RealText Files</h4>
+<p><a name="1007490"></a>Here are some pointers on using RealText mark-up when broadcasting a file:</p>
+<ul>
+<p><li><a name="1007769"></a>Start a new input file with the <code><a href="texttag.htm#997463">&lt;clear/&gt;</a></code> tag to clear the existing text in the RealPlayer window. Do not use a <code>&lt;clear/&gt;</code> tag in the middle of an input file, though. In a broadcast, a <code>&lt;clear/&gt;</code> tag does not need to follow a <code>&lt;time begin.../&gt;</code> tag.
+<p><li><a name="1007774"></a>Avoid using <code>&lt;time.../&gt;</code> tags to specify when text appears. Timing elements specify offsets from the start of the broadcast, not from the receipt of the RealText update that includes the elements. Using timing tags can therefore cause unexpected results.
+<p><li><a name="1010203"></a>Keep RealText broadcast files small and broadcast them in a "real time" manner. Do not send large files and use RealText timing tags to delay when the text appears in the RealPlayer window.
+</ul>
+<h2><a name="1006063"></a> Setting the Broadcast URL</h2>
+<p><a name="1007131"></a>Consult with the RealServer administrator to determine the URL for the RealText broadcast. If you are linking a Web page directly to the RealText broadcast, the URL may look like this:</p>
+<pre><a name="1007546"></a>
+&lt;a href="http://realserver.company.com/ramgen/encoder/media/news.rt"&gt;...&lt;/a&gt;
+</pre>
+<p><a name="1007547"></a>This URL includes two virtual directories. The <kbd>ramgen</kbd> virtual directory makes RealServer launch RealPlayer without a separate RAM file. The <kbd>encoder</kbd> virtual directory specifies a broadcast coming in on a certain port of RealServer rather than an actual file existing on a file system. The RealServer administrator sets up these virtual directories.</p>
+<p><a name="1007591"></a>If you use a SMIL file, the Web page URL to the file may look like this: </p>
+<pre><a name="1007597"></a>
+&lt;a href="http://realserver.company.com/ramgen/media/daily.smi"&gt;...&lt;/a&gt;
+</pre>
+<p><a name="1007573"></a>Within the SMIL file, you'll have an RTSP link to the RealText broadcast:</p>
+<pre><a name="1007574"></a>
+&lt;textstream src="rtsp://realserver.company.com/encoder/media/news.rt"/&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1007612"></a>
+For more on using SMIL and specifying URLs for media 
+clips, see <I>RealSystem G2 Production Guide</I>, available at 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a>.
+</td></tr>
+</table></p>
+<p><a name="1007664"></a>Using SMIL, you can embed a RealText broadcast in a multiclip presentation. You might create a RealVideo clip region and a RealText region that displays breaking news, for example. The SMIL file uses the broadcast URL for the text and a standard URL for the on-demand RealVideo clip. Each person who views the presentation sees the video from its normal beginning, but joins the RealText broadcast in progress.</p>
+<h1><a name="1003589"></a> Starting the RealText Broadcast Application</h1>
+<p><a name="1003480"></a>To run the RealText broadcast application, start the Windows DOS prompt and move to the directory that holds the application. Then start the application as shown in this example:</p>
+<pre><a name="1007282"></a>
+c:\RealText\Broadcast&gt; exlvtxt2.exe
+</pre>
+<p><a name="1007283"></a>The application prompts you for a number of parameter values that the following table describes. Enter all values without quotation marks.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1003426"></a>
+ RealText Broadcast Application Start-up Parameters </caption>
+<tr>
+<th align=left valign=bottom><a name="1003430"></a>Parameter</th>
+<th align=left valign=bottom><a name="1003432"></a>Value</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003434"></a>host</td>
+<td align=left valign=top><a name="1003436"></a>The network address of the RealServer G2 machine that will stream the RealText clip. This can be a DNS name such as <code>realserver.company.com</code> or an IP address such as <code>204.71.154.5</code>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003438"></a>port</td>
+<td align=left valign=top><a name="1005814"></a>The port on the RealServer machine that receives the RealText data from the broadcast application. The RealServer administrator determines which port is used.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003442"></a>username</td>
+<td align=left valign=top><a name="1005874"></a>A user name set by the RealServer administrator. The broadcast application must supply this user name to RealServer G2 to connect to it.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003446"></a>password</td>
+<td align=left valign=top><a name="1005938"></a>The password for the user name. The application must supply this to connect to RealServer G2. The RealServer administrator sets the password.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003450"></a>stream file name</td>
+<td align=left valign=top><a name="1003452"></a>The "file name" for the RealText live stream. This file name is used in the RealText hypertext link within the SMIL file or Web page. It does not have to be the same as the input file, but it should end with the <kbd>.rt</kbd> extension.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003454"></a>input file</td>
+<td align=left valign=top><a name="1003456"></a>Name of the RealText file on the broadcast machine to monitor. If the file is not in the same directory as the RealText broadcast application, give the full path as in <kbd>c:\RealText\Broadcast\source\news.rt</kbd>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1008465"></a>polling period</td>
+<td align=left valign=top><a name="1008467"></a>Frequency in seconds that the broadcast application checks for an update to the input file. The default is 1 second.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003458"></a>window type</td>
+<td align=left valign=top><a name="1003460"></a>Window type as listed in <code><a href="windtag.htm#997452">type="window type"</a></code>. The  generic window type is the default.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003462"></a>use defaults?</td>
+<td align=left valign=top><a name="1003464"></a>Whether to use the defaults for the chosen window type. Press <strong>Return</strong> to use all default values as described in <a href="windtag.htm#999095">"Window Tag Attributes"</a>. Enter <code>n</code> to have the application step through the window values. For example, the application asks for a pixel value for the window width. If you selected a generic window, you can use the default value of 320 or enter a different pixel width. There is no duration time for live RealText.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1008524"></a>Average bit rate</td>
+<td align=left valign=top><a name="1008526"></a>Estimated average bit rate for the live RealText stream in bits per second. The default is 1000 (1 Kbps). When the text stream is part of a multiclip presentation, RealPlayer uses this estimate to determine if it has enough bandwidth to play the presentation.</td>
+</tr>
+</table>
+</p>
+<h2><a name="1006026"></a> Moving a RealText File to the Broadcast Directory</h2>
+<p><a name="1006031"></a>Once started, the broadcast application checks the designated directory with the specified polling frequency for an updated version of the RealText input file. You can place a new file in the directory manually or use any automated method, such as a database query, to create the file. All file updates must use the same input file name specified during application start-up.</p>
+<p><a name="1008775"></a>The RealText broadcast application resends prior data every three seconds when there is no new data. If you update the input file at 5 and 7 minutes into the broadcast, for example, a viewer joining the broadcast at the 6-minute mark receives the data originally sent at the 5-minute mark within three seconds. That viewer's RealPlayer then ignores all further resends and next displays the file update broadcast at the 7-minute mark.</p>
+<h2><a name="1006036"></a> Stopping the Broadcast Application</h2>
+<p><a name="1008625"></a>To stop the RealText broadcast stream, update the RealText input file so that it has a dollar sign ($) as its first character. Text can follow the dollar sign, but it is ignored:</p>
+<pre><a name="1008626"></a>
+[file start]<br>$<code><I> ignored text<br></I></code>[file end]
+</pre>
+<p><a name="1008594"></a>This file is not broadcast, but causes RealServer to terminate the broadcast stream. It also shuts down the broadcast application console window on the broadcast machine.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/warning.gif"></th>
+<th align=left class=warn>Warning</th>
+<tr><td class=note>
+<a name="1008586"></a>
+Do not stop the RealText broadcast by pressing <strong>Ctrl+C</strong> 
+from the broadcast application console. This terminates 
+the window but will not properly shut down the 
+RealText stream on RealServer.
+</td></tr>
+</table></p>
+<h1><a name="1003683"></a> Developing a Custom RealText Broadcast Application</h1>
+<p><a name="1007403"></a>The RealSystem G2 SDK, which you can download from <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a>, includes the C++ source code for the RealText broadcast application. Subject to the SDK license agreement, you can customize the broadcast application to do any of the following:</p>
+<ul>
+<p><li><a name="1007417"></a>Compile the RealText broadcast application to run on a different operating system.
+<p><li><a name="1008654"></a>Create a new broadcast application that adds RealText mark-up to a live text stream and sends the data to RealServer.
+<p><li><a name="1007418"></a>Integrate RealText broadcast features into another application.
+</ul>
+<h2><a name="1007487"></a> Closed-Captioning</h2>
+<p><a name="1007460"></a>For closed-captioning, use a device such as TextGrabber from SunBelt Industries (<a href="http://www.sunbeltindustries.com" target="_top">http://www.sunbeltindustries.com</a>). This device supplies text from a TV signal through an RS232 interface. Your customized RealText broadcast application can receive the text, format it with RealText mark-up, and send it to RealServer for broadcast.</p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:50.</font>
+<center><a href="examples.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="windtabl.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

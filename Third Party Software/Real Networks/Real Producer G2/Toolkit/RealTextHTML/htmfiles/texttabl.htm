@@ -1,0 +1,203 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center>
+<a href="windtabl.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center>
+<h1><a name="1000266">
+ Appendix B: 	 Summary of Text Tags
+
+</a></h1>
+<p><a name="1000267"></a>
+
+<p></p>
+<table border=1 cellpadding=3>
+<caption></caption>
+<tr>
+<th align=left valign=bottom><a name="999163"></a>Tag</th>
+<th align=left valign=bottom><a name="999165"></a>Attributes</th>
+<th align=left valign=bottom><a name="999167"></a>Function</th>
+<th align=left valign=bottom><a name="999169"></a>Notes</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="999173"></a><code><a href="texttag.htm#997506">&lt;a href="command" target="_player"&gt;...&lt;/a&gt;</a></code></td>
+<td align=left valign=top><a name="999176"></a>(none)</td>
+<td align=left valign=top><a name="999178"></a>Creates hyperlink that executes a command. </td>
+<td align=left valign=top><a name="999180"></a>Target required. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999185"></a><code><a href="texttag.htm#1012471">&lt;a href="mailto:address"&gt;...&lt;/a&gt;</a></code></td>
+<td align=left valign=top><a name="999187"></a>(none)</td>
+<td align=left valign=top><a name="999189"></a>Opens e-mail message.</td>
+<td align=left valign=top><a name="999191"></a>Browser must be configured for e-mail.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999195"></a><code><a href="texttag.htm#997502">&lt;a href="URL" [target="_player"]&gt;...&lt;/a&gt;</a></code></td>
+<td align=left valign=top><a name="999198"></a><code>target=<br>"_player"</code></td>
+<td align=left valign=top><a name="999200"></a>Creates hyperlink to specified URL. </td>
+<td align=left valign=top><a name="999202"></a>URL opens in browser if target not set to player. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999207"></a><code><a href="texttag.htm#1004125">&lt;b&gt;...&lt;/b&gt;</a></code></td>
+<td align=left valign=top><a name="999209"></a>(none) </td>
+<td align=left valign=top><a name="999211"></a><strong>Bolds</strong> the enclosed text. </td>
+<td align=left valign=top><a name="999213"></a>Compatible with HTML. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999218"></a><code><a href="texttag.htm#1004074">&lt;br/&gt;</a></code></td>
+<td align=left valign=top><a name="999220"></a>(none) </td>
+<td align=left valign=top><a name="999222"></a>Adds space between text. </td>
+<td align=left valign=top><a name="999224"></a>In TickerTape and Marquee, moves "cursor" to the window's right edge. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999229"></a><code><a href="texttag.htm#1004086">&lt;center&gt;...&lt;/center&gt;</a></code></td>
+<td align=left valign=top><a name="999231"></a>(none) </td>
+<td align=left valign=top><a name="999233"></a>Centers the enclosed text. </td>
+<td align=left valign=top><a name="999235"></a>Compatible with HTML. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999240"></a><code><a href="texttag.htm#997463">&lt;clear/&gt;</a></code></td>
+<td align=left valign=top><a name="999242"></a>(none) </td>
+<td align=left valign=top><a name="999244"></a>Clears all text from the window. </td>
+<td align=left valign=top><a name="999246"></a>Following text is displayed at the window's normal starting point. </td>
+</tr>
+<tr>
+<td colspan=1 rowspan=5 align=left valign=top><a name="999251"></a><code><a href="texttag.htm#997472">&lt;font attribute="value"&gt;...&lt;/font&gt;</a></code></td>
+<td align=left valign=top><a name="999253"></a><code>bgcolor</code></td>
+<td align=left valign=top><a name="999255"></a>Sets the background color.</td>
+<td align=left valign=top><a name="999257"></a>See <a href="texttag.htm#997542">"Colors"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999507"></a><code>charset</code></td>
+<td align=left valign=top><a name="999509"></a>Specifies character set used to display text. </td>
+<td align=left valign=top><a name="999511"></a>Default is <code>"us-ascii"</code>. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999515"></a><code>color</code></td>
+<td align=left valign=top><a name="999517"></a>Controls font color except for TickerTape window. </td>
+<td align=left valign=top><a name="999519"></a>Supports all color values available in HTML. See also <code>&lt;tl&gt;</code> and <code>&lt;tu&gt;</code>. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999523"></a><code>face</code></td>
+<td align=left valign=top><a name="999525"></a>Sets the text face. </td>
+<td align=left valign=top><a name="999527"></a>Default is <code>"Times New Roman"</code>. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999531"></a><code>size</code></td>
+<td align=left valign=top><a name="999533"></a>Sets relative font size. </td>
+<td align=left valign=top><a name="999535"></a>Values are: <code>-2, -1, +0, +1, +2, +3, +4; </code>or <code>1, 2, 3, 4, 5, 6, 7</code>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999294"></a><code><a href="texttag.htm#1004083">&lt;hr/&gt;</a></code></td>
+<td align=left valign=top><a name="999296"></a>(none) </td>
+<td align=left valign=top><a name="999298"></a>Acts like two <code>&lt;br/&gt;</code> tags. </td>
+<td align=left valign=top><a name="999300"></a>For HTML compatibility. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999305"></a><code><a href="texttag.htm#1004128">&lt;i&gt;...&lt;/i&gt;</a></code></td>
+<td align=left valign=top><a name="999307"></a>(none) </td>
+<td align=left valign=top><a name="999309"></a><I>Italicizes</I> the enclosed text. </td>
+<td align=left valign=top><a name="999311"></a>Compatible with HTML. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999316"></a><code><a href="texttag.htm#1004080">&lt;li&gt;...&lt;/li&gt;</a></code></td>
+<td align=left valign=top><a name="999318"></a>(none) </td>
+<td align=left valign=top><a name="999320"></a>Acts like a <code>&lt;br/&gt;</code> tag. </td>
+<td align=left valign=top><a name="999322"></a>For HTML compatibility. No numbers or bullets. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999327"></a><code><a href="texttag.htm#1009589">&lt;ol&gt;...&lt;/ol&gt;</a></code></td>
+<td align=left valign=top><a name="999329"></a>(none) </td>
+<td align=left valign=top><a name="999331"></a>Indents text. </td>
+<td align=left valign=top><a name="999333"></a>For HTML compatibility. No numbers, however. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999338"></a><code><a href="texttag.htm#1004071">&lt;p&gt;...&lt;/p&gt;</a></code></td>
+<td align=left valign=top><a name="999340"></a>(none) </td>
+<td align=left valign=top><a name="999342"></a>Adds space between text. </td>
+<td align=left valign=top><a name="999344"></a>In TickerTape and Marquee, moves "cursor" to the window's right edge. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999349"></a><code><a href="texttag.htm#1009721">&lt;pos x="pixels"/&gt;</a></code></td>
+<td align=left valign=top><a name="999351"></a>(none) </td>
+<td align=left valign=top><a name="999353"></a>Positions text horizontally. </td>
+<td align=left valign=top><a name="999355"></a>Applies only if scrollrate and crawlrate are <code>0</code> (zero). </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999360"></a><code><a href="texttag.htm#1009721">&lt;pos y="pixels"/&gt;</a></code></td>
+<td align=left valign=top><a name="999362"></a>(none) </td>
+<td align=left valign=top><a name="999364"></a>Positions text vertically. </td>
+<td align=left valign=top><a name="999366"></a>Applies only if scrollrate and crawlrate are <code>0</code> (zero). </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999371"></a><code><a href="texttag.htm#1004157">&lt;pre&gt;...&lt;/pre&gt;</a></code></td>
+<td align=left valign=top><a name="999373"></a>(none)</td>
+<td align=left valign=top><a name="999375"></a>Preserves tabs, spaces, and breaks.</td>
+<td align=left valign=top><a name="999377"></a>Uses Courier face.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999382"></a><code><a href="texttag.htm#1003888">&lt;required&gt;...&lt;/required&gt;</a></code></td>
+<td align=left valign=top><a name="999384"></a>(none) </td>
+<td align=left valign=top><a name="999386"></a>Ensures that text is delivered. </td>
+<td align=left valign=top><a name="999388"></a>Presentation will halt if needed until text gets through. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1000298"></a><code><a href="texttag.htm#1020196">&lt;s&gt;...&lt;/s&gt;</a></code></td>
+<td align=left valign=top><a name="1000300"></a>(none)</td>
+<td align=left valign=top><a name="1000302"></a>Strikes through the enclosed text.</td>
+<td align=left valign=top><a name="1000304"></a>Compatible with HTML. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999393"></a><code><a href="texttag.htm#1009676">&lt;time begin="dd:hh:mm:ss.xyz"/&gt;</a></code></td>
+<td align=left valign=top><a name="999395"></a>(none) </td>
+<td align=left valign=top><a name="999397"></a>Sets time when text  appears.</td>
+<td align=left valign=top><a name="999399"></a>Only seconds ("<code>ss</code>") are required.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999404"></a><code><a href="texttag.htm#1009676">&lt;time end="dd:hh:mm:ss.xyz"/&gt;</a></code></td>
+<td align=left valign=top><a name="999406"></a>(none) </td>
+<td align=left valign=top><a name="999408"></a>Sets time when text  disappears.</td>
+<td align=left valign=top><a name="999410"></a>Only seconds ("<code>ss</code>") are required.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999415"></a><code><a href="texttag.htm#1009825">&lt;tl [color="color"]&gt;...&lt;/tl&gt;</a> </code></td>
+<td align=left valign=top><a name="999417"></a><code>color </code></td>
+<td align=left valign=top><a name="999419"></a>Displays text at lower edge in TickerTape.</td>
+<td align=left valign=top><a name="999421"></a>Color affects only the following <code>&lt;tl&gt;</code> elements. See also <a href="texttag.htm#997542">"Colors"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999432"></a><code><a href="texttag.htm#1009825">&lt;tu [color="color"]&gt;...&lt;/tu&gt;</a> </code></td>
+<td align=left valign=top><a name="999434"></a><code>color </code></td>
+<td align=left valign=top><a name="999436"></a>Displays text at upper edge in TickerTape.</td>
+<td align=left valign=top><a name="999438"></a>Color affects only the following <code>&lt;tu&gt;</code> elements. See also <a href="texttag.htm#997542">"Colors"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999449"></a><code><a href="texttag.htm#1004131">&lt;u&gt;...&lt;/u&gt;</a></code></td>
+<td align=left valign=top><a name="999451"></a>(none)</td>
+<td align=left valign=top><a name="999453"></a><u>Underlines</u> the enclosed text.</td>
+<td align=left valign=top><a name="999455"></a>Compatible with HTML. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999460"></a><code><a href="texttag.htm#1009882">&lt;ul&gt;...&lt;/ul&gt;</a></code></td>
+<td align=left valign=top><a name="999462"></a>(none) </td>
+<td align=left valign=top><a name="999464"></a>Indents text. </td>
+<td align=left valign=top><a name="999466"></a>For HTML compatibility. No bullets, however. </td>
+</tr>
+</table>
+</p>
+<p><a name="998174"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:51.</font>
+<center>
+<a href="windtabl.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+</center></body>
+</html>

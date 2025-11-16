@@ -1,0 +1,463 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="whatsnew.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="bandwdth.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="43394"></a>
+ Chapter 2: 	Creating RealSystem Presentations
+
+</h1>
+<p><a name="10757"></a>RealSystem G2 gives you the power to create compelling, complex multimedia presentations streamed over a network. It includes RealServer G2, the most advanced streaming media server available, along with RealPlayer G2 and RealPlayer Plus G2, the world's most popular desktop applications for playing streaming media clips. This chapter explains the basics of how you use RealSystem G2 to put together stunning multimedia presentations.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="27021"></a>
+To experience the many possibilities of streaming media, 
+download RealPlayer G2 from <a href="http://www.real.com" target="_top">http://www.real.com</a> 
+and visit <a href="http://www.real.com/realguide/" target="_top">http://www.real.com/realguide/</a> and 
+<a href="http://www.real.com/showcase" target="_top">http://www.real.com/showcase</a>.
+</td></tr>
+</table></p>
+<h1><a name="34594"></a> Streaming Multimedia Clips</h1>
+<p><a name="36859"></a>A RealSystem presentation can consist of one clip, such as a single RealAudio clip, or multiple clips played in sequence or in parallel. RealSystem <I>streams</I> these presentations over a network. If you have ever <I>downloaded</I> a video or audio clip to your Web browser, you know that it can take several minutes to receive a clip that plays for a few seconds. In contrast, a clip streamed by RealServer G2 begins to play back almost immediately.</p>
+<h2><a name="36850"></a> Choosing Media to Stream</h2>
+<p><a name="34588"></a>RealSystem G2 gives you many possibilities for combining media clips into presentations. There are two basic types of file formats you can stream with RealSystem G2:</p>
+<ul>
+<p><li><a name="34127"></a>Standard or "open" formats
+<p><a name="34128"></a>Editing programs typically let you save or export files to a standard, "open" format. Video editing programs usually let you export files as AVI or QuickTime, for example. RealSystem can stream several standard formats, but these formats may not be optimized for network streaming.</p>
+<p><li><a name="34129"></a>Streaming formats
+<p><a name="34130"></a>Formats such as RealAudio and RealVideo are highly compressed formats optimized for network streaming. These formats give the best results. You can convert a file from a standard format to a streaming format with an encoding tool. Some editing programs can also export files directly to streaming formats.</p>
+</ul>
+<h4><a name="32751"></a> Audio</h4>
+<p><a name="32758"></a><a href="audio.htm#34361">Chapter 4</a> discusses the audio formats you can stream:</p>
+<ul>
+<p><li><a name="32759"></a>RealAudio (<kbd>.rm</kbd>)
+<p><li><a name="32760"></a>AIFF (<kbd>.aif</kbd>)
+<p><li><a name="32761"></a>AU (<kbd>.au</kbd>)
+<p><li><a name="32762"></a>WAV (<kbd>.wav</kbd>)
+</ul>
+<h4><a name="32764"></a> Video</h4>
+<p><a name="32771"></a><a href="video.htm#29959">Chapter 5</a> describes the video formats you can stream:</p>
+<ul>
+<p><li><a name="32772"></a>RealVideo (<kbd>.rm</kbd>)
+<p><li><a name="32773"></a>ASF (<kbd>.asf</kbd>)
+<p><li><a name="32774"></a>AVI (<kbd>.avi</kbd>)
+<p><li><a name="32775"></a>QuickTime (<kbd>.mov</kbd>)
+<p><li><a name="32776"></a>Vivo (<kbd>.viv</kbd>)
+</ul>
+<h4><a name="32777"></a> Animation</h4>
+<p><a name="32778"></a>RealFlash, which pairs Macromedia Flash animation with a RealAudio soundtrack, lets you stream animated presentations. See <a href="animate.htm#22736">Chapter 6</a> for details.</p>
+<h4><a name="32787"></a> Images</h4>
+<p><a name="32788"></a>RealSystem presentations can include still images in these formats:</p>
+<ul>
+<p><li><a name="32789"></a>JPEG (<kbd>.jpg</kbd>)
+<p><a name="42056"></a>RealPlayer G2 can display RGB baseline JPEGs. Progressive and grayscale JPEGs are not supported.</p>
+<p><li><a name="32790"></a>GIF87, GIF89, and animated GIF (<kbd>.gif</kbd>)
+<p><a name="42046"></a>Both interlaced and noninterlaced GIFs will work, but noninterlaced GIFs are recommended.</p>
+</ul>
+<p><a name="32791"></a>You can also assemble JPEG and GIF images (though not animated GIFs) in a RealPix presentation to create eye-catching slideshows with special effects such as dissolves and zooms. If you have RealPlayer G2 installed, <a href="../media/sample.rp">click here</a> to view a RealPix sample.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="47377"></a>
+Download <I>RealPix Authoring Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="32794"></a> Text</h4>
+<p><a name="32795"></a>RealText streams text at specific times within a presentation. You can use RealText to add subtitles to a video, for example, or lay out text from a live source to create a real-time stock ticker. If you have RealPlayer G2 installed, <a href="../media/ticker.rt">click here</a> to see a static example of a RealText stock ticker.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="47466"></a>
+Get <I>RealText Authoring Guide,</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="32797"></a> Additional Streaming Formats</h4>
+<p><a name="32798"></a>RealSystem's plug-in technology lets it stream nearly any type of clip or live event. Check <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a> for the availability of plug-ins that let RealSystem stream additional video and audio formats, as well as exciting new types of media.</p>
+<h2><a name="36874"></a> Clip Types Played by Previous RealPlayer Releases</h2>
+<p><a name="40264"></a>Most RealPlayer users upgrade when a new version of RealPlayer becomes available. If you need to create presentations playable by older versions of RealPlayer, though, take into account RealPlayer and clip type compatibility. The table below indicates which RealPlayer versions, such as RealPlayer G2 or RealPlayer 5.0, can play which types of clips. RealPlayer 4.0, for example, plays only RealAudio and RealVideo.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="40270"></a>
+ RealPlayer Compatibility with RealSystem G2 Clips </caption>
+<tr>
+<th align=left valign=bottom><a name="40284"></a>Clip Type</th>
+<th align=left valign=bottom><a name="40286"></a>G2</th>
+<th align=left valign=bottom><a name="40288"></a>5</th>
+<th align=left valign=bottom><a name="40290"></a>4</th>
+<th align=left valign=bottom><a name="40292"></a>3</th>
+<th align=left valign=bottom><a name="40294"></a>2</th>
+<th align=left valign=bottom><a name="40296"></a>1</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="40298"></a>RealAudio</td>
+<td align=left valign=top><a name="40300"></a><code>X</code></td>
+<td align=left valign=top><a name="40302"></a><code>X</code></td>
+<td align=left valign=top><a name="40304"></a><code>X</code></td>
+<td align=left valign=top><a name="40306"></a><code>X</code></td>
+<td align=left valign=top><a name="40308"></a><code>X</code></td>
+<td align=left valign=top><a name="40310"></a><code>X</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40312"></a>RealVideo</td>
+<td align=left valign=top><a name="40314"></a><code>X</code></td>
+<td align=left valign=top><a name="40316"></a><code>X</code></td>
+<td align=left valign=top><a name="40318"></a><code>X</code></td>
+<td align=left valign=top><a name="40320"></a><code>-</code></td>
+<td align=left valign=top><a name="40322"></a><code>-</code></td>
+<td align=left valign=top><a name="40324"></a><code>-</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40326"></a>RealFlash</td>
+<td align=left valign=top><a name="40328"></a><code>X</code></td>
+<td align=left valign=top><a name="40330"></a><code>X</code></td>
+<td align=left valign=top><a name="40332"></a><code>-</code></td>
+<td align=left valign=top><a name="40334"></a><code>-</code></td>
+<td align=left valign=top><a name="40336"></a><code>-</code></td>
+<td align=left valign=top><a name="40338"></a><code>-</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40340"></a>RealPix</td>
+<td align=left valign=top><a name="40342"></a><code>X</code></td>
+<td align=left valign=top><a name="40344"></a><code>-</code></td>
+<td align=left valign=top><a name="40346"></a><code>-</code></td>
+<td align=left valign=top><a name="40348"></a><code>-</code></td>
+<td align=left valign=top><a name="40350"></a><code>-</code></td>
+<td align=left valign=top><a name="40352"></a><code>-</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40354"></a>RealText</td>
+<td align=left valign=top><a name="40356"></a><code>X</code></td>
+<td align=left valign=top><a name="40358"></a><code>-</code></td>
+<td align=left valign=top><a name="40360"></a><code>-</code></td>
+<td align=left valign=top><a name="40362"></a><code>-</code></td>
+<td align=left valign=top><a name="40364"></a><code>-</code></td>
+<td align=left valign=top><a name="40366"></a><code>-</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40368"></a>Open formats such as WAV and AVI</td>
+<td align=left valign=top><a name="40370"></a><code>X</code></td>
+<td align=left valign=top><a name="40372"></a><code>-</code></td>
+<td align=left valign=top><a name="40374"></a><code>-</code></td>
+<td align=left valign=top><a name="40376"></a><code>-</code></td>
+<td align=left valign=top><a name="40378"></a><code>-</code></td>
+<td align=left valign=top><a name="40380"></a><code>-</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="40992"></a>SMIL</td>
+<td align=left valign=top><a name="41006"></a><code>X</code></td>
+<td align=left valign=top><a name="41008"></a><code>-</code></td>
+<td align=left valign=top><a name="41010"></a><code>-</code></td>
+<td align=left valign=top><a name="41012"></a><code>-</code></td>
+<td align=left valign=top><a name="41014"></a><code>-</code></td>
+<td align=left valign=top><a name="41016"></a><code>-</code></td>
+</tr>
+</table>
+ </p>
+<p><a name="40398"></a>Note that this table covers general clip compatibility, not codec compatibility. Later versions of RealPlayer typically introduce new RealAudio and RealVideo codecs. Earlier versions of RealPlayer cannot play the new RealAudio G2 codecs, for example. So when planning for backwards compatibility, make sure you encode RealAudio or RealVideo clips with a codec available in your targeted versions of RealPlayer.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="40954"></a>
+See also <a href="whatsnew.htm#17218">"Compatibility with Previous Releases"</a>. For 
+more on codecs, see <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a> and 
+<a href="video.htm#16859">"Choosing RealVideo Codecs"</a>.
+</td></tr>
+</table></p>
+<h1><a name="36920"></a> Using Editing and Production Tools</h1>
+<p><a name="35917"></a>After choosing your streaming media formats, gather content and use your preferred editing tools to prepare your source files. Sound editing software, for example, lets you optimize an audio clip's dynamic range. With video editing software you can set the video's window size. RealSystem does not require you to use specific editing tools. Just ensure that your editing tools can save files in streaming formats, or in open formats you can easily convert to streaming formats.</p>
+<h5><a name="42422"></a>
+ Use Your Favorite Editing Tools to Prepare Media Files</h5>
+<p><a name="42446"></a>
+<img src="../graphics/edittool.gif"></p>
+<h2><a name="35921"></a> RealNetworks Production Tools</h2>
+<p><a name="35922"></a>If your editing program does not export files to the streaming format you want, you can use an encoding tool to convert the file. RealNetworks provides free, basic tools and sells enhanced tools for converting popular sound and video formats to RealAudio and RealVideo. In addition, plug-ins for popular programs such as Adobe Premiere and Microsoft PowerPoint let you save presentations directly as RealVideo.</p>
+<h5><a name="42486"></a>
+ RealNetworks Production Tools Create Streaming Clips</h5>
+<p><a name="42495"></a>
+<img src="../graphics/enctool.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="36128"></a>
+Check <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a> for the 
+tool that's right for you.
+</td></tr>
+</table></p>
+<h2><a name="36086"></a> Additional Tools</h2>
+<p><a name="36087"></a>RealSystem G2 provides virtually unlimited possibilities for streaming media. It does not lock you into a small set of streaming formats or a specific set of tools. In addition to new types of streaming media, RealNetworks' partners and other parties are continually producing new tools that help you put together sophisticated presentations. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="42392"></a>
+Visit <a href="http://www.realstore.com" target="_top">http://www.realstore.com</a> to find out about the 
+many tools available to help you create streaming media. 
+Also check <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a> frequently 
+for information about new media types and tools.
+</td></tr>
+</table></p>
+<h1><a name="33005"></a> Working with Timelines and Bandwidths</h1>
+<p><a name="34273"></a>As you create streaming media clips, you need to consider how to keep the clips synchronized to a single presentation timeline. You also need to create presentations for specific bandwidths. These are two important, interrelated steps for producing streaming multimedia presentations.</p>
+<h2><a name="33804"></a> Synchronizing Clips to a Timeline</h2>
+<p><a name="33896"></a>Because a static Web page has no timeline, images and text download without a preset order. You may notice when browsing a Web page that one image may download partially, then another image begins to appear, then the first image completes, and so on. A Web page does not have an internal timeline, so exactly when a certain image gets to the browser doesn't matter. What matters is that the entire page downloads as soon as possible.</p>
+<p><a name="33897"></a>When you stream multimedia, though, clips have timelines and must flow smoothly once they've started to play back. Imagine how jarring it would be for the visual track of a video to play silently for a minute, then pause as its audio track catches up to it a minute later. When you stream multimedia, therefore, it's important that your presentation keeps clips synchronized.</p>
+<h5><a name="48021"></a>
+ Clip Timelines Coordinate with an Presentation Timeline</h5>
+<p><a name="48025"></a>
+<img src="../graphics/timeovr.gif"></p>
+<p><a name="47983"></a>There are three aspects of timelines you may work with:</p>
+<ul>
+<p><li><a name="35092"></a>Clips with Internal Timelines
+<p><a name="34334"></a>Audio, video, and animation have internal timelines. In a two-minute video, for instance, each frame corresponds to a specific point in a two-minute timeline. Each second of audio meshes with each second of the visual image throughout the clip's overall timeline. Your video, audio, or animation editing program is your main tool for manipulating the clip's timeline, which is part of the fabric of the clip.</p>
+<p><li><a name="35136"></a>Clips with Variable Timelines
+<p><a name="35137"></a>With RealPix or RealText, you define timing tags that set when each image or text block appears. Unlike a video clip in which the image should always be moving, images and text can remain stationary for indefinite periods until new images and text replace them. When combining clips, it's typically easier to produce audio, video, or animation first. Then set the RealPix and RealText timelines to coordinate with those clips.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="36411"></a>
+Get the RealPix and RealText authoring guides from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<p><li><a name="35097"></a>SMIL Timing Commands
+<p><a name="33806"></a>A SMIL file assembles your presentation and can include its own timing elements. Timing a presentation with SMIL can be as simple as starting one clip as soon as another one stops. But you can also use explicit timing commands to delay playback for ten seconds, for example, or start a clip playing at 30 seconds into its internal timeline. SMIL's timing commands are optional, but they give you an extra level of flexibility you may need when putting multimedia clips together.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="33812"></a>
+<a href="realsys.htm#13486">"Writing a SMIL File"</a> provides an overview of SMIL. For 
+specifics on SMIL timing, see <a href="smil.htm#18718">"Specifying Timing"</a>.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="33008"></a> Keeping a Bandwidth Budget</h2>
+<p><a name="33752"></a>Any presentation streamed over a network has a <I>bandwidth</I> budget because each person viewing streaming clips has a network connection with a top speed, such as 28.8 Kilobits per second. Even when your clips are perfectly synchronized, the presentation may stall if at some point it requires more bandwidth than the viewer has available. This happens because RealServer needs to transmit at a certain point in the timeline more data than can get through the network connection to RealPlayer.</p>
+<p><a name="33009"></a>When you develop a streaming media presentation, you need to consider the bandwidth constraints your audience will have. This is crucial for creating presentations that start to play back quickly and flow smoothly. Web users don't like to wait more than a few seconds for something to happen after they click a link. And if your clips stop and restart frequently, viewers are not likely to stay watching. Fortunately, RealSystem offers sophisticated features that let you create a single presentation that looks good over a slow connection and great over a fast one.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="33016"></a>
+<a href="bandwdth.htm#1001523">Chapter 3</a> provides the details for considering 
+bandwidth in streaming presentations.
+</td></tr>
+</table></p>
+<h1><a name="13486"></a> Writing a SMIL File</h1>
+<p><a name="17167"></a>With your clips in their streaming formats, you put your presentation together with SMIL. Pronounced "smile," SMIL stands for "Synchronized Multimedia Integration Language." A SMIL file is not necessary to stream just one clip. But when you have multiple clips, SMIL's simple mark-up language specifies how and when the clips play.</p>
+<h5><a name="42263"></a>
+ Advantages of Using SMIL</h5>
+<p><a name="42267"></a>
+<img src="../graphics/smilovr.gif"></p>
+<p><a name="42218"></a>Here are some of the many advantages of using SMIL:</p>
+<ul>
+<p><li><a name="16766"></a>Avoid Using Container Formats
+<p><a name="16767"></a>Because RealSystem can stream many media formats, you do not need to merge clips into container formats such as these:</p>
+<ul>
+
+<p><li><a name="28392"></a>Advanced Streaming Format (ASF, file extension <kbd>.asf</kbd>)
+<p><li><a name="28395"></a>RealMedia File Format (file extension <kbd>.rm</kbd>)
+</ul>
+<p><a name="28386"></a>Although RealSystem G2 can stream either of these container formats, using RealSystem streaming formats and putting the presentation together with a SMIL file gives you greater flexibility. To alter your presentation, for example, you simply edit the SMIL file rather than merge the clips again into a different container file.</p>
+<p><li><a name="16398"></a>Use Clips in Different Locations
+<p><a name="16785"></a>Because a SMIL file lists a separate URL for each clip, you can put together presentations using clips in any locations. You can use a video clip from one server, for example, and a text clip from another.</p>
+<p><li><a name="16786"></a>Support Multiple Languages
+<p><a name="16392"></a>A SMIL file can list different language options for clips. To create a video with soundtracks in different languages, for example, you produce one video clip with no soundtrack, then create audio clips in each language. Your Web page needs just one link to the SMIL file. When a visitor clicks that link, the visitor's RealPlayer chooses a soundtrack based on its language preference.</p>
+<p><li><a name="16741"></a>Support Multiple Bandwidths
+<p><a name="16746"></a>A SMIL file can also list presentation choices for different bandwidths. RealPlayer then chooses which clips to receive based on its available bandwidth. You can thereby support multiple connection speeds through a single hypertext link, rather than separate links for modem users, ISDN users, T1 users, and so on.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="42619"></a>
+RealSystem G2's SureStream technology also lets you 
+support multiple bandwidth connections within a 
+single clip, for more information, see <a href="bandwdth.htm#999057">"Supporting 
+Multiple Bandwidth Connections"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="16523"></a>Put Together Customized Presentations
+<p><a name="16812"></a>Because a SMIL file is a simple text file, you can generate it automatically for each visitor. You can therefore create different presentation parts, then assemble a customized SMIL file based on preferences recorded in the visitor's browser.</p>
+<p><li><a name="16913"></a>Time and Control the Presentation
+<p><a name="16914"></a>The SMIL file lets you easily control the presentation timeline. You can start an audio clip playing at 2.5 seconds into its internal timeline, for example, without changing the encoded clip.</p>
+<p><li><a name="16966"></a>Lay Out the Presentation
+<p><a name="16971"></a>When your presentation includes multiple clips, such as a RealVideo clip playing simultaneously with a RealPix slideshow, you use SMIL to define the layout.</p>
+<p><li><a name="17068"></a>Include Ads
+<p><a name="17069"></a>For commercial sites, the SMIL file can insert ads into your presentation, either in a separate ad banner or between clips playing in sequence.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="14618"></a>
+<a href="smil.htm#100023">Chapter 7</a> explains the SMIL file syntax. <a href="ads.htm#12177">Chapter 9</a> 
+provides examples of ad insertion.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="34033"></a> Hosting a Presentation on a Server</h1>
+<p><a name="18696"></a>When your presentation is complete, you move the streaming media clips and SMIL file to RealServer G2 or a Web server for delivery. You can play back your presentation in RealPlayer or directly in your Web page. The latter option, which uses RealPlayer's Netscape plug-in or ActiveX Control, requires mark-up tags in your Web page that specify how the presentation displays.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="34064"></a>
+<a href="server.htm#32401">Chapter 10</a> explains how to link your Web page to a 
+RealSystem presentation hosted on a server. For 
+information on embedding a presentation in your Web 
+page, see <a href="control.htm#65923">Chapter 8</a>.
+</td></tr>
+</table></p>
+<h2><a name="34004"></a> Using RealServer G2 or a Web Server</h2>
+<p><a name="34500"></a>RealServer G2 is the preferred host for RealSystem presentations. Designed specifically to stream multimedia over networks, RealServer keeps multiple clips synchronized and uses many advanced features to ensure that clips stream smoothly under adverse network conditions. While you can use a standard Web server to host some streaming presentations, you will not get the results you'll experience when using RealServer.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="41911"></a>
+If you don't have RealServer G2 available, check out the 
+hosting services of Real Broadcast Network (RBN) at 
+<a href="http://www.real.com/rbn" target="_top">http://www.real.com/rbn</a>. RBN provides full services 
+for encoding, hosting, and broadcasting events to small 
+or large audiences.
+</td></tr>
+</table></p>
+<h3><a name="34665"></a> Web Server HTTP and RealServer RTSP</h3>
+<p><a name="34005"></a>A Web server uses the HTTP protocol, as you can see in URLs that begin with <code>http://</code>. The HTTP protocol downloads files without regard to timelines, making clips with timelines more likely to stall. Although RealPlayer can play back clips as they download, the HTTP protocol does not give RealPlayer the ability to adjust the download to compensate for changing network conditions.</p>
+<p><a name="34705"></a>In contrast, URLs for media clips streamed by RealServer begin with <code>rtsp://</code>, because RealServer uses the RTSP protocol, which is designed specifically to stream clips that have timelines. RTSP lets RealPlayer G2 and RealServer G2 exchange information about a presentation in progress and adjust the streaming data to keep the clips playing smoothly.</p>
+<h5><a name="43445"></a>
+ RealServer RTSP Streaming vs. Web Server HTTP Downloading</h5>
+<p><a name="43450"></a>
+<img src="../graphics/urlbasic.gif"></p>
+<p><a name="34007"></a>When two clips play side-by-side, for example, RealPlayer uses RTSP to communicate with RealServer about each clip's progress, indicating how much data it needs to keep the presentation synchronized. RealServer can then adjust the data flow, reducing low priority data if necessary to ensure that crucial data gets through. Communication like this is not possible when a Web server sends clips to RealPlayer.</p>
+<p><a name="34008"></a>You don't need to know the specifics of RTSP to create great presentations. You just need to ensure that RealServer G2 is available to stream your clips. If only a Web server is available, you can still create multimedia presentations, but you won't be able to use all RealSystem features. In either case, make sure you have a good understanding of RealSystem G2 production as described in this manual before you start creating your clips. This helps ensure that your presentation harmonizes with the server that hosts it.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="34009"></a>
+For information on RealSystem features that do not 
+work with Web server hosting, read <a href="server.htm#14811">"Limitations on Web 
+Server Playback"</a>.
+</td></tr>
+</table></p>
+<h3><a name="41760"></a> Launching a Presentation</h3>
+<p><a name="41761"></a>Because some browsers may not be configured to launch RealPlayer when they receive a SMIL file or a media clip, you need to ensure that RealPlayer launches when a visitor to your Web page clicks the link to your presentation. When RealServer G2 hosts your presentation, you simply include a Ramgen parameter in the Web page URL to launch RealPlayer.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="41764"></a>
+For more on Ramgen, see <a href="server.htm#25299">"Streaming Clips from 
+RealServer G2"</a>.
+</td></tr>
+</table></p>
+<p><a name="41769"></a>When a Web server hosts your presentation, you launch RealPlayer by linking your Web page to a Ram file instead of a SMIL file or a media clip. When the browser receives the Ram file, it launches RealPlayer and gives it the Ram file, which contains the URLs to your media clips or SMIL file. RealPlayer uses this information to request the presentation from the Web server. Because the Ram file is a small text file, this interaction takes little time.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="41770"></a>
+For more on Web server playback, see <a href="server.htm#16649">"Playing Clips 
+from a Web Server"</a>.
+</td></tr>
+</table></p>
+<h3><a name="34462"></a> Working with the RealServer Administrator</h3>
+<p><a name="34853"></a>Because earlier versions of RealServer do not handle SMIL files and many of the RealSystem G2 clip types, make sure you have RealServer G2 available to host your presentation. When you host a presentation on RealServer G2, the RealServer administrator will give you the basic URL parameters, such as the server address and its RTSP and HTTP port parameters. The RealServer administrator can also set up many content delivery and security features, such as:</p>
+<ul>
+<p><li><a name="34927"></a>live broadcasts
+<p><li><a name="34930"></a>pay-per-view content
+<p><li><a name="34931"></a>password authentication
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="34932"></a>
+<I>RealServer Administration Guide, </I>available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>, 
+explains RealServer features.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="48635"></a> Using RealNetworks Logos</h2>
+<p><a name="48636"></a>When you create RealSystem G2 content, RealNetworks encourages you to add RealSystem G2 logos to your Web page. You can provide a RealPlayer G2 download link button, for example, so that users can get RealPlayer G2 from RealNetworks' site and view your content. You can read RealNetworks' trademark policy and get RealSystem G2 and RealPlayer G2 logos from <a href="http://www.real.com/company/guide/index.html" target="_top">http://www.real.com/company/guide/index.html</a>.</p>
+<h2><a name="36251"></a> Playing Clips Back Locally</h2>
+<p><a name="36252"></a>Although the main function of RealSystem is to stream media clips over a network, you can also create presentations that play back from a user's local machine. An example is a multimedia-enhanced book, like this online manual, written with HTML and containing links to RealSystem clips. Users then download all the book files to their local machines and play back the media clips in RealPlayer.</p>
+<p><a name="36288"></a>In this case, you produce clips as described in this manual, except that you don't have to target specific network bandwidths. When you put the presentation together, you simply use URLs that point to clips on the user's machine instead of on RealServer or a Web server.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="36293"></a>
+For more on local URLs, see <a href="smil.htm#64697">"Linking to Local Clips"</a>.
+</td></tr>
+</table></p>
+<h1><a name="10656"></a> Viewing a Presentation with RealPlayer</h1>
+<p><a name="12847"></a>With RealPlayer G2 installed, you simply click the presentation link in your Web page to view the media clips. RealPlayer buffers the clips for a few seconds, then begins to play the presentation back in its own window or your browser. RealPlayer downloads are available from RealNetworks at <a href="http://www.real.com" target="_top">http://www.real.com</a>.</p>
+<h2><a name="13157"></a> Protecting Copyrighted Content</h2>
+<p><a name="42804"></a>Unlike a Web browser, RealPlayer does not store clips in a disk cache or allow users to copy or download still images. This helps you keep copyrighted material secure. Optionally, RealNetworks tools let you encode video and audio clips so that viewers can record the streamed clips to their local machines.</p>
+<h2><a name="36397"></a> Downloading RealPlayer Plug-Ins</h2>
+<p><a name="10833"></a>RealPlayer can play virtually any streaming clip because of its plug-in technology. RealPlayer plug-ins function like Web browser plug-ins. When RealPlayer receives a streaming RealVideo clip, for example, it uses its RealVideo plug-in to play the clip on your computer screen. If RealPlayer doesn't have a plug-in needed to play a certain streaming clip, it downloads that plug-in from the Internet.</p>
+<h5><a name="43419"></a>
+ RealPlayer Downloading a New Plug-in</h5>
+<p><a name="43426"></a>
+<img src="../graphics/plugin.gif"></p>
+<p><a name="17570"></a>Plug-in downloading lets you confidently develop presentations using the latest streaming file types available for RealSystem. If visitors to your Web page don't have a plug-in needed to play your presentation, they can quickly download it and view your presentation. Because RealPlayer is the world's most popular application for playing streaming media, you can be sure that your RealSystem G2 presentation can reach the widest audience possible.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="9046"></a>
+For information about developing RealPlayer plug-ins 
+or building RealPlayer capabilities into an application, 
+visit <a href="http://www.real.com/devzone/realdevelopers/" target="_top">http://www.real.com/devzone/realdevelopers/</a>.
+</td></tr>
+</table></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:29.</font>
+<center><a href="whatsnew.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="bandwdth.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

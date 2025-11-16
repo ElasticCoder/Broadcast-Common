@@ -1,0 +1,177 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="bandwdth.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tagtable.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1010036"></a>
+ Chapter 4: 	RealPix Broadcasting
+
+</h1>
+<p><a name="1010242"></a>The RealPix broadcast application connects to RealServer G2 and polls a specified directory every second for an updated image file, which can be in JPEG or static GIF format. When it finds an updated image file, it sends the file to RealServer, which broadcasts the file to the connected RealPlayers. New files replace old files with a transition that alternates between a fade-in and a "push" wipe transition.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1010243"></a>
+<I>RealSystem G2 Production Guide</I> provides an overview of 
+broadcasting. For more on configuring a broadcast, see 
+<I>RealServer Administration Guide</I>. Both guides are available 
+at <a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h1><a name="1010046"></a> RealPix Broadcast Application</h1>
+<p><a name="1007543"></a>You can broadcast RealPix to multiple viewers with an application included in the <kbd>utils</kbd> directory of this manual. The broadcast application runs on any Windows 32-bit operating system. Its C++ source code is publicly available, though, and you can compile it on a different operating system as noted in <a href="livepix.htm#1003683">"Developing a Custom RealPix Broadcast Application"</a>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1007979"></a>
+Available at <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>, 
+RealNetworks tools let you broadcast RealAudio and 
+RealVideo as well. For information on broadcasting 
+RealText, download <I>RealText Authoring Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h2><a name="1003297"></a> Installing the RealPix Broadcast Application</h2>
+<p><a name="1003543"></a>The RealPix broadcast application comprises the <kbd><b>exlvpix.exe</b></kbd> executable file and a few DLLs. These files must reside together, but you can move them from the <kbd>utils</kbd> directory to any directory on a RealPix broadcast machine. You can use the RealServer G2 machine or any Windows 32-bit machine with a network connection to RealServer G2. RealPix broadcast requires minimal system resources, but RealNetworks recommends using a Pentium 133 MHz or faster processor with at least 32 Megabytes of memory.</p>
+<h1><a name="1008428"></a> Creating a Broadcast RealPix Clip</h1>
+<p><a name="1006551"></a>Create RealPix broadcast images in JPEG or static GIF format. You set RealPix window attributes such as width and height when you start the broadcast application. RealServer sends these attributes to each RealPlayer when it connects to the broadcast. The broadcast images then scale to the window size when received by RealPlayer, maintaining their height-to-width aspect ratios.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1009586"></a>
+For more on aspect ratios, see <a href="realpix.htm#1016065">"Controlling Image 
+Aspect"</a>.
+</td></tr>
+</table></p>
+<h2><a name="1006063"></a> Setting the Broadcast URL</h2>
+<p><a name="1007131"></a>Consult with the RealServer administrator to determine the URL for the RealPix broadcast. If you are linking a Web page directly to the RealPix broadcast, the URL may look like this:</p>
+<pre><a name="1007546"></a>
+&lt;a href="http://realserver.company.com/ramgen/encoder/media/slides.rp"&gt;...&lt;/a&gt;
+</pre>
+<p><a name="1007547"></a>This URL includes two virtual directories. The <kbd>ramgen</kbd> virtual directory makes RealServer launch RealPlayer without a separate RAM file. The <kbd>encoder</kbd> virtual directory specifies a broadcast coming in on a certain port of RealServer rather than an actual file existing on a file system. The RealServer administrator sets up and names these virtual directories.</p>
+<p><a name="1007591"></a>If you use a SMIL file, the Web page URL to the file may look like this: </p>
+<pre><a name="1007597"></a>
+&lt;a href="http://realserver.company.com/ramgen/media/daily.smi"&gt;...&lt;/a&gt;
+</pre>
+<p><a name="1007573"></a>Within the SMIL file, you'll have an RTSP link to the RealPix broadcast:</p>
+<pre><a name="1007574"></a>
+&lt;textstream src="rtsp://realserver.company.com/encoder/media/slides.rp"/&gt;
+</pre>
+<p><a name="1007664"></a>Using SMIL, you can embed a RealPix broadcast in a multiclip presentation. You might have a RealAudio narration and a RealPix region for broadcast images, for example. The SMIL file uses the broadcast URL for RealPix and a standard URL for the on-demand RealAudio clip. Each person who views the presentation hears the audio from its normal beginning, but joins the RealPix broadcast in progress.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1009683"></a>
+For more on using SMIL and specifying URLs for media 
+clips, see <I>RealSystem G2 Production Guide</I>, available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h1><a name="1003589"></a> Starting the RealPix Broadcast Application</h1>
+<p><a name="1003480"></a>To run the RealPix broadcast application, start the Windows DOS prompt and change to the directory that holds the application. Then start the application as shown in this example:</p>
+<pre><a name="1007282"></a>
+c:\RealPix&gt; exlvtext.exe <code><I>server port filename imgname width height bitrate</I></code>
+</pre>
+<p><a name="1009166"></a>The following table explains the parameters you enter on the command line. Enter all values without quotation marks.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1003426"></a>
+ RealPix Broadcast Application Start-up Parameters </caption>
+<tr>
+<th align=left valign=bottom><a name="1003430"></a>Parameter</th>
+<th align=left valign=bottom><a name="1003432"></a>Value</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003434"></a>server</td>
+<td align=left valign=top><a name="1003436"></a>The network address of the RealServer G2 machine that will stream the RealPix clip. This can be a DNS name such as <code>realserver.company.com</code> or an IP address such as <code>204.71.154.5</code>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003438"></a>port</td>
+<td align=left valign=top><a name="1005814"></a>The port on the RealServer machine that receives the RealPix data from the broadcast application. The RealServer administrator determines which port is used.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003450"></a>filename</td>
+<td align=left valign=top><a name="1003452"></a>Name for the RealPix live stream. This file name is used in the live RealPix hypertext link within the SMIL file or Web page. It does not have to be the same as the image input file, but it should end with the <kbd>.rp</kbd> extension.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1003454"></a>imgname</td>
+<td align=left valign=top><a name="1003456"></a>Full path and file name of the image file on the broadcast machine to monitor, such as <kbd>c:\RealPix\broadcast\slide.jpg</kbd>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1008465"></a>width</td>
+<td align=left valign=top><a name="1008467"></a>Pixel value for the width of the RealPix display window. Equivalent to width set in <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1009230"></a>height</td>
+<td align=left valign=top><a name="1009232"></a>Pixel value for the height of the RealPix display window. Equivalent to height set in <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1008524"></a>bitrate</td>
+<td align=left valign=top><a name="1008526"></a>Estimated average bit rate for the live RealPix stream in Kilobits per second (Kbps). When the RealPix broadcast is part of a multiclip presentation, RealPlayer uses this estimate to determine if it has enough bandwidth to play the presentation.</td>
+</tr>
+</table>
+</p>
+<h2><a name="1006026"></a> Moving a RealPix File to the Broadcast Directory</h2>
+<p><a name="1006031"></a>Once started, the broadcast application checks the designated directory every second for an updated image file. You can place a new file in the directory manually or use any automated method. All files must use the same image file name specified during application start-up.</p>
+<p><a name="1009426"></a>Make sure that the frequency with which you broadcast images does not exceed your broadcast bit rate. If a broadcast image is 35 Kilobytes (280 Kilobits) and your broadcast rate is 10 Kbps, for example, RealServer needs 28 seconds to broadcast that image.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1009452"></a>
+For more on bandwidth, read <a href="bandwdth.htm#1018149">"Bandwidth Usage"</a> 
+starting.
+</td></tr>
+</table></p>
+<h2><a name="1006036"></a> Stopping the Broadcast Application</h2>
+<p><a name="1008625"></a>To stop the RealPix broadcast stream, type a lowercase <code>q</code> at the RealPix command console. This causes RealServer to terminate the broadcast stream. It also shuts down the application console window on the RealPix broadcast machine.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/warning.gif"></th>
+<th align=left class=warn>Warning</th>
+<tr><td class=note>
+<a name="1008586"></a>
+Do not stop the RealPix broadcast by pressing <strong>Ctrl+C</strong> 
+from the broadcast application console. This terminates 
+the window but does not properly shut down the 
+RealPix broadcast on RealServer.
+</td></tr>
+</table></p>
+<h1><a name="1003683"></a> Developing a Custom RealPix Broadcast Application</h1>
+<p><a name="1007403"></a>The RealSystem G2 SDK, available at <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a>, includes the C++ source code for the RealPix broadcast application. Subject to the SDK license agreement, you can customize the broadcast application to do any of the following:</p>
+<ul>
+<p><li><a name="1007417"></a>Compile the RealPix broadcast application to run on a different operating system.
+<p><li><a name="1008654"></a>Modify the broadcast application with new features.
+<p><li><a name="1007418"></a>Integrate RealPix broadcast features into another application.
+</ul>
+<p><a name="1007460"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:28:48.</font>
+<center><a href="bandwdth.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tagtable.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

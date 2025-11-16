@@ -1,0 +1,8 @@
+<window type="teleprompter" height="60" duration="25" bgcolor="lime" wordwrap="false"> 
+Out, out, brief candle!
+<time begin="3.5"/><br/>Life’s but a walking shadow, a poor player
+<time begin="7"/><br/>That struts <time begin="8"/>and frets <time begin="9"/>his hour upon the stage
+<time begin="12"/><br/>And then is heard no more: <time begin="15"/>it is a tale
+<time begin="16"/><br/>Told by an idiot, <time begin="17.5"/>full of sound and fury,
+<br/><time begin="20"/>Signifying <time begin="22"/><font color="red">nothing.</font> 
+</window>

@@ -1,0 +1,104 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="calc.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="418321"></a> Bandwidth Tuner</h1>
+<p><a name="418322"></a>You can use the RealFlash bandwidth tuner to adjust the streaming bit rate for a Shockwave Flash file and affect the RealFlash presentation preroll. Bit rate and preroll are inversely related. The higher the bit rate, the lower the initial buffering. The tuner lets you measure these properties and adjust them for an optimal balance.</p>
+<h2><a name="418323"></a> Opening a Shockwave Flash File</h2>
+<p><a name="418324"></a>Do the following to open a Shockwave Flash file in the RealFlash bandwidth tuner:</p>
+<ol>
+<p><li><a name="418341"> </a>Double-click the tuner icon to display the utility's main window.
+<p><li><a name="421158"> </a>Select the Shockwave Flash (<kbd>.swf</kbd>) file by entering its path and name in the <strong>Input File</strong> field. You can also browse to the file by choosing <strong>File&gt;Open</strong> or clicking the <strong>Open</strong> button by the <strong>Input File</strong> field.
+<p><li><a name="421162"> </a>Choose <strong>Options&gt;Target Bit Rate</strong> to set the combined target bit rate for the Shockwave Flash file and the RealAudio soundtrack. The default target is 20 Kbps.
+<h5><a name="420834"></a>
+ Target Bit Rate</h5>
+<p><a name="420835"></a>
+<img src="../graphics/target.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="428019"></a>
+See the chapter on targeting bandwidth in <I>RealSystem G2 
+Production Guide</I> for more on presentation bit rates.
+</td></tr>
+</table></p>
+</ol>
+<h2><a name="420761"></a> Tuning a File</h2>
+<p><a name="424142"></a>The following figure shows the main tuner window after you open a Shockwave Flash file. The graph in this window depicts the relationship between bit rate and buffering, letting you set an optimal balance between the two.</p>
+<h5><a name="424108"></a>
+ Tuner Main Window</h5>
+<p><a name="424112"></a>
+<img src="../graphics/main.gif"></p>
+<h4><a name="421097"></a> Reading the Tuner Graph</h4>
+<p><a name="425133"></a>The RealFlash tuner graph's horizontal scale represents the presentation time in seconds. Its vertical scale depicts streaming bit rate. This bit rate scale is based on the target bit rate you chose. If you chose a 20 Kbps target rate, for example, the graph's vertical scale extends to 15, because at least 5 Kbps must be reserved for the RealAudio soundtrack.</p>
+<p><a name="426636"></a>On the graph's left side, a red region depicts the presentation's initial buffering time. Text below this red region tells how many seconds of buffering the file requires. The <strong>Buffer Time</strong> field in the <strong>File Attributes</strong> region also lists this time. You cannot change the buffer time directly. You adjust only the bit rate, which modifies the buffer time automatically.</p>
+<h4><a name="425123"></a> Adjusting the File's Bit Rate</h4>
+<p><a name="425128"></a>You can change the Shockwave Flash file's streaming bit rate with the spinner controls in the <strong>File Attributes</strong> region. You can also adjust it by moving the bit rate slider at the left of the graph:</p>
+<ul>
+<p><li><a name="421045"></a>Increasing the bit rate by moving the slider up decreases the buffer time.
+<p><li><a name="421046"></a>Deceasing the bit rate by moving the slider down increases the buffer time.
+<p><li><a name="425670"></a>The buffer time should be under 10 seconds.
+</ul>
+<p><a name="421047"></a>The graph depicts the changes you make, and the modified bit rate and buffer time display in the <strong>File Attributes</strong> region.</p>
+<h4><a name="424967"></a> Using the RealAudio Codec Recommendation</h4>
+<p><a name="424235"></a>As you adjust the file bit rate, a text field below the graph recommends which RealAudio codec to use for the presentation soundtrack. The utility determines this by subtracting the bit rate of the Shockwave Flash file from the target bit rate you set with <strong>Options&gt;Target Bit Rate</strong>. It then displays the highest bit rate codec that does not exceed the remaining available bit rate.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="425698"></a>
+To maximize presentation efficiency, set the file bit rate 
+as high as possible for your chosen codec. If you plan to 
+use a 12 Kbps codec, for example, tune the file until that 
+codec recommendation displays. Then move the bit rate 
+slider as high as possible without changing the 
+recommended codec.
+</td></tr>
+</table></p>
+<h4><a name="425285"></a> Showing Detail</h4>
+<p><a name="425296"></a>Click <strong>Options&gt;Show Detail</strong> to display the file's second-by-second streaming bandwidth usage as shown in the next figure. The line that appears within the graph typically shows spikes that indicate high bandwidth usage. You can click on this line at any point to find out what frame and time in the presentation timeline the spikes occur.</p>
+<h5><a name="425319"></a>
+ Bandwidth Consumption Detail</h5>
+<p><a name="425328"></a>
+<img src="../graphics/detail.gif"></p>
+<p><a name="425337"></a>Keep in mind that the spikes do not directly correspond to the frame sizes. You might see a spike at 5 seconds in the timeline, for example, when the frame size is small. Yet there may be no spike at 12 seconds when the frame size is large. This is because RealServer and RealPlayer preload data to even out bit rate consumption over the presentation timeline. The spike at 5 seconds may represent data being downloaded in advance for a scene change that occurs at the 12-second mark.</p>
+<p><a name="425475"></a>Because RealSystem preloads data, you typically see the Shockwave Flash bit rate consumption drop off to near zero by the end of the presentation. This simply means that by this point RealServer has downloaded all graphical scene data and needs to stream only the small amount of control information required to manipulate the scene data for each frame.</p>
+<h2><a name="424434"></a> Saving the Tuned File</h2>
+<p><a name="424833"></a>When you reach the optimal balance between bit rate and buffering, save the output by typing a new name in the <strong>Output File</strong> field and clicking <strong>Apply</strong>. This saves the new file to the directory that contains the input file. To overwrite the input file, save the output file to the same file name.</p>
+<p><a name="426691"></a>You can also browse to a directory by choosing <strong>File&gt;Save</strong> or clicking the <strong>Save As</strong> button by the <strong>Output File</strong> field. In this case, choose the directory and enter the file name in the browse dialog box. The click <strong>Apply</strong> on the main window.</p>
+<h2><a name="424241"></a> Tuning Example</h2>
+<p><a name="418342"></a>Suppose you are working with a Shockwave Flash file called <kbd>input.swf</kbd> as shown in the following figure. The target bit rate is 20Kbps (for a 28.8 Kbps connection), and the tuner indicates that the file's average streaming bit rate is 1.7 Kbps. This is a low rate even for a 28.8 Kbps connection. However, the initial buffer time is over 38 seconds.</p>
+<h5><a name="424246"></a>
+ Sample Input File</h5>
+<p><a name="424248"></a>
+<img src="../graphics/input.gif"></p>
+<p><a name="424247"></a>It is not acceptable to have the viewer wait more than half a minute for the presentation to begin. You can therefore use the bit rate slider to increase the bit rate. The next figure shows the file's bit rate adjusted to 4.5 Kbps. This takes the buffering time down to 8.5 seconds. Here the output file is set to <kbd>output.swf</kbd>. The RealFlash tuner creates this file when you click <strong>Apply</strong>.</p>
+<h5><a name="424326"></a>
+ Adjusted Output File</h5>
+<p><a name="424330"></a>
+<img src="../graphics/output.gif"></p>
+<p><a name="418443"></a>Note that in this figure, the RealFlash tuner recommends using a 15.2 Kbps voice codec for the RealAudio soundtrack. You could also set the bit rate higher and use a lower bit rate codec. If you used a 12 Kbps music codec, for example, you could set the Shockwave Flash bit rate as high as 8 Kbps.</p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 11/30/98 at 10:23:00.</font>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="calc.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

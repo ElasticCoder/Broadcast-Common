@@ -1,0 +1,255 @@
+// import java.lang;
+import netscape.javascript.JSObject;
+import netscape.javascript.JSException;
+import netscape.plugin.Plugin;
+import RAObserver;
+import RMObserver;
+
+public class RAPlayer extends Plugin {
+
+	// used to fire avi asynchronous events like OnStop or OnPositionChange.
+	// RAObserver is an interface (see AviObserver.java)
+	private RAObserver observer;
+	private RMObserver observerV6;
+//	private PnDefaultSync defaultObserver;
+
+	public RAObserver GetObserver() {
+		return observer;
+	}
+
+	public RMObserver GetObserverV6() {
+		return observerV6;
+	}
+
+	
+	// the object interested in listening the real player must register here.
+	public boolean Advise(RAObserver o) 
+	{
+		System.out.println("called advise "+o+" ");
+		if (observer == null)
+			observer = o;
+		else
+			{
+			System.out.println("FAILED");
+			return false;
+			}
+
+		return true;
+	}
+
+	public boolean AdviseG2(RMObserver o) 
+	{
+		System.out.println("called AdviseG2 "+o+" ");
+		if (observerV6 == null)
+			observerV6 = o;
+		else
+			{
+			System.out.println("FAILED");
+			return false;
+			}
+
+		return true;
+	}
+
+
+	public void CreateDefaultObserver(JSObject win)
+	{
+		System.out.println("Creating Default Observer");
+		System.out.println("name = "+(String)getWindow().getMember("name")+".");
+//		observer = new PnDefaultSync(win, this);
+	}
+
+	//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//.
+	// these are all native.
+	// check RAPlayer.c/.h for stubs and prototypes information
+	// check Pnjava.cpp for native implementation
+
+    public native  boolean	SetSource(String Source);
+    public native  boolean	SetControlString(String Controls);
+    public native  boolean	SetConsoleName(String Console, boolean a);
+    public native  boolean	SetConsole(String Console, boolean a);
+    public native  boolean	SetAutoStart(boolean autoStart);
+    public native  boolean	SetNoLabels(boolean noLabels);
+    public native  boolean	DoPlayPause();
+    public native  boolean	DoPause();
+    public native  boolean	DoPlay();
+    public native  boolean	DoStop();
+    public native  int		GetPosition();
+    public native  boolean	SetPosition(int Position);
+    public native  int		GetLength();
+    public native  int		GetPlayState();
+    public native  int		GetStereoState();
+    public native  String	GetTitle();
+    public native  String	GetAuthor();
+	public native  String	GetCopyright();
+    public native  boolean	GetLiveState();
+    public native  boolean	IsZoomed();
+    public native  boolean	SetZoomed(boolean isZoomed);
+    public native  boolean	DoNextItem();
+    public native  boolean	DoPrevItem();
+    public native  boolean	DoNextEntry();
+    public native  boolean	DoPrevEntry();
+    public native  boolean	CanPlayPause();
+    public native  boolean	CanStop();
+    public native  boolean	HasNextEntry();
+    public native  boolean	HasPrevEntry();
+    public native  boolean	SetVolume(int newVolume);
+    public native  boolean	SetMute(boolean isMute);
+    public native  boolean	SetEnableContextMenu(boolean isMenuOn);
+    public native  boolean	GetEnableContextMenu();
+    public native  boolean	EnableMessageBox(boolean isMessageBoxOn);
+    public native  boolean	SetEnableMessageBox(boolean isMessageBoxOn);
+    public native  boolean	GetEnableMessageBox();
+//    public native  boolean	WantStatsEvent(boolean doWantStatus);
+    public native  int		GetPacketsTotal();
+    public native  int		GetPacketsReceived();
+    public native  int		GetPacketsOutOfOrder();
+    public native  int		GetPacketsMissing();
+    public native  int		GetPacketsLate();
+    public native  int		GetBandwidthAverage();
+    public native  int		GetBandwidthCurrent();
+    public native  boolean	AboutBox();
+    public native  boolean	EditPreferences();
+	public native  boolean	SetShowPreferences(boolean bShowPref);
+    public native  boolean	HideShowStatistics();
+    public native  boolean	IsStatisticsVisible();
+    public native  boolean	IsDone();
+    public native  boolean	StatusScanStart();
+    public native  boolean	StatusScanEnd();
+    public native  boolean	StatusScan(String ShowString);
+    public native  boolean	SetAutoGoToURL(boolean giveNetscapeURL);
+    public native  boolean	GetAutoGoToURL();
+	public native  boolean	ProcessIdle();
+	public native  boolean	SetControls(String v);
+    public native  String	GetVersionInfo();
+	public native  boolean  GetPreFetch();
+	public native  boolean  SetPreFetch(boolean bWantsPrefetch);
+	public native  boolean  SetShuffle(boolean bShuffleOn);
+	public native  boolean  GetShuffle();
+	public native  String   GetSource();
+
+	// new stuff
+    public native	boolean	CanPlay();
+    public native	boolean	CanPause();
+	public native	boolean	GetAutoStart();
+	public native	String	GetBackgroundColor();
+	public native	boolean SetBackgroundColor(String strNewColor);
+	public native	boolean	GetCenter();
+	public native	int		GetClipHeight();
+	public native	int		GetClipWidth();
+	public native	String	GetConsole();
+	public native	boolean	GetEnableDoubleSize();
+	public native	boolean	GetEnableFullScreen();
+	public native	boolean	GetEnableOriginalSize();
+	public native	String	GetControls();
+	public native	boolean	GetOriginalSize();
+//	public native	boolean	GetIsInDoubleSize();
+	public native	boolean	GetFullScreen();
+	public native	boolean	GetDoubleSize();
+	
+	public native	boolean	GetMaintainAspect();
+	public native	boolean	GetMute();
+	public native	boolean	GetNoLabels();
+	public native	int		GetNumLoop();
+//	public native	int		GetPacketsEarly();
+	public native	boolean	GetShowAbout();
+	public native	boolean GetShowPreferences();
+	public native	boolean	GetShowStatistics();
+//	public native	boolean	GetStatsEvent();
+	public native	int		GetVolume();
+	public native	boolean SetCenter(boolean bIsCentered);
+	public native	boolean	SetMaintainAspect(boolean bMaintainAspect);
+	public native	boolean SetEnableOriginalSize(boolean bIsEnabled);
+	public native	boolean SetEnableDoubleSize(boolean bIsEnabled);
+	public native	boolean SetEnableFullScreen(boolean bIsEnabled);
+	public native	boolean	SetDoubleSize(boolean bIsDoubleSize);
+	public native	boolean	SetFullScreen(boolean bIsFullScreen);
+	public native	boolean	SetOriginalSize(boolean bIsOriginalSize);
+	public native	boolean	SetNoLogo(boolean bNoLogo);
+	public native	boolean	GetNoLogo();
+	public native	boolean SetNumLoop(int nNumLoops);
+	public native	boolean	SetShowAbout(boolean bShowAbout);
+	public native	boolean	SetShowStatistics(boolean bShowStats);
+//	public native   boolean SetStatsEvent(boolean bWantStatsEvent);
+
+	public native	boolean	SetWantKeyboardEvents(boolean bDoesWant);
+	public native	boolean	SetWantMouseEvents(boolean bDoesWant);
+	public native	boolean	SetWantErrors(boolean bDoesWant);
+
+	public native	boolean	GetWantKeyboardEvents();
+	public native	boolean	GetWantMouseEvents();
+	public native	boolean	GetWantErrors();
+
+	public native	int		GetNumEntries();
+	public native	int		GetCurrentEntry();
+	public native	String	GetEntryTitle(int nindex);
+	public native	String	GetEntryAuthor(int nindex);
+	public native	String	GetEntryCopyright(int nindex);
+	public native	String	GetEntryAbstract(int nindex);
+	public native	boolean	SetCanSeek(boolean bDoesWantSeek);
+	public native	boolean	GetCanSeek();
+	public native	int		GetBufferingTime();
+	public native	int		GetBufferingTimeRemaining();
+	public native	int		GetConnectionBandwidth();
+	public native	int		GetPreferedLanguageID();
+	public native	String	GetPreferedLanguageString();
+	public native	int		GetUserCountryID();
+	public native	int		GetNumSources();
+	public native	String	GetSourceTransport(int nSourceNum);
+	public native	boolean	SetVideoState(int nNewVideoState);
+	public native	int		GetVideoState();
+	public native	boolean	GetContextMenu();
+	public native	boolean	SetContextMenu(boolean bEnabled);
+	public native	boolean	SetContextMenuItem(int nItemID, boolean bEnabled);
+	public native	boolean	GetContextMenuItem(int nItemID);
+	public native	boolean	SetImageStatus(boolean bEnabled);
+	public native	boolean	GetImageStatus();
+//	public native	boolean	GetIsUpgradeAvailiable();
+	public native	String	GetLastStatus();
+	public native	String	GetLastErrorMoreInfoURL();
+	public native	String	GetLastErrorUserString();
+	public native	int		GetLastErrorUserCode();
+	public native	int		GetLastErrorRMACode();
+	public native	int		GetLastErrorSeverity();
+	public native	int		GetLastLeftButtonDownTimeStamp();
+	public native	int		GetLastLeftButtonDownKeyFlags();
+	public native	int		GetLastLeftButtonDownXPos();
+	public native	int		GetLastLeftButtonDownYPos();
+	public native	int		GetLastRightButtonDownTimeStamp();
+	public native	int		GetLastRightButtonDownKeyFlags();
+	public native	int		GetLastRightButtonDownXPos();
+	public native	int		GetLastRightButtonDownYPos();
+	public native	int		GetLastLeftButtonUpTimeStamp();
+	public native	int		GetLastLeftButtonUpKeyFlags();
+	public native	int		GetLastLeftButtonUpXPos();
+	public native	int		GetLastLeftButtonUpYPos();
+	public native	int		GetLastRightButtonUpTimeStamp();
+	public native	int		GetLastRightButtonUpKeyFlags();
+	public native	int		GetLastRightButtonUpXPos();
+	public native	int		GetLastRightButtonUpYPos();
+	public native	int		GetLastLeftButtonDblTimeStamp();
+	public native	int		GetLastLeftButtonDblKeyFlags();
+	public native	int		GetLastLeftButtonDblXPos();
+	public native	int		GetLastLeftButtonDblYPos();
+	public native	int		GetLastRightButtonDblTimeStamp();
+	public native	int		GetLastRightButtonDblKeyFlags();
+	public native	int		GetLastRightButtonDblXPos();
+	public native	int		GetLastRightButtonDblYPos();
+	public native	int		GetLastMouseMoveTimeStamp();
+	public native	int		GetLastMouseMoveKeyFlags();
+	public native	int		GetLastMouseMoveXPos();
+	public native	int		GetLastMouseMoveYPos();
+	public native	int		GetLastKeyDownTimeStamp();
+	public native	int		GetLastKeyDownKey();
+	public native	int		GetLastKeyUpTimeStamp();
+	public native	int		GetLastKeyUpKey();
+	public native	int		GetLastKeyPressTimeStamp();
+	public native	int		GetLastKeyPressKey();
+	public native	boolean	SetAuthor(String newAuthor);
+	public native	boolean	SetTitle(String newTitle);
+	public native	boolean	SetCopyright(String newCopyright);
+
+	public native	boolean	GetLoop();
+	public native	boolean SetLoop(boolean bSetLooping);
+}
+

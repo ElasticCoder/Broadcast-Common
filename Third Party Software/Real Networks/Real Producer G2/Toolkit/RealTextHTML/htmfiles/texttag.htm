@@ -1,0 +1,669 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="windtag.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="examples.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1019286"></a>
+ Chapter 3: 	Text Tags
+
+</h1>
+<p><a name="1003766"></a>RealText provides many mark-up tags that define how the streaming text looks and operates. A tag's default value applies if you do not specify a tag value. You can place mark-up tags anywhere on a line.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1003805"></a>
+When you are familiar with the tags, you can refer to 
+<a href="texttabl.htm#1000266">"Summary of Text Tags"</a>.
+</td></tr>
+</table></p>
+<h1><a name="1006537"></a> Time and Position Tags</h1>
+<p><a name="1009644"></a>The following tags affect when and where the text appears within the window.</p>
+<p><a name="2063"></a><a name="time"></a></p>
+<h4><a name="1009676"></a> &lt;time begin="dd:hh:mm:ss.xyz"/&gt;<br>&lt;time end="dd:hh:mm:ss.xyz"/&gt;</h4>
+<p><a name="997453"></a>The <code>&lt;time/&gt;</code> tags control the RealText presentation timeline by determining when a text component appears and disappears, respectively, relative to the start of the presentation. They are meant primarily for window text that does not scroll or crawl. If you do not specify begin times, RealPlayer displays all text as quickly as it can. </p>
+<p><a name="997454"></a>The <code>&lt;time/&gt;</code> tag values are in 24-hour format, where <code>dd</code> is days, <code>hh</code> is hours, <code>mm</code> is minutes, <code>ss</code> is seconds, <code>x</code> is tenths of seconds, <code>y</code> is hundredths of seconds, and <code>z</code> is milliseconds.Only the <code>ss</code> field is required. When the time value does not include a decimal point, the last field is read as the seconds. For example, <code>1:30</code> means 1 minute and 30 seconds, whereas <code>1:30:00</code> means 1 hour and 30 minutes. Note that all the following values are equivalent. They all start the text component 90 minutes after the stream begins: </p>
+<pre><a name="997455"></a>
+&lt;time begin="1:30:00.0"/&gt; <br>&lt;time begin="90:00"/&gt; <br>&lt;time begin="5400"/&gt; 
+</pre>
+<p><a name="997456"></a>Text with an end value is erased when the specified end value is reached. Otherwise it stays active until the presentation ends or the entire window is erased with <code>&lt;clear/&gt;</code>. Note that you can combine the begin and end attributes in a single <code>&lt;time/&gt;</code> tag as shown here: </p>
+<pre><a name="997457"></a>
+&lt;time begin="23" end="55.5"/&gt;This text displays 23 seconds into the presentation and disappears at 55.5 seconds.
+</pre>
+<p><a name="997458"></a>All text following a <code>&lt;time/&gt;</code> tag has the specified begin and end values until new values are given. Once you specify an end time for a text component, you must specify an end time for all following components. For example, the following text would not display properly: </p>
+<pre><a name="997459"></a>
+&lt;time begin="23" end="55.5"/&gt;Display at 23 seconds in.<br>&lt;time begin="56"/&gt;Display at 56 seconds in.
+</pre>
+<p><a name="997460"></a>Because the second line does not include an end value, the previous end value of <code>55.5</code> still applies. The second line cannot be displayed because its begin time is later than its end time.</p>
+<p><a name="1021619"></a>Here are some times on using <code>&lt;time/&gt;</code> tags:</p>
+<ul>
+<p><li><a name="997461"></a>The <code>&lt;time/&gt;</code> tags are not necessary in a window with a non-zero scroll rate or crawl rate unless you want text to become visible after it has moved into the window, or to disappear before it moves out of the window.
+<p><li><a name="1021677"></a>To freeze text on the screen after the <code>&lt;window&gt;</code> tag's <a href="windtag.htm#duration"><code>duration</code></a> has elapsed, do not set an end time. Or, have the end time exceed the window's duration:
+<pre class=indent><a name="1021638"></a>
+&lt;window duration="30"&gt;<br>  ...(some text elements)...<br>  &lt;time begin="25" end="31"/&gt;Text that stays frozen onscreen.<br>&lt;/window&gt;
+</pre>
+<p><li><a name="1021584"></a>To replace a line of text with a new line every few seconds (as in video subtitles), do not use end times. For each new line of text, set the appropriate begin time followed by a <code>&lt;clear/&gt;</code> tag.
+</ul>
+<h4><a name="997463"></a> &lt;clear/&gt;</h4>
+<p><a name="997464"></a>This tag clears the existing text buffers to remove all text from the window. The text that follows this tag is then displayed starting at the window's normal starting point.</p>
+<p><a name="997465"></a>In a window that does not scroll or crawl, you can add <code>&lt;clear/&gt;</code> after <code>&lt;time begin="..."/&gt;</code> to erase existing text when new text arrives. For example, you would specify the following to clear old text and display "Hello!" at 3 minutes into the stream:</p>
+<pre><a name="997466"></a>
+&lt;time begin="3:00"/&gt;&lt;clear/&gt;Hello!
+</pre>
+<p><a name="1010564"></a>However, a <code>&lt;clear/&gt;</code> tag does not remove text that has an end time that has not yet elapsed. Consider this example:</p>
+<pre><a name="1010565"></a>
+&lt;time begin="5"/&gt;They all lived happily.<br>&lt;time begin="10" time end="20"/&gt;And so our story ends.<br>&lt;time begin="15"/&gt;&lt;clear/&gt;Goodbye!
+</pre>
+<p><a name="1010622"></a>The second line of text is set to end at 20 seconds. The <code>&lt;clear/&gt;</code> tag, which begins at 15 seconds, does not clear this line because the line's end time has not elapsed. The <code>&lt;clear/&gt;</code> tag removes the first line of text, though, which has no end time.</p>
+<h4><a name="1009721"></a> &lt;pos x="pixels"/&gt; <br>&lt;pos y="pixels"/&gt;</h4>
+<p><a name="1006434"></a>These tags position the text horizontally and vertically, respectively. The <code>&lt;pos y/&gt;</code> tag moves the upper, left corner of the subsequent text block the specified number of pixels down from the window's top edge. The <code>&lt;pos x/&gt;</code> tag indents the text block the specified number of pixels in addition to the two-pixel default padding that applies to all text blocks. You can combine both tags in a single tag like this: </p>
+<pre><a name="997470"></a>
+&lt;pos x="10" y="55"/&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1006192"></a>
+These tags work only if scroll rate and crawl rate are 
+both 0 (zero).
+</td></tr>
+</table></p>
+<h4><a name="1009825"></a> &lt;tu [color="color"]&gt;...&lt;/tu&gt; <br>&lt;tl [color="color"]&gt;...&lt;/tl&gt;</h4>
+<p><a name="1003860"></a>These tags function only with TickerTape windows. They display the enclosed text at the window's upper (<code>&lt;tu&gt;</code>) or lower <code>(&lt;tl&gt;</code>) edge. When a tag specifies a color with the color option, the color applies to text enclosed by all subsequent tags of that type until another tag of that type changes the color. However, color specified for <code>&lt;tu&gt;</code> elements does not affect color for <code>&lt;tl&gt;</code> elements, and vice versa.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1003867"></a>
+Refer to <a href="texttag.htm#997542">"Colors"</a> for a list of available colors.
+</td></tr>
+</table></p>
+<h1><a name="1004068"></a> Layout Tags</h1>
+<p><a name="1004069"></a>Much as in HTML, the following tags let you define the layout of RealText in the RealPlayer window.</p>
+<h4><a name="1004071"></a> &lt;p&gt;...&lt;/p&gt;</h4>
+<p><a name="1004072"></a>Adds space between text. In TickerTape and Marquee windows, it moves the "cursor" to the right edge of the window. In all other window types, the <code>&lt;p&gt;</code> and <code>&lt;/p&gt;</code> each cause the next text to display two lines down.</p>
+<h4><a name="1004074"></a> &lt;br/&gt;</h4>
+<p><a name="1009587"></a>Adds space between text. In TickerTape and Marquee windows, it moves the "cursor" to the right edge of the window. In all other window types, this tag causes the text that follows to display on the next line.</p>
+<h4><a name="1009589"></a> &lt;ol&gt;...&lt;/ol&gt;</h4>
+<p><a name="1004078"></a>For compatibility with HTML lists. Text between these tags is indented, but not numbered.</p>
+<h4><a name="1009882"></a> &lt;ul&gt;...&lt;/ul&gt;</h4>
+<p><a name="1009902"></a>For compatibility with HTML lists. Text between these tags is indented, but not bulleted.</p>
+<h4><a name="1004080"></a> &lt;li&gt;...&lt;/li&gt;</h4>
+<p><a name="1004081"></a>For compatibility with HTML lists. Acts like a <code>&lt;br/&gt;</code> tag. </p>
+<h4><a name="1004083"></a> &lt;hr/&gt;</h4>
+<p><a name="1004084"></a>For compatibility with HTML horizontal rules. Acts as two <code>&lt;br/&gt;</code> tags. </p>
+<h4><a name="1004086"></a> &lt;center&gt;...&lt;/center&gt;</h4>
+<p><a name="1004087"></a>Used to center the enclosed text. Text is centered according to the actual window width, which may differ from the width attribute. These tags behave the same as HTML centering tags. The <code>&lt;center&gt;</code> tag forces a line break if and only if a line break caused by a tag such as <code>&lt;br/&gt;</code>, <code>&lt;p&gt;</code>, or <code>&lt;hr/&gt;</code> does not immediately precede it. The <code>&lt;/center&gt;</code> tag always causes a line break. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1004088"></a>
+RealText does not center text until it has determined the 
+line length. In rare instances, one streamed packet may 
+contain the first part of the line while another packet 
+received several seconds later contains the end of the 
+line. In this case, the first part displays flush left, and 
+the entire line is centered and redisplayed when the 
+second packet arrives.
+</td></tr>
+</table></p>
+<h4><a name="1004157"></a> &lt;pre&gt;...&lt;/pre&gt;</h4>
+<p><a name="1004175"></a>Works the same as in HTML. Text tagged with <code>&lt;pre&gt;</code> uses the Courier font at the current size. For example, a preceding <code>&lt;font size="+1"&gt;</code> makes the preformatted text one size larger than the default font size. Line breaks, spaces, and tabs are preserved, with tabs defaulting to 64 pixels for 16 point text (the normal point size). Tab spaces are determined by dividing the text height by 2, then multiplying by 8.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1010160"></a>
+For information on text heights, see the <a href="texttag.htm#1016744">"Font Sizes"</a> 
+table. See also the <code>&lt;window&gt;</code> tag attribute 
+<code><a href="windtag.htm#998267">extraspaces="use|ignore"</a></code>.
+</td></tr>
+</table></p>
+<h1><a name="1003826"></a> Appearance Tags</h1>
+<p><a name="1003832"></a>You can use the following set of tags to change the appearance of text.</p>
+<h4><a name="1004125"></a> &lt;b&gt;...&lt;/b&gt;</h4>
+<p><a name="1004126"></a>These tags display the enclosed text <strong>bolded</strong>.</p>
+<h4><a name="1004128"></a> &lt;i&gt;...&lt;/i&gt;</h4>
+<p><a name="1004129"></a>These tags display the enclosed text <I>italicized</I>.</p>
+<h4><a name="1020196"></a> &lt;s&gt;...&lt;/s&gt;</h4>
+<p><a name="1020204"></a>These tags strike through the enclosed text.</p>
+<h4><a name="1004131"></a> &lt;u&gt;...&lt;/u&gt;</h4>
+<p><a name="1004132"></a>These tags display the enclosed text <u>underlined</u>.</p>
+<p><a name="2193"></a><a name="font"></a></p>
+<h4><a name="997472"></a> &lt;font attribute="value"&gt;...&lt;/font&gt;</h4>
+<p><a name="997473"></a>The <code>&lt;font&gt;</code> tag lets you specify text characteristics. Like the HTML <code>&lt;FONT&gt;</code> tag, it uses an end tag, <code>&lt;/font&gt;</code>, and can contain several attributes. For example:</p>
+<pre><a name="997474"></a>
+&lt;font size="+4" face="courier"&gt;<code><I>...text...</I></code>&lt;/font&gt;
+</pre>
+<p><a name="997475"></a>RealText supports the following <code>&lt;font&gt;</code> attributes:</p>
+<ul>
+<p><li><a name="1016669"></a><code>bgcolor="</code><code><I>color</I></code><code>"</code>
+<p><a name="1016670"></a>Use this <code>&lt;font&gt;</code> tag attribute to set the text background color. The default is <code>bgcolor="transparent"</code>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1016677"></a>
+See <a href="texttag.htm#997542">"Colors"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="1016678"></a><code>charset="</code><code><I>character set</I></code><code>"</code>
+<p><a name="1016679"></a>With this <code>&lt;font&gt;</code> tag attribute you can control the character set used to display the text:</p>
+<ul>
+
+<p><li><a name="1016680"></a><code>"us-ascii"</code>-Default character set used with most RealText fonts.
+<p><li><a name="1016681"></a><code>"x-sjis"</code>-Character set for Kanji and the Osaka font.
+<p><li><a name="1016682"></a><code>"gb2312"</code>-Character set for Simplified Chinese.
+<p><li><a name="1016683"></a><code>"big5"</code>-Character set for Traditional Chinese.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1016684"></a>
+Not all computers are capable of displaying all character 
+sets. If a computer does not recognize the specified 
+character set, it displays the text in its default character 
+set. The result is typically unreadable.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/warning.gif"></th>
+<th align=left class=warn>Warning</th>
+<tr><td class=note>
+<a name="1019839"></a>
+RealText always defaults to the <code>us-ascii</code> character set 
+regardless of the default character set of the machine 
+receiving the stream. You must explicitly specify a 
+different character set to stream RealText to machines 
+that do not render <code>us-ascii</code>.
+</td></tr>
+</table></p>
+</ul>
+<p><li><a name="997478"></a><code>color="</code><code><I>color</I></code><code>"</code>
+<p><a name="1016612"></a>This <code>&lt;font&gt;</code> tag attribute lets you control the font color. It supports all color values available in HTML. For TickerTape windows, however, this attribute has no effect. The <code>&lt;tu&gt;</code> and <code>&lt;tl&gt;</code> tags set the TickerTape text colors.</p>
+<p><li><a name="997483"></a><code>face="</code><code><I>font name</I></code><code>"</code>
+<p><a name="997484"></a>This <code>&lt;font&gt;</code> tag attribute controls the text font. Use a font name from the <a href="texttag.htm#1015885">"Windows Font Name"</a> column of the following table, which lists fonts using the <code>us-ascii</code> character set. If you specify no font, RealText uses Times New Roman. It also uses this font if the user's machine does not have the specified font. In this case, however, the text still uses the specified font's letter spacing, so display results will vary.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1015878"></a>
+ RealText Font Support for us-ascii Character Set </caption>
+<tr>
+<th align=left valign=bottom><a name="1015885"></a>Windows Font Name</th>
+<th align=left valign=bottom><a name="1015887"></a>Macintosh Mapping</th>
+<th align=left valign=bottom><a name="1015889"></a>UNIX Mapping</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015891"></a>Algerian</td>
+<td align=left valign=top><a name="1015893"></a>Courier</td>
+<td align=left valign=top><a name="1015895"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015897"></a>Arial</td>
+<td align=left valign=top><a name="1015899"></a>Helvetica</td>
+<td align=left valign=top><a name="1015901"></a>Helvetica</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015903"></a>Arial Black</td>
+<td align=left valign=top><a name="1015905"></a>Helvetica</td>
+<td align=left valign=top><a name="1015907"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015909"></a>Arial Narrow</td>
+<td align=left valign=top><a name="1015911"></a>Helvetica</td>
+<td align=left valign=top><a name="1015913"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015915"></a>Arial Rounded Mt Bold</td>
+<td align=left valign=top><a name="1015917"></a>Helvetica</td>
+<td align=left valign=top><a name="1015919"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015921"></a>Book Antiqua</td>
+<td align=left valign=top><a name="1015923"></a>Helvetica</td>
+<td align=left valign=top><a name="1015925"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015927"></a>Bookman Old Style</td>
+<td align=left valign=top><a name="1015929"></a>Helvetica</td>
+<td align=left valign=top><a name="1015931"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015933"></a>Braggadocio</td>
+<td align=left valign=top><a name="1015935"></a>Helvetica</td>
+<td align=left valign=top><a name="1015937"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015939"></a>Britannic Bold</td>
+<td align=left valign=top><a name="1015941"></a>Helvetica</td>
+<td align=left valign=top><a name="1015943"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015945"></a>Brush Script</td>
+<td align=left valign=top><a name="1015947"></a>Times</td>
+<td align=left valign=top><a name="1015949"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015951"></a>Century Gothic</td>
+<td align=left valign=top><a name="1015953"></a>Helvetica</td>
+<td align=left valign=top><a name="1015955"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015957"></a>Century Schoolbook</td>
+<td align=left valign=top><a name="1015959"></a>Helvetica</td>
+<td align=left valign=top><a name="1015961"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015963"></a>Colonna Mt</td>
+<td align=left valign=top><a name="1015965"></a>Times</td>
+<td align=left valign=top><a name="1015967"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015969"></a>Comic Sans Ms</td>
+<td align=left valign=top><a name="1015971"></a>Times</td>
+<td align=left valign=top><a name="1015973"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015975"></a>Courier New</td>
+<td align=left valign=top><a name="1015977"></a>Courier</td>
+<td align=left valign=top><a name="1015979"></a>Courier</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015981"></a>Desdemona</td>
+<td align=left valign=top><a name="1015983"></a>Helvetica</td>
+<td align=left valign=top><a name="1015985"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015987"></a>Fixedsys</td>
+<td align=left valign=top><a name="1015989"></a>Courier</td>
+<td align=left valign=top><a name="1015991"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015993"></a>Footlight Mt Light</td>
+<td align=left valign=top><a name="1015995"></a>Helvetica</td>
+<td align=left valign=top><a name="1015997"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1015999"></a>Garamond</td>
+<td align=left valign=top><a name="1016001"></a>Times</td>
+<td align=left valign=top><a name="1016003"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016005"></a>Haettenschweiler</td>
+<td align=left valign=top><a name="1016007"></a>Helvetica</td>
+<td align=left valign=top><a name="1016009"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016011"></a>Helvetica (Arial is used if Helvetica is not found.)</td>
+<td align=left valign=top><a name="1016013"></a>Helvetica</td>
+<td align=left valign=top><a name="1016015"></a>Helvetica</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016017"></a>Impact</td>
+<td align=left valign=top><a name="1016019"></a>Helvetica</td>
+<td align=left valign=top><a name="1016021"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016023"></a>Kino Mt</td>
+<td align=left valign=top><a name="1016025"></a>Times</td>
+<td align=left valign=top><a name="1016027"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016029"></a>Matura Mt Script Capitals</td>
+<td align=left valign=top><a name="1016031"></a>Times</td>
+<td align=left valign=top><a name="1016033"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016035"></a>Modern</td>
+<td align=left valign=top><a name="1016037"></a>Helvetica</td>
+<td align=left valign=top><a name="1016039"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016041"></a>Ms Dialog</td>
+<td align=left valign=top><a name="1016043"></a>Times</td>
+<td align=left valign=top><a name="1016045"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016047"></a>Ms Dialog Light</td>
+<td align=left valign=top><a name="1016049"></a>Times</td>
+<td align=left valign=top><a name="1016051"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016053"></a>Ms Linedraw</td>
+<td align=left valign=top><a name="1016055"></a>Helvetica</td>
+<td align=left valign=top><a name="1016057"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016059"></a>Ms Sans Serif</td>
+<td align=left valign=top><a name="1016061"></a>Helvetica</td>
+<td align=left valign=top><a name="1016063"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016065"></a>Ms Serif</td>
+<td align=left valign=top><a name="1016067"></a>Helvetica</td>
+<td align=left valign=top><a name="1016069"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016071"></a>Ms Systemex</td>
+<td align=left valign=top><a name="1016073"></a>Times</td>
+<td align=left valign=top><a name="1016075"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016077"></a>Playbill</td>
+<td align=left valign=top><a name="1016079"></a>Times</td>
+<td align=left valign=top><a name="1016081"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016083"></a>Small Fonts</td>
+<td align=left valign=top><a name="1016085"></a>Times</td>
+<td align=left valign=top><a name="1016087"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016089"></a>System</td>
+<td align=left valign=top><a name="1016091"></a>Geneva</td>
+<td align=left valign=top><a name="1016093"></a>Fixed</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016095"></a>Terminal</td>
+<td align=left valign=top><a name="1016097"></a>Geneva</td>
+<td align=left valign=top><a name="1016099"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016101"></a>Times New Roman</td>
+<td align=left valign=top><a name="1016103"></a>Times</td>
+<td align=left valign=top><a name="1016105"></a>Times</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016107"></a>Verdana</td>
+<td align=left valign=top><a name="1016109"></a>Helvetica</td>
+<td align=left valign=top><a name="1016111"></a>(tbd)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016113"></a>Wide Latin</td>
+<td align=left valign=top><a name="1016115"></a>Helvetica</td>
+<td align=left valign=top><a name="1016117"></a>(tbd)</td>
+</tr>
+</table>
+ </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1015200"></a>
+Macintosh and UNIX mappings subject to change 
+before the final release of RealPlayer G2 on those 
+platforms.
+</td></tr>
+</table></p>
+<p><a name="1020229"></a>RealText also supports the following font faces that use character sets other than <code>us-ascii</code>.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1016175"></a>
+ RealText Font Support for Additional Character Sets </caption>
+<tr>
+<th align=left valign=bottom><a name="1016181"></a>Font Name</th>
+<th align=left valign=bottom><a name="1016340"></a>Characters</th>
+<th align=left valign=bottom><a name="1016183"></a>RealText Font Face Tag</th>
+<th align=left valign=bottom><a name="1016185"></a>charset</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016187"></a>Osaka</td>
+<td align=left valign=top><a name="1016342"></a>Kanji</td>
+<td align=left valign=top><a name="1016189"></a><code>&lt;font face="Osaka"&gt;</code></td>
+<td align=left valign=top><a name="1016191"></a><code>x-sjis</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016193"></a><img src="../graphics/gb2312.gif"></td>
+<td align=left valign=top><a name="1016344"></a>Simplified Chinese</td>
+<td align=left valign=top><a name="1016195"></a><code>&lt;font face="'&Euml;&Icirc;&Igrave;&aring;"&gt;</code> <br>(The face name displays as gibberish without the gb2312 character set.)</td>
+<td align=left valign=top><a name="1016197"></a><code>gb2312</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016199"></a><img src="../graphics/big5.gif"></td>
+<td align=left valign=top><a name="1016346"></a>Traditional Chinese</td>
+<td align=left valign=top><a name="1016285"></a><code>&lt;font face="&#178;&Oacute;&#169;&uacute;&Aring;&eacute;"&gt;</code> <br>(The face name displays as gibberish without the big5 character set.)</td>
+<td align=left valign=top><a name="1016203"></a><code>big5</code></td>
+</tr>
+</table>
+</p>
+<p><li><a name="1016736"></a><code>size="n"</code>
+<p><a name="1016737"></a>This <code>&lt;font&gt;</code> tag attribute lets you control the font size. You can use relative sizes or absolute sizes as shown in the table below. This table also lists the height in pixels for each size. The pixel sizes are for reference only. You cannot specify a pixel size directly in RealText.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="1016744"></a>
+ Font Sizes </caption>
+<tr>
+<th align=left valign=bottom><a name="1016750"></a>Relative Size</th>
+<th align=left valign=bottom><a name="1016752"></a>Absolute Size</th>
+<th align=left valign=bottom><a name="1016754"></a>Pixel Size Reference</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016756"></a><code>-2</code></td>
+<td align=left valign=top><a name="1016758"></a><code>1</code></td>
+<td align=left valign=top><a name="1016760"></a>12 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016762"></a><code>-1</code></td>
+<td align=left valign=top><a name="1016764"></a><code>2</code></td>
+<td align=left valign=top><a name="1016766"></a>14 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016768"></a><code>+0</code> (default)</td>
+<td align=left valign=top><a name="1016770"></a><code>3</code></td>
+<td align=left valign=top><a name="1016772"></a>16 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016774"></a><code>+1</code></td>
+<td align=left valign=top><a name="1016776"></a><code>4</code></td>
+<td align=left valign=top><a name="1016778"></a>20 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016780"></a><code>+2</code></td>
+<td align=left valign=top><a name="1016782"></a><code>5</code></td>
+<td align=left valign=top><a name="1016784"></a>24 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016786"></a><code>+3</code></td>
+<td align=left valign=top><a name="1016788"></a><code>6</code></td>
+<td align=left valign=top><a name="1016790"></a>36 pixels</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="1016792"></a><code>+4</code></td>
+<td align=left valign=top><a name="1016794"></a><code>7</code></td>
+<td align=left valign=top><a name="1016796"></a>48 pixels</td>
+</tr>
+</table>
+ </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1016806"></a>
+You can also specify relative sizes smaller than -2 or 
+larger than +4, but they are treated as -2 and +4, 
+respectively.
+</td></tr>
+</table></p>
+</ul>
+<p><a name="1020913"></a>Keep in mind that the RealText <code>&lt;font&gt;</code> tag works like the HTML <code>&lt;FONT&gt;</code> tag. How you nest tags, which attributes you include, and where you place <code>&lt;/font&gt;</code> tags affects the outcome. For example, compare these RealText samples (<strong>bolding</strong> used for emphasis only) and the illustrations of how this mark-up affects the text when the clip plays in RealPlayer:</p>
+<pre><a name="1020914"></a>
+Start with normal text.<br><code><b>&lt;font color="red"&gt;</b></code>Make text red.<br><code><b>&lt;font size="+1"&gt;</b></code>Make red text one size larger.<br><code><b>&lt;/font&gt;</b></code>Turn off larger size for red text.<br><code><b>&lt;/font&gt;</b></code>Turn off color.
+</pre>
+<pre><a name="2219"></a>
+Start with normal text.<br><font color="red">Make text red.<br><font size="+1">Make red text one size larger.<br></font>Turn off larger size for red text.<br></font>Turn off color.
+</pre>
+<pre><a name="1020915"></a>
+Start with normal text.<br><code><b>&lt;font color="red"&gt;</b></code>Make text red.<br><code><b>&lt;/font&gt;</b></code>Turn off color.<br><code><b>&lt;font size="+1"&gt;</b></code>Make text one size larger.<br><code><b>&lt;/font&gt;</b></code>Turn off larger size.
+</pre>
+<pre><a name="2224"></a>
+Start with normal text.<br><font color="red">Make text red.<br></font>Turn off color.<br><font size="+1">Make text one size larger.<br></font>Turn off larger size.
+</pre>
+<pre><a name="1020916"></a>
+Start with normal text.<br><code><b>&lt;font color="red" size="+2"&gt;</b></code>Make text red and two sizes larger.<br><code><b>&lt;font color="blue" size="+1"&gt;</b></code>Make text blue and one size smaller.<br><code><b>&lt;/font&gt;&lt;/font&gt;&lt;font size=+1"&gt;</b></code>Turn off color but keep text the same size.<br><code><b>&lt;/font&gt;</b></code>Reduce text to normal.
+</pre>
+<pre><a name="2229"></a>
+Start with normal text.<br><font color="red" size="+2">Make text red and two sizes larger.<br><font color="blue" size="+1">Make text blue and one size smaller.<br></font></font><font size=+1">Turn off color but keep text the same size.<br></font>Reduce text to normal.
+</pre>
+<h1><a name="1003903"></a> Command Tags</h1>
+<p><a name="1003916"></a>The following tags let you embed RealPlayer commands in your presentation or modify the default streaming behavior.</p>
+<h4><a name="997502"></a> &lt;a href="URL" [target="_player"]&gt;...&lt;/a&gt;</h4>
+<p><a name="997503"></a>This tag makes the enclosed text a hyperlink to the specified URL, which should begin with a protocol designation such as <code>http://</code> or <code>rtsp://</code>. For static files, you can also specify URLs relative to the location of the RealText source file. For example, the link <code>&lt;a href="more.htm"&gt;...&lt;/a&gt;</code> opens the file <kbd>more.htm</kbd> in the same directory as the RealText file. Relative links follow the HTML directory syntax.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1012077"></a>
+SMIL files can also define hypertext links that may 
+override the link you set here. For more information, see 
+the SMIL chapter in <I>RealSystem G2 Production Guide</I>.
+</td></tr>
+</table></p>
+<p><a name="1010511"></a>You can also include the <code>target="_player"</code> attribute to launch the new stream in the current RealPlayer window. If you do not use the target attribute or you specify <code>target="_browser"</code>, the linked URL opens in a Web browser window. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="997504"></a>
+The link text is the color specified in the link attribute 
+of the <code>&lt;window&gt;</code> tag. The link is underlined unless the 
+<code>&lt;window&gt; </code>tag includes <code>underline_hyperlinks="false"</code>.
+</td></tr>
+</table></p>
+<h4><a name="1012471"></a> &lt;a href="mailto:address"&gt;...&lt;/a&gt;</h4>
+<p><a name="1012472"></a>This tag turns the enclosed text into an e-mail hyperlink. When the viewer clicks the link, RealText passes the e-mail address to the viewer's browser. Use an address in the standard form, such as <code>name@company.com</code>. If the browser is configured for e-mail, the e-mail client opens a new message with the defined address in the "to" line.</p>
+<h4><a name="997506"></a> &lt;a href="command" target="_player"&gt;...&lt;/a&gt;</h4>
+<p><a name="997507"></a>This tag makes the enclosed text a hyperlink that, when clicked, executes a RealPlayer command. The commands are case-sensitive and must be enclosed in double quotes. The <code>target="_player"</code> attribute is required. The following command instructs RealPlayer to seek to the specified time in the current text stream:</p>
+<pre><a name="997508"></a>
+&lt;a href="command:seek(time)" target="_player"&gt; 
+</pre>
+<p><a name="997510"></a> For example, the following instructs RealPlayer to seek to 1:35.4 in the stream: </p>
+<pre><a name="998292"></a>
+&lt;a href="command:seek(1:35.4)" target="_player"&gt; 
+</pre>
+<p><a name="998309"></a>When clicked, the following link causes RealPlayer to pause the stream:</p>
+<pre><a name="997511"></a>
+&lt;a href="command:pause()" target="_player"&gt; 
+</pre>
+<p><a name="998341"></a>When clicked, the following link causes RealPlayer to begin or resume playing the stream:</p>
+<pre><a name="997513"></a>
+&lt;a href="command:play()" target="_player"&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="997515"></a>
+The link text is the color specified in the link attribute 
+of the <code>&lt;window&gt;</code> tag. The link is underlined unless the 
+<code>&lt;window&gt;</code> tag includes <code>underline_hyperlinks="false"</code>.
+</td></tr>
+</table></p>
+<h4><a name="1003888"></a> &lt;required&gt;...&lt;/required&gt;</h4>
+<p><a name="1003889"></a>Use these tags to enclose text that must be delivered to RealPlayer under any circumstance. During extremely adverse network conditions, RealSystem will halt the presentation if necessary rather than drop the text. You can use these tags sparingly, though, because RealSystem ensures that very little data loss occurs in transmission.</p>
+<h1><a name="997542"></a> Colors</h1>
+<p><a name="1002109"></a>For the RealText color options, you can use any colors available through the HTML <code>&lt;FONT COLOR&gt;</code> tag. This includes Red/Green/Blue hexadecimal values (#RRGGBB), as well as these predefined color names, listed here with their corresponding hexadecimal values:<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+<tr><a name="1009206"></a><TD bgcolor=#FFFFFF><FONT COLOR="#000000"><code>white (#FFFFFF)</code></FONT></TD><code></code><a name="1009208"></a><TD bgcolor=#C0C0C0><FONT COLOR="#000000"><code>silver (#C0C0C0)</code></FONT></TD><code></code><a name="1009210"></a><TD bgcolor=#808080><FONT COLOR="#FFFFFF"><code>gray (#808080)</code></FONT></TD><code></code><a name="1009212"></a><TD bgcolor=#000000><FONT COLOR="#FFFFFF"><code>black (#000000)</code></FONT></TD><code></code></tr>
+<tr><a name="1009214"></a><TD bgcolor=#FFFF00><FONT COLOR="#000000"><code>yellow (#FFFF00)</code></FONT></TD><code></code><a name="1009216"></a><TD bgcolor=#FF00FF><FONT COLOR="#FFFFFF"><code>fuchsia (#FF00FF)</code></FONT></TD><code></code><a name="1009218"></a><TD bgcolor=#FF0000><FONT COLOR="#FFFFFF"><code>red (#FF0000)</code></FONT></TD><code></code><a name="1009220"></a><TD bgcolor=#800000><FONT COLOR="#FFFFFF"><code>maroon (#800000)</code></FONT></TD><code></code></tr>
+<tr><a name="1009222"></a><TD bgcolor=#00FF00><FONT COLOR="000000"><code>lime (#00FF00)</code></FONT></TD><code></code><a name="1009224"></a><TD bgcolor=#808000><FONT COLOR="#FFFFFF"><code>olive (#808000)</code></FONT></TD><code></code><a name="1009226"></a><TD bgcolor=#008000><FONT COLOR="#FFFFFF"><code>green (#008000)</code></FONT></TD><code></code><a name="1009228"></a><TD bgcolor=#800080><FONT COLOR="#FFFFFF"><code>purple (#800080)</code></FONT></TD><code></code></tr>
+<tr><a name="1009230"></a><TD bgcolor=#00FFFF><FONT COLOR="#000000"><code>aqua (#00FFFF)</code></FONT></TD><code></code><a name="1009232"></a><TD bgcolor=#008080><FONT COLOR="#FFFFFF"><code>teal (#008080)</code></FONT></TD><code></code><a name="1009234"></a><TD bgcolor=#0000FF><FONT COLOR="#FFFFFF"><code>blue (#0000FF)</code></FONT></TD><code></code><a name="1009236"></a><TD bgcolor=#000080><FONT COLOR="#FFFFFF"><code>navy (#000080)</code></FONT></TD><code></code></tr>
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</p>
+<h2><a name="1001911"></a> Transparency</h2>
+<p><a name="1014620"></a>You can also use <code>"transparent"</code> as a color. For example, <code>&lt;font bgcolor="transparent"&gt;</code> means that each following word does not have a rectangle drawn behind it. This lets you draw text on top of previous text (using the <code>&lt;pos/&gt;</code> tags) without "erasing" the previous text.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1014608"></a>
+Transparency is not currently supported as a window 
+background color.
+</td></tr>
+</table></p>
+<h1><a name="997561"></a> Coded Characters</h1>
+<p><a name="997562"></a>The following table lists the character codes you can include in a RealText source file. Codes begin with an ampersand ("<code>&amp;"</code>) and end with a semicolon ("<code>;"</code>). RealText interprets these characters the same way as popular Web browsers.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="997568"></a>
+ RealText Coded Character Set </caption>
+<tr>
+<th align=left valign=bottom><a name="997572"></a>Code</th>
+<th align=left valign=bottom><a name="997574"></a>Displays as</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="997576"></a><code>&amp;lt;</code></td>
+<td align=left valign=top><a name="997578"></a><code>&lt;</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997580"></a><code>&amp;gt; </code></td>
+<td align=left valign=top><a name="997582"></a><code>&gt;</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997584"></a><code>&amp;amp;</code></td>
+<td align=left valign=top><a name="997586"></a><code>&amp;</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997588"></a><code>&amp;nbsp; </code></td>
+<td align=left valign=top><a name="997590"></a>(nonbreaking space) </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997592"></a><code>&amp;#32;<br></code>to <br><code>&amp;#255; </code></td>
+<td align=left valign=top><a name="997594"></a>ISO Latin-1 characters. For a list of these characters, visit the W3C reference at <a href="http://www.w3.org/MarkUp/html-spec/html-spec_13.html" target="_top">http://www.w3.org/MarkUp/html-spec/html-spec_13.html</a>. Or <a href="isochar.htm">click here</a> for a list generated through JavaScript. (This may take a few seconds.)</td>
+</tr>
+<tr>
+<td class=footer colspan=2 rowspan=1><a name="997599"></a></td></tr>
+</table>
+</p>
+<p><a name="997602"></a>For example, the following RealText source text: </p>
+<pre><a name="997603"></a>
+This is a bold tag: "&amp;lt;b&amp;gt;".
+</pre>
+<p><a name="1020192"></a>is displayed in a RealText window as:</p>
+<pre><a name="997605"></a>
+This is a bold tag: "&lt;b&gt;".
+</pre>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:49.</font>
+<center><a href="windtag.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="examples.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

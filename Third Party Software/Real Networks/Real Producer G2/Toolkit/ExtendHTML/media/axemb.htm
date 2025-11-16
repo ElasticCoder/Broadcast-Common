@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<TITLE>Demonstration of Extended ActiveX Functionality</TITLE>
+</HEAD>
+<BODY BGCOLOR="white">
+<P>This example embeds a Shockwave Flash file in a Web page
+<BR>and uses a simple form to provide Play, Pause, and Stop buttons.
+<BR>The buttons link to the display through ActiveX.
+<BR>This example requires Internet Explorer.</P>
+
+<!-- Embedded Display Window -->
+
+<OBJECT ID=RVOCX CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" WIDTH=220 HEIGHT=180>
+<PARAM NAME="SRC" VALUE="animate.swf">
+<PARAM NAME="CONSOLE" VALUE="one">
+<PARAM NAME="CONTROLS" VALUE="ImageWindow">
+<PARAM NAME="BACKGROUNDCOLOR" VALUE="white">
+<PARAM NAME="CENTER" VALUE="true">
+</OBJECT>
+
+<!-- Form Buttons using VBScript Controls-->
+
+<P></P>
+<FORM>
+<input TYPE="button" VALUE="Play" NAME="doplay">
+	<script LANGUAGE="VBScript" FOR="doplay" EVENT="onClick">
+	RVOCX.DoPlay
+	</script>
+<input TYPE="button" VALUE="Pause" NAME="pause">
+	<script LANGUAGE="VBScript" FOR="pause" EVENT="onClick">
+	RVOCX.DoPause
+	</script>
+<input TYPE="button" VALUE="Stop" NAME="stop">
+	<script LANGUAGE="VBScript" FOR="stop" EVENT="onClick">
+	RVOCX.DoStop
+	</script>
+</FORM>
+</BODY>
+</HTML>

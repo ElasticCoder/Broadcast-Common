@@ -1,0 +1,35 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Copyright (c) 1996; Sony BPE
+// All rights Reserved
+//
+///////////////////////////////////////////////////////////////////////////////
+//
+// System Name : Key And Voice-Over
+// Subsystem   : Services
+// File Name   : G00.h       
+// File Type   : C++ Header
+// Description : Services DLL import/export control
+// Author      : Duncan Olesen
+//
+///////////////////////////////////////////////////////////////////////////////
+
+#ifndef _G00_H
+#define _G00_H
+
+#include <portable_types.h>  // Type definitions
+
+#ifdef _DLL_IS_SERVICES_
+#define SERVICES_EXTERNAL __declspec(dllexport)
+#else
+#define SERVICES_EXTERNAL __declspec(dllimport)
+#endif  // _DLL_IS_SERVICES_
+
+// Process Registry event logging code bases
+const w REGISTRY_CODE_BASE_W = 0;
+
+#endif // _G00_H
+
+///////////////////////////////////////////////////////////////////////////////////
+// End of File
+///////////////////////////////////////////////////////////////////////////////////

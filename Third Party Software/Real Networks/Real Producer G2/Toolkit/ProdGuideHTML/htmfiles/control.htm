@@ -1,0 +1,922 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="smil.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="ads.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="65923"></a>
+ Chapter 8: 	Playing a Presentation in a Web 
+Page
+
+</h1>
+<p><a name="35267"></a>Embedding a presentation in your Web page provides seamless playback without launching RealPlayer as a separate application. You can even include RealPlayer controls such as fast forward and pause. This chapter explains how you add mark-up to your Web page so that people view your RealSystem G2 presentation directly through their Web browsers.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="78337"></a>
+Refer to this chapter for full information on embedding 
+a presentation. For a quick example of how to embed a 
+video in a Web page, see <a href="quick.htm#997673">"Embedding a RealVideo Clip 
+in a Web Page"</a>.
+</td></tr>
+</table></p>
+<h1><a name="10732"></a> Choosing the Netscape Plug-in or ActiveX Control</h1>
+<p><a name="16570"></a>To provide Web page playback, RealPlayer includes a plug-in for browsers that support the Netscape plug-in architecture:</p>
+<ul>
+<p><li><a name="16469"></a>Netscape Navigator 3.0, 4.0, and higher.
+<p><li><a name="16476"></a>Microsoft Internet Explorer 3.0 and 4.0.
+</ul>
+<p><a name="16485"></a>It also has an ActiveX control that provides playback capabilities within these products:</p>
+<ul>
+<p><li><a name="16501"></a>Microsoft Internet Explorer 3.0 and 4.0.
+<p><li><a name="72139"></a>Any application that supports ActiveX controls, such as Visual Basic, Visual C++, Microsoft Access, and so on.
+</ul>
+<p><a name="16029"></a>Because they both have the same capabilities, you can use either the plug-in or the ActiveX control depending on which products you need to support. The following sections describe the basics of using the plug-in or the control, then explain each parameter you can set.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="22598"></a>
+Familiarity with RealPlayer and HTML will make it 
+easier to use the plug-in or control. In the examples 
+below, ellipses (...) indicate information left out to keep 
+the examples short. Make sure your tags include all 
+necessary information.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="68132"></a>
+<I>Embedded RealPlayer Extended Functionality Guide</I> at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> 
+explains how to use JavaScript or VBScript to extend the 
+functionality of the Netscape Plug-in or ActiveX control.
+</td></tr>
+</table></p>
+<h2><a name="22604"></a> Using &lt;EMBED&gt; Tags for the Netscape Plug-In </h2>
+<p><a name="22605"></a>To use RealPlayer's Netscape plug-in, you add <code>&lt;EMBED&gt;</code> tags to your Web page HTML. Each <code>&lt;EMBED&gt;</code> tag has three required parameters (<code>SRC</code>, <code>WIDTH</code>, <code>HEIGHT</code>), and can include many optional parameters. The basic <code>&lt;EMBED&gt;</code> tag looks like the following (the <code>SRC</code> value, which is explained below, has been omitted for simplicity):</p>
+<pre><a name="7889"></a>
+&lt;EMBED SRC="..." WIDTH=300 HEIGHT=134&gt;
+</pre>
+<p><a name="23846"></a>This tag creates a playback area 300 pixels wide by 134 pixels high within the Web page. Parameters typically have the form <code>PARAMETER=value</code>. The parameter names can be any case, though this manual shows them uppercase. Except for file names, which must typically be lowercase, parameter values are not case-sensitive. Unless they are URLs, parameter values do not need to be inside quotation marks.</p>
+<h3><a name="24760"></a> Supporting Other Browsers</h3>
+<p><a name="24761"></a>To accommodate browsers that do not support the Netscape plug-in, use <code>&lt;NOEMBED&gt;</code> to define a standard hypertext link to your presentation. The unembedded link follows the <code>&lt;EMBED&gt;</code> tag:</p>
+<pre><a name="24812"></a>
+&lt;EMBED SRC="..." WIDTH=300 HEIGHT=134&gt;<br>&lt;NOEMBED&gt;&lt;A HREF="..."&gt;Play with RealPlayer.&lt;/A&gt;&lt;/NOEMBED&gt;
+</pre>
+<p><a name="24763"></a>In this example, browsers that can play the embedded presentation hide the text between <code>&lt;NOEMBED&gt;</code> and <code>&lt;/NOEMBED&gt;</code>. Other browsers ignore the preceding <code>&lt;EMBED&gt;</code> tag and display just the hypertext link. The user then clicks the link to play the presentation in RealPlayer.</p>
+<h2><a name="16660"></a> Using &lt;OBJECT&gt; Tags for the ActiveX Control</h2>
+<p><a name="16661"></a>You embed the RealPlayer ActiveX control in HTML pages with the <code>&lt;OBJECT&gt;</code> tag. This tag uses an ID that you select, such as <code>ID=RVOCX</code>, and must have the following class ID that identifies RealPlayer:</p>
+<pre><a name="16664"></a>
+CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA"
+</pre>
+<p><a name="24911"></a>The <code>&lt;OBJECT&gt;</code> tag also sets the width and height of the playback area within the browser. A typical <code>&lt;OBJECT&gt;</code> tag looks like this:</p>
+<pre><a name="35474"></a>
+&lt;OBJECT ID=RVOCX CLASSID="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" <br>WIDTH=300 HEIGHT=134&gt;<br><I>... parameters ...<br></I>&lt;/OBJECT&gt;
+</pre>
+<p><a name="16667"></a>This tag creates a playback area 300 pixels wide by 134 pixels high within the Web page. Between <code>&lt;OBJECT&gt;</code> and <code>&lt;/OBJECT&gt;</code>, you can define any number of additional parameters in this form:</p>
+<pre><a name="16668"></a>
+&lt;PARAM NAME="<code><I>name</I></code>" VALUE="<code><I>value</I></code>"&gt;
+</pre>
+<p><a name="22612"></a><code>PARAM</code>, <code>NAME</code>, and <code>VALUE</code> markers can be any case, though this manual shows them uppercase. Parameter values are not case-sensitive except for file names, which must typically be lowercase. Always enclose parameter values in double quotation marks.</p>
+<h1><a name="22614"></a> Setting Basic Parameters</h1>
+<p><a name="22615"></a>Both the Netscape plug-in and ActiveX control use the same basic tag parameters. As explained above, the tag syntax for the plug-in and the control differs, however. The following sections explain the basic parameters you can include in each <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag.</p>
+<h4><a name="7906"></a> SRC</h4>
+<p><a name="11669"></a>The <code>SRC</code> parameter gives the presentation's source URL surrounded by double quotes. The directory names cannot contain spaces. For the ActiveX control, the <code>&lt;OBJECT&gt;</code> tag's <code>CLASSID</code> parameter causes the presentation to play back in the Web page, so you can simply link to the SMIL file or clip within one <code>&lt;OBJECT&gt;</code> tag. When linking to a presentation on RealServer, the URL can use Ramgen, but this is not necessary:</p>
+<pre><a name="83547"></a>
+&lt;PARAM NAME="SRC" VALUE="http://realserver.company.com:8080/ramgen/sample.smil"&gt;
+</pre>
+<p><a name="83544"></a>When you use the Netscape plug-in, you need to include the SRC parameter in every <code>&lt;EMBED&gt;</code> tag. You can specify two types of URLs. The first uses the <code>?embed</code> option to RealServer's Ramgen, which causes RealPlayer to play the clip or SMIL presentation through its Netscape plug-in instead of launching as a separate application:</p>
+<pre><a name="31341"></a>
+SRC="http://realserver.company.com:8080/ramgen/sample.smil?embed"
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="83964"></a>
+For more on Ramgen and presentation URLs, see 
+<a href="server.htm#25126">"Linking your Web Page to RealServer"</a>. 
+</td></tr>
+</table></p>
+<p><a name="83962"></a>The second option is to create a Ram file with a <kbd>.rpm</kbd> extension and list this file in the <code>SRC</code> parameter without including Ramgen and the <code>?embed</code> option. The Ram file then links to your SMIL file or clips. The following example links to a <code>.rpm</code> file on a Web server:</p>
+<pre><a name="83873"></a>
+SRC="http://www.company.com/media/sample.rpm"
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="84062"></a>
+For instructions on writing a <kbd>.rpm</kbd> file, see <a href="server.htm#14171">"Creating a 
+Ram File Manually"</a>.
+</td></tr>
+</table></p>
+<p><a name="83850"></a>You must create and link to a <code>.rpm</code> file in any of the following situations:</p>
+<ul>
+<p><li><a name="67554"></a>Your RealServer does not use Ramgen.
+<p><li><a name="67576"></a>The SMIL file or clip is on a Web server.
+<p><li><a name="83889"></a>All files are located on a user's local computer rather than streamed over a network.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="84016"></a>
+When linking to local files, you can use relative links or 
+absolute links. When you use absolute links with the 
+Netscape plug-in, though, use forward slashes in paths. 
+For example, instead of <code>file://c:\media\first.rpm</code>, set the 
+source as <code>file://c:/media/first.rpm</code>.
+</td></tr>
+</table></p>
+</ul>
+<p><a name="1646"></a><a name="size"></a></p>
+<h4><a name="37739"></a> WIDTH and HEIGHT</h4>
+<p><a name="37740"></a>Required for each <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag, the <code>WIDTH</code> and <code>HEIGHT</code> parameters set the size of the playback area. If you leave them out, the playback area may appear as a tiny icon because streaming media presentations do not size automatically. The values for <code>WIDTH</code> and <code>HEIGHT</code> are in pixels by default, so a width of 300 creates a playback area 300 pixels wide. Setting <code>WIDTH</code> and <code>HEIGHT</code> to 0 (zero) hides the playback area.</p>
+<p><a name="12242"></a><strong></strong>You can also express <code>WIDTH</code> and <code>HEIGHT</code> as percentages of the browser window size. For example, a width of 50% makes the presentation area half the browser width. Keep in mind that different types of media scale with different results. A video scaled larger than its encoded size may not look good. Vector-based media such as RealFlash animation scale more easily to fit different playback areas, however.</p>
+<h4><a name="72257"></a> NOJAVA</h4>
+<p><a name="72258"></a>Setting <code>NOJAVA</code> to <code>true</code> in every <code>&lt;EMBED&gt;</code> tag prevents the browser's Java Virtual Machine (JVM) from starting if it is not yet running:</p>
+<pre><a name="82254"></a>
+&lt;EMBED SRC="..." WIDTH=300 HEIGHT=134 NOJAVA=true&gt;
+</pre>
+<p><a name="82259"></a>This is recommended when using the Netscape plug-in because the JVM is not required for the <code>&lt;EMBED&gt;</code> parameters described in this chapter. Starting the JVM therefore delays presentation playback unnecessarily. The JVM is required only when extending plug-in functionality with JavaScript. In this case, omit <code>NOJAVA</code> entirely from the <code>&lt;EMBED&gt;</code> tags.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="72259"></a>
+See <I>Embedded RealPlayer Extended Functionality Guide</I> at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> for 
+more information on controlling RealPlayer with 
+JavaScript.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="72260"></a>
+Although you can include <code>NOJAVA</code> as an ActiveX 
+parameter, it has no effect on Internet Explorer, which 
+launches its JVM on browser start-up.
+</td></tr>
+</table></p>
+<p><a name="1651"></a><a name="controls"></a></p>
+<h1><a name="36019"></a> Adding RealPlayer Controls </h1>
+<p><a name="36020"></a>With the <code>CONTROLS</code> parameter, you can place RealPlayer controls such as a play/pause button in your Web page. A visitor to your page can then control the presentation playback just as if using RealPlayer as a separate application. The following example for the Netscape <code>&lt;EMBED&gt;</code> tag displays the play/pause button:</p>
+<pre><a name="16844"></a>
+&lt;EMBED SRC="..." WIDTH=26 HEIGHT=26 NOJAVA=true <code><b>CONTROLS=PlayButton</b></code>&gt;
+</pre>
+<p><a name="16845"></a>For the ActiveX control, you define a CONTROLS parameter within the <code>&lt;OBJECT&gt;</code> tag structure:</p>
+<pre><a name="17908"></a>
+&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=26 HEIGHT=26&gt;<br>&lt;PARAM NAME="SRC" VALUE="..."&gt;<br><code><b>&lt;PARAM NAME="CONTROLS" VALUE="PlayButton"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<p><a name="31900"></a>The following sections describe each RealPlayer control you can use. A tag's <code>WIDTH</code> and <code>HEIGHT</code> parameters set the control's size. The suggested pixel widths and heights given below produce embedded controls approximately the same sizes as the RealPlayer controls. Specifying different pixel sizes scales the controls larger or smaller. You can also use percentage values for sizes, but this is recommended only for the image window.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="31866"></a>
+For information on adding more than one control to 
+your Web page, see <a href="control.htm#52721">"Linking Multiple Controls"</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="78498"></a>
+If you have installed RealPlayer G2, <a 
+href="../media/plugin.htm" target="_new">click 
+here</a> to see a Web page with all the embedded 
+controls.
+</td></tr>
+</table></p>
+<h2><a name="21051"></a> Basic Controls</h2>
+<h4><a name="82423"></a> ImageWindow</h4>
+<p><a name="82427"></a>
+<img src="../graphics/nocont.gif"></p>
+<p><a name="82428"></a>Displays the image window. This is available only for display presentations such as video or animation. Even if no other controls are visible on the page, the user can typically right-click (on Windows) or hold down the mouse button (Macintosh) on the playback area to display a menu of choices such as <strong>Play</strong> and <strong>Stop</strong>. See also <a href="control.htm#49499">"Controlling Image Display"</a>.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="82431"></a>Suggested pixel width:</td>
+<td valign=top><a name="82433"></a>176 or higher</td></tr>
+<tr>
+<td valign=top><a name="82435"></a>Suggested pixel height:</td>
+<td valign=top><a name="82437"></a>132 or higher</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21361"></a> All</h4>
+<p><a name="38831"></a>
+<img src="../graphics/ctrlall.gif"></p>
+<p><a name="36890"></a>Displays the basic RealPlayer control panel. The control name "default" also works. Buttons include play, pause, stop, fast forward, and rewind. Sliders include a position slider and a volume slider with mute button that pops up when the speaker button is clicked. Below the buttons are a clip information field, a status panel, a network congestion indicator, and a clip timing field.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="36893"></a>Suggested pixel width:</td>
+<td valign=top><a name="36895"></a>375</td></tr>
+<tr>
+<td valign=top><a name="36897"></a>Suggested pixel height:</td>
+<td valign=top><a name="36899"></a>100</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h2><a name="23674"></a> Individual Controls and Sliders</h2>
+<h4><a name="23675"></a> ControlPanel</h4>
+<p><a name="38650"></a>
+<img src="../graphics/ctrlpanl.gif"></p>
+<p><a name="18952"></a>Displays the play, pause, stop, fast forward and rewind buttons. There's also a position slider, along with a volume slider and mute button that pops up when the speaker button is clicked.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28089"></a>Suggested pixel width:</td>
+<td valign=top><a name="28091"></a>350</td></tr>
+<tr>
+<td valign=top><a name="28093"></a>Suggested pixel height:</td>
+<td valign=top><a name="28095"></a>36</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21168"></a> PlayButton <img src="../graphics/playpaus.gif"></h4>
+<p><a name="21194"></a>Displays a play/pause button.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28149"></a>Suggested pixel width:</td>
+<td valign=top><a name="28151"></a>44</td></tr>
+<tr>
+<td valign=top><a name="28153"></a>Suggested pixel height:</td>
+<td valign=top><a name="28155"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="33734"></a> PlayOnlyButton <img src="../graphics/playbtn.gif"></h4>
+<p><a name="33744"></a>Displays a play button.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="33737"></a>Suggested pixel width:</td>
+<td valign=top><a name="33739"></a>26</td></tr>
+<tr>
+<td valign=top><a name="33741"></a>Suggested pixel height:</td>
+<td valign=top><a name="33743"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="28881"></a> PauseButton <img src="../graphics/pausbtn.gif"></h4>
+<p><a name="29451"></a>Displays a pause button.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="29444"></a>Suggested pixel width:</td>
+<td valign=top><a name="29446"></a>26</td></tr>
+<tr>
+<td valign=top><a name="29448"></a>Suggested pixel height:</td>
+<td valign=top><a name="29450"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21199"></a> StopButton <img src="../graphics/stopbtn.gif"></h4>
+<p><a name="21225"></a>Displays a stop button.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28169"></a>Suggested pixel width:</td>
+<td valign=top><a name="28171"></a>26</td></tr>
+<tr>
+<td valign=top><a name="28173"></a>Suggested pixel height:</td>
+<td valign=top><a name="28175"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="33845"></a> FFCtrl <img src="../graphics/ffctrl.gif"></h4>
+<p><a name="34361"></a>Displays a fast forward control.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="34354"></a>Suggested pixel width:</td>
+<td valign=top><a name="34356"></a>26</td></tr>
+<tr>
+<td valign=top><a name="34358"></a>Suggested pixel height:</td>
+<td valign=top><a name="34360"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="34369"></a> RWCtrl <img src="../graphics/rwctrl.gif"></h4>
+<p><a name="29270"></a>Displays a rewind control.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="29263"></a>Suggested pixel width:</td>
+<td valign=top><a name="29265"></a>26</td></tr>
+<tr>
+<td valign=top><a name="29267"></a>Suggested pixel height:</td>
+<td valign=top><a name="29269"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="28941"></a> MuteCtrl <img src="../graphics/mute.gif"></h4>
+<p><a name="29233"></a>Displays a mute button.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="29226"></a>Suggested pixel width:</td>
+<td valign=top><a name="29228"></a>26</td></tr>
+<tr>
+<td valign=top><a name="29230"></a>Suggested pixel height:</td>
+<td valign=top><a name="29232"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="28909"></a> MuteVolume <img src="../graphics/mutevol.gif"></h4>
+<p><a name="29193"></a>Displays a mute button and volume slider.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="29186"></a>Suggested pixel width:</td>
+<td valign=top><a name="29188"></a>26</td></tr>
+<tr>
+<td valign=top><a name="29190"></a>Suggested pixel height:</td>
+<td valign=top><a name="29192"></a>88</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21287"></a> VolumeSlider <img src="../graphics/volslide.gif"></h4>
+<p><a name="21313"></a>Displays a volume slider.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28189"></a>Suggested pixel width:</td>
+<td valign=top><a name="28191"></a>26</td></tr>
+<tr>
+<td valign=top><a name="28193"></a>Suggested pixel height:</td>
+<td valign=top><a name="28195"></a>65</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21318"></a> PositionSlider</h4>
+<p><a name="38866"></a>
+<img src="../graphics/posslide.gif"></p>
+<p><a name="21344"></a>Displays a clip position slider.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28240"></a>Suggested pixel width:</td>
+<td valign=top><a name="28242"></a>120</td></tr>
+<tr>
+<td valign=top><a name="28244"></a>Suggested pixel height:</td>
+<td valign=top><a name="28246"></a>26</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="80684"></a> TACCtrl</h4>
+<p><a name="80688"></a>
+<img src="../graphics/tacctrl.gif"></p>
+<p><a name="80689"></a>Displays a clip information field. For instructions on formatting the clip playlist, see <a href="smil.htm#112121">"Managing the Playlist"</a>.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="80698"></a>Suggested pixel width:</td>
+<td valign=top><a name="80700"></a>370</td></tr>
+<tr>
+<td valign=top><a name="80702"></a>Suggested pixel height:</td>
+<td valign=top><a name="80704"></a>32</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="79493"></a> HomeCtrl <img src="../graphics/homectrl.gif"></h4>
+<p><a name="79503"></a>Displays the Real&#153; logo.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="79496"></a>Suggested pixel width:</td>
+<td valign=top><a name="79498"></a>45</td></tr>
+<tr>
+<td valign=top><a name="79500"></a>Suggested pixel height:</td>
+<td valign=top><a name="79502"></a>25</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h2><a name="21444"></a> Information Panels</h2>
+<h4><a name="21445"></a> InfoVolumePanel</h4>
+<p><a name="38917"></a>
+<img src="../graphics/involpan.gif"></p>
+<p><a name="21446"></a>Displays presentation information along with the volume slider and mute button. For more on presentation information, see <a href="smil.htm#112115">"Adding Presentation Information"</a>. See also <a href="control.htm#54406">"NOLABELS"</a>.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28260"></a>Suggested pixel width:</td>
+<td valign=top><a name="28262"></a>325</td></tr>
+<tr>
+<td valign=top><a name="28264"></a>Suggested pixel height:</td>
+<td valign=top><a name="28266"></a>55</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="21476"></a> InfoPanel</h4>
+<p><a name="38976"></a>
+<img src="../graphics/infopan.gif"></p>
+<p><a name="21502"></a>Displays the presentation information panel. For more on presentation information, see <a href="smil.htm#112115">"Adding Presentation Information"</a>. See also <a href="control.htm#54406">"NOLABELS"</a>.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28317"></a>Suggested pixel width:</td>
+<td valign=top><a name="28319"></a>300</td></tr>
+<tr>
+<td valign=top><a name="28321"></a>Suggested pixel height:</td>
+<td valign=top><a name="28323"></a>55</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h2><a name="8129"></a> Status Panels</h2>
+<h4><a name="21129"></a> StatusBar</h4>
+<p><a name="60324"></a>
+<img src="../graphics/statbar.gif"></p>
+<p><a name="19204"></a>Displays the status panel, which shows informational messages. It also includes the network congestion LED and the position field, which shows current place in the presentation timeline along with total clip length.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="84971"></a>Suggested pixel width:</td>
+<td valign=top><a name="84973"></a>300</td></tr>
+<tr>
+<td valign=top><a name="84975"></a>Suggested pixel height:</td>
+<td valign=top><a name="84977"></a>30</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="84949"></a>
+The status bar is included in the <code>All</code> control. If you do 
+not embed a status bar or status field in your page, error 
+messages display in the browser's status bar.
+</td></tr>
+</table></p>
+<h4><a name="8187"></a> StatusField</h4>
+<p><a name="60368"></a>
+<img src="../graphics/statfld.gif"></p>
+<p><a name="19657"></a>Displays the message text area of the status bar. If you do not embed a status field or status bar in your page, error messages display in the browser's status bar.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="28391"></a>Suggested pixel width:</td>
+<td valign=top><a name="28393"></a>200</td></tr>
+<tr>
+<td valign=top><a name="28395"></a>Suggested pixel height:</td>
+<td valign=top><a name="28397"></a>30</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="75266"></a> PositionField</h4>
+<p><a name="75270"></a>
+<img src="../graphics/posfld.gif"></p>
+<p><a name="75271"></a>Displays the position field, which shows the clip's current place in the presentation timeline and the total clip length.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="75274"></a>Suggested pixel width:</td>
+<td valign=top><a name="75276"></a>90</td></tr>
+<tr>
+<td valign=top><a name="75278"></a>Suggested pixel height:</td>
+<td valign=top><a name="75280"></a>30</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1786"></a><a name="console"></a></p>
+<h2><a name="52721"></a> Linking Multiple Controls</h2>
+<p><a name="17317"></a>The <code>CONSOLE</code> parameter defines a name that unifies <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags so that multiple controls work together. For example, you could create three separate <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags to define an image window, a play button, and a stop button. By using three tags, you can set the size of each control separately and define its layout with HTML tags. You could put each control in a different HTML table cell, for example.</p>
+<p><a name="17535"></a>To tie controls together, define the same <code>CONSOLE</code> name within each <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag, or use one of these predefined names:</p>
+<p><a name="17318"></a><code>_master</code> links the control to all other embedded controls on the page.</p>
+<p><a name="17319"></a><code>_unique</code> links the control to no other embedded controls on the page.</p>
+<p><a name="17763"></a>You can have multiple console names for separate presentations. For a page showing two video clips, for example, you can define console names of <code>video1</code> and <code>video2</code>. All controls linked by <code>video1</code> interoperate and all controls linked by <code>video2</code> interoperate. But a <code>video1</code> volume slider, for example, will not affect the volume of a <code>video2</code> clip.</p>
+<h4><a name="30671"></a> Tips for Using Consoles</h4>
+<p><a name="30732"></a>Note the following when grouping multiple controls with <code>CONSOLE</code> attributes:</p>
+<ul>
+<p><li><a name="30733"></a>Every <code>&lt;EMBED&gt;</code> tag must have a <code>SRC</code> attribute. Tags linked by a console name should have the same <code>SRC</code> value.
+<p><li><a name="30833"></a>With the ActiveX control, only one <code>&lt;OBJECT&gt;</code> tag in a console group needs to have a <code>SRC</code> value.
+<p><li><a name="30894"></a>If the <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags in a console group have different <code>SRC</code> values, the first valid source that RealPlayer finds among those choices becomes the console source. This may not always be the first source listed.
+<p><li><a name="29878"></a>Clicking a play button for one console stops playback for other consoles. This allows multiple consoles to play separate audio tracks or to use the same image window.
+</ul>
+<h3><a name="23881"></a> Multiple Controls Example</h3>
+<p><a name="30065"></a>The following examples for the <code>&lt;EMBED&gt;</code> and <code>&lt;OBJECT&gt;</code> tags set up an image window and two sets of controls (a play button and stop button) for separate videos, <kbd>sample1.rm</kbd> and <kbd>sample2.rm</kbd>. The predefined console name <code>_master</code> links the image window to both control sets. The control sets use different console names, however, so they do not link to each other. Clicking each play button therefore starts a different video.</p>
+<h4><a name="30023"></a> Netscape Plug-in Sample Mark-up</h4>
+<p><a name="54311"></a>Because each <code>&lt;EMBED&gt;</code> tag must have a <code>SRC</code> value, the image window in the following example simply uses the same source as the first play button. The viewer simply clicks either play button to start a video. Clicking the other play button stops the first video and plays the second video.</p>
+<pre><a name="17331"></a>
+&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample1.rm?embed" <br>WIDTH=176 HEIGHT=128 NOJAVA=true CONTROLS=ImageWindow <code><b>CONSOLE=_master</b></code>&gt;
+</pre>
+<pre><a name="30472"></a>
+&lt;H4&gt;Video 1&lt;/H4&gt;<br>&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample1.rm?embed" <br>WIDTH=44 HEIGHT=26 NOJAVA=true CONTROLS=PlayButton <code><b>CONSOLE=video1</b></code>&gt; <br>&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample1.rm?embed" <br>WIDTH=26 HEIGHT=26 NOJAVA=true CONTROLS=StopButton <code><b>CONSOLE=video1</b></code>&gt;
+</pre>
+<pre><a name="30417"></a>
+&lt;H4&gt;Video 2&lt;/H4&gt;<br>&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample2.rm?embed" <br>WIDTH=44 HEIGHT=26 NOJAVA=true CONTROLS=PlayButton <code><b>CONSOLE=video2</b></code>&gt; <br>&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample2.rm?embed" <br>WIDTH=26 HEIGHT=26 NOJAVA=true CONTROLS=StopButton <code><b>CONSOLE=video2</b></code>&gt;
+</pre>
+<h4><a name="17809"></a> ActiveX Control Sample Mark-up</h4>
+<p><a name="40710"></a>In the following ActiveX example, only the controls for the two play buttons define the source URLs. For convenience the <code>CLASSID</code> value is omitted.</p>
+<pre><a name="23837"></a>
+&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=176 HEIGHT=128&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="ImageWindow"&gt;<br><code><b>&lt;PARAM NAME="CONSOLE" VALUE="_master"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<pre><a name="30621"></a>
+&lt;H4&gt;Video 1&lt;/H4&gt;<br>&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=44 HEIGHT=26&gt;<br>&lt;PARAM NAME="SRC" VALUE="http://realserver.company.com:8080/ramgen/sample1.rm"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="PlayButton"&gt;<br><code><b>&lt;PARAM NAME="CONSOLE" VALUE="video1"&gt;<br></b></code>&lt;/OBJECT&gt;<br>&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=26 HEIGHT=26&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="StopButton"&gt;<br><code><b>&lt;PARAM NAME="CONSOLE" VALUE="video1"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<pre><a name="30451"></a>
+&lt;H4&gt;Video 2&lt;/H4&gt;<br>&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=44 HEIGHT=26&gt;<br>&lt;PARAM NAME="SRC" VALUE="http://realserver.company.com:8080/ramgen/sample2.rm"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="PlayButton"&gt;<br><code><b>&lt;PARAM NAME="CONSOLE" VALUE="video2"&gt;<br></b></code>&lt;/OBJECT&gt;<br>&lt;OBJECT ID=RVOCX CLASSID="..." WIDTH=26 HEIGHT=26&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="StopButton"&gt;<br><code><b>&lt;PARAM NAME="CONSOLE" VALUE="video2"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<h1><a name="49499"></a> Controlling Image Display</h1>
+<p><a name="49654"></a>The following <code>&lt;EMBED&gt;</code> and <code>&lt;OBJECT&gt;</code> parameters control aspects of how clips play back.</p>
+<h4><a name="50220"></a> BACKGROUNDCOLOR</h4>
+<p><a name="50221"></a>This parameter specifies a background color for the image window. The specified background color also shows through if a clip includes transparency. The background color is black by default. You can use an RGB hexadecimal color value (#RRGGBB) or the following color names, shown here with their corresponding RGB values:<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+<tr><a name="50224"></a><TD bgcolor=#FFFFFF><FONT COLOR="#000000"><code>white (#FFFFFF)</code></FONT></TD><code></code><a name="50226"></a><TD bgcolor=#C0C0C0><FONT COLOR="#000000"><code>silver (#C0C0C0)</code></FONT></TD><code></code><a name="50228"></a><TD bgcolor=#808080><FONT COLOR="#FFFFFF"><code>gray (#808080)</code></FONT></TD><code></code><a name="50230"></a><TD bgcolor=#000000><FONT COLOR="#FFFFFF"><code>black (#000000)</code></FONT></TD><code></code></tr>
+<tr><a name="50232"></a><TD bgcolor=#FFFF00><FONT COLOR="#000000"><code>yellow (#FFFF00)</code></FONT></TD><code></code><a name="50234"></a><TD bgcolor=#FF00FF><FONT COLOR="#FFFFFF"><code>fuchsia (#FF00FF)</code></FONT></TD><code></code><a name="50236"></a><TD bgcolor=#FF0000><FONT COLOR="#FFFFFF"><code>red (#FF0000)</code></FONT></TD><code></code><a name="50238"></a><TD bgcolor=#800000><FONT COLOR="#FFFFFF"><code>maroon (#800000)</code></FONT></TD><code></code></tr>
+<tr><a name="50240"></a><TD bgcolor=#00FF00><FONT COLOR="000000"><code>lime (#00FF00)</code></FONT></TD><code></code><a name="50242"></a><TD bgcolor=#808000><FONT COLOR="#FFFFFF"><code>olive (#808000)</code></FONT></TD><code></code><a name="50244"></a><TD bgcolor=#008000><FONT COLOR="#FFFFFF"><code>green (#008000)</code></FONT></TD><code></code><a name="50246"></a><TD bgcolor=#800080><FONT COLOR="#FFFFFF"><code>purple (#800080)</code></FONT></TD><code></code></tr>
+<tr><a name="50248"></a><TD bgcolor=#00FFFF><FONT COLOR="#000000"><code>aqua (#00FFFF)</code></FONT></TD><code></code><a name="50250"></a><TD bgcolor=#008080><FONT COLOR="#FFFFFF"><code>teal (#008080)</code></FONT></TD><code></code><a name="50252"></a><TD bgcolor=#0000FF><FONT COLOR="#FFFFFF"><code>blue (#0000FF)</code></FONT></TD><code></code><a name="50254"></a><TD bgcolor=#000080><FONT COLOR="#FFFFFF"><code>navy (#000080)</code></FONT></TD><code></code></tr>
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="62015"></a>
+SMIL region background colors override this 
+background color. For more on setting SMIL region 
+colors, see <a href="smil.htm#96074">"Adding a Background Color"</a>.
+</td></tr>
+</table></p>
+<h4><a name="62025"></a> CENTER</h4>
+<p><a name="62026"></a>The default value for <code>CENTER</code> is false, which causes the clip to fill the entire playback area. If you set <code>CENTER</code> to true, the clip is centered within the playback area and displays at its encoded size. So by setting <code>CENTER</code> to true, you can create a large playback area with <code>WIDTH</code> and <code>HEIGHT</code> and still have the clip play at its normal size. You cannot use <code>CENTER</code> along with <code>MAINTAINASPECT</code>.</p>
+<h4><a name="49505"></a> MAINTAINASPECT</h4>
+<p><a name="49807"></a>This parameter, which you cannot combine with <code>CENTER</code>, determines whether the clip's height-to-width ratio stays constant when the clip scales to fit the image window. The default value of false causes this ratio to change as necessary to fill the image window fully. This may distort the source image.</p>
+<p><a name="51405"></a>If you set <code>MAINTAINASPECT</code> to true, a clip's height-to-width ratio stays constant. For example, a clip's height-to-width ratio of 1:1 stays constant even if the image window's height-to-width ratio is 2:3. In these cases, the clip is centered in the image window and scaled until one dimension reaches the window's boundaries and the other dimension is within the boundaries. The following figure shows how clips scale by default, with <code>MAINTAINASPECT</code> set to true, and with <code>CENTER</code> set to true.</p>
+<h5><a name="51431"></a>
+ Clip Scaling with MAINTAINASPECT and CENTER </h5>
+<p><a name="51432"></a>
+<img src="../graphics/aspect.gif"></p>
+<h4><a name="54406"></a> NOLABELS</h4>
+<p><a name="54396"></a>When you use a control that includes presentation information such as title, author, and copyright, you can include the <code>NOLABELS</code> option to suppress that information. Here is an example for the Netscape plug-in:</p>
+<pre><a name="54397"></a>
+&lt;EMBED ... CONTROLS=All <code><b>NOLABELS=true</b></code>&gt;
+</pre>
+<p><a name="54398"></a>and an example for the ActiveX control:</p>
+<pre><a name="54399"></a>
+&lt;OBJECT ...&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="All"&gt;<br><code><b>&lt;PARAM NAME="NOLABELS" VALUE="true"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<h4><a name="49520"></a> NOLOGO</h4>
+<p><a name="50089"></a>When set to true, <code>NOLOGO</code> prevents the Real logo from displaying in the image window. When no clip is playing, only the specified background color shows in the window. The parameter is false by default.</p>
+<h1><a name="50091"></a> Setting Automatic Playback</h1>
+<p><a name="17093"></a>The <code>AUTOSTART</code>, <code>LOOP</code>, and <code>NUMLOOP</code> parameters let you set the content to start playing automatically, as well as loop continuously for a specified number of times. The following example shows two of these parameters used with the Netscape plug-in:</p>
+<pre><a name="23888"></a>
+&lt;EMBED SRC="..." WIDTH=50% HEIGHT=50% NOJAVA=true <code><b>AUTOSTART=true LOOP=true</b></code>&gt;
+</pre>
+<p><a name="23893"></a>Here is an example for the ActiveX control:</p>
+<pre><a name="23894"></a>
+&lt;OBJECT ID=RVOCX CLASSID="<I>...</I>" WIDTH=50% HEIGHT=50%&gt;<br>&lt;PARAM NAME="SRC" VALUE="..."&gt;<br><code><b>&lt;PARAM NAME="AUTOSTART" VALUE="true"&gt;<br>&lt;PARAM NAME="LOOP" VALUE="true"&gt;<br></b></code>&lt;/OBJECT&gt;
+</pre>
+<h4><a name="19939"></a> AUTOSTART</h4>
+<p><a name="17094"></a>When set to true, the <code>AUTOSTART</code> parameter starts playback immediately. When you have multiple <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags linked by a <code>CONSOLE</code> name, set <code>AUTOSTART</code> to true in just one tag. Leaving <code>AUTOSTART</code> out or setting its value to false means the presentation does not start until the user starts it, for example, by clicking an embedded play button.</p>
+<h4><a name="20054"></a> LOOP</h4>
+<p><a name="20055"></a>If the <code>LOOP</code> parameter is set to true, the presentation continuously loops until the viewer stops it. When you have multiple <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags linked by a <code>CONSOLE</code> name, set looping in just one tag. If you leave the <code>LOOP</code> parameter out, the default value of false applies and the presentation stops after the first playback. The user can play the presentation again by clicking the play button.</p>
+<h4><a name="48877"></a> NUMLOOP</h4>
+<p><a name="48878"></a>If you specify a <code>NUMLOOP</code> value such as <code>"2"</code>, the presentation loops the specified number of times and then stops. If both LOOP and NUMLOOP are used, the LOOP parameter is ignored.</p>
+<h4><a name="74617"></a> SHUFFLE</h4>
+<p><a name="74618"></a>The <code>SHUFFLE</code> parameter is for use only with Ram or SMIL files that list a single sequence of clips. When set to true, <code>SHUFFLE</code> makes RealPlayer play back the clips in a random order.</p>
+<h1><a name="20082"></a> Laying out SMIL Presentations</h1>
+<p><a name="24196"></a>As <a href="smil.htm#8639">"Laying Out Multiple Clips"</a> explains, you can use a SMIL file to define separate playback regions for different parts of a presentation. This lets you lay out two clips side-by-side, for example. When playing a presentation in a Web page, you can define the layout in SMIL or in HTML.</p>
+<h2><a name="24227"></a> Defining the Layout with SMIL</h2>
+<p><a name="24238"></a>To control the layout through SMIL, you set up the regions and their relative placements in the SMIL file. You then use the Netscape plug-in or ActiveX control to create a playback region in the Web page large enough to accommodate all regions. This SMIL file then produces the same layout when played through the Web page or RealPlayer.</p>
+<p><a name="42390"></a>The sample layout shown in <a href="smil.htm#8652">"SMIL Layout Example"</a> defines three regions, creating a total playback area 430 pixels wide by 165 pixels high. To accommodate this in your Web page, you define an image window at least as large as this through the <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag. Here are examples for the Netscape plug-in:</p>
+<pre><a name="42391"></a>
+&lt;EMBED SRC="..." <code><b>WIDTH=430 HEIGHT=165</b></code> NOJAVA=true CONTROLS=ImageWindow CONSOLE=one&gt;
+</pre>
+<p><a name="24594"></a>and ActiveX control:</p>
+<pre><a name="24548"></a>
+&lt;OBJECT ID=RVOCX CLASSID="<I>...</I>" <code><b>WIDTH=430 HEIGHT=165</b></code>&gt;<br>&lt;PARAM NAME="SRC" VALUE="..."&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="ImageWindow"&gt;<br>&lt;PARAM NAME="CONSOLE" VALUE="one"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<p><a name="77723"></a>The <code>SRC</code> parameter provides the URL to the SMIL file. You can then use additional <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags linked to the "<code>one</code>" console to provide RealPlayer controls for the presentation.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1865"></a>
+If you have installed RealPlayer G2, <a 
+href="../media/embed1.htm" target="_new">click 
+here</a> to see a demonstration with a SMIL layout 
+embedded in a Web page. <a 
+href="../media/embed.ram">Click here</a> to see the 
+same demonstration play in RealPlayer.
+</td></tr>
+</table></p>
+<p><a name="1866"></a><a name="region"></a></p>
+<h2><a name="52740"></a> Defining the Layout with HTML</h2>
+<p><a name="24254"></a>The second method omits SMIL layout information and defines the layout through HTML. You could place an image window and separate RealPlayer controls in an HTML table, for example. Each <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags then uses a <code>REGION</code> parameter to define a region name. Clip source tags within the SMIL file list which region each clip plays in. For example, the SMIL file shown in <a href="smil.htm#8652">"SMIL Layout Example"</a> lists the following RealText file, set to play in the <code>newsregion</code> region:</p>
+<pre><a name="77828"></a>
+&lt;textstream src="news.rt" region="newsregion"/&gt;
+</pre>
+<p><a name="77827"></a>Within the HTML page, the <code>&lt;EMBED&gt;</code> tag that plays <kbd>news.rt</kbd> would look like this:</p>
+<pre><a name="62168"></a>
+&lt;EMBED SRC="http://realserver.company.com:8080/ramgen/sample.smil?embed" <br>WIDTH=250 HEIGHT=144 NOJAVA=true CONTROLS=ImageWindow <br><code><b>REGION=newsregion</b></code> CONSOLE=one&gt;
+</pre>
+<p><a name="26831"></a>The <code>&lt;OBJECT&gt;</code> tag would look like this:</p>
+<pre><a name="26832"></a>
+&lt;OBJECT ID=RVOCX CLASSID="<I>...</I>" WIDTH=250 HEIGHT=144&gt;<br>&lt;PARAM NAME="SRC" VALUE="http://realserver.company.com:8080/ramgen/sample.smil"&gt;<br>&lt;PARAM NAME="CONTROLS" VALUE="ImageWindow"&gt;<br><code><b>&lt;PARAM NAME="REGION" VALUE="newsregion"&gt;<br></b></code>&lt;PARAM NAME="CONSOLE" VALUE="one"&gt;<br>&lt;/OBJECT&gt;
+</pre>
+<p><a name="25121"></a>You define similar <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags to create other regions for other clips listed in the SMIL file. The <code>SRC</code> parameter in each tag lists the same SMIL file. You can also use additional <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tags linked to the same console to provide RealPlayer controls for the presentation.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1900"></a>
+If you have installed RealPlayer G2, <a 
+href="../media/embed2.htm" target="_new">click 
+here</a> to see a SMIL demonstration embedded in a 
+Web page with an HTML layout.
+</td></tr>
+</table></p>
+<h3><a name="77776"></a> Omitting SMIL Layout Information</h3>
+<p><a name="77779"></a>When you define the presentation layout through HTML, you must omit the <code>&lt;layout&gt;</code> section from the SMIL file header. For example, the SMIL file shown in <a href="smil.htm#8652">"SMIL Layout Example"</a> would not have a <code>&lt;layout&gt;</code> section:</p>
+<pre><a name="77786"></a>
+&lt;smil&gt;<br>  &lt;head&gt;<br>    &lt;!--presentation with 2 text clips and 1 video clip--&gt;<br>    &lt;meta name="title" content="Music of the Week"/&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;par&gt; <br>       &lt;!-- play these 3 clips simultaneously --&gt;<br>       &lt;textstream src="news.rt" <code><b>region="newsregion"</b></code>/&gt;<br>       &lt;video src="newsvid.rm" <code><b>region="videoregion"</b></code>/&gt;<br>       &lt;textstream src="stocks.rt" <code><b>region="stockregion"</b></code>/&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="25118"></a>
+A SMIL file without a layout still works with RealPlayer 
+G2, but RealPlayer automatically creates the layout, and 
+the results may not be what you expect. Always include a 
+SMIL layout when playing a presentation directly in 
+RealPlayer.
+</td></tr>
+</table></p>
+<h1><a name="47109"></a> Parameter Reference</h1>
+<p><a name="86347"></a>The following table lists the <code>&lt;EMBED&gt;</code> and <code>&lt;OBJECT&gt;</code> tag parameters. Parameters compatible with RealPlayer 5.0 are indicated in the "5.0?" column. To have an embedded presentation play back with RealPlayer 5.0 as well as RealPlayer G2, use only 5.0-compatible parameters. 
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="86359"></a>
+ &lt;EMBED&gt; and &lt;OBJECT&gt; Tag Parameters </caption>
+<tr>
+<th align=left valign=bottom><a name="86369"></a>Parameter</th>
+<th align=left valign=bottom><a name="86371"></a>Function</th>
+<th align=left valign=bottom><a name="86771"></a>5.0?</th>
+<th align=left valign=bottom><a name="86373"></a>Values</th>
+<th align=left valign=bottom><a name="86375"></a>Default</th>
+<th align=left valign=bottom><a name="86377"></a></th>
+</tr>
+<tr>
+<td align=left valign=top><a name="86382"></a><code><a href="control.htm#19939">AUTOSTART</a></code></td>
+<td align=left valign=top><a name="86384"></a>Sets automatic playback.</td>
+<td align=left valign=top><a name="86773"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86386"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86388"></a><code>false</code></td>
+<td align=left valign=top><a name="86393"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86398"></a><code><a href="control.htm#50220">BACKGROUNDCOLOR</a></code></td>
+<td align=left valign=top><a name="86400"></a>Sets background color.</td>
+<td align=left valign=top><a name="86775"></a>no</td>
+<td align=left valign=top><a name="86402"></a>color name or RGB hex value</td>
+<td align=left valign=top><a name="86404"></a><code>black</code></td>
+<td align=left valign=top><a name="86409"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86414"></a><code><a href="control.htm#62025">CENTER</a></code></td>
+<td align=left valign=top><a name="86416"></a>Centers clip in window.</td>
+<td align=left valign=top><a name="86777"></a>no</td>
+<td align=left valign=top><a name="86418"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86420"></a><code>false</code></td>
+<td align=left valign=top><a name="86425"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86427"></a><code><a href="#console">CONSOLE</code></a></td>
+<td align=left valign=top><a name="86429"></a>Links multiple controls.</td>
+<td align=left valign=top><a name="86779"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86431"></a>name, <code>_master</code>, or <code>_unique</code></td>
+<td align=left valign=top><a name="86433"></a>(none)</td>
+<td align=left valign=top><a name="86438"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86440"></a><code><a href="#controls">CONTROLS</code></a></td>
+<td align=left valign=top><a name="86442"></a>Adds RealPlayer controls.</td>
+<td align=left valign=top><a name="86781"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86444"></a>control name</td>
+<td align=left valign=top><a name="86446"></a><code>All</code></td>
+<td align=left valign=top><a name="86451"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86453"></a><code><a href="#size">HEIGHT</a></code></td>
+<td align=left valign=top><a name="86455"></a>Sets window or control height.</td>
+<td align=left valign=top><a name="86783"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86457"></a>percentage or pixels</td>
+<td align=left valign=top><a name="86459"></a>(none)</td>
+<td align=left valign=top><a name="86464"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86469"></a><code><a href="control.htm#20054">LOOP</a></code></td>
+<td align=left valign=top><a name="86471"></a>Loops clips indefinitely.</td>
+<td align=left valign=top><a name="86785"></a>no</td>
+<td align=left valign=top><a name="86473"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86475"></a><code>false</code></td>
+<td align=left valign=top><a name="86480"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86485"></a><code><a href="control.htm#49505">MAINTAINASPECT</a></code></td>
+<td align=left valign=top><a name="86487"></a>Preserves image aspect ratio.</td>
+<td align=left valign=top><a name="86787"></a>no</td>
+<td align=left valign=top><a name="86489"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86491"></a><code>false</code></td>
+<td align=left valign=top><a name="86496"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86501"></a><code><a href="control.htm#72257">NOJAVA</a></code></td>
+<td align=left valign=top><a name="86503"></a>Prevents JVM start-up.</td>
+<td align=left valign=top><a name="86789"></a>no</td>
+<td align=left valign=top><a name="86505"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86507"></a><code>false</code></td>
+<td align=left valign=top><a name="86512"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86517"></a><code><a href="control.htm#54406">NOLABELS</a></code></td>
+<td align=left valign=top><a name="86519"></a>Suppresses presentation information.</td>
+<td align=left valign=top><a name="86791"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86521"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86523"></a><code>false</code></td>
+<td align=left valign=top><a name="86528"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86533"></a><code><a href="control.htm#49520">NOLOGO</a></code></td>
+<td align=left valign=top><a name="86535"></a>Suppresses RealLogo.</td>
+<td align=left valign=top><a name="86793"></a>no</td>
+<td align=left valign=top><a name="86537"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86539"></a><code>false</code></td>
+<td align=left valign=top><a name="86544"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86549"></a><code><a href="control.htm#48877">NUMLOOP</a></code></td>
+<td align=left valign=top><a name="86551"></a>Loops clip a given number of times.</td>
+<td align=left valign=top><a name="86795"></a>no</td>
+<td align=left valign=top><a name="86553"></a>any number</td>
+<td align=left valign=top><a name="86555"></a>(none)</td>
+<td align=left valign=top><a name="86560"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86562"></a><code><a href="#region">REGION</a></code></td>
+<td align=left valign=top><a name="86564"></a>Ties clip to SMIL region.</td>
+<td align=left valign=top><a name="86797"></a>no</td>
+<td align=left valign=top><a name="86566"></a>SMIL region</td>
+<td align=left valign=top><a name="86568"></a>(none)</td>
+<td align=left valign=top><a name="86573"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86578"></a><code><a href="control.htm#74617">SHUFFLE</a></code></td>
+<td align=left valign=top><a name="86580"></a>Randomizes playback.</td>
+<td align=left valign=top><a name="86799"></a>no</td>
+<td align=left valign=top><a name="86582"></a><code>true|false</code></td>
+<td align=left valign=top><a name="86584"></a><code>false</code></td>
+<td align=left valign=top><a name="86589"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86594"></a><code><a href="control.htm#7906">SRC</a></code></td>
+<td align=left valign=top><a name="86596"></a>Specifies source clip.</td>
+<td align=left valign=top><a name="86801"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86598"></a>URL</td>
+<td align=left valign=top><a name="86600"></a>(none)</td>
+<td align=left valign=top><a name="86605"></a></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="86607"></a><code><a href="#size">WIDTH</a></code></td>
+<td align=left valign=top><a name="86609"></a>Sets window or control width.</td>
+<td align=left valign=top><a name="86803"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="86611"></a>percentage or pixels</td>
+<td align=left valign=top><a name="86613"></a>(none)</td>
+<td align=left valign=top><a name="86618"></a></td>
+</tr>
+</table>
+</p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:36.</font>
+<center><a href="smil.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="ads.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

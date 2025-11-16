@@ -1,0 +1,981 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="realpix.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="bandwdth.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1056259"></a>
+ Chapter 2: 	Tag Descriptions
+
+</h1>
+<p><a name="1017299"></a>RealPix tags and attribute values create the RealPix timeline and visual effects. If you are familiar with HTML, you will master RealPix mark-up quickly. A typical RealPix tag looks like this:</p>
+<pre><a name="1013676"></a>
+&lt;fadein start="3" duration="1" target="1"/&gt;
+</pre>
+<h1><a name="1013599"></a> Syntax Rules</h1>
+<p><a name="1049066"></a>Keep the following points in mind when writing a RealPix file:</p>
+<ul>
+<p><li><a name="1013570"></a>RealPix tags and attribute names must be lowercase.
+<p><li><a name="1017147"></a>A tag that does not have a corresponding end tag closes with a forward slash (/):
+<pre class=indent><a name="1035569"></a>
+&lt;fadein.../&gt;
+</pre>
+<p><a name="1035607"></a>Only the <code>&lt;imfl&gt;</code> tag, which uses the end tag <code>&lt;/imfl&gt;</code>, does not close with a slash.</p>
+<p><li><a name="1018048"></a>Attribute values must be enclosed in double quotation marks.
+<p><li><a name="1028949"></a>Unless noted otherwise, the order of attributes following the tag name does not matter.
+<p><li><a name="1013571"></a>You can add a comment to a RealPix file like the following. Note that the comment tag does not require a closing slash:
+<pre class=indent><a name="1013572"></a>
+&lt;!-- This is a comment --&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1017162"></a>
+When you are familiar with the tags, you can use <a href="tagtable.htm#1006595">"Tag 
+Summary"</a> as a quick reference. To learn more about 
+Extensible Mark-up Language (XML), the language that 
+RealPix is based on, visit <a href="http://www.w3.org/XML" target="_top">http://www.w3.org/XML</a>.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="1008149"></a> &lt;imfl&gt;...&lt;/imfl&gt;</h1>
+<p><a name="1008187"></a>All information in the file occurs between an opening <code>&lt;imfl&gt;</code> tag and a closing <code>&lt;/imfl&gt;</code> tag. This is the only tag that uses an end tag.</p>
+<h1><a name="1044958"></a> &lt;head/&gt;</h1>
+<p><a name="1044959"></a>The <code>&lt;head/&gt;</code> tag follows the <code>&lt;imfl&gt;</code> tag in the RealPix file. Unlike the HTML <code>&lt;head&gt;</code> tag, the RealPix <code>&lt;head/&gt;</code> tag does not have a corresponding <code>&lt;/head&gt;</code> tag. Instead, it ends with a slash:</p>
+<pre><a name="1025788"></a>
+&lt;head...<code><I>attributes</I></code>.../&gt;
+</pre>
+<p><a name="1025797"></a>The <code>&lt;head/&gt;</code> tag defines standard header information such as title, author, and copyright. It also sets necessary parameters such as the presentation duration and streaming bit rate.</p>
+<h4><a name="1027967"></a> width and height</h4>
+<p><a name="1027968"></a>These required attributes set the width of the display window in pixels. RealPlayer's playback area expands to this size when the RealPix presentation begins. This example creates a RealPix playback area 256 by 256 pixels:</p>
+<pre><a name="1027969"></a>
+&lt;head width="256" height="256".../&gt;
+</pre>
+<p><a name="1027970"></a>When you play RealPix with another visual clip such as video, you lay out playback regions with SMIL. You typically create for RealPix a playback region that uses the same width and height you set here. If the region is a different size, the SMIL settings determine how to handle the size difference, such as by scaling or cropping the RealPix presentation to fit the display region.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1027971"></a>
+Download <I>RealSystem G2 Production Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> for 
+more on SMIL.
+</td></tr>
+</table></p>
+<h4><a name="1028127"></a> timeformat</h4>
+<p><a name="1041340"></a>This attribute sets the format the for start and duration times of RealPix effects. The default value is milliseconds, which means a time value such as <code>5400</code> is read as 5400 milliseconds (5.4 seconds). Millisecond time values cannot include colons or a decimal point.</p>
+<p><a name="1054559"></a>You can also set the timeformat to the <code>dd:hh:mm:ss.xyz</code> format:</p>
+<pre><a name="1041555"></a>
+&lt;head timeformat="dd:hh:mm:ss.xyz".../&gt;
+</pre>
+<p><a name="1041592"></a>Here, <code>dd</code> is days, <code>hh</code> is hours, <code>mm</code> is minutes, <code>ss</code> is seconds, <code>x</code> is tenths of seconds, <code>y</code> is hundredths of seconds, and <code>z</code> is milliseconds. Only the <code>ss</code> field is required. </p>
+<p><a name="1057328"></a>When the time value does not include a decimal point, the last field is read as the seconds. For example, <code>1:30</code> means 1 minute and 30 seconds, whereas <code>1:30:00</code> means 1 hour and 30 minutes. Note that all the following values are equivalent. Each starts the effect 90 minutes after the RealPix presentation begins:</p>
+<pre><a name="1041390"></a>
+start="1:30:00.0"<br>start="90:00"<br>start="5400"
+</pre>
+<h4><a name="1041738"></a> duration</h4>
+<p><a name="1028128"></a>The required <code>duration</code> attribute sets the length of the entire RealPix presentation. For example, the following value sets a duration of 50 seconds:</p>
+<pre><a name="1028129"></a>
+&lt;head duration="50".../&gt;
+</pre>
+<p><a name="1028130"></a>All RealPix effects stop immediately when the duration elapses. When the duration time exceeds the time required to complete the effects, the last effect stays frozen in the display window.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1028722"></a>
+Set a high duration when you start building a RealPix 
+presentation. Set the final duration time when you have 
+finished defining the effects.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1028131"></a>
+SMIL mark-up also includes a duration setting that can 
+stop the RealPix presentation even if its internal 
+duration time has not elapsed. For more on this, 
+download <I>RealSystem G2 Production Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="1028320"></a> bitrate</h4>
+<p><a name="1028321"></a>The required <code>bitrate</code> attribute specifies the maximum bandwidth the presentation consumes. Specify the value in bits per second (bps). For example, the following value sets a maximum bandwidth of 12000 bps (approximately 12 Kbps):</p>
+<pre><a name="1028322"></a>
+&lt;head bitrate="12000".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1036343"></a>
+<a href="bandwdth.htm#1018149">"Bandwidth Usage"</a> explains how to calculate 
+bandwidth requirements for a RealPix presentation. For 
+information on dividing bandwidth between various 
+media types in a presentation, see <I>RealSystem G2 
+Production Guide,</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="1028463"></a> preroll</h4>
+<p><a name="1041922"></a>The optional <code>preroll</code> attribute specifies the time to buffer data in RealPlayer before the start of the RealPix presentation. For example, the following sets the RealPix preroll to 40 seconds:</p>
+<pre><a name="1041923"></a>
+&lt;head preroll="40".../&gt;
+</pre>
+<p><a name="1041924"></a>RealSystem always calculates the preroll required for the presentation based on the image file sizes and presentation timing parameters. If this calculated value is larger than the preroll you set, it overrides your specified preroll. Your preroll value is used, however, if it is higher than the calculated preroll value. You therefore need to set the preroll value only if you want an artificially high preroll.</p>
+<p><a name="1028467"></a>A high preroll can be useful when you stream RealPix with another clip. Suppose that a RealVideo clip starts midway through a RealPix presentation. You can use a high preroll to download a significant portion of the RealPix data before the presentation starts. The RealVideo clip then has more bandwidth available when it begins. It can therefore stream its required preroll without competing with RealPix for bandwidth.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1028468"></a>
+Always balance preroll values with viewer expectations. 
+Viewers may not stay tuned to a presentation that takes 
+a long time to start playing back.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1041927"></a>
+For more on preroll, see <a href="bandwdth.htm#1018149">Chapter 3</a>.
+</td></tr>
+</table></p>
+<h4><a name="1028578"></a> title, author, copyright</h4>
+<p><a name="1028579"></a>These optional tags define the title, author, and copyright information for the presentation:</p>
+<pre><a name="1036541"></a>
+&lt;head title="The Garden" <br>      author="Jane Doe"<br>      copyright="(c) 1998 RealNetworks, Inc.".../&gt;
+</pre>
+<p><a name="1036533"></a>When present, these tags define the values that display in the RealPlayer information window. If the RealPix presentation is played through a SMIL file, however, title, author, and copyright information set through SMIL for the RealPix clip overrides the information you set here.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1057377"></a>
+See the SMIL chapter in <I>RealSystem G2 Production Guide</I>.
+</td></tr>
+</table></p>
+<h4><a name="1040377"></a> url</h4>
+<p><a name="1040378"></a>This optional attribute sets a hyperlink URL for the presentation. When the user clicks a presentation image, the URL opens in the user's default Web browser. Individual effects can override this value with their own URL setting. For the attribute value, use a fully qualified URL such as the following:</p>
+<pre><a name="1040437"></a>
+&lt;head url="http://www.real.com".../&gt;
+</pre>
+<h4><a name="1026656"></a> aspect</h4>
+<p><a name="1026968"></a>With its default value of <code>"true"</code>, the <code>aspect</code> attribute keeps a source rectangle's height-to-width ratio constant when the destination rectangle has a different ratio. You can turn this off by setting the attribute to false:</p>
+<pre><a name="1026970"></a>
+&lt;head aspect="false".../&gt;
+</pre>
+<p><a name="1036592"></a>In this case, the height-to-width ratio in the source rectangle changes as necessary to fill the destination rectangle fully. This may distort the source image. This aspect attribute in the <code>&lt;head/&gt;</code> tag affects the entire presentation. Individual effects can override this setting with their own aspect attributes, however.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1040199"></a>
+See <a href="realpix.htm#1016065">"Controlling Image Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1019029"></a> maxfps</h4>
+<p><a name="1019031"></a>This optional attribute sets the maximum frames per second (fps) for transition effects. It is not required because RealPlayer determines the optimal frame rate based on the playback computer's available CPU power. When CPU power is plentiful, RealPlayer renders transition effects at the maximum of 30 fps. It scales down the transition rates accordingly when less CPU power is available.</p>
+<p><a name="1029968"></a>You can set the <code>maxfps</code> attribute low to create special effects. For example, a value of 5:</p>
+<pre><a name="1030369"></a>
+&lt;head...maxfps="5"/&gt;
+</pre>
+<p><a name="1030333"></a>keeps transitions constrained to no more than 5 fps. This causes visible jerks in transitions, which may be a desirable effect.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1056353"></a>
+Specify <code>maxfps</code> as the last attribute in the <code>&lt;head/&gt;</code> tag. 
+The <code>maxfps</code> value affects the entire presentation, but 
+individual effects can override it with their own <code>maxfps</code> 
+values.
+</td></tr>
+</table></p>
+<h1><a name="1056355"></a> &lt;image/&gt;</h1>
+<p><a name="1056356"></a>For each image you use in the RealPix presentation, you add an <code>&lt;image/&gt;</code> tag after the <code>&lt;head/&gt;</code> tag. The <code>&lt;image/&gt;</code> tag provides the image file location and assigns a unique handle number to the image. An <code>&lt;image/&gt;</code> tag looks like this:</p>
+<pre><a name="1031711"></a>
+&lt;image handle="2" name="eagle.jpg"/&gt;
+</pre>
+<h4><a name="1010569"></a> handle</h4>
+<p><a name="1010571"></a>The required <code>handle</code> attribute assigns a positive integer to the image. Each handle number within the file must be unique. The RealPix effects then refer to the handle number rather than the file name. Here is an example:</p>
+<pre><a name="1010575"></a>
+&lt;image handle="23".../&gt;
+</pre>
+<h4><a name="1010577"></a> name</h4>
+<p><a name="1033489"></a>The <code>name</code> attribute is required. It specifies the image file name and a path relative to the location of the RealPix file on RealServer or the local machine. The following example designates an image file that resides in the same directory as the RealPix file:</p>
+<pre><a name="1033490"></a>
+&lt;image name="tulip.jpg".../&gt;
+</pre>
+<p><a name="1033491"></a>This next example indicates that the image file resides one level below the RealPix file in the "images" directory:</p>
+<pre><a name="1027661"></a>
+&lt;image name="images/tulip.jpg".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1027814"></a>
+The file name and path are case sensitive. If you are 
+streaming files from RealServer, folder (directory) 
+names should not contain spaces.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1030979"></a>
+The relative syntax for paths works like relative 
+hyperlink syntax in HTML. You can find additional 
+information about this topic in an HTML reference.
+</td></tr>
+</table></p>
+<h1><a name="1008389"></a> &lt;fill/&gt;</h1>
+<p><a name="1008390"></a>The <code>&lt;fill/&gt;</code> tag displays a colored rectangle in the display window. This is useful at the beginning of a presentation or anytime you want to paint over all or part of the display window. You can fade in an image, for instance, then fill the display window with black to paint over the image. A <code>&lt;fill/&gt;</code> tag looks like this:</p>
+<pre><a name="1031740"></a>
+&lt;fill start="0" color="blue"/&gt;
+</pre>
+<h4><a name="1010741"></a> start</h4>
+<p><a name="1010743"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the fill occurs. The following example starts the fill 2.3 seconds into the presentation timeline:</p>
+<pre><a name="1010747"></a>
+&lt;fill start="2.3".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1010749"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1042089"></a> color</h4>
+<p><a name="1010751"></a>This required attribute sets the fill color. You can use a predefined color name or a hexadecimal value as illustrated here:</p>
+<pre><a name="1010755"></a>
+&lt;fill color="#FF0000".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1023703"></a>
+For more on color values and names, see <a href="tags.htm#1009441">"Colors"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1010758"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1010760"></a>These optional attributes define the size and placement of the filled region. Leave them out to fill the entire display window. To fill only a portion of the display window, set the destination rectangle's x and y coordinates, as well as its height and width in pixels:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1022173"></a><code>dstx</code></td>
+<td valign=top><a name="1022175"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1022177"></a><code>dsty</code></td>
+<td valign=top><a name="1022472"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1022181"></a><code>dstw</code></td>
+<td valign=top><a name="1022538"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1022560"></a><code>dsth</code></td>
+<td valign=top><a name="1022568"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1022398"></a>Here's an example that fills a rectangle 128 by 128 pixels. The filled region appears 92 pixels to the right of the main window's left edge and 64 pixels down from its top edge</p>
+<pre><a name="1022361"></a>
+&lt;fill...dstx="92" dsty="64" dstw="128" dsth="128"/&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1031498"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h1><a name="1008560"></a> &lt;fadein/&gt;</h1>
+<p><a name="1022697"></a>The <code>&lt;fadein/&gt;</code> tag creates a gradual transition from the currently displayed color or image to another image. A <code>&lt;fadein/&gt;</code> tag looks like this:</p>
+<pre><a name="1060876"></a>
+&lt;fadein start="4" duration="3" target="2"/&gt;
+</pre>
+<p><a name="1060878"></a>The following figure illustrates a fade-in from a solid color to an image. If you have RealPlayer installed, <a href="../media/fadein.rp">click here</a> to see fade-in examples. <a href="../media/fadein.htm">Click here</a> to see the RealPix source file that creates these effects.</p>
+<h5><a name="1060879"></a>
+ Fade-in from a Solid Color to an Image</h5>
+<p><a name="1060188"></a>
+<img src="../graphics/fadein.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1028759"></a>
+You cannot fade in multiple images simultaneously.
+</td></tr>
+</table></p>
+<h4><a name="1053514"></a> start</h4>
+<p><a name="1031585"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the fade-in occurs. Here is an example that starts the fade-in 4 seconds into the timeline:</p>
+<pre><a name="1010843"></a>
+&lt;fadein start="4".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1042186"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1010845"></a> duration</h4>
+<p><a name="1010847"></a>This required attribute specifies the total time for the effect to complete. The higher the value, the slower the fade-in. For example, the following value means the fade-in takes 2.5 seconds to complete:</p>
+<pre><a name="1010851"></a>
+&lt;fadein duration="2.5".../&gt;
+</pre>
+<h4><a name="1010853"></a> target</h4>
+<p><a name="1010855"></a>The <code>target</code> attribute is required. It specifies the <code><a href="tags.htm#1056355">&lt;image/&gt;</a></code> tag handle of the image to fade in. For example:</p>
+<pre><a name="1010859"></a>
+&lt;fadein target="2".../&gt;
+</pre>
+<h4><a name="1023290"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1023291"></a>These optional attributes define the size and placement of the image that fades in. Leave them out to fade the image into the entire display window. To fade the image into a portion of the display window, set the destination rectangle's x and y coordinates, as well as its height and width in pixels:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1023294"></a><code>dstx</code></td>
+<td valign=top><a name="1023296"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1023298"></a><code>dsty</code></td>
+<td valign=top><a name="1023300"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1023302"></a><code>dstw</code></td>
+<td valign=top><a name="1023304"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1023306"></a><code>dsth</code></td>
+<td valign=top><a name="1023308"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1023268"></a>The following example fades the image into a rectangle 128 by 128 pixels. The image displays 20 pixels to the right of the main window's left edge and 40 pixels down from its top edge:</p>
+<pre><a name="1023168"></a>
+&lt;fadein dstx="20" dsty="40" dstw="128" dsth="128".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1031536"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1032040"></a> srcx, srcy, srcw, srch</h4>
+<p><a name="1032041"></a>These four attributes define what portion of the source image fades into the destination rectangle. Leave them out to fade the entire source image into the destination rectangle. To use only a portion of the source image, set the source rectangle's x and y coordinates, as well as its height and width in pixels.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1032044"></a><code>srcx</code></td>
+<td valign=top><a name="1032046"></a>X coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1032048"></a><code>srcy</code></td>
+<td valign=top><a name="1032050"></a>Y coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1032052"></a><code>srcw</code></td>
+<td valign=top><a name="1032054"></a>Width of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1032056"></a><code>srch</code></td>
+<td valign=top><a name="1032058"></a>Height of the source rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1032407"></a>The following example selects from the source image a source rectangle 128 pixels wide by 256 pixels high. The source rectangle starts 64 pixels to the right of the source image's left edge and 92 pixels down from its top edge:</p>
+<pre><a name="1032408"></a>
+&lt;fadein dstx="64" dsty="92" dstw="128" dsth="256".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1032061"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1040656"></a> url</h4>
+<p><a name="1040489"></a>This optional attribute sets a hyperlink URL for the effect. When the user clicks the image, the user's default Web browser opens the URL. This URL value overrides the presentation default set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Use a fully qualified URL like the following:</p>
+<pre><a name="1040490"></a>
+&lt;fadein url="http://www.real.com".../&gt;
+</pre>
+<h4><a name="1010933"></a> aspect</h4>
+<p><a name="1010935"></a>This optional attribute determines whether the source rectangle's height-to-width ratio is maintained when the destination rectangle has a different height-to-width ratio. The presentation's default value is set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag, but you can override it for the fade-in:</p>
+<pre><a name="1010939"></a>
+&lt;fadein aspect="false".../&gt;
+</pre>
+<h4><a name="1019108"></a> maxfps</h4>
+<p><a name="1030637"></a>This optional attribute sets the maximum frames per second for the effect. It overrides any default <code>maxfps</code> value set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Include it as the last attribute. Here's an example:</p>
+<pre><a name="1019115"></a>
+&lt;fadein...maxfps="5"/&gt;
+</pre>
+<h1><a name="1011306"></a> &lt;fadeout/&gt;</h1>
+<p><a name="1011433"></a>The <code>&lt;fadeout/&gt;</code> tag defines a transition from an image to a color. The basic <code>&lt;fadeout/&gt;</code> tag looks like this:</p>
+<pre><a name="1032463"></a>
+&lt;fadeout start="10" duration="3" color="yellow"/&gt;
+</pre>
+<p><a name="1032458"></a>The following figure illustrates a fade-out. If you have RealPlayer installed, <a href="../media/fadeout.rp">click here</a> to see fade-out examples. <a href="../media/fadeout.htm">Click here</a> to see the RealPix source file that creates these effects.</p>
+<h5><a name="1023445"></a>
+ Fade-out from an Image to a Solid Color</h5>
+<p><a name="1060199"></a>
+<img src="../graphics/fadeout.gif"></p>
+<h4><a name="1011517"></a> start</h4>
+<p><a name="1031591"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the fade-out occurs. The following example starts the fade-out 10 seconds into the presentation:</p>
+<pre><a name="1031592"></a>
+&lt;fadeout start="10".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1042234"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1032516"></a> duration</h4>
+<p><a name="1032517"></a>This required attribute specifies the total time the effect takes to complete. The higher the value, the slower the fade-out. For example, the following makes the fade-out last 3.75 seconds:</p>
+<pre><a name="1032518"></a>
+&lt;fadeout duration="3.75".../&gt;
+</pre>
+<h4><a name="1011533"></a> color</h4>
+<p><a name="1032556"></a>This required attribute sets the color the image fades to. You can use a hexadecimal value or a predefined color name as illustrated here:</p>
+<pre><a name="1032557"></a>
+&lt;fadeout color="blue".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1032563"></a>
+For more on color values and names, see <a href="tags.htm#1009441">"Colors"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1023709"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1032720"></a>These optional attributes define the size and placement of the rectangle that fades out. Leave them out of the tag to fade out the entire display window. To fade out only a portion of the display window, set the destination rectangle's x and y coordinates, as well as its height and width in pixels:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037261"></a><code>dstx</code></td>
+<td valign=top><a name="1037263"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037265"></a><code>dsty</code></td>
+<td valign=top><a name="1037267"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037269"></a><code>dstw</code></td>
+<td valign=top><a name="1037271"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037273"></a><code>dsth</code></td>
+<td valign=top><a name="1037275"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1032638"></a>The following example fades out a rectangle 64 pixels wide by 64 pixels high. The rectangle starts 110 pixels to the right of the main window's left edge and 80 pixels down from its top edge:</p>
+<pre><a name="1032639"></a>
+&lt;fadeout dstx="110" dsty="80" dstw="64" dsth="64".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1032640"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1019153"></a> maxfps</h4>
+<p><a name="1030630"></a>This optional attribute sets the maximum frames per second for the effect. It overrides any default <code>maxfps</code> value set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Include it as the last attribute. Here's an example:</p>
+<pre><a name="1030490"></a>
+&lt;fadeout...maxfps="5"/&gt;
+</pre>
+<h1><a name="1008889"></a> &lt;crossfade/&gt;</h1>
+<p><a name="1009067"></a>The <code>&lt;crossfade/&gt;</code> tag creates a transition from one image to another, as illustrated in the following figure.</p>
+<h5><a name="1023920"></a>
+ Crossfade from One Image to Another</h5>
+<p><a name="1060209"></a>
+<img src="../graphics/crxfade.gif"></p>
+<h4><a name="1012914"></a> start</h4>
+<p><a name="1031630"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the crossfade occurs. Here is an example that starts the effect 12.3 seconds into the timeline:</p>
+<pre><a name="1031631"></a>
+&lt;crossfade start="12.3".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1042266"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1032827"></a> duration</h4>
+<p><a name="1032828"></a>This required attribute specifies the total time the effect takes to complete. The higher the value, the slower the crossfade. For example, the following makes the crossfade take just 1.5 seconds to complete:</p>
+<pre><a name="1032829"></a>
+&lt;crossfade duration="1.5".../&gt;
+</pre>
+<h4><a name="1012930"></a> target</h4>
+<p><a name="1032881"></a>The <code>target</code> attribute is required. It specifies the <code><a href="tags.htm#1056355">&lt;image/&gt;</a></code> tag handle of the image to fade in. For example:</p>
+<pre><a name="1032885"></a>
+&lt;crossfade target="2".../&gt;
+</pre>
+<h4><a name="1032982"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1032983"></a>These optional attributes define the size and placement of the image that fades in. Leave them out to fade the image into the entire display window. To fade the image into a portion of the display window, set the destination rectangle's x and y coordinates, as well as its height and width in pixels:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1033167"></a><code>dstx</code></td>
+<td valign=top><a name="1033169"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1033171"></a><code>dsty</code></td>
+<td valign=top><a name="1033173"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1033175"></a><code>dstw</code></td>
+<td valign=top><a name="1033177"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1033179"></a><code>dsth</code></td>
+<td valign=top><a name="1033181"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1033001"></a>The following example fades the image into a rectangle 128 by 128 pixels. The image displays 20 pixels to the right of the main window's left edge and 40 pixels down from its top edge:</p>
+<pre><a name="1033002"></a>
+&lt;crossfade dstx="20" dsty="40" dstw="128" dsth="128".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1033003"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1033010"></a> srcx, srcy, srcw, srch</h4>
+<p><a name="1033011"></a>These four attributes define what portion of the source image fades into the destination rectangle. Leave them out to fade the entire source image into the destination rectangle. To use only a portion of the source image, set the source rectangle's x and y coordinates, as well as its height and width in pixels.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037424"></a><code>srcx</code></td>
+<td valign=top><a name="1037426"></a>X coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037428"></a><code>srcy</code></td>
+<td valign=top><a name="1037430"></a>Y coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037432"></a><code>srcw</code></td>
+<td valign=top><a name="1037434"></a>Width of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037436"></a><code>srch</code></td>
+<td valign=top><a name="1037438"></a>Height of the source rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1033029"></a>The following example selects from the source image a source rectangle 128 pixels wide by 256 pixels high. The source rectangle starts 64 pixels to the right of the source image's left edge and 92 pixels down from its top edge:</p>
+<pre><a name="1033030"></a>
+&lt;crossfade dstx="64" dsty="92" dstw="128" dsth="256".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1033031"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1040740"></a> url</h4>
+<p><a name="1040741"></a>This optional attribute sets a hyperlink URL for the effect. When the user clicks the image, the user's default Web browser opens the URL. This URL value overrides the presentation default set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Use a fully qualified URL like the following:</p>
+<pre><a name="1040748"></a>
+&lt;crossfade url="http://www.real.com".../&gt;
+</pre>
+<h4><a name="1013001"></a> aspect</h4>
+<p><a name="1032196"></a>This optional attribute determines whether the source rectangle's height-to-width ratio is maintained when the destination rectangle has a different height-to-width ratio. The presentation's default value is set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag, but you can override it for the crossfade:</p>
+<pre><a name="1032203"></a>
+&lt;crossfade aspect="false".../&gt;
+</pre>
+<h4><a name="1024261"></a> maxfps</h4>
+<p><a name="1030619"></a>This optional attribute sets the maximum frames per second for the effect. It overrides any default <code>maxfps</code> value set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Include it as the last attribute. Here's an example:</p>
+<pre><a name="1030514"></a>
+&lt;crossfade...maxfps="5"/&gt;
+</pre>
+<h1><a name="1009073"></a> &lt;wipe/&gt;</h1>
+<p><a name="1009074"></a>The <code>&lt;wipe/&gt;</code> tag creates a transition from one image to another, either by covering the displayed image or by pushing it out of the way with a sliding effect. A typical <code>&lt;wipe/&gt;</code> tag looks like this:</p>
+<pre><a name="1033340"></a>
+&lt;wipe type="push" direction="left" start="10" duration="3" target="2"/&gt;
+</pre>
+<p><a name="1033315"></a>The following figure illustrates this effect. If you have RealPlayer installed, <a href="../media/wipe.rp">click here</a> to see wipe examples. <a href="../media/wipe.htm">Click here</a> to see the RealPix source file that creates these effects.</p>
+<h5><a name="1024359"></a>
+ "Push" Wipe Transition from One Image to Another</h5>
+<p><a name="1060222"></a>
+<img src="../graphics/wipe.gif"></p>
+<h4><a name="1031665"></a> start</h4>
+<p><a name="1031666"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the wipe occurs. Here is an example that starts the effect 30 seconds into the presentation:</p>
+<pre><a name="1031667"></a>
+&lt;wipe start="30".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1042311"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1033398"></a> duration</h4>
+<p><a name="1033399"></a>This required attribute specifies the total time the effect takes to complete. The higher the value, the slower the transition. For example, the following makes the wipe take 5.5 seconds to complete:</p>
+<pre><a name="1033400"></a>
+&lt;wipe duration="5.5".../&gt;
+</pre>
+<h4><a name="1037588"></a> target</h4>
+<p><a name="1037592"></a>The target value is required. It specifies the <code><a href="tags.htm#1056355">&lt;image/&gt;</a></code> tag handle of the image to bring in with the wipe effect. For example:</p>
+<pre><a name="1037596"></a>
+&lt;wipe target="2".../&gt;
+</pre>
+<h4><a name="1033765"></a> type</h4>
+<p><a name="1033775"></a>This required attribute defines the type of transition that occurs:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1033768"></a><code>normal</code></td>
+<td valign=top><a name="1033770"></a>New image moves over current image, which remains stationary.</td></tr>
+<tr>
+<td valign=top><a name="1033772"></a><code>push</code></td>
+<td valign=top><a name="1033774"></a>New image pushes current image out (both images move).</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1033776"></a>Here is an example:</p>
+<pre><a name="1033777"></a>
+&lt;wipe type="push".../&gt;
+</pre>
+<h4><a name="1013197"></a> direction</h4>
+<p><a name="1013199"></a>This required attribute sets the direction the new image moves:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1033801"></a><code>left</code></td>
+<td valign=top><a name="1033803"></a>New image starts at right edge, moves toward left edge.</td></tr>
+<tr>
+<td valign=top><a name="1033805"></a><code>right</code></td>
+<td valign=top><a name="1033807"></a>New image starts at left edge, moves toward right edge.</td></tr>
+<tr>
+<td valign=top><a name="1033809"></a><code>up</code></td>
+<td valign=top><a name="1033811"></a>New image starts at bottom edge, moves toward top edge.</td></tr>
+<tr>
+<td valign=top><a name="1033813"></a><code>down</code></td>
+<td valign=top><a name="1033815"></a>New image starts at top edge, moves toward bottom edge.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1013203"></a>For example:</p>
+<pre><a name="1037605"></a>
+&lt;wipe direction="up".../&gt;
+</pre>
+<h4><a name="1033854"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1033855"></a>These optional attributes define the size and placement of the image that moves in. Leave them out to move the image into the entire display window. To move the image into a portion of the display window, set the destination rectangle's x and y coordinates, as well as its height and width in pixels:
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037314"></a><code>dstx</code></td>
+<td valign=top><a name="1037316"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037318"></a><code>dsty</code></td>
+<td valign=top><a name="1037320"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037322"></a><code>dstw</code></td>
+<td valign=top><a name="1037324"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037326"></a><code>dsth</code></td>
+<td valign=top><a name="1037328"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1033873"></a>The following example moves the image into a rectangle 64 by 64 pixels. The image displays 50 pixels to the right of the main window's left edge and 70 pixels down from its top edge:</p>
+<pre><a name="1033874"></a>
+&lt;wipe dstx="50" dsty="70" dstw="64" dsth="64".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1033875"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1033882"></a> srcx, srcy, srcw, srch</h4>
+<p><a name="1033883"></a>These four attributes define what portion of the source image moves into the display rectangle. Leave them out to move the entire source image into the destination rectangle. To use a portion of the source image, set the source rectangle's x and y coordinates, as well as its height and width in pixels.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037491"></a><code>srcx</code></td>
+<td valign=top><a name="1037493"></a>X coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037495"></a><code>srcy</code></td>
+<td valign=top><a name="1037497"></a>Y coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037499"></a><code>srcw</code></td>
+<td valign=top><a name="1037501"></a>Width of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037503"></a><code>srch</code></td>
+<td valign=top><a name="1037505"></a>Height of the source rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<p><a name="1033901"></a>The following example selects from the source image a source rectangle 128 pixels wide by 128 pixels high. The source rectangle starts 89 pixels to the right of the source image's left edge and 115 pixels down from its top edge:</p>
+<pre><a name="1033902"></a>
+&lt;wipe dstx="89" dsty="115" dstw="128" dsth="128".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1033903"></a>
+For more on the sizes and offsets of source and 
+destination rectangles, see <a href="realpix.htm#1009566">"Controlling Image Size, 
+Placement, and Aspect"</a>.
+</td></tr>
+</table></p>
+<h4><a name="1040765"></a> url</h4>
+<p><a name="1040766"></a>This optional attribute sets a hyperlink URL for the new image. When the user clicks the image, the user's default Web browser opens the URL. This URL value overrides the presentation default set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Use a fully qualified URL like the following:</p>
+<pre><a name="1040773"></a>
+&lt;wipe url="http://www.real.com".../&gt;
+</pre>
+<h4><a name="1024392"></a> aspect</h4>
+<p><a name="1032231"></a>This optional attribute determines whether the source rectangle's height-to-width ratio is maintained when the destination rectangle has a different height-to-width ratio. The presentation's default value is set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag, but you can override it for the wipe effect:</p>
+<pre><a name="1032238"></a>
+&lt;wipe aspect="false".../&gt;
+</pre>
+<h4><a name="1030565"></a> maxfps</h4>
+<p><a name="1030583"></a>This optional attribute sets the maximum frames per second for the effect. It overrides any default <code>maxfps</code> value set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Include it as the last attribute. Here's an example:</p>
+<pre><a name="1030587"></a>
+&lt;wipe...maxfps="5"/&gt;
+</pre>
+<h1><a name="1030572"></a> &lt;viewchange/&gt;</h1>
+<p><a name="1009434"></a>The <code>&lt;viewchange/&gt;</code> tag defines a pan or a zoom. A typical <code>&lt;viewchange/&gt;</code> tag looks like this:</p>
+<pre><a name="1034192"></a>
+&lt;viewchange start="24" duration="3" srcx="80" srcy="80" srcw="48" srch="48"/&gt;
+</pre>
+<p><a name="1034182"></a>Note that <code>&lt;viewchange/&gt;</code> does not specify an image. The view change always affects the image currently in the display window. The following figure illustrates a zoom created with a <code>&lt;viewchange/&gt;</code> tag. If you have RealPlayer installed, <a href="../media/viewchng.rp">click here</a> to see pan and zoom examples. <a href="../media/viewchng.htm">Click here</a> to see the RealPix source file that creates these effects.</p>
+<h5><a name="1024720"></a>
+ Zoom Effect Created with a View Change</h5>
+<p><a name="1060223"></a>
+<img src="../graphics/vuchg.gif"></p>
+<h4><a name="1031678"></a> start</h4>
+<p><a name="1031679"></a>The <code>start</code> attribute is required. It specifies the time from the beginning of the RealPix timeline that the view change occurs. The following example starts the effect 35.2 seconds into the presentation timeline:</p>
+<pre><a name="1031680"></a>
+&lt;viewchange start="35.2".../&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1042333"></a>
+For information on the time format, see the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag 
+<code><a href="tags.htm#1028127">timeformat</a></code> attribute.
+</td></tr>
+</table></p>
+<h4><a name="1034220"></a> duration</h4>
+<p><a name="1034221"></a>This required attribute specifies the total time the effect takes to complete. The higher the value, the slower the pan or zoom. For example, the following makes the transition take 8 seconds to complete:</p>
+<pre><a name="1034222"></a>
+&lt;viewchange duration="8".../&gt;
+</pre>
+<h4><a name="1034389"></a> dstx, dsty, dstw, dsth</h4>
+<p><a name="1034390"></a>These four attributes define in pixels the placement and size of the destination rectangle. See below for more information.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037361"></a><code>dstx</code></td>
+<td valign=top><a name="1037363"></a>X coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037365"></a><code>dsty</code></td>
+<td valign=top><a name="1037367"></a>Y coordinate of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037369"></a><code>dstw</code></td>
+<td valign=top><a name="1037371"></a>Width of the destination rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037373"></a><code>dsth</code></td>
+<td valign=top><a name="1037375"></a>Height of the destination rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="1024808"></a> srcx, srcy, srcw, srch</h4>
+<p><a name="1024809"></a>These four attributes define in pixels the placement and size of the source image. See below for more information.
+<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+
+<tr>
+<td valign=top><a name="1037539"></a><code>srcx</code></td>
+<td valign=top><a name="1037541"></a>X coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037543"></a><code>srcy</code></td>
+<td valign=top><a name="1037545"></a>Y coordinate of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037547"></a><code>srcw</code></td>
+<td valign=top><a name="1037549"></a>Width of the source rectangle.</td></tr>
+<tr>
+<td valign=top><a name="1037551"></a><code>srch</code></td>
+<td valign=top><a name="1037553"></a>Height of the source rectangle.</td></tr>
+</Table>
+<Table>
+<tr><td>
+</Table>
+</p>
+<h4><a name="1034374"></a> maxfps</h4>
+<p><a name="1030647"></a>This optional attribute sets the maximum frames per second for the effect. It overrides any default <code>maxfps</code> value set in the <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag. Include it as the last attribute. Here's an example:</p>
+<pre><a name="1030651"></a>
+&lt;viewchange...maxfps="5"/&gt;
+</pre>
+<h2><a name="1034249"></a> Zooming in on an Image</h2>
+<p><a name="1034254"></a>To zoom in on an image, display the image and then use <code>&lt;viewchange/&gt;</code> to define the area to zoom in on. The following example is taken from a RealPix presentation that displays in a window 256 by 256 pixels. The source image is also 256 by 256 pixels. The presentation fades in on the image and then zooms in, taking three seconds to complete the zoom:</p>
+<pre><a name="1034271"></a>
+&lt;fadein start="1" duration="2" target="1"/&gt;<br>&lt;viewchange start="4" duration="3" srcx="64" srcy="64" srcw="128" srch="128"/&gt;
+</pre>
+<p><a name="1034414"></a>The zoom selects an area 128 by 128 pixels square in the center of the source image. This square displays in the full 256 by 256 pixel display window. The following figure illustrates this zoom.</p>
+<h5><a name="1060246"></a>
+ Zooming in on Part of an Image</h5>
+<p><a name="1034675"></a>
+<img src="../graphics/sourc4.gif"></p>
+<p><a name="1038664"></a>Because this zoom effect does not specify a destination rectangle, the zoom image fills the entire display window. But you can also use the destination coordinates (<code><a href="tags.htm#1034389">dstx, dsty, dstw, dsth</a></code>) to specify a portion of the display window.</p>
+<h2><a name="1034257"></a> Panning across an Image</h2>
+<p><a name="1034751"></a>To pan across an image, you display a portion of the source image, then use <code>&lt;viewchange/&gt;</code> to move to a different part of the source image. The following example uses a RealPix presentation that displays in a window 256 by 256 pixels. The source image is also 256 by 256 pixels:</p>
+<pre><a name="1034629"></a>
+&lt;fadein start="1" duration="3" target="2"/&gt;<br>&lt;viewchange start="4" duration="3" srcx="0" srcy="0" srcw="128" srch="128"/&gt;<br>&lt;viewchange start="7" duration="3" srcx="128" srcy="0" srcw="128" srch="128"/&gt;
+</pre>
+<p><a name="1034792"></a>The presentation fades in an image, zooms in on the upper left-hand quadrant, then pans to the upper, right-hand quadrant. Each effect takes three seconds to complete. The following figure illustrates this movement.</p>
+<h5><a name="1060263"></a>
+ Zooming in on, then Panning across an Image</h5>
+<p><a name="1034796"></a>
+<img src="../graphics/sourc5.gif"></p>
+<p><a name="1038689"></a>Because this pan effect does not specify a destination rectangle, the source rectangle fills the entire display window. But you can also use the destination coordinates (<code><a href="tags.htm#1034389">dstx, dsty, dstw, dsth</a></code>) to specify a portion of the display window.</p>
+<h1><a name="1009441"></a> Colors</h1>
+<p><a name="1021589"></a>RealPix effects that use colors can specify a 24-bit, hexadecimal color value. These are the same color values as those used in HTML. The first two hex digits represent red, the next two green, and the last two blue. For example, "#FF8000" indicates the 24-bit RGB color 255:128:0. Alternately, RealPix color attributes can use the predefined names shown below.<p></p>
+<Table Border="0" CELLPADDING=5>
+<caption></caption>
+<tr><a name="1021592"></a><TD bgcolor=#FFFFFF><FONT COLOR="#000000"><code>white (#FFFFFF)</code></FONT></TD><code></code><a name="1021594"></a><TD bgcolor=#C0C0C0><FONT COLOR="#000000"><code>silver (#C0C0C0)</code></FONT></TD><code></code><a name="1021596"></a><TD bgcolor=#808080><FONT COLOR="#FFFFFF"><code>gray (#808080)</code></FONT></TD><code></code><a name="1021598"></a><TD bgcolor=#000000><FONT COLOR="#FFFFFF"><code>black (#000000)</code></FONT></TD><code></code></tr>
+<tr><a name="1021600"></a><TD bgcolor=#FFFF00><FONT COLOR="#000000"><code>yellow (#FFFF00)</code></FONT></TD><code></code><a name="1021602"></a><TD bgcolor=#FF00FF><FONT COLOR="#FFFFFF"><code>fuchsia (#FF00FF)</code></FONT></TD><code></code><a name="1021604"></a><TD bgcolor=#FF0000><FONT COLOR="#FFFFFF"><code>red (#FF0000)</code></FONT></TD><code></code><a name="1021606"></a><TD bgcolor=#800000><FONT COLOR="#FFFFFF"><code>maroon (#800000)</code></FONT></TD><code></code></tr>
+<tr><a name="1021608"></a><TD bgcolor=#00FF00><FONT COLOR="#000000"><code>lime (#00FF00)</code></FONT></TD><code></code><a name="1021610"></a><TD bgcolor=#808000><FONT COLOR="#FFFFFF"><code>olive (#808000)</code></FONT></TD><code></code><a name="1021612"></a><TD bgcolor=#008000><FONT COLOR="#FFFFFF"><code>green (#008000)</code></FONT></TD><code></code><a name="1021614"></a><TD bgcolor=#800080><FONT COLOR="#FFFFFF"><code>purple (#800080)</code></FONT></TD><code></code></tr>
+<tr><a name="1021616"></a><TD bgcolor=#00FFFF><FONT COLOR="#000000"><code>aqua (#00FFFF)</code></FONT></TD><code></code><a name="1021618"></a><TD bgcolor=#008080><FONT COLOR="#FFFFFF"><code>teal (#008080)</code></FONT></TD><code></code><a name="1021620"></a><TD bgcolor=#0000FF><FONT COLOR="#FFFFFF"><code>blue (#0000FF)</code></FONT></TD><code></code><a name="1021622"></a><TD bgcolor=#000080><FONT COLOR="#FFFFFF"><code>navy (#000080)</code></FONT></TD><code></code></tr>
+
+</Table>
+
+<Table>
+<tr><td>
+</Table>
+</p>
+<h1><a name="1021584"></a> Example Presentation</h1>
+<p><a name="1057598"></a>The following example file demonstrates the RealPix mark-up. <a href="../media/sample.rp">Click here</a> to play this sample file in RealPlayer.</p>
+<pre><a name="1057604"></a>
+&lt;imfl&gt;<br>    &lt;head title="RealPix(tm) Sample Effects"<br>      author="Jay Slagle"<br>      copyright="(c)1998 RealNetworks, Inc."<br>      timeformat="dd:hh:mm:ss.xyz"<br>      duration="46"<br>      bitrate="12000"<br>      width="256"<br>      height="256"<br>      url="http://www.real.com"<br>      aspect="true"/&gt;<br> <br>  &lt;!-- Assign handle numbers to images --/&gt;<br> <br>  &lt;image handle="1" name="jbeans.jpg"/&gt;<br>  &lt;image handle="2" name="peppers.jpg"/&gt;<br>  &lt;image handle="3" name="elephant.jpg"/&gt;<br>  &lt;image handle="4" name="hippo.jpg"/&gt;<br>  &lt;image handle="5" name="interior.jpg"/&gt;<br> <br>  &lt;!-- Fade in and crossfade images --/&gt;<br> <br>  &lt;fill start="0" color="black"/&gt;<br>  &lt;fadein start="1" duration="2" target="1"/&gt;<br>  &lt;crossfade start="4" duration="3" target="2"/&gt;<br> <br>  &lt;!-- Fade out with expanding squares --/&gt;<br> <br>  &lt;fadeout start="8" duration="1" color="lime"<br>    dstx="96" dsty="96" dstw="64" dsth="64"/&gt;<br>  &lt;fadeout start="9" duration="1" color="green"<br>    dstx="64" dsty="64" dstw="128" dsth="128"/&gt;<br>  &lt;fadeout start="10" duration="1" color="#6D8073"<br>    dstx="32" dsty="32" dstw="192" dsth="192"/&gt;<br>  &lt;fadeout start="11" duration="1" color="black"<br>    dstx="0" dsty="0" dstw="256" dsth="256"/&gt;<br> <br>  &lt;!-- Wipe in checkerboard images --/&gt;<br> <br>  &lt;fadein start="13" duration="3" target="3"/&gt;<br>  &lt;wipe type="push" direction="left" start="16"<br>    duration="3" target="4"<br>    srcx="0" srcy="0" srcw="128" srch="128"<br>    dstx="0" dsty="0" dstw="128" dsth="128"/&gt;<br>  &lt;wipe type="push" direction="right" start="19"<br>    duration="3" target="4"<br>    srcx="128" srcy="128" srcw="128" srch="128"<br>    dstx="128" dsty="128" dstw="128" dsth="128"/&gt;<br>  &lt;wipe type="push" direction="up" start="22"<br>    duration="3" target="4"<br>    srcx="0" srcy="128" srcw="128" srch="128"<br>    dstx="0" dsty="128" dstw="128" dsth="128"/&gt;<br>  &lt;wipe type="push" direction="down" start="25"<br>    duration="3" target="4"<br>    srcx="128" srcy="0" srcw="128" srch="128"<br>    dstx="128" dsty="0" dstw="128" dsth="128"/&gt;<br> <br>  &lt;!-- Zoom in and pan --/&gt;<br> <br>  &lt;fadein start="29" duration="3" target="5"/&gt;<br>  &lt;viewchange start="32" duration="3"<br>    srcx="0" srcy="0" srcw="160" srch="160"/&gt;<br>  &lt;viewchange start="35.5" duration="3"<br>    srcx="96" srcy="0" srcw="160" srch="160"/&gt;<br>  &lt;viewchange start="39" duration="3"<br>    srcx="96" srcy="96" srcw="160" srch="160"/&gt;<br>  &lt;viewchange start="42.5" duration="3"<br>    srcx="0" srcy="96" srcw="160" srch="160"/&gt;<br>&lt;/imfl&gt;
+</pre>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:28:45.</font>
+<center><a href="realpix.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="bandwdth.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

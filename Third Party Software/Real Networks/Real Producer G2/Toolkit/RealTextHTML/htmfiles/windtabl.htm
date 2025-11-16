@@ -1,0 +1,114 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="livetext.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="texttabl.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+<h1><a name="1000040">
+ Appendix A: 	 Summary of Window Tag Attributes
+
+</a></h1>
+<p><a name="1000056"></a>
+
+<p></p>
+<table border=1 cellpadding=3>
+<caption></caption>
+<tr>
+<th align=left valign=bottom><a name="998644"></a>Attribute</th>
+<th align=left valign=bottom><a name="998646"></a>Function</th>
+<th align=left valign=bottom><a name="998648"></a>Default</th>
+<th align=left valign=bottom><a name="998650"></a>Notes</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="998652"></a><code><a href="windtag.htm#997468">bgcolor="color"</a></code></td>
+<td align=left valign=top><a name="998654"></a>Sets the window's background color.</td>
+<td align=left valign=top><a name="998656"></a><code>black</code> for TickerTape, <code>white</code> for others </td>
+<td align=left valign=top><a name="998658"></a>Refer to <a href="texttag.htm#997542">"Colors"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998751"></a><code><a href="windtag.htm#997474">crawlrate="pixels per second"</a></code></td>
+<td align=left valign=top><a name="998753"></a>Sets the pixels per second that the text moves horizontally. </td>
+<td align=left valign=top><a name="998755"></a><code>20</code> for TickerTape and Marquee, <code>0</code> for others </td>
+<td align=left valign=top><a name="998757"></a>None. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998762"></a><code><a href="windtag.htm#997455">duration="dd:hh:mm:ss.xyz"</a></code></td>
+<td align=left valign=top><a name="998764"></a>Specifies time that presentation stops.</td>
+<td align=left valign=top><a name="998766"></a><code>60</code> seconds </td>
+<td align=left valign=top><a name="998768"></a>Only seconds ("<code>ss</code>") are required. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="999278"></a><code><a href="windtag.htm#998267">extraspaces="use|ignore"</a></code></td>
+<td align=left valign=top><a name="999280"></a>Recognizes or ignores extra spaces in text.</td>
+<td align=left valign=top><a name="999282"></a><code>use</code> </td>
+<td align=left valign=top><a name="999284"></a><code>ignore</code> value not used with <code><a href="texttag.htm#1004157">&lt;pre&gt;...&lt;/pre&gt;</a></code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998773"></a><code><a href="windtag.htm#997464">height="pixels"</a></code></td>
+<td align=left valign=top><a name="998775"></a>Sets the window height in pixels. </td>
+<td align=left valign=top><a name="998777"></a><code>30</code> for TickerTape and Marquee, <code>180</code> for others </td>
+<td align=left valign=top><a name="998779"></a>SMIL can override window height setting. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998784"></a><code><a href="windtag.htm#997477">link="color"</a></code></td>
+<td align=left valign=top><a name="998786"></a>Sets the color of hyperlinks.</td>
+<td align=left valign=top><a name="998788"></a><code>blue</code> </td>
+<td align=left valign=top><a name="998795"></a>Refer to <a href="texttag.htm#997542">"Colors"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998801"></a><code><a href="windtag.htm#997486">loop="true|false"</a></code></td>
+<td align=left valign=top><a name="998803"></a>Determines whether looping occurs. </td>
+<td align=left valign=top><a name="998805"></a><code>true</code> for TickerTape and Marquee, <code>false</code> for others </td>
+<td align=left valign=top><a name="998807"></a>Used only for TickerTape and Marquee. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998812"></a><code><a href="windtag.htm#997471">scrollrate="pixels per second"</a></code></td>
+<td align=left valign=top><a name="998814"></a>Sets the pixels per second that the text moves vertically. </td>
+<td align=left valign=top><a name="998816"></a><code>10</code> for ScrollingNews, <code>0</code> for others </td>
+<td align=left valign=top><a name="998818"></a>No effect on TickerTape or Marquee. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998823"></a><code><a href="windtag.htm#997452">type="window type"</a></code></td>
+<td align=left valign=top><a name="998825"></a>Sets the window type. </td>
+<td align=left valign=top><a name="998827"></a><code>generic</code> </td>
+<td align=left valign=top><a name="998829"></a>Other values are <code>tickertape</code>, <code>marquee</code>, <code>scrollingnews</code>, and <code>teleprompter</code>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998833"></a><code><a href="windtag.htm#997480">underline_hyperlinks="true|false"</a></code></td>
+<td align=left valign=top><a name="998836"></a>Determines whether hyperlinks are <u>underlined</u>. </td>
+<td align=left valign=top><a name="998838"></a><code>true</code> </td>
+<td align=left valign=top><a name="998840"></a>None. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998845"></a><code><a href="windtag.htm#997460">width="pixels"</a></code></td>
+<td align=left valign=top><a name="998847"></a>Determines the window width in pixels. </td>
+<td align=left valign=top><a name="998849"></a><code>500</code> for TickerTape and Marquee, <code>320</code> for others </td>
+<td align=left valign=top><a name="999238"></a>SMIL can override window width setting. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="998732"></a><code><a href="windtag.htm#997483">wordwrap="true|false"</a></code></td>
+<td align=left valign=top><a name="998734"></a>Specifies whether word wrap is performed. </td>
+<td align=left valign=top><a name="998736"></a><code>true</code></td>
+<td align=left valign=top><a name="998738"></a>No effect on TickerTape or Marquee. </td>
+</tr>
+</table>
+</p>
+<p><a name="998125"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:51.</font>
+<center><a href="livetext.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="texttabl.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

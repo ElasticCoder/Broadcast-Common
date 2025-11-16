@@ -1,0 +1,442 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="ads.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="live.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="32401"></a>
+ Chapter 10: 	Delivering a Presentation
+
+</h1>
+<p><a name="8699"></a>When you finish building your RealSystem presentation, you place the clips on RealServer for streaming. This chapter explains how to link your Web page to your presentation. It also describes how a Web server can play back some RealSystem G2 presentations.</p>
+<h1><a name="28449"></a> Using RTSP and HTTP in URLs</h1>
+<p><a name="28450"></a>A RealSystem presentation served by RealServer G2 involves the HTTP and RTSP protocols. If you have experience creating Web pages, you know that HTTP is the standard protocol Web browsers and Web servers use to communicate. Most Web page URLs begin with <code>http://</code> to make the file download use the HTTP protocol.</p>
+<p><a name="28457"></a>As explained in <a href="realsys.htm#34033">"Hosting a Presentation on a Server"</a>, RealServer G2 and RealPlayer G2 communicate primarily with RTSP, a new protocol designed specifically for streaming media. When you assemble a RealSystem presentation, it's important to understand clearly which URLs should begin with <code>http://</code> and which should begin with <code>rtsp://</code>.</p>
+<p><a name="28458"></a>Use <code>rtsp://</code> in URLs in which RealPlayer G2 requests clips from RealServer G2. These URLs occur in SMIL files (<kbd>.smil</kbd>) and Ram files (<kbd>.ram</kbd> or <kbd>.rpm</kbd>). Use <code>http://</code> in these URLs only if the clips are stored on a Web server instead of RealServer. Because a Web server doesn't use RTSP, you can't have <code>rtsp://</code> in a URL to a clip stored on a Web server.</p>
+<p><a name="28459"></a>Links to a Web server or RealServer within a Web page (<code>.htm</code> or <code>.html</code>) always start with <code>http://</code>. Like Web servers, Web browsers don't use RTSP and can't interpret streaming information sent by RealPlayer over RTSP. The Web browser can connect to RealServer through HTTP, though, because RealServer G2 can transmit data with HTTP or RTSP.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="29446"></a>
+For more on SMIL file URLs, see <a href="smil.htm#14604">"Linking to Clips on 
+RealServer"</a> and <a href="smil.htm#33583">"Linking to Clips on a Web Server"</a>. See 
+also <a href="quick.htm#998713">"URL Reference"</a>.
+</td></tr>
+</table></p>
+<h1><a name="25299"></a> Streaming Clips from RealServer G2</h1>
+<p><a name="26075"></a>When you stream clips from RealServer, the RealServer administrator creates content directories and tells you the basic URLs to use. The administrator can also set up features such as password authentication and pay-per-view. When your media clips and SMIL file are ready, transfer them to RealServer and place them in the directories prepared by the administrator. Then link your Web page to your presentation as described below.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="26414"></a>
+Because earlier versions of RealServer do not support 
+SMIL and RTSP, ensure that RealServer G2 hosts your 
+presentation. Also note that RealNetworks production 
+tools can transfer files to RealServer automatically. See 
+<a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a> for details.
+</td></tr>
+</table></p>
+<p><a name="27298"></a>When you use RealServer, the Ramgen feature can automatically launch RealPlayer, eliminating the need to write a separate Ram file. Your Web page URL simply points to your media clip or SMIL file on RealServer and includes a <code>ramgen</code> parameter. The next figure illustrates the process of requesting a presentation through Ramgen. This example uses a SMIL file that coordinates multiple clips, but you can also link to a single clip directly without using SMIL.</p>
+<h5><a name="27299"></a>
+ Requesting a Presentation from RealServer using Ramgen</h5>
+<p><a name="27303"></a>
+<img src="../graphics/request.gif"></p>
+<ol>
+<p><li><a name="27304"> </a>Using the HTTP protocol, the Web browser requests the SMIL file from RealServer. The URL includes a parameter that invokes Ramgen.
+<p><li><a name="27305"> </a>RealServer's response causes the Web browser to launch RealPlayer as a helper application and give it the URL to the SMIL file.
+<p><li><a name="27307"> </a>RealPlayer requests the SMIL file from RealServer using the RTSP protocol.
+<p><li><a name="27308"> </a>With the information in the SMIL file, RealPlayer requests and receives the streaming media clips.
+</ol>
+<h2><a name="25126"></a> Linking your Web Page to RealServer</h2>
+<p><a name="10192"></a>With your clips on RealServer, link your Web page to the SMIL file with an HTML hypertext link that looks like this:</p>
+<pre><a name="10200"></a>
+&lt;a href="http://realserver.company.com:8080/ramgen/sample.smil"&gt;...&lt;/a&gt;
+</pre>
+<p><a name="10201"></a>If the presentation plays back directly in the Web page through RealPlayer's Netscape plug-in, the URL occurs within an <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag and looks like this:</p>
+<pre><a name="10203"></a>
+SRC="http://realserver.company.com:8080/ramgen/sample.smil?embed"
+</pre>
+<p><a name="27910"></a>The following table explains the components of these URLs. Contact your RealServer administrator to get the actual RealServer address, HTTP port, and Ramgen directory structure.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="19747"></a>
+ URL Components in a Web Page Link to RealServer G2 </caption>
+<tr>
+<th align=left valign=bottom><a name="19751"></a>URL Component</th>
+<th align=left valign=bottom><a name="19753"></a>Meaning</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="19755"></a><code>http://</code></td>
+<td align=left valign=top><a name="19757"></a>This makes the browser contact RealServer through the HTTP protocol. (Web browsers do not use RTSP.)</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19759"></a><code>realserver.company.com</code></td>
+<td align=left valign=top><a name="19761"></a>This address varies for each RealServer. It typically uses an identifier such as <code>realserver</code> instead of <code>www</code>. It may also use a numeric TCP/IP address such as <code>204.71.154.5</code>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19763"></a><code>:8080</code></td>
+<td align=left valign=top><a name="19765"></a>This is the port RealServer uses for HTTP connections. Separate the port and address with a colon. You can leave the port number out if RealServer uses port <code>80</code> for HTTP connections. Include the port number if RealServer uses any port besides 80 for HTTP.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19767"></a><code>/ramgen/</code></td>
+<td align=left valign=top><a name="19772"></a>As <a href="server.htm#19810">"Using Ramgen"</a> explains, this parameter launches RealPlayer without the use of a separate Ram file.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19774"></a><code>sample.smil</code></td>
+<td align=left valign=top><a name="19776"></a>This is the SMIL file for your presentation. If you have just one clip to stream, you can link directly to that clip instead of a SMIL file.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19778"></a><code>?altplay=</code><code><I>file.ext</I></code></td>
+<td align=left valign=top><a name="19780"></a>This Ramgen option specifies an alternate presentation created for older versions of RealPlayer. See <a href="server.htm#13128">"Listing Alternate Presentations"</a>.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="19789"></a><code>?embed</code></td>
+<td align=left valign=top><a name="19791"></a>This Ramgen option embeds the presentation in a Web page. See <a href="control.htm#65923">Chapter 8</a> for full information on Web page playback.</td>
+</tr>
+</table>
+</p>
+<h2><a name="19810"></a> Using Ramgen</h2>
+<p><a name="16154"></a>In your Web page hyperlink, the <kbd>/ramgen/</kbd> parameter causes the Web browser to launch RealPlayer without the use of a separate Ram file. This parameter designates a virtual directory on RealServer. It may be followed in the URL by actual directory listings, as in this example:</p>
+<pre><a name="20174"></a>
+&lt;a href="http://realserver.company.com:8080/ramgen/media/sample.smil"&gt;..&lt;/a&gt;
+</pre>
+<p><a name="20215"></a>You should use Ramgen even when linking to a single clip, such as a RealVideo (<kbd>.rm</kbd>) clip, that automatically launches RealPlayer. If you cannot use Ramgen, you can write the Ram file as described in <a href="server.htm#14171">"Creating a Ram File Manually"</a>.</p>
+<h3><a name="13128"></a> Listing Alternate Presentations</h3>
+<p><a name="13129"></a>When you update content for RealSystem G2, you can keep existing content available for earlier versions of RealPlayer. Suppose you have a RealVideo 5.0 clip that you want to encode with a RealSystem G2 codec and lay out with SMIL. After re-encoding the source file with the new codec and writing the SMIL file, you change the link to the 5.0 Ram file to point to the SMIL file, using the Ramgen <code>altplay</code> option to list the older clip as an alternate:</p>
+<pre><a name="19545"></a>
+&lt;a href="http://.../ramgen/sample.smil<code><b>?altplay=old_sample.rm</b></code>"&gt;
+</pre>
+<p><a name="30087"></a>This link instructs RealServer to point RealPlayer G2 to <kbd>sample.smil</kbd>. Earlier versions of RealPlayer receive the URL to the older <kbd>old_sample.rm</kbd> file. Note that the URL specifies the actual clip, not the old Ram file. The older clip must reside in the same directory as the new clip or SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="13132"></a>
+It is not necessary to keep older content available. If you 
+do not use <code>altplay</code>, page visitors using older versions of 
+RealPlayer are prompted to upgrade when they click the 
+link to the SMIL file.
+</td></tr>
+</table></p>
+<h3><a name="15240"></a> Combining Ramgen Options</h3>
+<p><a name="15251"></a>The question mark operator ("?") separates Ramgen options from the main URL. To use multiple Ramgen options, you use a question mark before the first option, then separate the remaining options with ampersands ("&amp;"). The order of options does not matter. For example, the following link uses <code>altplay</code> and <code>embed</code>:</p>
+<pre><a name="15373"></a>
+&lt;a href="http://.../ramgen/sample.smil<code><b>?embed&amp;altplay=old_sample.rm</b></code>"&gt;
+</pre>
+<p><a name="25941"></a>You can use the question mark operator to include earlier Ram file options when using <code>altplay</code>. If your Ram file URL for a RealVideo 5.0 presentation specified an end time, for example, include that option in the Ramgen URL after <code>altplay</code>. The following shows an end time set for <kbd>old_sample.rm</kbd>:</p>
+<pre><a name="25942"></a>
+&lt;a href="http://.../ramgen/sample.smil?altplay=old_sample.rm<code><b>&amp;end=7:45"</b></code>&gt;
+</pre>
+<h1><a name="16649"></a> Playing Clips from a Web Server</h1>
+<p><a name="16651"></a>If you do not have access to RealServer G2, you can host your presentation on a Web server. Although not as robust as RealServer streaming, Web server playback provides a reasonable method for sending simple presentations to a small number of users. It is not recommended for lengthy or complicated presentations, however, or for clips viewed simultaneously by large groups.</p>
+<p><a name="28862"></a>As described in <a href="realsys.htm#41760">"Launching a Presentation"</a>, a Ram file launches RealPlayer when the presentation plays back from a Web server. You therefore need to write the Ram file as described in <a href="server.htm#14171">"Creating a Ram File Manually"</a> and place it on the Web server. The following figure illustrates the process of requesting a presentation from a Web server. All network actions use the HTTP protocol.</p>
+<h5><a name="28863"></a>
+ Requesting a Presentation from a Web Server</h5>
+<p><a name="28867"></a>
+<img src="../graphics/requestw.gif"></p>
+<ol>
+<p><li><a name="28868"> </a>The Web browser requests the Ram file from the Web server.
+<p><li><a name="28869"> </a>The Web server downloads the Ram file to the browser.
+<p><li><a name="28870"> </a>The Ram file extension (<kbd>.ram</kbd> or <kbd>.rpm</kbd>) causes the Web browser to launch RealPlayer. The <kbd>.ram</kbd> extension launches RealPlayer as a separate application. The <kbd>.rpm</kbd> extension plays the presentation within the Web page.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="35458"></a>
+For more information on embedding a presentation in a 
+Web page, see <a href="control.htm#65923">Chapter 8</a>.
+</td></tr>
+</table></p>
+<p><li><a name="28871"> </a>RealPlayer receives the Ram file and requests the SMIL file from the Web server. Alternately, the Ram file can simply list a single clip or multiple clips played in sequence.
+<p><li><a name="28872"> </a>With the information in the SMIL file, RealPlayer requests and receives the clips from the Web server.
+</ol>
+<h2><a name="14811"></a> Limitations on Web Server Playback</h2>
+<p><a name="22644"></a>As noted in <a href="realsys.htm#34033">"Hosting a Presentation on a Server"</a>, a presentation downloaded from a Web server is more likely to stall than a presentation streamed by RealServer. To ensure that a presentation hosted by a Web server plays as smoothly as possible, observe the following points.</p>
+<h4><a name="22646"></a> No SureStream Clips Encoded for Multiple Bandwidths</h4>
+<p><a name="22647"></a>A Web server cannot stream just one encoding from a SureStream clip encoded for multiple bandwidths. Instead, it downloads the entire clip file, causing an unacceptably high preroll. So you must encode each clip for just one bandwidth. To support multiple bandwidths, encode separate clips for various bandwidths and use SMIL to let RealPlayer choose which clip to play.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="21092"></a>
+See <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a> for information on 
+RealAudio and SureStream. For more on using SMIL to 
+list clip choices, read <a href="smil.htm#10260">"Setting Bandwidth Choices"</a>.
+</td></tr>
+</table></p>
+<h4><a name="13832"></a> Limited Ability to Keep Parallel Clips Synchronized</h4>
+<p><a name="13790"></a>A Web server does not consider clip timelines when downloading data and does not receive feedback from RealPlayer. Web server playback therefore makes it harder for RealPlayer to keep clips synchronized. A presentation that plays clips in parallel may begin to stall and rebuffer data when the RealPlayer connection has little bandwidth to spare.</p>
+<p><a name="22734"></a>For this reason, it may be difficult to deliver RealFlash, which consists of synchronized animation and audio. You can, however, combine a large clip such as RealVideo with smaller clips, such as image clips or a RealText clip. Because RealText consumes little bandwidth, a Web server can download it to RealPlayer quickly without interfering with other clips.</p>
+<h4><a name="21139"></a> RealPix Presentations Buffer Longer</h4>
+<p><a name="21144"></a>When delivered by RealServer, images in a RealPix presentation stream at different times depending on their place in the RealPix timeline. This lets you structure a RealPix presentation to keep it flowing smoothly. When delivered by a Web server, however, all RealPix images begin to download as soon as presentation playback begins. This causes a higher preroll.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="22874"></a>
+<I>RealPix Authoring Guide</I> explains bandwidth usage when 
+RealServer G2 streams RealPix. This guide is available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="23220"></a> SMIL File Optional</h4>
+<p><a name="23221"></a>When delivering a single clip or a few clips played in sequence, you do not need a SMIL file. You can simply list the clips in order when writing your Ram file as described in <a href="server.htm#14171">"Creating a Ram File Manually"</a>. You can, however, have your Ram file specify a SMIL file that lists the clip locations, creates a layout, times the presentation, and so on.</p>
+<h4><a name="13933"></a> SMIL Internal Timing Commands not Usable</h4>
+<p><a name="22658"></a>Although you can use SMIL to lay out and time your presentation, you should not use the <code>clip-begin</code> and <code>clip-end</code> attributes. A Web server cannot begin to download a clip at a certain point in its timeline. If you specify <code>clip-begin="5min"</code>, for example, RealPlayer must wait until it has received the first five minutes of clip data before it can begin to play the clip back. This creates an unacceptably long wait.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="22937"></a>
+<a href="smil.htm#82624">"Setting Internal Clip Begin and End Times"</a> describes 
+these SMIL commands.
+</td></tr>
+</table></p>
+<h4><a name="16842"></a> No RealPlayer Seeking</h4>
+<p><a name="35516"></a>Because a Web server cannot jump to a new position in a clip timeline, the RealPlayer position slider cannot fast-forward the clip. If the user moves the slider forward, playback pauses as the clip continues to download at its normal rate. RealPlayer resumes playback once the clip data reaches the requested timeline position.</p>
+<h4><a name="26640"></a> No RTSP URLs</h4>
+<p><a name="26641"></a>Because Web servers do not support the RTSP protocol, all URLs in presentations hosted by a Web server should begin with <code>http://</code>. This includes all URLs in a SMIL file or Ram file.</p>
+<h4><a name="26669"></a> No Live Broadcast</h4>
+<p><a name="26670"></a>Live broadcast is not possible because Web servers can download only clips stored on disk.</p>
+<h2><a name="27050"></a> Configuring Web Server MIME Types</h2>
+<p><a name="27051"></a>To download a RealSystem presentation from a Web server, the server must be configured with the following MIME types. If you are using an ISP, ask the ISP's Web server administrator to configure the MIME types listed in the following table.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="31034"></a>
+ Web Server MIME Types for RealSystem Files </caption>
+<tr>
+<th align=left valign=bottom><a name="31038"></a>File Type</th>
+<th align=left valign=bottom><a name="31113"></a>Extension</th>
+<th align=left valign=bottom><a name="31040"></a>MIME Type</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="31042"></a>Ram</td>
+<td align=left valign=top><a name="31115"></a><code>.ram</code></td>
+<td align=left valign=top><a name="31044"></a><code>audio/x-pn-realaudio</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31046"></a>Embedded Ram</td>
+<td align=left valign=top><a name="31117"></a><code>.rpm</code></td>
+<td align=left valign=top><a name="31204"></a><code>audio/x-pn-realaudio-plugin</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31168"></a>SMIL</td>
+<td align=left valign=top><a name="31170"></a><code>.smil</code> and <code>.smi</code></td>
+<td align=left valign=top><a name="31172"></a><code>application/smil</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31054"></a>RealAudio</td>
+<td align=left valign=top><a name="31121"></a><code>.ra</code></td>
+<td align=left valign=top><a name="31056"></a><code>audio/x-pn-realaudio</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31058"></a>RealVideo</td>
+<td align=left valign=top><a name="31123"></a><code>.rm</code></td>
+<td align=left valign=top><a name="31060"></a><code>application/x-pn-realmedia</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31062"></a>RealPix</td>
+<td align=left valign=top><a name="31125"></a><code>.rp</code></td>
+<td align=left valign=top><a name="31064"></a><code>image/vnd.rn-realpix</code></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31086"></a>RealText</td>
+<td align=left valign=top><a name="31137"></a><code>.rt</code></td>
+<td align=left valign=top><a name="31088"></a><code>text/vnd.rn-realtext</code></td>
+</tr>
+</table>
+</p>
+<h1><a name="14171"></a> Creating a Ram File Manually</h1>
+<p><a name="14172"></a>Whenever possible, launch RealPlayer automatically with RealServer's Ramgen feature as described in <a href="server.htm#19810">"Using Ramgen"</a>. In some cases, though, you may need to write a Ram file:</p>
+<ul>
+<p><li><a name="14179"></a>Streaming from a RealServer not set up to use Ramgen.
+<p><li><a name="29153"></a>Streaming multiple SMIL files in sequence.
+<p><li><a name="14180"></a>Hosting a RealSystem presentation from a Web server.
+<p><li><a name="14181"></a>Playing back clips that reside on the user's local machine.
+</ul>
+<h4><a name="14182"></a>	 To create a Ram file:</h4>
+<ol>
+<p><li><a name="14183"> </a>Open any editor or word processor that can save files as plain text. On the top line, enter the full URL of the SMIL file or the media clip. As shown below, URLs vary with the playback context.
+<ul>
+
+<p><li><a name="26553"></a>RealServer Streaming
+<p><a name="26554"></a>The following example links to a SMIL file on a RealServer machine that does not use Ramgen:</p>
+<pre class=indent><a name="14184"></a>
+rtsp://realserver.company.com/media/sample1.smil
+</pre>
+<p><a name="29115"></a>To deliver a few clips or SMIL files in sequence, list the URLs in their playback order:</p>
+<pre class=indent><a name="29082"></a>
+rtsp://realserver.company.com/media/sample1.smil<br>rtsp://realserver.company.com/media/video1.rm<br>rtsp://realserver.company.com/media/sample2.smil
+</pre>
+<p><li><a name="14185"></a>Web Server Playback
+<p><a name="26555"></a>For Web server playback, you specify the HTTP protocol and the Web server name, along with the SMIL file or media clip:</p>
+<pre class=indent><a name="14248"></a>
+http://www.company.com/media/video1.rm
+</pre>
+<p><a name="14245"></a>To deliver a few clips or SMIL files in sequence, list the URLs in their playback order:</p>
+<pre class=indent><a name="23123"></a>
+http://www.company.com/media/video1.rm<br>http://www.company.com/media/video2.rm<br>http://www.company.com/media/sample1.smil
+</pre>
+<p><li><a name="23114"></a>Local Playback
+<p><a name="26556"></a>For local playback of clips residing on the user's machine, start the URL with <code>file://</code> and list clips in their locations relative to the Ram file. For example, the following specifies a clip that resides one level below the Ram file in the <kbd>media</kbd> directory:</p>
+<pre class=indent><a name="14186"></a>
+file://media/video1.rm
+</pre>
+<p><a name="29127"></a>To deliver a few clips or SMIL files in sequence, list the URLs in their playback order:</p>
+<pre class=indent><a name="29128"></a>
+file://media/video1.rm<br>file://media/video2.rm<br>file://media/sample1.smil
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="14187"></a>
+These local URLs are like those used in a SMIL file to 
+locate media clips. For more information on general 
+URL syntax, see <a href="smil.htm#53618">"Specifying Clip Locations"</a>.
+</td></tr>
+</table></p>
+</ul>
+<p><li><a name="14194"> </a>For a presentation played back from RealServer, you can support earlier versions of RealPlayer (such as RealPlayer 4.0 or 5.0) just as Ramgen does with the <code>altplay</code> option. To do this, add the marker <code>--stop--</code> after the RTSP URL. Then specify the URL for the older clip just as it appeared in your previous Ram file. Here's an example:
+<pre class=indent><a name="14195"></a>
+rtsp://realserver.company.com:554/sample.smil<br>--stop--<br>pnm://realserver.company.com:7070/old_sample.rm
+</pre>
+<p><a name="14196"></a>The second URL specifies the older RealSystem protocol with <code>pnm://</code> and designates RealServer's PNA port. When RealPlayer connects, it chooses the URL based on its favored protocol. For this reason, you cannot list two URLS that both use the same protocol, whether <code>rtsp://</code>, <code>pnm://</code>, or <code>http://</code>.</p>
+<p><li><a name="14197"> </a>Save the Ram file as plain text with a <kbd>.ram</kbd> extension (played in RealPlayer) or a <kbd>.rpm</kbd> extension (played in the Web browser).
+<p><li><a name="26572"> </a>Move your Ram file to RealServer or your Web server. Keep in mind that even if all your media clips are on RealServer, you can place the Ram file on your Web server. When the browser receives the Ram file from the Web server, it turns the file over to RealPlayer, which uses the full URLs in the Ram file to request the clips off RealServer. Hence the Ram file and the media clips do not need to reside on the same machine.
+<p><li><a name="14198"> </a>For <code>.ram</code> files, link your Web page to the Ram file with an HTML hyperlink such as this:
+<pre class=indent><a name="33401"></a>
+&lt;a href="http://www.company.com/media/sample.ram"&gt;click for video&lt;/a&gt;
+</pre>
+<p><a name="33384"></a>For <code>.rpm</code> files, incorporate the link URL in the <code>&lt;EMBED&gt;</code> or <code>&lt;OBJECT&gt;</code> tag as described in <a href="control.htm#22614">"Setting Basic Parameters"</a>. If the Ram file is on RealServer, the URL must not use the <code>ramgen</code> parameter.</p>
+</ol>
+<h2><a name="31772"></a> Adding Comments to a Ram File</h2>
+<p><a name="31774"></a>You can add a comment to a Ram file by using a pound sign ("#") as the first character on a line. The following example shows two lines commented out of a Ram file:</p>
+<pre><a name="31900"></a>
+# Two videos and a SMIL presentation<br># streamed from RealServer G2.<br>rtsp://realserver.company.com/media/video1.rm<br>rtsp://realserver.company.com/media/video2.rm<br>rtsp://realserver.company.com/media/sample2.smil
+</pre>
+<h1><a name="18237"></a> Bundling RealPlayer Presets</h1>
+<p><a name="18238"></a>The <strong>Presets</strong> menu for RealPlayer G2 lets you save URLs, much like a Web browser lets you set bookmarks or favorites. If you want to share Presets with your users, you can post on your Web page a Presets Pack that users can download and import into their RealPlayers.</p>
+<h4><a name="18239"></a>	 To create, export, and publish a Presets Pack:</h4>
+<ol>
+<p><li><a name="18240"> </a>With RealPlayer, create a Presets Pack folder using <strong>Presets&gt;Organize Presets</strong>. Click <strong>New Folder</strong> and supply a name that describes the Presets the folder will hold. This name appears in RealPlayer's <strong>Presets</strong> menu when a user imports the Presets Pack.
+<p><li><a name="18241"> </a>Play each URL in RealPlayer and use <strong>Presets&gt;Add to Presets</strong> to add it to your Presets Pack folder. Be sure to give each Preset an informative name. Repeat this until you have added all the Presets you want to export.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="18242"></a>
+Use <strong>Presets&gt;Organize Presets</strong> to move existing Presets 
+into your Presets Pack folder. You can move them back 
+after you have exported the Presets Pack.
+</td></tr>
+</table></p>
+<p><li><a name="18243"> </a>Choose <strong>Presets&gt;Organize</strong> and select your Presets Pack folder.
+<p><li><a name="18244"> </a>Click <strong>Export</strong> and use the navigation dialog box to name and save your Presets Pack. The extension <kbd>.prx</kbd> is added to the file automatically.
+<p><li><a name="18245"> </a>To make your Presets Pack available for import, simply add a link to your Web page so that users can download the file. Here's an example:
+<pre class=indent><a name="18246"></a>
+&lt;a href="http://www.company.com/presets.prx"&gt;My Favorite Presets&lt;/a&gt;											
+</pre>
+</ol>
+<p><a name="18440"></a>Depending on the browser used, the download may import the Presets Pack into RealPlayer automatically. Otherwise users can import it with one of these methods:</p>
+<ul>
+<p><li><a name="18441"></a>Choosing <strong>Presets&gt;Import</strong> and opening the Presets Pack.
+<p><li><a name="18442"></a>Double-clicking the Presets Pack.
+<p><li><a name="18421"></a>Dragging and dropping the Presets Pack onto RealPlayer.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="18248"></a>
+Imported Presets will not overwrite existing Presets that 
+have the same Title or Category. See the <strong>Sharing Presets</strong> 
+topic in RealPlayer's online help for details.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="13754"></a> Testing your Presentation</h1>
+<p><a name="13755"></a>The following are guidelines for making sure your presentation works well and reaches its target audience:</p>
+<ol>
+<p><li><a name="13756"> </a>Test your presentation in "real world" conditions. If you target 28.8 Kbps connections, for example, request the presentation over a 28.8 Kbps modem.
+<p><li><a name="30225"> </a>Check that the presentation has a preroll (initial buffering) under 15 seconds. After preroll, the presentation should not rebuffer under normal network conditions.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="30298"></a>
+<a href="bandwdth.htm#998356">"What is Preroll?"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="30275"> </a>Verify that video and audio quality is acceptable.
+<p><li><a name="30457"> </a>For a multiclip presentation, verify that clips stay synchronized. Ensure that no stalling occurs because too many clips play at the same time or a single clip requires too much bandwidth. Test that clips introduced during a presentation in progress do not stall playback by requiring too much buffering when they start.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="30325"></a>
+If clips introduced during a presentation in progress 
+require too much buffering, see <a href="tips.htm#997665">"Smoothing Transitions 
+between Clips"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="13757"> </a><strong></strong>Make sure that your presentation works well for an "average" CPU for your audience. For general Web delivery, test playback on both Pentium and Power Macintosh 90 MHz machines. Do not rely on MMX technology to enhance playback. Not all Web users have MMX machines.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="30440"></a>
+If your presentation is CPU-intensive because, for 
+example, it uses complex Flash animation or high-
+bandwidth video, note this in your Web page.
+</td></tr>
+</table></p>
+<p><li><a name="29169"> </a>When streaming RealAudio, ensure that sound quality is acceptable. You may need to experiment with RealAudio codecs to find the best balance between clip bandwidth use and sound quality.
+<p><li><a name="13759"> </a>When embedding a presentation in a Web page, verify that the playback window has the correct location and controls.
+</ol>
+<h1><a name="18572"></a> Advertising on RealGuide</h1>
+<p><a name="18573"></a>Every day, thousands of people visit RealGuide, RealNetworks' online guide for streaming media sites and live events (<a href="http://www.real.com/realguide/" target="_top">http://www.real.com/realguide/</a>). If you regularly host RealAudio or RealVideo content of interest to the public, or you have a live event you want to advertise, you can submit your listing to RealNetworks. Simply complete an online form to list your site:</p>
+<ul>
+<p><li><a name="18574"></a><a href="http://www.timecast.com/help/addsite.html" target="_top">http://www.timecast.com/help/addsite.html</a>
+</ul>
+<p><a name="18575"></a>or live event:</p>
+<ul>
+<p><li><a name="18576"></a><a href="http://www.timecast.com/help/addevent.html" target="_top">http://www.timecast.com/help/addevent.html</a>
+</ul>
+<p><a name="18577"></a>In the form, you give the site or event name, URL, short description, and contact person. A staff member then verifies your site or event before including it on RealGuide. (RealNetworks reserves the right to refuse or edit submissions.) For live events, please submit your request at least one business day in advance. If you have questions or need to change a listing, please e-mail <a href="mailto:timecast@timecast.com">timecast@timecast.com</a>.</p>
+<p><a name="28265"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:38.</font>
+<center><a href="ads.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="live.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

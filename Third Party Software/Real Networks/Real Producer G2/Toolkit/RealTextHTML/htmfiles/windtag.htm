@@ -1,0 +1,142 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="realtext.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="texttag.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="999095"></a>
+ Chapter 2: 	Window Tag Attributes
+
+</h1>
+<p><a name="997448"></a>The <code>&lt;window&gt;</code> and <code>&lt;/window&gt;</code> tags that begin and end a RealText file, respectively, determine the window type and set attributes such as window height and width. This chapter explains the options you can set.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="999123"></a>
+When you are familiar with the attributes, you can refer 
+to <a href="windtabl.htm#1000040">"Summary of Window Tag Attributes"</a>.
+</td></tr>
+</table></p>
+<h1><a name="999100"></a> Specifying Window Attributes</h1>
+<p><a name="999105"></a>You specify attributes within the <code>&lt;window&gt;</code> tag, much as you specify HTML table attributes within the HTML <code>&lt;TABLE&gt;</code> tag. For example: </p>
+<pre><a name="997449"></a>
+&lt;window type="tickertape" duration="2:05:00.0" underline_hyperlinks="false"&gt;
+</pre>
+<p><a name="997878"></a>No attributes are required for the <code>&lt;window&gt;</code> tag, however. If you do not specify an attribute, the attribute's default value applies. When you include an attribute, enclose its value in double quotation marks.</p>
+<h4><a name="997452"></a> type="window type"</h4>
+<p><a name="997453"></a>This attribute defines the RealText window type:</p>
+<ul>
+<p><li><a name="997687"></a>generic
+<p><li><a name="997688"></a>tickertape
+<p><li><a name="997689"></a>marquee
+<p><li><a name="997690"></a>scrollingnews
+<p><li><a name="997691"></a>teleprompter
+</ul>
+<p><a name="997685"></a>The default is <code>type="generic"</code>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="997585"></a>
+For descriptions of the window types, see <a href="realtext.htm#997472">"Choosing 
+Window Types"</a>.
+</td></tr>
+</table></p>
+<p><a name="1170"></a><a name="duration"></a></p>
+<h4><a name="997455"></a> duration="dd:hh:mm:ss.xyz"</h4>
+<p><a name="997456"></a>The duration attribute specifies the time, relative to the start of the presentation, that this RealText stream stops playing. The default is 60 seconds. The RealPlayer timing slider is keyed to this value, which is in 24-hour format, where <code>dd</code> is days, <code>hh</code> is hours, <code>mm</code> is minutes, <code>ss</code> is seconds, <code>x</code> is tenths of seconds, <code>y</code> is hundredths of seconds, and <code>z</code> is milliseconds. </p>
+<p><a name="997457"></a>Only the <code>ss</code> value is required. When the time value does not include a decimal point, the last field is read as the seconds. For example, <code>2:05</code> means 2 minutes and 5 seconds, whereas <code>2:05:00</code> means 2 hours and 5 minutes. You can also specify just the seconds. For example, both of the following values end the text stream 2 hours and 5 minutes after the stream begins: </p>
+<pre><a name="997458"></a>
+duration="2:05:00.0" <br>duration="7500" 
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="998240"></a>
+Set a high duration when you start building a RealText 
+presentation. Set the final duration time when you have 
+finished defining the mark-up.
+</td></tr>
+</table></p>
+<h4><a name="997460"></a> width="pixels"</h4>
+<p><a name="997461"></a>The <code>width</code> attribute determines the window width in pixels. The default is 500 for TickerTape and Marquee windows, 320 for other window types. SMIL layout tags can specify a playback region width that overrides the width set here. If word wrap is on, the line length for wrapping corresponds to this width value, not the actual region width. Text centering, however, corresponds to the actual region width set in the SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="997891"></a>
+See <I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a> 
+for information about SMIL.
+</td></tr>
+</table></p>
+<h4><a name="997464"></a> height="pixels"</h4>
+<p><a name="997465"></a>The <code>height</code> attribute sets the window height in pixels. The default is 30 for TickerTape and Marquee windows, 180 for other window types. SMIL layout tags can specify a window height that overrides the height set here. This typically does not adversely affect the presentation, however.</p>
+<h4><a name="997468"></a> bgcolor="color"</h4>
+<p><a name="997469"></a>This attribute determines the window's background color. The default is black for TickerTape windows and white for all other window types. See <a href="texttag.htm#997542">"Colors"</a> for information on valid colors.</p>
+<p><a name="1191"></a><a name="scrollrate"></a></p>
+<h4><a name="997471"></a> scrollrate="pixels per second"</h4>
+<p><a name="997472"></a>The <code>scrollrate</code> attribute sets the number of pixels per second that the text moves vertically. It has no effect on TickerTape and Marquee windows. The default is 10 for ScrollingNews windows and 0 for all other window types.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="999188"></a>
+For best results, use a <code>scrollrate</code> under 30. (Best values are 
+25, 20, 10, 8, 5, 4, 2, and 1.) For rates faster than 30, use 
+multiples of 20 or 25, such as 40, 50, 60, 75, 80, and so 
+on.
+</td></tr>
+</table></p>
+<p><a name="1196"></a><a name="crawlrate"></a></p>
+<h4><a name="997474"></a> crawlrate="pixels per second"</h4>
+<p><a name="997475"></a>The <code>crawlrate</code> attribute specifies the number of pixels per second that the text moves horizontally. The default is 20 for TickerTape and Marquee windows, 0 for other window types.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="999183"></a>
+For best results, use a <code>crawlrate</code> under 30. (Best values are 
+25, 20, 10, 8, 5, 4, 2, and 1.) For rates faster than 30, use 
+multiples of 20 or 25, such as 40, 50, 60, 75, 80, and so 
+on.
+</td></tr>
+</table></p>
+<h4><a name="997477"></a> link="color"</h4>
+<p><a name="997478"></a>This attribute sets the color of hyperlinks within the text. The default is blue. See <a href="texttag.htm#997542">"Colors"</a> for other color options.</p>
+<h4><a name="997480"></a> underline_hyperlinks="true|false"</h4>
+<p><a name="997481"></a>This attribute determines whether hyperlinks are underlined. The default is true.</p>
+<h4><a name="997483"></a> wordwrap="true|false"</h4>
+<p><a name="997484"></a>This attribute, which defaults to true, specifies whether word wrap is performed. When word wrap is on, text lines longer than the specified window width wrap to the following line. If it is off, long lines are truncated by the window border. This attribute has no effect for windows that have horizontal text motion, such as the TickerTape.</p>
+<h4><a name="997486"></a> loop="true|false"</h4>
+<p><a name="997487"></a>This attribute is available only in TickerTape and Marquee windows, where it defaults to true. When set to true, this attribute tells RealPlayer to buffer all text and redisplay ("loop") it if and when the stream runs dry, which occurs when the text has moved out of the window and no new text has arrived. If the text has looped and new text arrives, the new text displays as soon as the old text has moved out of the window. The new text then becomes part of the loop.</p>
+<h4><a name="998267"></a> extraspaces="use|ignore"</h4>
+<p><a name="998271"></a>The default value <code>"use"</code> for this variable makes RealText recognize all blank spaces between mark-up tags. If three spaces occur between two words in the RealText file, for example, RealPlayer displays all three spaces. It also recognizes carriage returns and tabs.</p>
+<p><a name="998311"></a>If you specify <code>extraspaces="ignore"</code>, RealPlayer treats spaces, tabs, line feeds, and carriage returns as does a Web browser, except when they are between the <code><a href="texttag.htm#1004157">&lt;pre&gt;...&lt;/pre&gt;</a></code> tags. When spaces or carriage returns occur contiguously in the text, RealPlayer interprets them as a single space, no matter how many of them are present. So in this case the three spaces display as one space in RealPlayer. It treats each tab as a single space, though.</p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:48.</font>
+<center><a href="realtext.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="texttag.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

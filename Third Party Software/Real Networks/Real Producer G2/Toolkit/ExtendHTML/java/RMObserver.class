@@ -1,0 +1,41 @@
+RMObserver
+// java interface for events coming from the Real Player plugin
+// any object implementing this interface may register itself into the 
+// RAPlayer to get notifications (see adviseV6 function in RAPlayer)
+
+public interface RMObserver 
+{	
+	public void onGoToURL(String v, String w);
+	public void onClipOpened(String v, String w);
+	public void onClipClosed();
+	public void onShowStatus(String v);
+
+	public boolean OnPosLength(int Position, int Length);
+	public boolean OnPresentationOpened();
+	public boolean OnPresentationClosed();
+	public boolean OnStatisticsChanged();
+	public boolean OnPreSeek(int OldTime,	int NewTime);
+	public boolean OnPostSeek(int OldTime, int NewTime);
+	public boolean OnStop();
+	public boolean OnBuffering(int Flags, short PercentComplete);
+	public boolean OnContacting(String HostName);
+	public boolean OnClipOpen();
+	public boolean OnAuthorChange(String Author);
+	public boolean OnTitleChange(String Title);
+	public boolean OnCopyrightChange(String Copyright);
+	public boolean OnErrorMessage(String UserString);
+	public boolean OnKeyDown(int KeyCode);
+	public boolean OnKeyUp(int KeyCode);
+	public boolean OnKeyPress(int KeyCode);
+	public boolean OnLButtonDown(int nButtonFlags, int xPos, int yPos);
+	public boolean OnLButtonDblClk(int nButtonFlags, int xPos, int yPos);
+	public boolean OnLButtonUp(int nButtonFlags, int xPos, int yPos);
+	public boolean OnRButtonDblClk(int nButtonFlags, int xPos, int yPos);
+	public boolean OnRButtonDown(int nButtonFlags, int xPos, int yPos);
+	public boolean OnRButtonUp(int nButtonFlags, int xPos, int yPos);
+	public boolean OnMouseMove(int nButtonFlags, int xPos, int yPos);
+	public boolean OnVolumeChange(int nNewVolume);
+	public boolean OnMuteChange(boolean bIsMute);
+	public boolean OnPlayStateChange(int fromState, int toState);
+	public boolean OnPreFetchComplete();
+}

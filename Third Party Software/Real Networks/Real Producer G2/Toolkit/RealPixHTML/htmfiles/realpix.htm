@@ -1,0 +1,232 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tags.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1015961"></a>
+ Chapter 1: 	RealPix Authoring
+
+</h1>
+<p><a name="1010804"></a>With RealPix you can create streaming images, combining them with other media clips such as audio or text. This chapter explains the basics of RealPix authoring and streaming.</p>
+<h1><a name="1015994"></a> Image Formats</h1>
+<p><a name="1015967"></a>RealPix can stream images in these formats:</p>
+<ul>
+<p><li><a name="1015118"></a>GIF87 and GIF89 (<kbd>.gif</kbd>)
+<p><a name="1015320"></a>Both interlaced and noninterlaced GIFs will work, but RealPix does not take advantage of any features of interlaced GIFs. Noninterlaced GIFs are therefore recommended. RealPix does not support animated GIFs.</p>
+<p><li><a name="1010925"></a>JPEG (<kbd>.jpg</kbd>)
+<p><a name="1015033"></a>RealPix can use RGB baseline JPEGs. Progressive and grayscale JPEGs are not supported.</p>
+</ul>
+<p><a name="1014272"></a>With the images ready, you simply create a RealPix file with mark-up similar to HTML. This mark-up describes how and when the images display, specifying special effects such as a fade to a solid color or a "wipe" transition between two images.</p>
+<h2><a name="1011627"></a> Image Caching</h2>
+<p><a name="1015397"></a>Because RealPlayer G2 does not maintain a disk cache or allow users to copy or download images, users do not have access to copyrighted materials in a RealPix presentation. RealPix caches images in memory for the duration of the RealPix presentation, however. A RealPix presentation can thereby reuse an image without consuming additional bandwidth. Each cache is specific to each RealPix presentation, though. A RealPix presentation does not have access to the image cache of another presentation playing concurrently.</p>
+<h1><a name="1015499"></a> Hosting a RealPix Presentation</h1>
+<p><a name="1015500"></a>Use RealServer G2 instead of a Web server to host your RealPix presentation. When delivered by RealServer, images in a RealPix presentation stream at different times depending on their place in the RealPix timeline. This lets you structure a RealPix presentation to keep it flowing smoothly. When delivered by a Web server, however, all RealPix images begin to download as soon as presentation playback begins. This causes a higher preroll.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1015501"></a>
+See <I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> for 
+more on RealServer and Web server hosting.
+</td></tr>
+</table></p>
+<h1><a name="1015372"></a> Preparing Images</h1>
+<p><a name="1011628"></a>For a RealPix presentation, you can use scanned pictures, clip art, or images downloaded from the Web. When preparing your presentation, maintain three separate sets of images:</p>
+<ol>
+<p><li><a name="1011629"> </a>Original set
+<p><a name="1011630"></a>The original set includes the unedited files you start with, such as original images off a scanner. Keep this set in case you need to change an image in the working set by, for example, restoring an area you cropped out. Leave these images uncompressed.</p>
+<p><li><a name="1011631"> </a>Working set
+<p><a name="1011632"></a>The working set comprises the files you have edited. You may have cropped the original images or combined them to form new images, for example. Keep these files uncompressed so that you can edit them later if necessary.</p>
+<p><li><a name="1011633"> </a>Presentation set
+<p><a name="1011634"></a>This set consists of the compressed files used in the presentation. For a given working set, you may have several presentation sets. For instance, you may have slightly compressed images for a high-bandwidth presentation, heavily compressed images for a low-bandwidth version.</p>
+</ol>
+<h1><a name="1011663"></a> Establishing a Timeline</h1>
+<p><a name="1011664"></a>If your presentation consists solely of streaming RealPix images, you have full control over the RealPix timeline. When you combine RealPix with another component such as RealAudio or RealText, however, the other component may establish the timeline. You then need to coordinate the RealPix images with the other clip's existing timeline. In these cases it is better to finish the other component first, then assemble your RealPix presentation to the final timeline.</p>
+<p><a name="1011665"></a>When working with an audio track, for example, think about the order of the images, deciding at which points in the audio timeline each image must display. When you are ready to assemble your RealPix presentation, play back the audio and note where you want to add an image. This will establish your RealPix presentation timeline.</p>
+<p><a name="1011688"></a>Once you have a timeline for your presentation and have ideas about how to place the images, you are ready to create a RealPix presentation. You may find it easier to create a storyboard to lay out the transitions and effects. Or you may want to dive right in, using the presentation in progress as your guide. Either way, carefully consider the bandwidth implications as you place your image and set the start times and durations.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1013970"></a>
+For more on bandwidth, see <a href="bandwdth.htm#1018149">"Bandwidth Usage"</a>.
+</td></tr>
+</table></p>
+<h1><a name="1016087"></a> Using JPEGTRAN</h1>
+<p><a name="1016088"></a><kbd><b>JPEGTRAN</b></kbd> optimizes JPEG (<kbd>.jpg</kbd>) images for streaming with RealPix. It modifies them so that if packets are lost, missing image data is randomly dispersed instead of appearing as continuous blank lines across the image. A windows version (<kbd>jpegtran.exe</kbd>) is included in the <kbd>utils</kbd> directory of this manual. A Macintosh version is not yet available.</p>
+<p><a name="1016090"></a>To use JPEGTRAN, first create JPEG-format images with the image editor of your choice. Then run JPEGTRAN from the command line on Windows 32-bit operating systems.From the directory that holds the <kbd><b>JPEGTRAN</b></kbd> program, use this command to process an image:</p>
+<pre><a name="1016091"></a>
+jpegtran -restart 1B -outfile <code><I>output</I></code>.jpg <code><I>input</I></code>.jpg
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1016092"></a>
+You can run <kbd><b>jpegtran.exe</b></kbd> in batch mode from the 
+RealPix Bandwidth Calculator. For more information 
+on the calculator, see <a href="bandwdth.htm#1017734">"Running JPEGTRAN from the 
+Calculator"</a>.
+</td></tr>
+</table></p>
+<h1><a name="1010832"></a> Creating a RealPix Presentation</h1>
+<p><a name="1010833"></a>The following steps describe how to create a RealPix file. A following section describes the RealPix mark-up tags in detail.</p>
+<h4><a name="1010834"></a>	 To Create a RealPix Presentation:</h4>
+<ol>
+<p><li><a name="1010835"> </a>Prepare your image presentation set. If you are using JPEG images, run the <kbd><b>JPEGTRAN</b></kbd> utility on them to prepare them for streaming.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1012095"></a>
+For more on this utility, see <a href="realpix.htm#1016087">"Using JPEGTRAN"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="1012078"> </a>Open a new text document in your text editor. At the top of the file, add the <code>&lt;imfl&gt;</code> tag. Add the <code>&lt;/imfl&gt;</code> end tag at the bottom: 
+<pre class=indent><a name="1010836"></a>
+&lt;imfl&gt;<br>...<code><I>All Other Mark-up Goes Between These Tags</I></code>...<br>&lt;/imfl&gt;
+</pre>
+<p><li><a name="1010844"> </a>Between the <code>&lt;imfl&gt;</code> and <code>&lt;/imfl&gt;</code> tags, add the mark-up that defines how and when the RealPix images appear:
+<pre class=indent><a name="1014031"></a>
+&lt;imfl&gt;<br>  ...<br>  &lt;image handle="1" name="drums.jpg"/&gt;<br>  &lt;image handle="2" name="franklin.jpg"/&gt;<br>  ...<br>&lt;/imfl&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1010852"></a>
+See <a href="tags.htm#1056259">"Tag Descriptions"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="1010853"> </a>Save the file as plain text, using the <kbd>.rp </kbd>extension to mark the file as a RealPix file. On your local machine, open the RealPix file with RealPlayer to test the presentation.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1011943"></a>
+Playing a RealPix file on your local machine indicates 
+whether the RealPix mark-up is correct. However, it does 
+not guarantee that the file will stream across a network 
+well. See <a href="bandwdth.htm#1018149">"Bandwidth Usage"</a> for information on making 
+a RealPix presentation stream well.
+</td></tr>
+</table></p>
+<p><li><a name="1010854"> </a>To combine RealPix with another file, create a SMIL file that controls the overall presentation. For example, the SMIL file can list a RealPix file and an audio soundtrack to be played together:
+<pre class=indent><a name="1010855"></a>
+&lt;smil&gt;<br>  &lt;body&gt;<br>    &lt;par&gt;<br>      &lt;ref src="rtsp://realserver.company.com/pix/ads.rp"/&gt;<br>      &lt;audio src="rtsp://realserver.company.com/pix/ads.ra"/&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1011918"></a>
+See <I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> for 
+information about creating a SMIL file.
+</td></tr>
+</table></p>
+<p><li><a name="1011905"> </a>Move your files to RealServer. If you are using an Internet Service Provider, for example, contact the ISP's RealServer administrator for instructions on doing this.
+<p><li><a name="1010856"> </a>In your Web page, add a hypertext link to the SMIL file. Or if the RealPix file is the only file in your presentation, simply link to that file.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1010857"></a>
+<I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> 
+explains the options for linking your Web page to your 
+presentation. It also explains how to play your RealPix 
+presentation in your Web page rather than in RealPlayer.
+</td></tr>
+</table></p>
+<p><li><a name="1010858"> </a>Test the RealPix presentation by clicking the hyperlink in your Web page. This launches RealPlayer, which displays the streaming images with the properties you defined through the RealPix mark-up.
+</ol>
+<h1><a name="1009566"></a> Controlling Image Size, Placement, and Aspect</h1>
+<p><a name="1009567"></a>In your RealPix file you define a presentation display window. When RealPlayer plays your presentation, it expands its main window to this size (or larger if your presentation contains multiple clips laid out with SMIL). To create a simple presentation such as a basic slide show, you can simply fade the images in and out of the display window. Images the same size as the presentation window appear full-size. Larger images shrink to fit the window, smaller images expand.</p>
+<p><a name="1013354"></a>You may want to display just a portion of a source image, however. Or you may want to display two images side-by-side. RealPix lets you specify the area of a source image that appears in the display window. It also lets you determine the size and placement of images in the display window. To understand how this works, keep in mind the following definitions.</p>
+<h4><a name="1010511"></a> Source Image</h4>
+<p><a name="1010512"></a>An image used in your presentation. A presentation may display one source image at a time, or it may display several source images arranged in a checkerboard pattern, for instance.</p>
+<h4><a name="1010528"></a> Display Window</h4>
+<p><a name="1010535"></a>The RealPlayer window in which your presentation plays back. You set the display window size with the RealPix <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag's <a href="tags.htm#1027967">width and height</a> attributes.</p>
+<h4><a name="1012593"></a> Source rectangle</h4>
+<p><a name="1012594"></a>The portion of a source image you want to display. You might want to display only the top half of a source image in the display window, for example. You can think of the source rectangle as a cropped version of your source image.</p>
+<h4><a name="1010549"></a> Destination rectangle</h4>
+<p><a name="1010556"></a>The area of the display window where the source rectangle appears. Think of the destination rectangle as a separate window within the RealPlayer display window. The source and destination rectangles do not have to be the same size.</p>
+<h2><a name="1009568"></a> Defining Image Size and Placement</h2>
+<p><a name="1013067"></a>To use just a portion of a source image or the display window for an effect, you define the source or destination rectangle (or both) in a RealPix tag. To do this, you work with these attributes:</p>
+<h4><a name="1011354"></a> "srcx" or "dstx"</h4>
+<p><a name="1011983"></a>Horizontal coordinate in pixels for the left-hand corner of the source rectangle (srcx) or destination rectangle (dstx).</p>
+<h4><a name="1011984"></a> "srcy" or "dsty"</h4>
+<p><a name="1011357"></a>Vertical coordinate in pixels for the left-hand corner of the source rectangle (srcy) or destination rectangle (dsty). For example, the upper, left-hand corner of the source image is identified as <code>srcx="0"</code>, <code>srcy="0"</code>. The upper, left-hand corner of the destination window is identified as <code>dstx="0"</code>, <code>dsty="0"</code>.</p>
+<h4><a name="1011358"></a> "srcw" or "dstw"</h4>
+<p><a name="1011359"></a>Width of the source rectangle (srcw) or destination rectangle (dstw) in pixels. A width of 0 (zero) is assumed to be the source image's or destination window's default width.</p>
+<h4><a name="1011360"></a> "srch" or "dsth"</h4>
+<p><a name="1011361"></a>Height of the source rectangle (srch) or destination rectangle (dsth) in pixels. A height of 0 (zero) is assumed to be the source image's or destination window's default height.</p>
+<h3><a name="1016249"></a> Placement Examples</h3>
+<p><a name="1012861"></a>In the example below, both the source image and destination window are 256 pixels high by 256 pixels wide. The source tags make the top, left quadrant of the source image display in the destination window, effectively magnifying the source rectangle by a factor of 2. Because the destination rectangle defaults to the destination window size, no destination rectangle coordinates are needed.</p>
+<h5><a name="1016656"></a>
+ Part of the Source Image Filling All of the Destination Window</h5>
+<p><a name="1009580"></a>
+<img src="../graphics/sourc1.gif"></p>
+<p><a name="1012293"></a>In this next example, the source image displays in the top, right quadrant of the destination window, effectively reducing the size of the source image by half. No source coordinates are included, so the entire source image displays in the destination rectangle.</p>
+<h5><a name="1016678"></a>
+ All of the Source Image Filling Part of the Destination Window</h5>
+<p><a name="1009586"></a>
+<img src="../graphics/sourc2.gif"></p>
+<p><a name="1012345"></a>This last example shows a portion of the source image displayed at a slightly larger size in the display window. In this case, both source and destination coordinates are given to define the source and destination rectangles.</p>
+<h5><a name="1016687"></a>
+ Part of the Source Image Filling a Part of the Destination Window</h5>
+<p><a name="1012189"></a>
+<img src="../graphics/sourc3.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="1016063"></a>
+A source or destination attribute defaults to 0 (zero). 
+Zero for height or width means the source image or 
+destination window's default height or width. You can 
+therefore leave an attribute out to set <code>x</code> to "0," <code>y</code> to "0," <code>w</code> 
+to the default width, or <code>h</code> to the default height.
+</td></tr>
+</table></p>
+<h2><a name="1016065"></a> Controlling Image Aspect</h2>
+<p><a name="1016066"></a>In the examples above, the source and destination rectangles all have height-to-width ratios of 1:1. This may not always be the case in your RealPix presentations. When source and destination rectangles have different height-to-width ratios, the RealPix <code><a href="tags.htm#1044958">&lt;head/&gt;</a></code> tag's <code><a href="tags.htm#1026656">aspect</a></code> attribute determines how the source image displays.</p>
+<p><a name="1013152"></a>When aspect is <code>"true"</code>, RealPix keeps a source rectangle's height-to-width ratio constant when the destination rectangle has a different ratio. For example, a source rectangle's height-to-width ratio of 1:1 stays constant even if the destination rectangle's height-to-width ratio is 2:3.</p>
+<p><a name="1013750"></a>In these cases, RealPix centers the source rectangle in the destination rectangle. It scales the source and preserves its height-to-width ratio until one dimension reaches the rectangle's boundaries and the other dimension is within the boundaries. The existing background shows through any part of the destination rectangle not filled by the source rectangle.</p>
+<p><a name="1013102"></a>If you turn the aspect feature off, the width-to-height ratio in the source rectangle changes as necessary to fill the destination rectangle fully. This may distort the source image. The following figure shows how a source image fills different destination rectangles when aspect is "false" or "true."</p>
+<h5><a name="1016703"></a>
+ Effects of Overriding and Maintaining Image Aspect Ratios</h5>
+<p><a name="1013108"></a>
+<img src="../graphics/aspect2.gif"></p>
+<p><a name="1013097"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:28:45.</font>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="tags.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

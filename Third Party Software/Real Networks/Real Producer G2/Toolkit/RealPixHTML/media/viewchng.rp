@@ -1,0 +1,66 @@
+<imfl>
+    <head title="RealPix(tm) View Change Examples"
+		author="Jay Slagle"
+		copyright="(c)1998 RealNetworks, Inc."
+		timeformat="dd:hh:mm:ss.xyz"
+		duration="63"
+		bitrate="12000"
+		width="256"
+		height="256"
+		url="http://www.real.com"
+		aspect="true"/>
+
+	<!-- Assign handle numbers to images -->
+
+	<image handle="1" name="mosque.jpg"/>
+	<image handle="2" name="interior.jpg"/>
+	<image handle="3" name="cows.jpg"/>
+	<image handle="4" name="frog.jpg"/>
+
+	<!-- Zoom in and out -->
+
+	<fadein start="1" duration="3" target="1"/>
+	<viewchange start="4" duration="3"
+		srcx="32" srcy="32" srcw="192" srch="192"/>
+	<viewchange start="8" duration="3"
+		srcx="64" srcy="64" srcw="128" srch="128"/>
+	<viewchange start="12" duration="3"
+		srcx="0" srcy="0" srcw="256" srch="256"/>
+
+	<!-- Zoom in and pan -->
+
+	<fadein start="16" duration="3" target="2"/>
+	<viewchange start="19" duration="3"
+		srcx="0" srcy="0" srcw="160" srch="160"/>
+	<viewchange start="22.5" duration="3"
+		srcx="96" srcy="0" srcw="160" srch="160"/>
+	<viewchange start="26" duration="3"
+		srcx="96" srcy="96" srcw="160" srch="160"/>
+	<viewchange start="29.5" duration="3"
+		srcx="0" srcy="96" srcw="160" srch="160"/>
+
+	<!-- Zoom and replace -->
+
+	<fill start="33" color="black"/>
+	<fadein start="34" duration="3" target="4"/>
+	<viewchange start="37" duration="3"
+		dstx="0" dsty="0" dstw="128" dsth="128"/>
+	<fadein start="40" duration="3" target="3"
+		dstx="128" dsty="128" dstw="128" dsth="128"/>
+	<viewchange start="43" duration="3"
+		dstx="0" desy="0" dstw="256" dsth="256"/>
+
+	<!-- Ping Pong -->
+
+	<fadein start="47" duration="3" target="4"
+		dstx="0" dsty="164" dstw="92" dsth="92"/>
+	<viewchange start="50" duration="3"
+		dstx="164" dsty="82" dstw="92" dsth="92"/>
+	<viewchange start="53" duration="3"
+		dstx="82" dsty="0" dstw="92" dsth="92"/>
+	<viewchange start="56" duration="3"
+		dstx="82" dsty="164" dstw="92" dsth="92"/>
+	<viewchange start="59" duration="3"
+		dstx="0" desy="0" dstw="256" dsth="256"/>
+
+</imfl>

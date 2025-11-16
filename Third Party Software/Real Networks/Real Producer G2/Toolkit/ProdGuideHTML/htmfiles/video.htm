@@ -1,0 +1,493 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="audio.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="animate.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="29959"></a>
+ Chapter 5: 	Producing Video
+
+</h1>
+<p><a name="13915"></a>RealNetworks introduced RealVideo with RealSystem 4.0, making streaming video available over the Internet. This chapter covers RealVideo production and explains other video formats that RealSystem G2 can stream. It also provides tips for capturing high-quality video and working with digitized video source files.</p>
+<h1><a name="20312"></a> Steps for Streaming RealVideo</h1>
+<p><a name="28601"></a>When producing a RealVideo clip, you should choose the best source material and best equipment possible. The goal throughout the video production process is to get the best video quality with the smallest streaming file size.</p>
+<h5><a name="29002"></a>
+ Creating RealVideo Clips</h5>
+<p><a name="29003"></a>
+<img src="../graphics/rvovr.gif"></p>
+<h4><a name="28616"></a>	 The following steps summarize how to create a RealVideo clip:</h4>
+<ol>
+<p><li><a name="20314"> </a>Capture video.
+<p><a name="29286"></a>To start video production, you capture video source by shooting a scene with a video camera, for example, or gathering prerecorded content from tape, satellite, laserdisc, or so on.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="20322"></a>
+<a href="video.htm#20306">"Recording Video"</a> provides guidelines for capturing 
+video.
+</td></tr>
+</table></p>
+<p><li><a name="20323"> </a>Digitize and edit video.
+<p><a name="20324"></a>You next digitize the video to a standard file format, such as AVI or QuickTime. With your preferred video editing software, you can then edit the video as necessary. If you are broadcasting live, however, you encode the streaming video directly from the source.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="20331"></a>
+See <a href="video.htm#11689">"Digitizing Video"</a> for tips on video editing. For 
+more on live broadcasting, read <a href="live.htm#15510">Chapter 11</a>.
+</td></tr>
+</table></p>
+<p><li><a name="20332"> </a>Encode RealVideo clip.
+<p><a name="20333"></a>With your digitized file optimized or your live broadcast ready to go, you encode your source as RealVideo. When you do this, you target a network bandwidth or set of bandwidths and choose a RealAudio codec or set of codecs for the audio track. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="20340"></a>
+See <a href="video.htm#20715">"Creating RealVideo Clips"</a> for more on RealVideo 
+production. <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a> explains 
+RealAudio codecs.
+</td></tr>
+</table></p>
+<p><li><a name="20341"> </a>Deliver RealVideo clip.
+<p><a name="20342"></a>With your presentation ready to go, you make your RealVideo clip or broadcast available through your Website. If you are combining video with another streaming clip, such as RealText, you write a SMIL file that assembles the pieces.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="20349"></a>
+<a href="smil.htm#100023">Chapter 7</a> explains how to create a SMIL file. See 
+<a href="server.htm#32401">Chapter 10</a> for instructions on linking your Web page to 
+a RealVideo clip or a SMIL file.
+</td></tr>
+</table></p>
+</ol>
+<h1><a name="20306"></a> Recording Video</h1>
+<p><a name="11361"></a>Observe the following points if you intend to shoot a new video rather than use existing video content. Because video loses image quality when compressed for streaming, always start with the best video source available.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="11890"></a>
+For pointers on producing audio, see <a href="audio.htm#9661">"Capturing 
+Audio"</a>.
+</td></tr>
+</table></p>
+<h4><a name="22186"></a> Use a High-Quality Source Format</h4>
+<p><a name="22187"></a>Whether you shoot a video yourself or digitize existing material, it's important to start with a high-quality video format. The following are common videotape formats in order of descending quality:</p>
+<ol>
+<p><li><a name="22188"> </a>Betacam SP, also known simply as Beta. This format is common among video production professionals.
+<p><li><a name="22896"> </a>DV, miniDV, DVCam, or DVCPro.
+<p><li><a name="22191"> </a>Super-VHS (S-VHS) or HI-8mm.
+<p><li><a name="22192"> </a>VHS, 8mm.
+</ol>
+<h4><a name="13087"></a> Stage According to the Video's Final Size</h4>
+<p><a name="13099"></a>It's important to consider the video's final frame size before you shoot the first frame. To reach Web users with 28.8 Kbps modems, you should produce a video approximately <a href="../graphics/176x132.gif">176x132 pixels</a>. With this small size, you need to frame important visual elements well.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="22204"></a>
+For more on window size, see <a href="video.htm#11689">"Digitizing Video"</a>.
+</td></tr>
+</table></p>
+<h4><a name="11816"></a> Minimize Scene Changes and Movement</h4>
+<p><a name="11817"></a>The less that changes from frame to frame, the sharper the image will appear in the encoded video. RealVideo compression technology reuses existing data when frames are similar, so a video with relatively stationary subjects ("talking heads") will look better than a music video with rapid scene changes and a lot of movement. You can do the following to cut down on unnecessary movement:</p>
+<ul>
+<p><li><a name="11957"></a>Use a mounted rather than hand-held camera. This greatly reduces the movement you inadvertently introduce into the scene when recording.
+<p><li><a name="11962"></a>Don't have a rapidly moving object fill the entire frame. Keep in mind, though, that your streaming video may be a few square inches in size, so you don't want to pull the camera back too far.
+</ul>
+<p><a name="11963"></a>Of course, you don't want to eliminate all dynamic elements! When you do include rapid movement, give enough time for objects to resolve. Because of low frame rates and high compression, objects coming to rest may appear blurry at first. If you have a dialog box popping up on a computer screen, for example, show that box stationary for a few seconds so that the image resolves.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="31830"></a>
+RealPix makes a great companion to RealVideo. When 
+presenting a lecture, for example, use RealVideo to show 
+the speaker and a RealPix slideshow to present visual 
+aids such as information written on a blackboard. For 
+more on RealPix, see <a href="realsys.htm#32787">"Images"</a>.
+</td></tr>
+</table></p>
+<h4><a name="12912"></a> Use Uniform Colors and Good Lighting</h4>
+<p><a name="12933"></a>Bright lighting at a constant exposure keeps the foreground detail crisp. Use uniform, dark colors for backgrounds, and uniform, light colors (but not whites) for clothing. Complex textures such as paisley and stripes degrade the final image quality with unwanted visual effects.</p>
+<h1><a name="11689"></a> Digitizing Video</h1>
+<p><a name="20597"></a>If you are not broadcasting RealVideo live, you digitize the source video (direct camera feed, tape, disc, or so on) on your computer or video editing station. You can then edit the file with your preferred video editing software before encoding it as RealVideo. The following sections provide tips for digitizing video.</p>
+<h4><a name="31923"></a> Capture at 15 Frames per Second (fps)</h4>
+<p><a name="31924"></a>Although RealVideo can encode up to 30 fps, the maximum recommended frame rate for streaming video over a network is 15 fps. Higher frame rates may cause playback problems on slower machines. RealVideo encoding tools use a frame rate that varies with the bandwidth target and the emphasis on smooth motion or image quality. With video source at 15 fps, your encoding tool can vary the RealVideo clip frame rate between 1 and 15 fps as needed.</p>
+<h4><a name="31925"></a> Use 24-bit Color Depth</h4>
+<p><a name="31926"></a>Always use 24-bit color. Lower color resolution produces poor quality videos.</p>
+<h4><a name="31977"></a> Use S-video Output</h4>
+<p><a name="31978"></a>Video playback devices commonly have at least two common output types, S-video and composite. Use S-video, which produces better results.</p>
+<h4><a name="31979"></a> Use a Fast Machine</h4>
+<p><a name="31980"></a>Video capture places a large burden on a computer's CPU and hard drive. Be sure to have a fast machine. To avoid dropping frames during video capture, use a hard drive specially made for audio and video work. On Windows machines, you can use any video capture card that supports Video for Windows.</p>
+<h4><a name="26776"></a> Capture at a 320x240 Pixel Window Size, then Reduce</h4>
+<p><a name="26777"></a>Unless you are short on disk space or your video capture card recommends a different window size, capture video in a window 320 pixels wide by 240 pixels high. With your video editing software, you can then reduce the window size before encoding the RealVideo clip.</p>
+<p><a name="27040"></a>The following table, which you should use as a general guideline only, shows three common RealVideo clip sizes that maintain the 4:3 aspect ratio used in television. You can produce RealVideo at any width-to-height ratio, however.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="26783"></a>
+ RealVideo Size and Bandwidth Guidelines at 10-15 fps </caption>
+<tr>
+<th align=left valign=bottom><a name="26789"></a>Width x Height Pixel Size</th>
+<th align=left valign=bottom><a name="26791"></a>RealVideo Bandwidth</th>
+<th align=left valign=bottom><a name="26793"></a>Image Quality</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="26795"></a>176x132<br>(<a href="../graphics/176x132.gif">show size</a>)</td>
+<td align=left valign=top><a name="26797"></a>20-500 Kbps</td>
+<td align=left valign=top><a name="26799"></a>Good to High</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="26801"></a>240 x 180<br>(<a href="../graphics/240x180.gif">show size</a>)</td>
+<td align=left valign=top><a name="26803"></a>100-500 Kbps</td>
+<td align=left valign=top><a name="26805"></a>High</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="26807"></a>320 x 240<br>(<a href="../graphics/320x240.gif">show size</a>)</td>
+<td align=left valign=top><a name="26809"></a>200-500 Kbps</td>
+<td align=left valign=top><a name="26811"></a>High</td>
+</tr>
+</table>
+</p>
+<p><a name="26821"></a>For each window size, the table lists bandwidth guidelines that assume a desired frame rate of 10 to 15 fps. The table shows that for 28.8 Kbps modems (20 Kbps usable bandwidth), you should use a window no larger than 176x132. Although its overall quality will be good, the image may encode at less than 10 fps. You'll get better quality when encoding for higher bandwidths.</p>
+<p><a name="26822"></a>Keep in mind that you <I>can</I> create a 240x180 window for bandwidths lower than 100 Kbps, or a 320x240 video for bandwidths lower than 200Kbps. But you're not likely to get high image resolution and 10-15 fps. The video might encode at 5-7 fps, for example, which may be acceptable for your audience. Experiment with different sizes, playing the encoded clip back in RealPlayer G2 to test its quality.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="26823"></a>
+With your RealVideo encoding tool, you can choose to 
+encode a large video for low bandwidths as a "slide 
+show," which streams approximately one frame per 
+second.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="26830"></a>
+See <a href="bandwdth.htm#1001523">Chapter 3</a> for details on targeting bandwidth.
+</td></tr>
+</table></p>
+<h4><a name="31986"></a> Digitize in AVI on Windows or QuickTime on Macintosh</h4>
+<p><a name="31987"></a>It is better to work with uncompressed formats. Otherwise, you compress the source once when you digitize it and again when you encode it as RealVideo. This double compression can decrease the image quality. Use a compressed source format only if your RealVideo encoding tool supports the file as input. You can use compressed AVI as long as the RealVideo encoding machine has the same Video for Windows (VFW) driver used to compress the AVI.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="31990"></a>
+For more on RealVideo input formats, see <a href="video.htm#20715">"Creating 
+RealVideo Clips"</a>.
+</td></tr>
+</table></p>
+<h4><a name="22975"></a> Ensure Enough Disk Space for Digitized Video</h4>
+<p><a name="22976"></a>Use this formula to calculate the approximate size in Megabytes of a digitized video file:</p>
+<pre><a name="1078"></a>
+<u>(pixel width) x (pixel height) x (color bit depth) x (fps) x (duration in seconds)<br></u><center>8,000,000</center>
+</pre>
+<p><a name="26533"></a>Suppose you want to capture a three minute video at 15 frames per second with 24-bit color in a window that is 320x240 pixels. Your digitized source file would be approximately 622 Megabytes:</p>
+<pre><a name="24372"></a>
+(320) x (240) x (24) x (15) x (180) / 8,000,000 = 622 Megabytes
+</pre>
+<p><a name="24373"></a>If necessary, you can conserve disk space by decreasing the window size or lowering the frame rate.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="22981"></a>
+Windows 95 and Macintosh operating systems limit a 
+single video file to 2 Gigabytes (2048 Megabytes). At a 
+320x240 window size and 15 fps, this translates to about 
+9.5 minutes of video. To work around this, create 
+separate source files, encode them as separate RealVideo 
+clips, and merge the clips with editing tools included 
+with your RealVideo production software.
+</td></tr>
+</table></p>
+<h1><a name="20715"></a> Creating RealVideo Clips</h1>
+<p><a name="20716"></a>RealVideo's high compression rate makes it well-suited for streaming video over the Internet or intranets. A RealVideo clip uses the file extension <kbd>.rm</kbd> and typically includes an embedded soundtrack encoded as RealAudio. You start with a video file in a digitized format, then encode a RealVideo clip from this source file using a RealVideo encoding tool. Your encoding tool should be able to accept at least one of these input formats:</p>
+<ul>
+<p><li><a name="28829"></a>AVI (<kbd>.avi</kbd>), uncompressed (recommended) or compressed
+<p><li><a name="28987"></a>MPEG-1 (<kbd>.mpg</kbd>)
+<p><li><a name="28831"></a>QuickTime 2.0 (<kbd>.mov</kbd>), uncompressed (recommended) or compressed
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="29468"></a>
+RealVideo production tools are available at 
+<a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="16859"></a> Choosing RealVideo Codecs</h2>
+<p><a name="18155"></a>Like RealAudio, RealVideo uses a "lossy" compression scheme that discards parts of the source file during encoding. The following table provides a reference for RealVideo codecs. An "<code>X</code>" in the G2, 5, or 4 column indicates that a clip encoded with this codec can be played by RealPlayer G2, 5.0, or 4.0. Earlier versions of RealPlayer do not play RealVideo.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="25976"></a>
+ RealVideo Codecs </caption>
+<tr>
+<th align=left valign=bottom><a name="25986"></a>RealVideo Codec</th>
+<th align=left valign=bottom><a name="25988"></a>G2</th>
+<th align=left valign=bottom><a name="25990"></a>5</th>
+<th align=left valign=bottom><a name="25992"></a>4</th>
+<th align=left valign=bottom><a name="25994"></a>Comments</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="25997"></a>G2 Standard (new default)</td>
+<td align=left valign=top><a name="25999"></a><code>X</code></td>
+<td align=left valign=top><a name="26001"></a><code>-</code></td>
+<td align=left valign=top><a name="26003"></a><code>-</code></td>
+<td align=left valign=top><a name="26005"></a>G2 codec for fast encoding and encoding a single clip for multiple bandwidths using SureStream.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="26008"></a>Standard (old default)</td>
+<td align=left valign=top><a name="26010"></a><code>X</code></td>
+<td align=left valign=top><a name="26012"></a><code>X</code></td>
+<td align=left valign=top><a name="26014"></a><code>X</code></td>
+<td align=left valign=top><a name="26016"></a>Standard codec used in past releases. No multiple encoding in a single clip.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="26018"></a>Fractal (discontinued)</td>
+<td align=left valign=top><a name="26020"></a><code>X</code></td>
+<td align=left valign=top><a name="26022"></a><code>X</code></td>
+<td align=left valign=top><a name="26024"></a><code>X</code></td>
+<td align=left valign=top><a name="26026"></a>Discontinued in RealSystem G2 encoders. RealPlayer G2 can play existing fractal-encoded clips, though.</td>
+</tr>
+</table>
+</p>
+<h2><a name="20745"></a> Encoding RealVideo with RealSystem Tools</h2>
+<p><a name="27184"></a>When you encode RealVideo, you choose an overall bandwidth target or set of targets, then set parameters such as audio type (voice or music), compatibility with earlier versions of RealPlayer, and an emphasis on smooth motion or sharp images. After you make your choices, the encoding tool chooses the audio codec or codecs to use and encodes the clip using a variable frame rate. The following sections give tips on using RealSystem production tools.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="20763"></a>
+See the tool's manual or online help for step-by-step 
+instructions on encoding RealVideo, as well as more 
+information about encoding options. RealVideo 
+production tools are available for purchase or free 
+download at <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="31710"></a>
+Not all RealSystem tools may include the features 
+described here. Check the product description or 
+documentation for information on supported features.
+</td></tr>
+</table></p>
+<h4><a name="28231"></a> Retain Source Files</h4>
+<p><a name="28232"></a>Always keep a copy of the original video source file. To edit the RealVideo clip, modify the source file as necessary, then encode the file again as RealVideo. You cannot convert RealVideo clips to other video formats.</p>
+<h4><a name="26197"></a> Using RealVideo in a MultiClip Presentation</h4>
+<p><a name="26198"></a>When you encode a RealVideo clip, consider whether it will play in parallel with another clip. If so, you can set an option in your encoding tool so that the RealVideo clip does not consume all available bandwidth. For a 28.8 Kbps modem connection, for example, the encoder standardly encodes the clip to use 20 Kbps. You can alter this default value so that the video uses 12 Kbps, for example, leaving bandwidth free for another clip.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="27213"></a>
+<a href="bandwdth.htm#1001523">Chapter 3</a>  explains more about target bandwidths.
+</td></tr>
+</table></p>
+<h4><a name="26200"></a> Multiple Encoding in a Single SureStream Clip</h4>
+<p><a name="27603"></a>You can create a single RealVideo clip encoded for up to six bandwidths with RealSystem's SureStream technology, which uses the new RealSystem G2 video and audio codecs. You can also specify backwards compatibility with RealPlayer 5.0. The encoding tool then encodes the clip for your selected bandwidths with the RealVideo and RealAudio G2 codecs. It also includes in the clip an encoding that uses a codec compatible with RealPlayer 5.0 and targets the lowest bandwidth choice.</p>
+<p><a name="27604"></a>For example, you can encode a single clip for the target connections shown in the table below. Based on its connection speed, RealPlayer G2 receives the SureStream 20, 32, 45, or 80 Kbps stream. Earlier versions of RealPlayer receive the 20 Kbps backwards-compatible stream regardless of their connection speeds. Note that the RealAudio codec choices shown below are examples only. The encoding tool may choose other codecs depending on a voice or music soundtrack, and which features of the video you want to emphasize.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="27610"></a>
+ RealVideo SureStream Clip Example </caption>
+<tr>
+<th align=left valign=bottom><a name="27618"></a>Target Connection</th>
+<th align=left valign=bottom><a name="27620"></a> Clip Bit Rate</th>
+<th align=left valign=bottom><a name="27622"></a>RealAudio Codec</th>
+<th align=left valign=bottom><a name="27624"></a>RealVideo Bandwidth</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="27626"></a>28.8 Kbps modem<br>(backwards compatible)</td>
+<td align=left valign=top><a name="27628"></a>20 Kbps</td>
+<td align=left valign=top><a name="27633"></a><a href="audio.htm#28574"> 8 Kbps Music</a></td>
+<td align=left valign=top><a name="27635"></a>12 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27637"></a>28.8 Kbps modem</td>
+<td align=left valign=top><a name="27639"></a>20 Kbps</td>
+<td align=left valign=top><a name="27644"></a><a href="audio.htm#28554"> 8 Kbps Music-G2 Mono</a></td>
+<td align=left valign=top><a name="27646"></a>12 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27648"></a>56.0 Kbps modem</td>
+<td align=left valign=top><a name="27650"></a>32 Kbps</td>
+<td align=left valign=top><a name="27655"></a><a href="audio.htm#28616"> 11 Kbps Music-G2 Mono</a></td>
+<td align=left valign=top><a name="27657"></a>21 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27659"></a>56.0 Kbps ISDN</td>
+<td align=left valign=top><a name="27661"></a>45 Kbps</td>
+<td align=left valign=top><a name="27666"></a><a href="audio.htm#29943"> 20 Kbps Music-G2 Stereo</a></td>
+<td align=left valign=top><a name="27668"></a>25 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27670"></a>112 Kbps dual ISDN</td>
+<td align=left valign=top><a name="27672"></a>80 Kbps</td>
+<td align=left valign=top><a name="27677"></a><a href="audio.htm#30962"> 44 Kbps Music-G2 Stereo</a></td>
+<td align=left valign=top><a name="27679"></a>36 Kbps</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="27766"></a>
+For information on RealAudio codecs, see <a href="audio.htm#12311">"Choosing 
+RealAudio Codecs"</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="27692"></a>
+To support multiple bandwidths without using 
+SureStream and the new RealSystem G2 codecs, you 
+must encode a separate clip with each codec. You then 
+use a SMIL file to specify bandwidth choices. For more 
+on bandwidth selection through SMIL, see <a href="smil.htm#10260">"Setting 
+Bandwidth Choices"</a>.
+</td></tr>
+</table></p>
+<h4><a name="25033"></a> Video Window Cropping</h4>
+<p><a name="25030"></a>When you encode with the new RealVideo standard codec, the encoding tool crops the video window to multiples of 4 pixels, so a 176x132 video stays its original size. With the older standard codec, the tool crops to multiples of 16 pixels, however, so a 176x132 video encodes at 176x128 pixels. Encoding tools also let you manually crop the image window to leave areas of the source video out of the RealVideo clip.</p>
+<h4><a name="26906"></a> High-Bandwidth Clips for Fast Machines</h4>
+<p><a name="26907"></a>RealVideo clips encoded for 200 Kbps or higher bandwidths may have image quality and frame rates that overburden processors slower than 120 Mhz. You should therefore use high-bandwidth RealVideo only for fast machines with fast connections.</p>
+<h4><a name="28992"></a> Batch Encoding</h4>
+<p><a name="28993"></a>Your encoding tool may have a batch mode that lets you encode several clips at once. The batch encoder may run through a command-line interface or a graphical user interface.</p>
+<h1><a name="14183"></a> Streaming Other Video Formats</h1>
+<p><a name="21382"></a>RealSystem can stream several video formats in addition to RealVideo. The following table lists the streamable formats and shows whether RealPlayer G2 for different operating systems (Windows 95 or NT, Macintosh, and UNIX) can play back the video. RealSystem supports all Vivo codecs. For other video formats, however, it typically does not stream codec-compressed files. When codec compression other than Vivo is supported, codecs are not included with RealPlayer G2 and must reside on the playback machine already.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="21565"></a>
+ Streamable Video Formats </caption>
+<tr>
+<th align=left valign=bottom><a name="21575"></a>Format</th>
+<th align=left valign=bottom><a name="21577"></a>Codec compression</th>
+<th align=left valign=bottom><a name="21579"></a>Win32</th>
+<th align=left valign=bottom><a name="21581"></a>Mac</th>
+<th align=left valign=bottom><a name="21583"></a>UNIX</th>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="21585"></a>ASF 1.0 (<kbd>.asf</kbd>)</td>
+<td align=left valign=top><a name="21587"></a>compressed</td>
+<td align=left valign=top><a name="21589"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21591"></a>no</td>
+<td align=left valign=top><a name="21593"></a>no</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21597"></a>uncompressed</td>
+<td align=left valign=top><a name="21599"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21601"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21603"></a><strong>yes</strong></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="21605"></a>AVI 1.0 (<kbd>.avi</kbd>)</td>
+<td align=left valign=top><a name="21607"></a>compressed</td>
+<td align=left valign=top><a name="21609"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21611"></a>no</td>
+<td align=left valign=top><a name="21613"></a>no</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21617"></a>uncompressed</td>
+<td align=left valign=top><a name="21619"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21621"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21623"></a><strong>yes</strong></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="21638"></a>QuickTime 2.0 (<kbd>.mov</kbd>)</td>
+<td align=left valign=top><a name="21640"></a>compressed</td>
+<td align=left valign=top><a name="21642"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21644"></a>no</td>
+<td align=left valign=top><a name="21646"></a>no</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21650"></a>uncompressed</td>
+<td align=left valign=top><a name="21652"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21654"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21656"></a><strong>yes</strong></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21658"></a>Vivo (<kbd>.viv</kbd>)</td>
+<td align=left valign=top><a name="21660"></a>compressed</td>
+<td align=left valign=top><a name="21768"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21770"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="21772"></a><strong>yes</strong></td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="21358"></a>
+RealSystem plug-ins may exist for other video formats. 
+Check <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a> for information 
+about additional video formats you can stream.
+</td></tr>
+</table></p>
+<h4><a name="21349"></a> Tips for Streaming other Video Formats</h4>
+<p><a name="21350"></a>Observe the following points when streaming video formats other than RealVideo:</p>
+<ul>
+<p><li><a name="32032"></a>Test whether a codec-compressed video clip plays in RealPlayer by copying the clip to each platform and opening it locally with RealPlayer.
+<p><li><a name="32050"></a>For the ASF and QuickTime formats, RealSystem ignores any tracks other than video or audio. It disregards scripting commands, for example.
+<p><li><a name="32021"></a>For QuickTime 2.0 on Windows, RealPlayer G2 supports CVID, Cinepak, and Indeo codec compression, provided those codecs are installed on the machine already.
+<p><li><a name="32044"></a>Because other video formats may not be as highly compressed as RealVideo, they may not be good for low bandwidth connections. Test bandwidth needs by opening the file in RealPlayer G2 and watching the RealPlayer status panel, which will list the streaming bit rate. If the rate is too high for your target audience, use RealVideo instead.
+<p><li><a name="21352"></a>For high-bandwidth connections or videos that play back from a user's local disk, CPU power is a consideration. Play the file in RealPlayer G2 and monitor CPU use with the tool of your choice. Decide whether an "average" machine for your target audience can handle the load. If CPU use is too high, convert the video to a high-bandwidth RealVideo clip. This creates a high-quality video with a lower CPU requirement.
+</ul>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:31.</font>
+<center><a href="audio.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="animate.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

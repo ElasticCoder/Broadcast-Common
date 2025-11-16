@@ -1,0 +1,169 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="windtag.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1004256"></a>
+ Chapter 1: 	RealText Authoring
+
+</h1>
+<p><a name="997469"></a>With RealText you can create streaming text presentations, combining text with other media such as audio or video. You simply create a RealText file with mark-up similar to HTML to describe how and when the text displays. RealServer or a Web server can then stream the text to RealPlayer or Web browsers.</p>
+<h1><a name="997472"></a> Choosing Window Types</h1>
+<p><a name="999670"></a>RealText provides a number of window styles that you can choose depending on how you want to display text. If you have installed RealPlayer, click the link to see an example of each of these window types:</p>
+<ul>
+<p><li><a name="998212"></a><a href="../media/generic.rt">generic</a>
+<p><a name="997474"></a>A generic window has no preset parameters. You can use it to create any RealText display allowed by the RealText mark-up. You can display and erase lines of text, scroll text through the window, or have text crawl from side to side, for example. </p>
+<p><li><a name="997475"></a><a href="../media/news.rt">ScrollingNews</a>
+<p><a name="997476"></a>A ScrollingNews window is preset to have text scroll from the bottom of the window to the top at a set rate for the entire presentation. The text does not crawl from side to side, though. </p>
+<p><li><a name="997477"></a><a href="../media/ticker.rt">TickerTape</a>
+<p><a name="997478"></a>Text in a TickerTape window crawls from the right side of the window to the left. It can also loop back around to the right. It does not scroll up or down, however. Text displays next to the window's top or bottom edge. </p>
+<p><li><a name="997479"></a><a href="../media/marquee.rt">Marquee</a>
+<p><a name="998231"></a>The Marquee window is like the TickerTape in that text crawls from right to left and can loop. It is different in that text is centered vertically within the window.</p>
+<p><li><a name="998232"></a><a href="../media/prompter.rt">TelePrompter</a>
+<p><a name="998233"></a>A TelePrompter window behaves like a generic window except that text arriving at the bottom edge of the window causes the text above it to move up just enough to display the new line.</p>
+</ul>
+<h1><a name="1000686"></a> Using RealText Mark-Up</h1>
+<p><a name="1000664"></a>The RealText mark-up language is similar to HTML. If you are familiar with HTML, you will pick up RealText quickly. The mark-up has some important differences from HTML, though. Keep the following points in mind when writing a RealText file:</p>
+<ul>
+<p><li><a name="1000665"></a>Use lowercase characters for RealText tags and attributes. This keeps your RealText file compliant with the SMIL mark-up language and its XML parent language.
+<p><li><a name="1000666"></a>A tag that does not have a corresponding end tag (for example, the <code>&lt;ul&gt;</code> tag has the end tag <code>&lt;/ul&gt;</code>), closes with a forward slash. For example:
+<pre class=indent><a name="1000667"></a>
+&lt;br/&gt;
+</pre>
+<p><li><a name="1002917"></a>Attribute values must be enclosed in double quotation marks.
+<p><li><a name="1002796"></a>Save your RealText file with the file extension <code>.rt</code>. Do not include spaces in the file name. For example, you can have the file <kbd>my_realtext.rt </kbd>but not the file <kbd>my realtext.rt</kbd>.
+<p><li><a name="1002797"></a>Use codes to include angle brackets, ampersands, or nonbreaking spaces as RealText display characters. See <a href="texttag.htm#997561">"Coded Characters"</a>.
+<p><li><a name="1000669"></a>As in HTML, you can add a comment to a RealText file like the following. Note that the comment tag does not need to close with a slash.
+<pre class=indent><a name="1000670"></a>
+&lt;!-- This is a comment --&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1002745"></a>
+To learn more about XML, the parent language for 
+RealText, visit <a href="http://www.w3.org/XML" target="_top">http://www.w3.org/XML</a>.
+</td></tr>
+</table></p>
+</ul>
+<h1><a name="997486"></a> Creating a RealText Presentation</h1>
+<p><a name="1000701"></a>The following steps describe how to create a static RealText file. The rest of this manual describes the RealText mark-up in detail.</p>
+<h4><a name="997489"></a>	 To Create a RealText File:</h4>
+<ol>
+<p><li><a name="997490"> </a>Open a new file in a text editor or XML editor. At the top of the file, add the <code>&lt;window&gt;</code> tag with necessary options. Add the <code>&lt;/window&gt;</code> tag at the bottom: 
+<pre class=indent><a name="997492"></a>
+&lt;window...<code><I>options</I></code>...&gt;<br>...<code><I>All Other Mark-up Goes Between These Tags</I></code>...<br>&lt;/window&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999866"></a>
+See <a href="windtag.htm#999095">"Window Tag Attributes"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="997497"> </a>Between the <code>&lt;window&gt;</code> and <code>&lt;/window&gt;</code> tags, add the text that will display in RealPlayer. Format the text with the text tags:
+<pre class=indent><a name="997499"></a>
+&lt;window&gt;<br>Mary had a little lamb,<br>&lt;br/&gt;&lt;time begin="3"/&gt;little lamb,<br>&lt;br/&gt;&lt;time begin="6"/&gt;little lamb,<br>&lt;br/&gt;&lt;time begin="9"/&gt;Mary had a little lamb<br>&lt;br/&gt;&lt;time begin="12"/&gt;whose fleece was white as snow.<br>&lt;/window&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999890"></a>
+See <a href="texttag.htm#1019286">"Text Tags"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="997506"> </a>Save the file as plain text, using the <kbd>.rt</kbd> extension to mark the file as a RealText document. On your local machine, open the RealText file with RealPlayer to test the presentation.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="1001850"></a>
+Playing a RealText file on your local machine indicates 
+whether the RealText mark-up is correct. However, it 
+does not guarantee that the file will stream across a 
+network well. Be sure to test that the presentation 
+streams correctly from RealServer.
+</td></tr>
+</table></p>
+<p><li><a name="997507"> </a>To combine RealText with another file, create a SMIL file that controls the overall presentation. For example, the SMIL file can list a RealText file and video file played together: 
+<pre class=indent><a name="997509"></a>
+&lt;smil&gt;<br>  &lt;body&gt;<br>    &lt;par&gt;<br>      &lt;textstream src="rtsp://realserver.company.com/mary.rt"/&gt;<br>      &lt;video src="rtsp://realserver.company.com/mary.rm"/&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1001858"></a>
+See <I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a> 
+for information about creating a SMIL file.
+</td></tr>
+</table></p>
+<p><li><a name="1001859"> </a>Move your files to RealServer. If you are using an Internet Service Provider, for example, contact the ISP's RealServer administrator for instructions on doing this.
+<p><li><a name="1001867"> </a>In your Web page, add a hypertext link to the SMIL file. Or, if the RealText file is the only file in your presentation, simply link to that file.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1001868"></a>
+<I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/encoders.html.
+html" target="_top">http://service.real.com/help/library/encoders.html.
+html</a> explains the options for linking your Web page to 
+your presentation. It also explains how to play your 
+RealText presentation in your Web page rather than in 
+RealPlayer.
+</td></tr>
+</table></p>
+<p><li><a name="997514"> </a>Test the presentation by clicking the hyperlink in your Web page. This launches RealPlayer, which displays the streaming text with the properties you defined through the RealText mark-up.
+</ol>
+<h1><a name="999952"></a> Notes on Text Streaming</h1>
+<ul>
+<p><li><a name="1000873"></a>RealText consumes minimal bandwidth, typically less than 1 Kbps. RealText presentations are therefore easily accessible to users with slow network connections. When combining RealText with another media type, structure the presentation so that RealText has approximately 1 Kbps of available bandwidth.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1000880"></a>
+See <I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/encoders.html" target="_top">http://service.real.com/help/library/encoders.html</a> 
+for more information about bandwidth consumed by 
+video or audio that accompanies RealText.
+</td></tr>
+</table></p>
+<p><li><a name="999953"></a>Although RealServer G2 provides reliable streaming, packets occasionally may be lost. If a block of text does not get through, RealPlayer displays the following to indicate missing text:
+<pre class=indent><a name="1000926"></a>
+<font color="red"><strong>...</strong></font><strong></strong>
+</pre>
+</ul>
+<p><a name="997715"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:48.</font>
+<center><a href="intro.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="windtag.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

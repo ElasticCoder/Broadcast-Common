@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "services", "g00_services\se
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SNMPAppErrorReporting", "SNMPAppErrorReporting\SNMPAppErrorReporting.vcxproj", "{B2F7E452-5907-4549-9265-7E2C30DBE370}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GPI Trigger", "GPI Trigger (PCI)\GPI Trigger (PCI).vcxproj", "{B6EB2113-35C6-4929-912F-2294929D5148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -27,6 +29,10 @@ Global
 		{B2F7E452-5907-4549-9265-7E2C30DBE370}.Debug|x86.Build.0 = Debug|Win32
 		{B2F7E452-5907-4549-9265-7E2C30DBE370}.Release|x86.ActiveCfg = Release|Win32
 		{B2F7E452-5907-4549-9265-7E2C30DBE370}.Release|x86.Build.0 = Release|Win32
+		{B6EB2113-35C6-4929-912F-2294929D5148}.Debug|x86.ActiveCfg = Debug|Win32
+		{B6EB2113-35C6-4929-912F-2294929D5148}.Debug|x86.Build.0 = Debug|Win32
+		{B6EB2113-35C6-4929-912F-2294929D5148}.Release|x86.ActiveCfg = Release|Win32
+		{B6EB2113-35C6-4929-912F-2294929D5148}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

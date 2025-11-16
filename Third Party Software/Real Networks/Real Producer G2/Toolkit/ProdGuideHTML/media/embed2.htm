@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+	<TITLE>Embedded Playback Example 2</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=Black TEXT=White LINK=White ALINK=WHITE VLINK=WHITE>
+<H4>Embedded Playback Example 2</H4>
+
+<P>This example embeds the presentation defined in <B>embed2.smi</B> (located in this manual's <code>media</code> directory) within a Web page using RealPlayer's Netscape plug-in. Unlike the embedded demonstration in <B><A HREF="embed1.htm">embed1.htm</A></B>, it does not use a layout defined in <B>embed2.smi</B>. Instead, it uses an HTML table to lay out the page.</P>
+
+<CENTER>
+
+<P></P>
+
+<!-- Lay out the text region at the top. Use the EMBED tag to create a playback window. (The .rpm file launches RealPlayer for embedded playback.) Region names are defined in the SMIL file. -->
+
+<TABLE BORDERCOLOR="black">
+<TR>
+<TD COLSPAN="3" ALIGN=center>
+
+<EMBED SRC="embed2.rpm" CONTROLS=ImageWindow WIDTH=400 HEIGHT=36 CONSOLE=1 AUTOSTART=true REGION=text NOJAVA=true>
+
+</TD>
+</TR>
+
+<TR>
+<TD>
+
+<!-- Add RealPix to table cell. -->
+
+<EMBED SRC="embed2.rpm" CONTROLS=ImageWindow WIDTH=142 HEIGHT=126 CONSOLE=1 REGION=pix  NOJAVA=true>
+
+</TD>
+<TD ALIGN=center>
+
+<!-- Add RealPlayer Controls to table cell. -->
+		
+<EMBED SRC="embed2.rpm" CONTROLS=PlayOnlyButton WIDTH=26 HEIGHT=26 CONSOLE=1  NOJAVA=true>
+
+<P></P>
+
+<EMBED SRC="embed2.rpm" CONTROLS=PauseButton WIDTH=26 HEIGHT=26 CONSOLE=1  NOJAVA=true>
+
+<P></P>
+
+<EMBED SRC="embed2.rpm" CONTROLS=StopButton WIDTH=26 HEIGHT=26 CONSOLE=1 NOJAVA=true>
+
+</TD>
+<TD>
+
+<!-- Add Flash to table cell. -->
+
+<EMBED SRC="embed2.rpm" CONTROLS=ImageWindow WIDTH=236 HEIGHT=207 CONSOLE=1 REGION=animation NOJAVA=true>
+
+</TD>
+</TR>
+
+<TR>
+<TD COLSPAN="3" ALIGN=center>
+
+<EMBED SRC="embed2.rpm" CONTROLS=InfoVolumePanel WIDTH=275 HEIGHT=55 CONSOLE=1 NOJAVA=true>
+
+</TD>
+</TR>
+</TABLE>
+
+<!-- The NOEMBED tag text displays if the browser doesn't support the EMBED tag -->
+
+<NOEMBED>Open embed.smi with RealPlayer.</NOEMBED>
+
+</CENTER>
+</BODY>
+</HTML>

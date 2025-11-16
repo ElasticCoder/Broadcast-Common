@@ -1,0 +1,108 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="quick.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="smilref.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+<h1><a name="1000448">
+ Appendix B: 	 Advanced Production Techniques
+
+</a></h1>
+<p><a name="997620"></a>This appendix will help you utilize the many features of RealSystem G2 and SMIL. Before following the production tips given here, make sure you have a good understanding of SMIL as described in <a href="smil.htm#100023">Chapter 7</a>.</p>
+<h1><a name="997665"></a> Smoothing Transitions between Clips</h1>
+<p><a name="997865"></a>By grouping clips played in sequence within a SMIL <code>&lt;par&gt;</code> tag, you can create smooth transitions between the clips. When clips normally play in sequence, each clip buffers data (its <I>preroll</I>) when it starts to play. By grouping the sequence within a <code>&lt;par&gt;</code> tag, though, RealSystem takes advantage of unused bandwidth to send clips' preroll before they start to playback. You can use this feature to mask preroll for high-bandwidth clips, for example, by streaming the preroll while low-bandwidth, introductory clips play. </p>
+<p><a name="999593"></a>The following SMIL example, which omits the header that defines the region layout and base URL, shows how to mask preroll for high-bandwidth clips and create smooth transitions between the initial and subsequent clips:</p>
+<pre><a name="999228"></a>
+&lt;body&gt;<br>  <code><b>&lt;par&gt;<br></b></code>   <code><b> &lt;seq&gt;<br></b></code>      <code><b>&lt;par&gt;<br></b></code>        &lt;!-- group 1: introductory group masking preroll --&gt;<br>        &lt;audio src="intro.rm"/&gt;<br>        &lt;textstream src="titles.rt" region="left"/&gt;<br>        &lt;textstream src="credits.rt" region="right"/&gt;<br>      <code><b>&lt;/par&gt;<br></b></code>      <code><b>&lt;par&gt;<br></b></code>        &lt;!-- group 2: main group with masked preroll --&gt;<br>        &lt;ref src="graphics.rp" region="left"/&gt;<br>        &lt;video src="story.rm" region="right"/&gt;<br>      <code><b>&lt;/par&gt;<br></b></code>    <code><b>&lt;/seq&gt;<br></b></code>  <code><b>&lt;/par&gt;<br></b></code>&lt;/body&gt;
+</pre>
+<p><a name="999229"></a>Group 1 consists of two RealText clips and a RealAudio clip played in parallel. Because of the <code>&lt;seq&gt;</code> tag, the group 1 clips precede the RealPix and RealVideo clips in group 2. If the <code>&lt;seq&gt;</code> tag were the highest level of organization, RealServer would stream the group 1 clips without regard to group 2, streaming data for group 2 clips only after group 1 finished. Viewers would experience a delay after group 1 clips finished as RealServer streamed preroll for group 2 clips.</p>
+<p><a name="998483"></a>The outer <code>&lt;par&gt;</code> tag just below the <code>&lt;body&gt;</code> tag, however, makes RealSystem treat groups 1 and 2 as one large parallel group with subgroups played in sequence. Although this doesn't affect the order in which the clips play, the parallel grouping makes RealSystem balance bandwidth between all clips. After it starts to stream the group 1 clips, RealServer makes use of unused bandwidth by streaming data for group 2 clips while the group 1 clips play. This masks the preroll for the group 2 clips.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999238"></a>
+See <a href="bandwdth.htm#998356">"What is Preroll?"</a> and <a href="bandwdth.htm#997630">"Developing Multiclip 
+Presentations"</a>.
+</td></tr>
+</table></p>
+<h1><a name="997866"></a> Hiding Regions with z-index</h1>
+<p><a name="997932"></a>RealPlayer creates all regions defined in a SMIL file's header section when it first reads the file. So a single SMIL presentation cannot play clips in a certain set of regions, then destroy those regions and create different regions with a new layout. To accomplish dynamic layout changes, you can create separate SMIL files that define each region set, then play the SMIL files in sequence as described in <a href="server.htm#14171">"Creating a Ram File Manually"</a>.</p>
+<p><a name="998630"></a>An alternative is to create a single SMIL file that uses the <code>&lt;region&gt;</code> tag's <code>z-index</code> parameter to create transparent, overlaying regions. The following SMIL header example creates a <code>left</code> region next to a <code>right</code> region. Both are in portrait orientation, their heights over twice the value of their widths. A second set of regions, <code>top</code> and <code>bottom</code>, are stacked. These regions have higher z-index values, meaning that they display in front of the <code>left</code> and <code>right</code> regions:</p>
+<pre><a name="998710"></a>
+&lt;head&gt;<br>  &lt;layout&gt;<br>    &lt;root-layout width="360" height="360"/&gt;<br>    &lt;!-- first two side-by-side regions --&gt;<br>    &lt;region <code><b>id="left"</b></code> top="10" left="10" width="165" height="340" <code><b>z-index="0"</b></code>/&gt;<br>    &lt;region <code><b>id="right"</b></code> top="10" left="185" width="165" height="340" <code><b>z-index="1"</b></code>/&gt;<br>    &lt;!-- second two stacked regions --&gt;<br>    &lt;region <code><b>id="top"</b></code> top="10" left="70" width="220" height="165" <code><b>z-index="2"</b></code>/&gt;<br>    &lt;region <code><b>id="bottom"</b></code> top="185" left="70" width="220" height="165" <code><b>z-index="3"</b></code>/&gt;<br>  &lt;/layout&gt;<br>&lt;/head&gt;
+</pre>
+<p><a name="998713"></a>As defined in the following SMIL body, RealPix and RealText clips first play in the <code>left</code> and <code>right</code> regions, which appear beneath the <code>top</code> and <code>bottom</code> regions. Because the overlaying <code>top</code> and <code>bottom</code> regions do not use background colors, they remain transparent until clips play in them. The introductory RealPix and RealText clips disappear when they finish playback, restoring to view the <code>root-layout</code> default background color of black. The group 2 clips, a RealVideo clip and another RealText clip, then play in the <code>top</code> and <code>bottom</code> regions:</p>
+<pre><a name="998716"></a>
+&lt;body&gt;<br>  &lt;par&gt;<br>    &lt;seq&gt;<br>      &lt;par&gt;<br>        &lt;!-- group 1: side-by-side titles and credits --&gt;<br>        &lt;ref src="titles.rp" <code><b>region="left"</b></code> fill="remove"/&gt;<br>        &lt;textstream src="credits.rt" <code><b>region="right"</b></code> fill="remove"/&gt;<br>      &lt;/par&gt;<br>      &lt;par&gt;<br>        &lt;!-- group 2: stacked video and subtitles --&gt;<br>        &lt;video src="story.rm" <code><b>region="top"</b></code>/&gt;<br>        &lt;textstream src="subtitles.rt" <code><b>region="bottom"</b></code>/&gt;<br>      &lt;/par&gt;<br>    &lt;/seq&gt;<br>  &lt;/par&gt;<br>&lt;/body&gt;
+</pre>
+<p><a name="998640"></a>Although the <code>left</code>, <code>right</code>, <code>top</code>, and <code>bottom</code> regions exist from the start of the SMIL file playback, the use of <code>z-index</code>, <code>fill="remove"</code>, and default region transparency makes it appear as if the regions are created dynamically with each new set of clips. The following figure illustrates the initial region creation, the first set of clips, then the second set of clips playing in the RealPlayer window.</p>
+<h5><a name="1000008"></a>
+ Transparent Region Creation and Ordering</h5>
+<p><a name="1000009"></a>
+<img src="../graphics/regions.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999006"></a>
+For more on <code>z-index</code>, see <a href="smil.htm#71245">"Ordering Overlapping Regions 
+with z-index"</a>. <a href="smil.htm#8639">"Laying Out Multiple Clips"</a> discusses 
+SMIL layouts.
+</td></tr>
+</table></p>
+<h1><a name="998641"></a> Writing Complex SMIL Switch Statements</h1>
+<p><a name="999667"></a>The SMIL <code>&lt;switch&gt;</code> tag is a powerful feature that lets you specify options that each RealPlayer can choose between based on its preference settings and available bandwidth. <a href="smil.htm#10370">"Switching Between Alternate Choices"</a> explains the basics of using the <code>&lt;switch&gt;</code> tag. The following sections give tips on writing complex <code>&lt;switch&gt;</code> statements.</p>
+<h2><a name="999630"></a> Switching with SureStream Clips</h2>
+<p><a name="999631"></a>With RealAudio or RealVideo clips encoded for multiple bit rates with SureStream technology, you may or may not need to use the <code>&lt;switch&gt;</code> tag:</p>
+<ul>
+<p><li><a name="999632"></a>When the presentation consists solely of a SureStream clip, simply link to that clip within the SMIL file. The clip then streams at the rate appropriate for RealPlayer's connection speed. You do not need to specify bandwidth choices with a <code>&lt;switch&gt;</code> group.
+<p><li><a name="999633"></a>Use the <code>&lt;switch&gt;</code> tag when combining a SureStream clip with other clips encoded for single bandwidths. The SureStream clip is always used, but the <code>&lt;switch&gt;</code> group gives RealPlayer options for other clips. The following example illustrates a RealAudio SureStream clip and a choice between two RealPix presentations built for different bandwidths:
+<pre class=indent><a name="999634"></a>
+&lt;par&gt;<br>  &lt;audio src="audio/newsong2.rm"/&gt;<br>  &lt;switch&gt;<br>    &lt;ref src="image/slideshow1.rp" system-bitrate="47000"/&gt;<br>    &lt;ref src="image/slideshow2.rp" system-bitrate="20000"/&gt;<br>  &lt;/switch&gt;<br>&lt;/par&gt;
+</pre>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999637"></a>
+For more on SureStream, see <a href="audio.htm#12311">"Choosing RealAudio 
+Codecs"</a> and <a href="video.htm#16859">"Choosing RealVideo Codecs"</a>. Refer to 
+<a href="bandwdth.htm#999057">"Supporting Multiple Bandwidth Connections"</a> for 
+more on developing presentations for different 
+connection speeds.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="999654"></a> Switching with Multiple Test Attributes</h2>
+<p><a name="999655"></a>You can use multiple <code>&lt;switch&gt;</code> test attributes to have RealPlayer choose clips based on both bandwidth and language. There are two ways to do this. In this first example, each audio clip choice has two test-attributes, one for language and one for bandwidth. Both attributes must be viable for RealPlayer to choose the clip:</p>
+<pre><a name="999754"></a>
+&lt;switch&gt;<br>  &lt;!-- French language choices --&gt;<br>  &lt;audio src="sound/audio_fr2.rm" system-language="fr" system-bitrate="47000"/&gt;<br>  &lt;audio src="sound/audio_fr1.rm" system-language="fr" system-bitrate="20000"/&gt;<br>  &lt;!-- English language choices (default) --&gt;<br>  &lt;audio src="sound/audio_en2.rm" system-bitrate="47000"/&gt;<br>  &lt;audio src="sound/audio_en1.rm" system-bitrate="20000"/&gt;<br>&lt;/switch&gt;
+</pre>
+<p><a name="999776"></a>Because RealPlayer evaluates the <code>&lt;switch&gt;</code> choices from top to bottom, selecting the first viable option, the last two choices do not have <code>system-language</code> options. This lets all RealPlayers other than those with French as their language preference choose between the two English-language clips.</p>
+<p><a name="999745"></a>The next example adds RealText files in both French and English to the presentation possibilities. Here, <code>&lt;switch&gt;</code> statements are nested so that RealPlayers with French set as their language preference play the French RealText file and choose from the set of French-language RealAudio files based on available bandwidth. All other RealPlayers play the English RealText file and choose from a set of English-language RealAudio files:</p>
+<pre><a name="999829"></a>
+&lt;switch&gt;<br>  &lt;!-- Choose French as the language --&gt;<br>  &lt;par system-language="fr"&gt;<br>    &lt;textstream src="text/credits_fr.rt"/&gt;<br>    &lt;switch&gt;<br>      &lt;!-- Choose fast or slow bit rate for French audio --&gt;<br>      &lt;audio src="sound/audio_fr2.rm" system-bitrate="47000"/&gt;<br>      &lt;audio src="sound/audio_fr1.rm" system-bitrate="20000"/&gt;<br>    &lt;/switch&gt;<br>  &lt;/par&gt;<br>  &lt;!-- Choose English (default) as  the language --&gt;<br>  &lt;par&gt;<br>    &lt;textstream src="text/credits_en.rt"/&gt;<br>    &lt;switch&gt;<br>      &lt;!-- Choose fast or slow bit rate for English audio --&gt;<br>      &lt;audio src="sound/audio_en2.rm" system-bitrate="47000"/&gt;<br>      &lt;audio src="sound/audio_en1.rm" system-bitrate="20000"/&gt;<br>    &lt;/switch&gt;<br>  &lt;/par&gt;<br>&lt;/switch&gt;
+</pre>
+<p><a name="999941"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:40.</font>
+<center><a href="quick.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="smilref.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

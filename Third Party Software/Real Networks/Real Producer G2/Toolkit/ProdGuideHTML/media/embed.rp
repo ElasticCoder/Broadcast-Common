@@ -1,0 +1,31 @@
+<imfl>
+	<head title="RealPix(tm) Example"
+		copyright="(c)1998 RealNetworks, Inc."
+		timeformat="dd:hh:mm:ss.xyz"
+		duration="16"
+		bitrate="8000"
+		width="142"
+		height="126"
+		url="http://www.real.com"
+		aspect="true"/>
+
+	<!-- Assign handle number to image. -->
+
+	<image handle="1" name="rnlogo.gif"/>
+
+	<!-- Wipe in checkerboard images. -->
+
+	<fill color="blue" start="0"/>
+	<wipe type="push" direction="right" start="1" duration="2" target="1" dstx="0" dsty="0" dstw="71" dsth="63"/>
+	<wipe type="push" direction="left" start="3" duration="2" target="1" dstx="71" dsty="63" dstw="71" dsth="63"/>
+	<wipe type="push" direction="up" start="5" duration="2" target="1" dstx="0" dsty="63" dstw="71" dsth="63"/>
+	<wipe type="push" direction="down" start="7" duration="2" target="1" dstx="71" dsty="0" dstw="71" dsth="63"/>
+
+	<!-- Fade to white. -->
+
+	<fadeout start="9" duration="2" color="white"/>
+
+	<!-- Fade in image scale smaller. -->
+
+	<fadein start="11" duration="3" target="1" dstx="35" dsty="31" dstw="71" dsth="63"/>
+</imfl>

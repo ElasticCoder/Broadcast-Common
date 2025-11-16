@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+	<TITLE>Embedded Playback Example 1</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=Black TEXT=White LINK=White ALINK=WHITE  VLINK=WHITE>
+<H4>Embedded Playback Example 1</H4>
+
+<P>This example embeds the presentation defined in <B>embed1.smi</B> (located in this manual's <code>media</code> directory) within a Web page. It uses RealPlayer's Netscape plug-in to play the presentation and add the RealPlayer controls. To see an example using HTML layout, view <a href="embed2.htm"><B>embed2.htm</B></a>.</P>
+
+<CENTER>
+
+<P></P>
+
+<!-- Use the EMBED tag to create a playback window for the demonstration. The .rpm file launches RealPlayer for embedded playback. -->
+
+<EMBED SRC="embed1.rpm" CONTROLS=ImageWindow WIDTH=400 HEIGHT=250 CONSOLE=1 AUTOSTART=true NOJAVA=true>
+
+<P></P>
+
+<!-- The next EMBED tag adds the RealPlayer control panel beneath the image window. Window and control panel are linked to the same console. -->
+
+<EMBED SRC="embed1.rpm" CONTROLS=ControlPanel WIDTH=400 HEIGHT=36 CONSOLE=1 NOJAVA=true>
+
+<!-- The NOEMBED tag text displays if the browser doesn't support the EMBED tag -->
+
+<NOEMBED>Open embed.smi with RealPlayer.</NOEMBED>
+
+</CENTER>
+</BODY>
+</HTML>

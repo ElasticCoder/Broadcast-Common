@@ -1,0 +1,259 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="realsys.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="audio.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1001523"></a>
+ Chapter 3: 	Targeting Bandwidth
+
+</h1>
+<p><a name="997961"></a>Targeting a network connection's bandwidth is crucial for delivering a successful streaming media presentation. Web users with 28.8 Kbps modems, for example, need to view presentations that require less than 28.8 Kilobits of data per second. As the first step in building your presentation, target a bandwidth and create content with that connection speed in mind. This helps ensure that the presentation streams smoothly.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="997949"></a>
+The only time you do not need to consider bandwidth is 
+when all clips in your presentation reside on users' local 
+computers rather than on RealServer or a Web server.
+</td></tr>
+</table></p>
+<h1><a name="997455"></a> What is Bandwidth?</h1>
+<p><a name="997456"></a>Total bandwidth is the upper limit on how much data can pass through a network connection per second. Internet bandwidth is described in Kilobits per second (Kbps). A 28.8 Kbps modem, for example, can receive data at any speed up to 28.8 Kbps. Bandwidth is analogous to a speed limit, such as 60 m.p.h. A presentation's bit rate is analogous to car speed. Based on variables such as weather and traffic, a car may be able to travel only 30 m.p.h. Due to network congestion and server load, a 28.8 Kbps modem may receive 11 Kbps of data one minute, 22 Kbps of data another.</p>
+<p><a name="997457"></a>When you drive on a highway, you have no control over weather and traffic that makes you slow down. Under good conditions, though, you can observe the speed limit. Likewise with your presentation, you have no control over server load and network congestion when someone views your presentation. You can, however, ensure that your presentation does not exceed the user's bandwidth. On the highway, breaking the speed limit gets you a ticket. On the Internet, exceeding bandwidth stalls your presentation.</p>
+<p><a name="997458"></a>For example, a 28.8 Kbps connection can still play a presentation that requires a 56 Kbps stream. But the modem takes around two seconds to receive the data that RealPlayer has to play every second. In other words, data has to be displayed faster than it comes in over the modem. Consequently, RealPlayer does not begin playback until it receives and stores ("buffers") enough data to play the presentation without halting. For a long presentation, this may take a few minutes. Viewers are not likely to wait that long.</p>
+<h5><a name="1001290"></a>
+ Presentation Data Must Fit RealPlayer's Bandwidth</h5>
+<p><a name="1001291"></a>
+<img src="../graphics/bndovr.gif"></p>
+<p><a name="997459"></a>Designing content suitable for viewers' available bandwidths is crucial to delivering compelling multimedia presentations. Because most Internet users have 28.8 Kbps modems, content available to the public should target that bandwidth. If your presentation is for high-speed intranet use only, you may be able to target a higher minimum bandwidth. Additionally, you can target multiple bandwidths with a single clip that looks good at low bandwidths and great at high bandwidths.</p>
+<h2><a name="998356"></a> What is Preroll?</h2>
+<p><a name="998438"></a>Preroll is the initial data that RealServer sends to RealPlayer before playback begins. Before it delivers a presentation, RealServer looks at the clip sizes and the timeline. Weighing these against the connection bandwidth, RealServer determines how much data RealPlayer must receive before starting to play the presentation. The preroll helps ensure that once RealPlayer commences playback, it does not need to halt the presentation while it receives more data.</p>
+<p><a name="998677"></a>As a general rule, you want preroll to be under 15 seconds, ideally under 10 seconds. If your presentation requires more bandwidth than the user's connection can supply, the presentation can still play back, but it requires a lengthy preroll and users are not likely to watch long while nothing happens on screen. Sticking to your bandwidth target helps keep presentation preroll to an acceptable level.</p>
+<h1><a name="997462"></a> Choosing a Target Bandwidth</h1>
+<p><a name="997463"></a>The target bandwidth of a RealSystem G2 presentation is the maximum bandwidth available for a network connection, such as a 28.8 Kbps modem. The presentation's total bit rate must be at or below the target bit rate. The total bit rate comprises two main parts:</p>
+<ul>
+<p><li><a name="997464"></a>Maximum bit rate consumed by all streaming clips. For a multiclip presentation, this can vary over time. You therefore want to consider what part of your presentation consumes the most bandwidth and use that peak point as your guideline.
+<p><li><a name="997465"></a>25% of target bit rate for overhead (noise, data loss, and packet overhead). This is an approximation. Overhead can vary depending on the type of connection and general network conditions. A 56 Kbps modem typically requires more overhead than a 56 Kbps ISDN connection, for example.
+</ul>
+<p><a name="997466"></a>If your target bit rate is 28.8 Kbps, for example, take 75% of that rate as the bandwidth available for your streaming clips. For a 28.8 Kbps connection, you have approximately 20 Kbps total for your presentation. The following table lists the recommended maximum bit rates for streaming presentations over various network connections.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="997473"></a>
+ Bit Rates Available for Streaming Clips </caption>
+<tr>
+<th align=left valign=bottom><a name="997478"></a>Target Connection Speed</th>
+<th align=left valign=bottom><a name="997480"></a>Recommended Maximum Bit <br>Rate for Streaming Clips</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="997482"></a>14.4 Kbps modem</td>
+<td align=left valign=top><a name="997484"></a>10 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997486"></a>28.8 Kbps modem</td>
+<td align=left valign=top><a name="997488"></a>20 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997490"></a>56.0 Kbps modem</td>
+<td align=left valign=top><a name="997492"></a>32 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997494"></a>56.0 Kbps ISDN</td>
+<td align=left valign=top><a name="997496"></a>45 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="997498"></a>112 Kbps dual ISDN</td>
+<td align=left valign=top><a name="997500"></a>80 Kbps</td>
+</tr>
+</table>
+</p>
+<h1><a name="997509"></a> Developing a Bandwidth Strategy</h1>
+<p><a name="997510"></a>Once you know the bit rate or rates available for your streaming clips, you can begin to develop your bandwidth strategy. If you want to stream just one clip, your strategy is straightforward. Things become more complex, though, when you combine different clips into one presentation. But with some practice, you will quickly learn how to balance bandwidth requirements with presentation quality.</p>
+<h2><a name="998072"></a> Understanding Clip Bandwidth Characteristics</h2>
+<p><a name="999430"></a>The first step in planning your multimedia presentation is to understand the bandwidth characteristics of your clip or clips. The following sections describe characteristics for standard RealSystem media types. If you stream other types of clips, make sure you understand each clip's bandwidth characteristics.</p>
+<h4><a name="999432"></a> RealAudio</h4>
+<p><a name="1000694"></a>RealAudio consumes bandwidth at a flat rate determined by the codec used to encode the clip. If you have a RealAudio clip encoded with an 8 Kbps codec, for example, that clip will steadily consume 8 Kbps of bandwidth as long as it plays. And with SureStream technology described in <a href="bandwdth.htm#997522">"Using SureStream Clips for Multiple Bandwidths"</a>, you can encode a single RealAudio clip for up to six bandwidths.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1000688"></a>
+See <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a>. 
+</td></tr>
+</table></p>
+<h4><a name="999415"></a> RealVideo</h4>
+<p><a name="1000655"></a>RealVideo consumes bandwidth at a flat rate for a given bandwidth target. If you target 20 Kbps and use an 8 Kbps RealAudio codec for the soundtrack, the image track steadily consumes 12 Kbps. RealVideo encoders vary a clip's frame rate and image quality to produce the best possible quality for the bandwidth target. SureStream technology described in <a href="bandwdth.htm#997522">"Using SureStream Clips for Multiple Bandwidths"</a> lets you encode a single RealVideo clip for up to six bandwidths.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999476"></a>
+See <a href="video.htm#16859">"Choosing RealVideo Codecs"</a>. For tips on shooting 
+video, see <a href="video.htm#20306">"Recording Video"</a>.
+</td></tr>
+</table></p>
+<h4><a name="998089"></a> RealFlash</h4>
+<p><a name="998090"></a>The Shockwave Flash component of a RealFlash presentation has a spiky bandwidth characteristic, meaning it consumes a lot of bandwidth at certain points in its timeline, little bandwidth at other points. RealNetworks provides tools that help you optimize RealFlash for a specific bandwidth.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998097"></a>
+If you plan to create streaming animation, read 
+<a href="animate.htm#9795">"Preparing a RealFlash Clip"</a>.
+</td></tr>
+</table></p>
+<h4><a name="998101"></a> RealText</h4>
+<p><a name="998102"></a>RealText consists of a text file that contains the RealText mark-up. Because it uses just a simple text file, RealText consumes little bandwidth. This makes it easy to add RealText to any presentation.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998103"></a>
+For more on RealText, get <I>RealText Authoring Guide</I> from 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="1003849"></a> RealPix</h4>
+<p><a name="1003850"></a>RealPix consists of still images streamed to RealPlayer. Its bandwidth consumption depends on the number and size of the images, as well as how quickly you stream them. RealPix therefore gives you a lot of control over bandwidth usage through your choice of images and how you construct the RealPix timeline.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1003851"></a>
+For more on RealPix and its bandwidth characteristics, 
+refer to <I>RealPix Authoring Guide</I>, which is available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.
+</td></tr>
+</table></p>
+<h4><a name="1000385"></a> Images</h4>
+<p><a name="1000386"></a>By default, JPEG and GIF images rendered directly in RealPlayer (that is, images that are not part of a RealPix presentation) stream at 12 Kbps. You can modify this bit rate through a SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="1000393"></a>
+See <a href="smil.htm#78643">"Defining Image Options"</a> for more on using SMIL 
+to change image clip bandwidth use.
+</td></tr>
+</table></p>
+<h2><a name="997988"></a> Delivering a Single Media Clip</h2>
+<p><a name="997989"></a>Suppose you want to create an audio clip that Web users with 14.4 Kbps modems can play. You can simply create a RealAudio clip that consumes 8 Kbps of bandwidth. Anyone with a 14.4 Kbps or higher connection can then listen to your presentation. However, when a clip has multiple streams, such as a video that contains a visual track and an audio track, you need to consider how much bandwidth goes to each stream.</p>
+<p><a name="997512"></a>Suppose you want to stream a RealVideo clip at 28.8 Kbps. How much bandwidth should you give to the visual track and how much to the audio track? The answer depends on the content. Because music has a greater frequency range than voice, a music video requires more audio data than a "talking heads" interview. Hence a soundtrack with music consumes more bandwidth than one that uses just speech.</p>
+<p><a name="997513"></a>The more you increase the audio track's bandwidth, however, the more you have to decrease the visual track's bandwidth. If you start with a huge video source file, your RealVideo encoding tool may discard a lot of the source data to make the encoded RealVideo data fit a certain bandwidth. Although the RealVideo clip will be playable, you may not like the results. Motion might appear too jerky, for example, or fast-moving images might not resolve visually.</p>
+<h5><a name="999982"></a>
+ Possible Audio and Video Tracks in a 20 Kbps RealVideo Clip</h5>
+<p><a name="999983"></a>
+<img src="../graphics/bndbreak.gif"></p>
+<p><a name="997514"></a>The point here is that even when you stream just a single clip, your bandwidth target affects how you create content. If you know you'll have only a small bandwidth for video, for example, you can optimize the visual content to display in a small window at a slow frame rate. You may need to jettison panoramic and fast action shots that won't fare well under these constraints.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="998240"></a>
+See <a href="video.htm#20306">"Recording Video"</a>.
+</td></tr>
+</table></p>
+<h2><a name="997630"></a> Developing Multiclip Presentations</h2>
+<p><a name="997631"></a>An exciting part of RealSystem G2 is that you can develop multimedia presentations, such as slideshows with audio voice-overs, or video with scrolling subtitles. When multiple clips play together, you need to consider how much presentation bandwidth to allot each clip. While it's exciting to create presentations that include video, slideshows, audio, and scrolling text all at once, viewing such presentations over slow modems may be difficult.</p>
+<p><a name="1000096"></a>The following figure illustrates a poor presentation for a low-bandwidth connection. The multiclip presentation starts with RealVideo and RealPix clips that require more than the target bandwidth at first. Bandwidth use, illustrated by the solid line, peaks again when the second RealVideo clip begins to play concurrently with the first video clip. To even out the bandwidth spikes, RealSystem streams a high preroll for the RealPix and RealVideo clips, making the presentation slow to start and likely to stall during transitions between clips.</p>
+<h5><a name="1000097"></a>
+ Poor Bandwidth Use in a Multiclip Presentation</h5>
+<p><a name="1000101"></a>
+<img src="../graphics/bndpoor.gif"></p>
+<p><a name="1000260"></a>The next figure shows better bandwidth management. The presentation starts with a low-bandwidth RealText clip that does not interfere with streaming the images in the RealPix clip. A RealVideo clip starts after the RealPix clip has streamed all its images and does not need bandwidth. The second RealVideo clip starts after the first RealVideo clip has ended, so the two video clips do not compete for bandwidth.</p>
+<h5><a name="1000236"></a>
+ Improved Bandwidth Use in a Multiclip Presentation</h5>
+<p><a name="1000240"></a>
+<img src="../graphics/bndbettr.gif"></p>
+<h4><a name="1000222"></a> Tips for Creating Multiclip Presentations</h4>
+<p><a name="1000258"></a>When developing a streaming multimedia presentation, keep the following tips in mind:</p>
+<ul>
+<p><li><a name="998343"></a>Consider the presentation timeline carefully to eliminate bandwidth bottlenecks. These typically occur when two or more high-bandwidth clips play simultaneously. You may need to omit high-bandwidth pairings, combining high-bandwidth with low-bandwidth clips instead.
+<p><li><a name="998580"></a>Stagger the times when clips begin to play back. Every clip requires a certain preroll before RealPlayer can play it. Your presentation will play more smoothly if RealServer does not need to send more than one clip's preroll at a time.
+<p><li><a name="998590"></a>Start presentations with low-bandwidth clips. Use RealText to display credits, for example. Or begin with a highly compressed RealAudio narration before bringing in video. RealSystem can take advantage of the extra bandwidth to begin streaming higher bandwidth data to RealPlayer "behind the scenes."
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="999531"></a>
+See <a href="tips.htm#997665">"Smoothing Transitions between Clips"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="999054"></a>Test presentations in "real world" circumstances, replicating your audience's bandwidth conditions. Clips may play back fine when the files reside on your desktop computer. The presentation may bog down, though, when you stream the clips over a modem.
+</ul>
+<h1><a name="999057"></a> Supporting Multiple Bandwidth Connections</h1>
+<p><a name="997519"></a>To reach a wide audience on the Internet, you need to provide content that can play over slow connections. You can encode a RealAudio clip at 8 Kbps, for example, so that anyone with a 14.4 Kbps or higher connection can play it. This clip will have good quality sound. But the same clip encoded as a 16 Kbps clip will have better sound. Encoded for 32 Kbps delivery, the clip will have even greater frequency response and dynamic range.</p>
+<p><a name="997520"></a>To provide good content for users with slower connections and great content for those with faster connections, you can use two methods, and even mix them depending on your needs. With the first method, you create a single clip that targets different bandwidths. In the second method, you create separate clips for each bandwidth target and let RealPlayer choose which set of clips to play. Either way, you add to your Web page just one link for all visitors. You don't need separate links for modems and ISDN connections, for example.</p>
+<h2><a name="997522"></a> Using SureStream Clips for Multiple Bandwidths</h2>
+<p><a name="997523"></a>With RealSystem's SureStream technology, you can encode a RealAudio or RealVideo clip for up to six different bandwidths using new RealSystem G2 codecs. For example, you can encode a single RealAudio music clip for 28.8 Kbps modems, 56 Kbps modems, 112 Kbps dual ISDN, and T1 connections. Your Web page links to this single clip, and when a visitor clicks the link, RealPlayer and RealServer determine which encoding to use based on the available bandwidth. The following figure illustrates this.</p>
+<h5><a name="1000315"></a>
+ SureStream Clip Encoded for Multiple Bandwidths</h5>
+<p><a name="1000316"></a>
+<img src="../graphics/bndmulti.gif"></p>
+<p><a name="997524"></a>RealServer and RealPlayer can even adjust this choice to compensate for network conditions. If a fast connection becomes bogged down because of high network traffic, RealServer seamlessly switches to a lower bandwidth encoding to prevent the presentation from stalling. When the congestion clears, RealServer switches back to the higher bandwidth encoding.</p>
+<h5><a name="1000751"></a>
+ Switching Bandwidths During Network Congestion</h5>
+<p><a name="1000752"></a>
+<img src="../graphics/bndcngst.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="997527"></a>
+For more on RealAudio and SureStream, see <a href="audio.htm#12311">"Choosing 
+RealAudio Codecs"</a>. See also <a href="video.htm#16859">"Choosing RealVideo 
+Codecs"</a>.
+</td></tr>
+</table></p>
+<h2><a name="997532"></a> Letting RealPlayer Choose between Multiple Clips</h2>
+<p><a name="997533"></a>If your presentation uses clips other than RealAudio or RealVideo, you can create multiple versions of the clips for different bandwidths. When you assemble your presentation, you use a SMIL file to designate a bandwidth connection for each of the different groups. When a user clicks your Web page link, RealPlayer receives the SMIL file and chooses which clip group to play based on its own connection speed.</p>
+<p><a name="1000328"></a>The following figure illustrates a SMIL file that lists two choices between RealPix clips, a high-bandwidth choice and a low-bandwidth choice. RealPlayer chooses which clip to receive based on its connection speed and the SMIL file's bandwidth parameters. Both presentations use the same RealAudio file, which has been encoded for multiple bandwidths.</p>
+<h5><a name="1000336"></a>
+ Bandwidth Choices through SureStream Clip and SMIL</h5>
+<p><a name="1000337"></a>
+<img src="../graphics/bndsmil.gif"></p>
+<p><a name="997534"></a>Because each connection speed uses a different set of clips, RealServer cannot switch between the different encodings as it can with a single SureStream clip. RealServer employs other techniques, however, to compensate for network congestion. Its advanced stream thinning capabilities let it drop low-priority data to decrease the presentation bandwidth temporarily. When the congestion clears up, it continues to stream all the presentation data.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="997540"></a>
+<a href="smil.htm#10260">"Setting Bandwidth Choices"</a> explains how to use a 
+SMIL file to designate different bandwidth groups. See 
+also <a href="tips.htm#999630">"Switching with SureStream Clips"</a>.
+</td></tr>
+</table></p>
+<p><a name="1003606"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:30.</font>
+<center><a href="realsys.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="audio.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

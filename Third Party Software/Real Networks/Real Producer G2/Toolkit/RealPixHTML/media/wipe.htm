@@ -1,0 +1,49 @@
+<html>
+<pre>
+&lt;imfl&gt;
+    &lt;head title="RealPix(tm) Wipe Examples"
+		author="Jay Slagle"
+		copyright="(c)1998 RealNetworks, Inc."
+		timeformat="dd:hh:mm:ss.xyz"
+		duration="30"
+		bitrate="12000"
+		width="256"
+		height="256"
+		url="http://www.real.com"
+		aspect="true"/&gt;
+
+	&lt;!-- Assign handle numbers to images --&gt;
+
+	&lt;image handle="1" name="elephant.jpg"/&gt;
+	&lt;image handle="2" name="hippo.jpg"/&gt;
+
+	&lt;!-- Wipe first image in --&gt;
+
+	&lt;fill start="0" color="black"/&gt;
+	&lt;wipe type="normal" direction="right" start="1" duration="3" target="1"/&gt;
+
+	&lt;!-- Wipe images in from 4 directions --&gt;
+
+	&lt;wipe type="normal" direction="left" start="4" duration="3" target="2"/&gt;
+	&lt;wipe type="normal" direction="down" start="7" duration="3" target="1"/&gt;
+	&lt;wipe type="push" direction="right" start="10" duration="3" target="2"/&gt;
+	&lt;wipe type="push" direction="up" start="13" duration="3" target="1"/&gt;
+
+	&lt;!-- Wipe in checkerboard images --&gt;
+
+	&lt;wipe type="push" direction="right" start="17" duration="3" target="2"
+		srcx="0" srcy="0" srcw="128" srch="128"
+		dstx="0" dsty="0" dstw="128" dsth="128"/&gt;
+	&lt;wipe type="push" direction="left" start="20" duration="3" target="2"
+		srcx="128" srcy="128" srcw="128" srch="128"
+		dstx="128" dsty="128" dstw="128" dsth="128"/&gt;
+	&lt;wipe type="push" direction="up" start="23" duration="3" target="2"
+		srcx="0" srcy="128" srcw="128" srch="128"
+		dstx="0" dsty="128" dstw="128" dsth="128"/&gt;
+	&lt;wipe type="push" direction="down" start="26" duration="3" target="2"
+		srcx="128" srcy="0" srcw="128" srch="128"
+		dstx="128" dsty="0" dstw="128" dsth="128"/&gt;
+
+&lt;/imfl&gt;
+</pre>
+</html>

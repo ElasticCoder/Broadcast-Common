@@ -1,0 +1,25 @@
+<smil>
+	<head>
+		<meta name="title" content="SMIL Layout Demonstration"/>
+		<meta name="copyright" content = "(c) 1998 RealNetworks, Inc."/>
+		<!-- The layout section defines region size and placement. -->
+		<layout>
+			<root-layout height="250" width="400" background-color="black"/>
+			<region id="background" left="5" top="30" height="146" width="154" background-color="blue" z-index="1"/>
+			<region id="pix" left="11" top="40" height="126" width="142" z-index="2"/> 
+			<region id="animation" left="164" top="0" height="207" width="236" fit="fill"/> 
+			<region id="text" left="0" top="214" height="36" width="400"/> 
+		</layout>
+	</head>
+	<body>
+		<!-- The body section specifies clip source files and assigns them to regions.-->
+		<par title="SMIL Layout Demonstration" copyright="(c) 1998 RealNetworks, Inc." author="by RealNetworks">
+			<ref src="embed.rp" region="pix" fill="freeze"/>
+			<animation src="animate1.swf" region="animation" fill="freeze" begin="8s"/>
+			<audio src="thanks.rm" repeat="2"/>
+			<textstream src="embed.rt" region="text" fill="freeze"/>
+		</par>
+	</body>
+</smil>
+
+

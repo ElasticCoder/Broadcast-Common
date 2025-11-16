@@ -1,0 +1,801 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="bandwdth.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="video.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="34361"></a>
+ Chapter 4: 	Producing Audio
+
+</h1>
+<p><a name="23791"></a>RealNetworks pioneered streaming audio with RealAudio, the first streaming media product for the Internet. Since its debut in 1995, RealAudio has become the standard for network audio, delivering stereo sound over 28.8 Kbps modems, and CD-quality sound at high connection speeds. RealSystem G2 can stream other audio formats as well. This chapter explains how to prepare and encode your sound files for streaming.</p>
+<h1><a name="23680"></a> Steps for Streaming RealAudio</h1>
+<p><a name="24125"></a>To produce a great RealAudio clip, you need to use great source material, high-quality equipment, and good production practices. This section provides a quick overview of the steps involved in streaming a RealAudio clip.</p>
+<h5><a name="33290"></a>
+ Creating a RealAudio Clip</h5>
+<p><a name="33294"></a>
+<img src="../graphics/raovr.gif"></p>
+<h4><a name="32419"></a>	 To create a streaming RealAudio clip, follow these basic steps:</h4>
+<ol>
+<p><li><a name="23968"> </a>Capture audio.
+<p><a name="23989"></a>You start audio production by capturing audio from a source, such as a person speaking into a microphone. You might also start with a digitized audio source file from a compact disc, for example.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="24295"></a>
+<a href="audio.htm#9661">"Capturing Audio"</a> provides guidelines for capturing 
+audio.
+</td></tr>
+</table></p>
+<p><li><a name="23969"> </a>Optimize audio.
+<p><a name="23990"></a>With the audio file digitized in a common file format, such as WAV or AIFF, you next use a sound editor to optimize the audio for streaming. When broadcasting live, however, you encode the streaming audio directly from the source, optimizing the audio source during the capture.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="24299"></a>
+See <a href="audio.htm#27179">"Optimizing Audio"</a> for tips on sound editing. For 
+more on live broadcasting, read <a href="live.htm#15510">Chapter 11</a>.
+</td></tr>
+</table></p>
+<p><li><a name="23970"> </a>Encode RealAudio clip.
+<p><a name="24071"></a>With your digitized file optimized or your live broadcast ready to go, you encode your source in the RealAudio format. When you do this, you choose a codec or set of codecs that target a network bandwidth.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="24304"></a>
+<a href="audio.htm#9659">"Creating RealAudio Clips"</a> explains RealAudio and its 
+codecs. As described in <a href="audio.htm#7953">"Streaming Other Audio 
+Formats"</a>, RealSystem G2 can stream other audio 
+formats as well.
+</td></tr>
+</table></p>
+<p><li><a name="23977"> </a>Deliver RealAudio clip.
+<p><a name="24076"></a>With your presentation is ready to go, you make your RealAudio clip or broadcast available through your Website. To combine sound with another streaming clip, such as RealPix, you write a SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="24322"></a>
+<a href="smil.htm#100023">Chapter 7</a> explains how to create a SMIL file. See 
+<a href="server.htm#32401">Chapter 10</a> for instructions on linking your Web page to 
+a RealAudio or SMIL file.
+</td></tr>
+</table></p>
+</ol>
+<h1><a name="9661"></a> Capturing Audio</h1>
+<p><a name="11462"></a>A streaming audio clip reflects the quality of the audio source. Degradations in sound quality within the audio source affect the final streaming audio clip. The following sections will help you capture high-quality audio source files or broadcasts.</p>
+<p><a name="33853"></a>Broadcasting live audio introduces several issues beyond those you need to consider when creating a standard clip. This is because you cannot edit a broadcast the way you can edit a digitized audio file. When broadcasting, though, you can set up your sound equipment to capture high-quality sound before encoding it.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="26292"></a>
+For pointers on producing video, see <a href="video.htm#20306">"Recording Video"</a>.
+</td></tr>
+</table></p>
+<h4><a name="20551"></a> Use High-Quality Source Media</h4>
+<p><a name="20514"></a>If you plan to stream existing material, start with the best source possible. Use the cleanest recording with the least amount of unwanted noise. Compact disc (CD) and digital audio tape (DAT) are good source media, although well-recorded analog sources such as records, reel-to-reel tapes, and chrome (type II) cassettes can sound just as good. Try to avoid "consumer grade" recording media such as Type I cassettes and VHS tapes.</p>
+<h4><a name="20717"></a> Choose Professional Recording Equipment</h4>
+<p><a name="20758"></a>Every piece of equipment in the audio chain-microphone, mixer, sound card, and so on-affects sound quality. If you intend to provide professional-quality audio content, invest in professional audio equipment and software. Poor-quality equipment can add hiss and distortion, degrading sound clarity.</p>
+<h4><a name="20760"></a> Use Shielded Cables</h4>
+<p><a name="20827"></a>It is important to use high-quality, shielded cables. Unshielded cables increase the chance of introducing line noise and Radio Frequency Interference (RFI) into recordings. Keep audio cables physically separated from power cords to minimize the introduction of noise. Also be sure to ground all equipment properly.</p>
+<h4><a name="21983"></a> Set Input Levels Correctly</h4>
+<p><a name="21984"></a>Setting correct input levels is crucial. All audio equipment has a signal-to-noise ratio, the ratio between the loudest possible sound the equipment can reproduce without distortion and its inherent noise floor. This distortion is known as "clipping," and is audible as a high-frequency crackling noise. </p>
+<p><a name="21774"></a>To get the best signal-to-noise ratio, set the input level on each audio device in the signal chain so that it utilizes its full range of available amplitude without distortion during the program's loudest sections. The signal chain typically includes a microphone, a mixing desk, a compressor, and a sound card. For each piece of equipment, set levels as close as possible to 0 dB without going over.</p>
+<p><a name="20959"></a>Check at each point in the signal chain for signal distortion. Perform several test runs and make sure there are no peaks above maximum amplitude. Adjust levels on your sound card mixer so the input approaches but does not exceed the maximum. Be conservative, though. Levels might suddenly increase if, for instance, an interviewee suddenly speaks loudly or a crowd at a sports event roars.</p>
+<h4><a name="22164"></a> Prepare Volume Levels for Live Broadcasts</h4>
+<p><a name="22165"></a>When broadcasting live audio, it is useful to have a dynamics compressor (gain compression, not data compression), which is a piece of audio equipment that automatically adjusts the volume level. By providing a consistent level, the compressor allows you to "set and forget" the input levels to the RealAudio encoder.</p>
+<h4><a name="26392"></a> Use Optimum RealAudio Sampling Rates</h4>
+<p><a name="26393"></a>Try to capture sound with a sampling width of 16 bits. RealAudio codecs have different sampling rates that produce the best sound, however. If your sound card allows it, capture audio at the optimum sampling rate for the codec you intend to use. The RealAudio encoder will convert the file to the optimum rate if necessary, but this is recommended only for static files. For live broadcasts, use a sound card that supports the optimum rate. This avoids the overhead of converting the rate while encoding in real-time.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="32798"></a>
+The <a href="#racodecs">tables</a> below list the 
+optimum sampling rates for each codec.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="31637"></a>
+You do not need to capture stereo sound if you plan to 
+use a mono codec. However, many sound cards simply 
+discard the right input channel in mono mode. If you 
+have a mixing desk, pan all inputs to the center so the 
+conversion to mono loses nothing.
+</td></tr>
+</table></p>
+<h1><a name="31640"></a> Optimizing Audio </h1>
+<p><a name="31641"></a>If you are not broadcasting audio live, you work with a digitized audio source file in a supported format such as WAV, QuickTime, or AIFF. You then edit the audio file to optimize it. To do this, you need to be familiar with the editing functions your audio editing program offers. The following sections give some optimization tips you can carry out with your audio editing software.</p>
+<h4><a name="9704"></a> DC Offset</h4>
+<p><a name="21172"></a>DC Offset is low-frequency, inaudible noise that results from equipment grounding problems. If you don't remove it, it can skew the results of subsequent sound editing. Use your sound editor's <strong>DC Offset</strong> function immediately after recording a digital audio file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="21783"></a>
+If your sound editing program allows it, eliminate DC 
+offset during recording. This saves you an editing step.
+</td></tr>
+</table></p>
+<h4><a name="9877"></a> Normalization</h4>
+<p><a name="21283"></a>Set sensible input levels when recording, then use normalization to maximize levels after recording. Your streaming files sound best when your digitized source has the highest possible gain without clipping. Digital audio files that do not utilize their full amplitude range produce low-quality streaming clips. If the amplitude range is too low, use your sound editor to adjust the range and increase the amplitude. </p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="22069"></a>
+Most sound editors have a <strong>Normalize</strong> function that 
+maximizes levels automatically. Because some systems 
+have trouble with files normalized to 100%, normalize 
+to 95% of maximum or to -0.5dB.
+</td></tr>
+</table></p>
+<h4><a name="21470"></a> Dynamics Compression</h4>
+<p><a name="32871"></a>Normalization maximizes the input level of the audio file's loudest sections. Consequently, quiet sections may not encode as well. Dynamics compression evens out input levels by attenuating (turning down) the input when it rises above a threshold. Check your audio software for a <strong>Compression</strong> or <strong>Dynamics</strong> feature. You can control attenuation by specifying a compression ratio. This turns down the loudest sections, and you can readjust input levels accordingly.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="32950"></a>
+For multipurpose dynamics compression, set the 
+threshold to -10dB, the ratio to 4:1, and the attack and 
+release times to 100ms. Adjust the input level to get 
+around 3dB of compression and an output level around 
+0dB.
+</td></tr>
+</table></p>
+<h4><a name="32870"></a> Equalization</h4>
+<p><a name="21471"></a>Equalization (EQ) changes the tone of the incoming signal by "boosting" (turning up) or "cutting" (turning down) certain frequencies. Using EQ, you can emphasize certain frequencies and cut frequencies that contain noise or unwanted sound. EQ can compensate for RealAudio codecs that do not have flat frequency responses (that is, codecs for which certain frequencies are not as loud after encoding). You can therefore use EQ to make a RealAudio clip sound as close as possible to the initial recording.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="32976"></a>
+For voice-only content, you can make the file more 
+intelligible by cutting frequencies below 100 Hz and 
+carefully boosting frequencies in the 1-4 kHz range.
+</td></tr>
+</table></p>
+<h1><a name="9659"></a> Creating RealAudio Clips</h1>
+<p><a name="10301"></a>RealAudio is a compressed format suitable for streaming over the Internet or intranets. A RealAudio clip generally uses <kbd>.rm</kbd> as its file extension, but <kbd>.ra</kbd> is also acceptable. Because RealAudio is compressed, you typically start with a sound file in a digitized, uncompressed format such as WAV or AIFF. You then create a RealAudio clip from this source file through an encoding tool. Your encoding tool should be able to accept some or all of these input formats:</p>
+<ul>
+<p><li><a name="15617"></a>Audio Interchange Format (<kbd>.aif</kbd>)
+<p><li><a name="7862"></a>Audio (<kbd>.au</kbd>)
+<p><li><a name="32676"></a>MPEG-1 (<kbd>.mpg</kbd>)
+<p><li><a name="15607"></a>QuickTime (<kbd>.mov</kbd>)
+<p><li><a name="15598"></a>Sound (<kbd>.snd</kbd>)
+<p><li><a name="15599"></a>WAV (<kbd>.wav</kbd>)
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="36239"></a>
+RealAudio production tools are available at 
+<a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="12311"></a> Choosing RealAudio Codecs</h2>
+<p><a name="12332"></a>RealAudio uses a "lossy" compression scheme that discards parts of the audio source file to achieve a highly reduced file size. A RealAudio clip encoded from a WAV source file, for example, may be 10 to 20 times smaller than the WAV file. Although discarding audio information during encoding lowers the clip's frequency response and dynamic range, carefully choosing codecs minimizes the impact of compression.</p>
+<p><a name="12515"></a>A RealAudio encoding tool uses a codec to compress the original sound file and create a RealAudio clip. RealPlayer uses the same codec to decompress the streamed RealAudio clip for playback. When you encode a RealAudio clip, you choose a codec (or series of codecs) based on two criteria:</p>
+<ol>
+<p><li><a name="12524"> </a>Bandwidth
+<p><a name="12731"></a>As <a href="bandwdth.htm#1001523">Chapter 3</a>  explains, you need to decide how much bandwidth each part of your presentation will consume. When you have a bandwidth target for your audio component, you can choose a codec that encodes RealAudio at or below that target.</p>
+<p><li><a name="12733"> </a>Audio Content
+<p><a name="12757"></a>RealAudio uses different codecs for music and spoken voice. Voice codecs focus on the standard frequency range of the human voice. Music codecs have broader frequency response to capture more of the high and low frequencies.</p>
+</ol>
+<p><a name="16721"></a>The following tables provide a reference for all RealAudio codecs. Note that your encoding tool may not include all codecs listed. The tables give the following information:</p>
+<ul>
+<p><li><a name="22304"></a>G2, 5, 4, 3, 2, 1
+<p><a name="22305"></a>An "<code>X</code>" in these columns indicates that a clip encoded with this codec can be played by RealPlayer G2, 5.0, 4.0, and so on. With RealSystem's SureStream technology, you can encode a single clip for up to six bandwidths using the RealAudio G2 codecs. Only RealServer G2 can stream SureStream clips, though, as they require a large download time if played back from a Web server.</p>
+<p><li><a name="22306"></a>Rate
+<p><a name="22307"></a>Using a codec's optimum sampling rate in your audio source file ensures that the audio stays synchronized with other media and prevents pitch shifting in audio resampling. Audio quality degrades if you use lower than the optimum sampling rate. If you use a higher sampling rate, it is best to use a multiple of the optimum rate. If the optimum rate is 8 kHz, for example, use a higher rate of 16 kHz or 32 kHz.</p>
+<p><li><a name="22308"></a>Resp.
+<p><a name="27291"></a>This column lists the codec's frequency response in kHz. A codec with a higher frequency response reproduces a wider range of sound than a codec with a lower response. A measure of codec quality, the frequency response does not affect how you produce audio.</p>
+</ul>
+<p><a name="27891"></a><a name="racodecs"></a>
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="28409"></a>
+ RealAudio Low Bandwidth Codecs </caption>
+<tr>
+<th align=left valign=bottom><a name="28429"></a>RealAudio Codec</th>
+<th align=left valign=bottom><a name="28431"></a>G2</th>
+<th align=left valign=bottom><a name="28433"></a>5</th>
+<th align=left valign=bottom><a name="28435"></a>4</th>
+<th align=left valign=bottom><a name="28437"></a>3</th>
+<th align=left valign=bottom><a name="28439"></a>2</th>
+<th align=left valign=bottom><a name="28441"></a>1</th>
+<th align=left valign=bottom><a name="28444"></a>Rate</th>
+<th align=left valign=bottom><a name="28447"></a>Resp.</th>
+<th align=left valign=bottom><a name="28449"></a>Comments</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="28472"></a>5 Kbps Voice </td>
+<td align=left valign=top><a name="28474"></a><code>X</code></td>
+<td align=left valign=top><a name="28476"></a><code>X</code></td>
+<td align=left valign=top><a name="28478"></a><code>-</code></td>
+<td align=left valign=top><a name="28480"></a><code>-</code></td>
+<td align=left valign=top><a name="28482"></a><code>-</code></td>
+<td align=left valign=top><a name="28484"></a><code>-</code></td>
+<td align=left valign=top><a name="28486"></a>8 kHz</td>
+<td align=left valign=top><a name="28488"></a>4 kHz</td>
+<td align=left valign=top><a name="28490"></a>Lowest bit rate for speech or speech with background music.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28493"></a>6.5 Kbps Voice</td>
+<td align=left valign=top><a name="28495"></a><code>X</code></td>
+<td align=left valign=top><a name="28497"></a><code>X</code></td>
+<td align=left valign=top><a name="28499"></a><code>X</code></td>
+<td align=left valign=top><a name="28501"></a><code>-</code></td>
+<td align=left valign=top><a name="28503"></a><code>-</code></td>
+<td align=left valign=top><a name="28505"></a><code>-</code></td>
+<td align=left valign=top><a name="28507"></a>8 kHz</td>
+<td align=left valign=top><a name="28509"></a>4 kHz</td>
+<td align=left valign=top><a name="28511"></a>Low bit rate for speech or speech with background music.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28513"></a>6 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="28515"></a><code>X</code></td>
+<td align=left valign=top><a name="28517"></a><code>-</code></td>
+<td align=left valign=top><a name="28519"></a><code>-</code></td>
+<td align=left valign=top><a name="28521"></a><code>-</code></td>
+<td align=left valign=top><a name="28523"></a><code>-</code></td>
+<td align=left valign=top><a name="28525"></a><code>-</code></td>
+<td align=left valign=top><a name="28527"></a>8 kHz</td>
+<td align=left valign=top><a name="28529"></a>3 kHz</td>
+<td align=left valign=top><a name="28531"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28533"></a>8 Kbps Voice</td>
+<td align=left valign=top><a name="28535"></a><code>X</code></td>
+<td align=left valign=top><a name="28537"></a><code>X</code></td>
+<td align=left valign=top><a name="28539"></a><code>X</code></td>
+<td align=left valign=top><a name="28541"></a><code>X</code></td>
+<td align=left valign=top><a name="28543"></a><code>X</code></td>
+<td align=left valign=top><a name="28545"></a><code>X</code></td>
+<td align=left valign=top><a name="28547"></a>8 kHz</td>
+<td align=left valign=top><a name="28549"></a>4 kHz</td>
+<td align=left valign=top><a name="28551"></a>Original voice codec. Superseded by 8.5Kbps Voice.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28554"></a>8 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="28556"></a><code>X</code></td>
+<td align=left valign=top><a name="28558"></a><code>-</code></td>
+<td align=left valign=top><a name="28560"></a><code>-</code></td>
+<td align=left valign=top><a name="28562"></a><code>-</code></td>
+<td align=left valign=top><a name="28564"></a><code>-</code></td>
+<td align=left valign=top><a name="28566"></a><code>-</code></td>
+<td align=left valign=top><a name="28568"></a>8 kHz</td>
+<td align=left valign=top><a name="28570"></a>4 kHz</td>
+<td align=left valign=top><a name="32519"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28574"></a>8 Kbps Music</td>
+<td align=left valign=top><a name="28576"></a><code>X</code></td>
+<td align=left valign=top><a name="28578"></a><code>X</code></td>
+<td align=left valign=top><a name="28580"></a><code>X</code></td>
+<td align=left valign=top><a name="28582"></a><code>-</code></td>
+<td align=left valign=top><a name="28584"></a><code>-</code></td>
+<td align=left valign=top><a name="28586"></a><code>-</code></td>
+<td align=left valign=top><a name="29404"></a>8 kHz</td>
+<td align=left valign=top><a name="28590"></a>4 kHz</td>
+<td align=left valign=top><a name="28592"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28595"></a>8.5 Kbps Voice</td>
+<td align=left valign=top><a name="28597"></a><code>X</code></td>
+<td align=left valign=top><a name="28599"></a><code>X</code></td>
+<td align=left valign=top><a name="28601"></a><code>X</code></td>
+<td align=left valign=top><a name="28603"></a><code>-</code></td>
+<td align=left valign=top><a name="28605"></a><code>-</code></td>
+<td align=left valign=top><a name="28607"></a><code>-</code></td>
+<td align=left valign=top><a name="29430"></a>8 kHz</td>
+<td align=left valign=top><a name="28611"></a>4 kHz</td>
+<td align=left valign=top><a name="28613"></a>High-quality voice codec for voice or voice with background music.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28616"></a>11 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="28618"></a><code>X</code></td>
+<td align=left valign=top><a name="28620"></a><code>-</code></td>
+<td align=left valign=top><a name="28622"></a><code>-</code></td>
+<td align=left valign=top><a name="28624"></a><code>-</code></td>
+<td align=left valign=top><a name="28626"></a><code>-</code></td>
+<td align=left valign=top><a name="28628"></a><code>-</code></td>
+<td align=left valign=top><a name="28630"></a>11.025 kHz</td>
+<td align=left valign=top><a name="28632"></a>5 kHz</td>
+<td align=left valign=top><a name="32521"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="28637"></a>12 Kbps Music</td>
+<td align=left valign=top><a name="28639"></a><code>X</code></td>
+<td align=left valign=top><a name="28641"></a><code>X</code></td>
+<td align=left valign=top><a name="28643"></a><code>X</code></td>
+<td align=left valign=top><a name="28645"></a><code>-</code></td>
+<td align=left valign=top><a name="28647"></a><code>-</code></td>
+<td align=left valign=top><a name="28649"></a><code>-</code></td>
+<td align=left valign=top><a name="28651"></a>8 kHz</td>
+<td align=left valign=top><a name="28653"></a>4 kHz</td>
+<td align=left valign=top><a name="28655"></a>DolbyNet codec.</td>
+</tr>
+</table>
+</p>
+<p><a name="30305"></a>
+
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="29531"></a>
+ RealAudio Medium Bandwidth Codecs </caption>
+<tr>
+<th align=left valign=bottom><a name="29551"></a>RealAudio Codec</th>
+<th align=left valign=bottom><a name="29553"></a>G2</th>
+<th align=left valign=bottom><a name="29555"></a>5</th>
+<th align=left valign=bottom><a name="29557"></a>4</th>
+<th align=left valign=bottom><a name="29559"></a>3</th>
+<th align=left valign=bottom><a name="29561"></a>2</th>
+<th align=left valign=bottom><a name="29563"></a>1</th>
+<th align=left valign=bottom><a name="29566"></a>Rate</th>
+<th align=left valign=bottom><a name="29569"></a>Resp.</th>
+<th align=left valign=bottom><a name="29571"></a>Comments</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="29801"></a>15.2 Kbps Voice</td>
+<td align=left valign=top><a name="29803"></a><code>X</code></td>
+<td align=left valign=top><a name="29805"></a><code>X</code></td>
+<td align=left valign=top><a name="29807"></a><code>X</code></td>
+<td align=left valign=top><a name="29809"></a><code>X</code></td>
+<td align=left valign=top><a name="29811"></a><code>X</code></td>
+<td align=left valign=top><a name="29813"></a><code>-</code></td>
+<td align=left valign=top><a name="29815"></a>8 kHz</td>
+<td align=left valign=top><a name="29817"></a>4 kHz</td>
+<td align=left valign=top><a name="29819"></a>Superseded by 16 Kbps Voice codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29822"></a>16 Kbps Voice-Mono </td>
+<td align=left valign=top><a name="29824"></a><code>X</code></td>
+<td align=left valign=top><a name="29826"></a><code>X</code></td>
+<td align=left valign=top><a name="29828"></a><code>-</code></td>
+<td align=left valign=top><a name="29830"></a><code>-</code></td>
+<td align=left valign=top><a name="29832"></a><code>-</code></td>
+<td align=left valign=top><a name="29834"></a><code>-</code></td>
+<td align=left valign=top><a name="29836"></a>16 kHz</td>
+<td align=left valign=top><a name="29838"></a>7 kHz</td>
+<td align=left valign=top><a name="29840"></a>High-quality wideband for voice or voice with background music.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29842"></a>16 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="29844"></a><code>X</code></td>
+<td align=left valign=top><a name="29846"></a><code>-</code></td>
+<td align=left valign=top><a name="29848"></a><code>-</code></td>
+<td align=left valign=top><a name="29850"></a><code>-</code></td>
+<td align=left valign=top><a name="29852"></a><code>-</code></td>
+<td align=left valign=top><a name="29854"></a><code>-</code></td>
+<td align=left valign=top><a name="29856"></a>22.05 kHz</td>
+<td align=left valign=top><a name="29858"></a>8 kHz</td>
+<td align=left valign=top><a name="32523"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29862"></a>16 Kbps Music-Mono Low</td>
+<td align=left valign=top><a name="29864"></a><code>X</code></td>
+<td align=left valign=top><a name="29866"></a><code>X</code></td>
+<td align=left valign=top><a name="29868"></a><code>X</code></td>
+<td align=left valign=top><a name="29870"></a><code>X</code></td>
+<td align=left valign=top><a name="29872"></a><code>-</code></td>
+<td align=left valign=top><a name="29874"></a><code>-</code></td>
+<td align=left valign=top><a name="29876"></a>8 kHz</td>
+<td align=left valign=top><a name="29878"></a>4 kHz</td>
+<td align=left valign=top><a name="29880"></a>DolbyNet codec. Low response.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29882"></a>16 Kbps Music-Mono Medium</td>
+<td align=left valign=top><a name="29884"></a><code>X</code></td>
+<td align=left valign=top><a name="29886"></a><code>X</code></td>
+<td align=left valign=top><a name="29888"></a><code>X</code></td>
+<td align=left valign=top><a name="29890"></a><code>X</code></td>
+<td align=left valign=top><a name="29892"></a><code>-</code></td>
+<td align=left valign=top><a name="29894"></a><code>-</code></td>
+<td align=left valign=top><a name="29896"></a>11.025 kHz</td>
+<td align=left valign=top><a name="29898"></a>4.7 kHz</td>
+<td align=left valign=top><a name="29900"></a>DolbyNet codec for pop/rock music. Medium response.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29903"></a>16 Kbps Music-Mono High</td>
+<td align=left valign=top><a name="29905"></a><code>X</code></td>
+<td align=left valign=top><a name="29907"></a><code>X</code></td>
+<td align=left valign=top><a name="29909"></a><code>X</code></td>
+<td align=left valign=top><a name="29911"></a><code>X</code></td>
+<td align=left valign=top><a name="29913"></a><code>-</code></td>
+<td align=left valign=top><a name="29915"></a><code>-</code></td>
+<td align=left valign=top><a name="29917"></a>11.025 kHz</td>
+<td align=left valign=top><a name="29919"></a>5.5 kHz</td>
+<td align=left valign=top><a name="29921"></a>DolbyNet codec for classical music. High response.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29923"></a>20 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="29925"></a><code>X</code></td>
+<td align=left valign=top><a name="29927"></a><code>-</code></td>
+<td align=left valign=top><a name="29929"></a><code>-</code></td>
+<td align=left valign=top><a name="29931"></a><code>-</code></td>
+<td align=left valign=top><a name="29933"></a><code>-</code></td>
+<td align=left valign=top><a name="29935"></a><code>-</code></td>
+<td align=left valign=top><a name="29937"></a>22.05 kHz</td>
+<td align=left valign=top><a name="29939"></a>10 kHz</td>
+<td align=left valign=top><a name="32525"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29943"></a>20 Kbps Music-G2 Stereo</td>
+<td align=left valign=top><a name="29945"></a><code>X</code></td>
+<td align=left valign=top><a name="29947"></a><code>-</code></td>
+<td align=left valign=top><a name="29949"></a><code>-</code></td>
+<td align=left valign=top><a name="29951"></a><code>-</code></td>
+<td align=left valign=top><a name="29953"></a><code>-</code></td>
+<td align=left valign=top><a name="29955"></a><code>-</code></td>
+<td align=left valign=top><a name="29957"></a>11.025 kHz</td>
+<td align=left valign=top><a name="29959"></a>5 kHz</td>
+<td align=left valign=top><a name="32527"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="29963"></a>20 Kbps Music-Stereo</td>
+<td align=left valign=top><a name="29965"></a><code>X</code></td>
+<td align=left valign=top><a name="29967"></a><code>X</code></td>
+<td align=left valign=top><a name="29969"></a><code>X</code></td>
+<td align=left valign=top><a name="29971"></a><code>X</code></td>
+<td align=left valign=top><a name="29973"></a><code>-</code></td>
+<td align=left valign=top><a name="29975"></a><code>-</code></td>
+<td align=left valign=top><a name="29977"></a>8 kHz</td>
+<td align=left valign=top><a name="29979"></a>4 kHz</td>
+<td align=left valign=top><a name="29981"></a>DolbyNet codec.</td>
+</tr>
+</table>
+</p>
+<p><a name="31104"></a>
+
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="30330"></a>
+ RealAudio High Bandwidth Codecs </caption>
+<tr>
+<th align=left valign=bottom><a name="30350"></a>RealAudio Codec</th>
+<th align=left valign=bottom><a name="30352"></a>G2</th>
+<th align=left valign=bottom><a name="30354"></a>5</th>
+<th align=left valign=bottom><a name="30356"></a>4</th>
+<th align=left valign=bottom><a name="30358"></a>3</th>
+<th align=left valign=bottom><a name="30360"></a>2</th>
+<th align=left valign=bottom><a name="30362"></a>1</th>
+<th align=left valign=bottom><a name="30365"></a>Rate</th>
+<th align=left valign=bottom><a name="30368"></a>Resp.</th>
+<th align=left valign=bottom><a name="30370"></a>Comments</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="34083"></a>32 Kbps Voice-G2 Mono</td>
+<td align=left valign=top><a name="34085"></a><code>X</code></td>
+<td align=left valign=top><a name="34087"></a><code>-</code></td>
+<td align=left valign=top><a name="34089"></a><code>-</code></td>
+<td align=left valign=top><a name="34091"></a><code>-</code></td>
+<td align=left valign=top><a name="34093"></a><code>-</code></td>
+<td align=left valign=top><a name="34095"></a><code>-</code></td>
+<td align=left valign=top><a name="34097"></a>22.05 kHz</td>
+<td align=left valign=top><a name="34099"></a>11 kHz</td>
+<td align=left valign=top><a name="34101"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30822"></a>32 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="30824"></a><code>X</code></td>
+<td align=left valign=top><a name="30826"></a><code>-</code></td>
+<td align=left valign=top><a name="30828"></a><code>-</code></td>
+<td align=left valign=top><a name="30830"></a><code>-</code></td>
+<td align=left valign=top><a name="30832"></a><code>-</code></td>
+<td align=left valign=top><a name="30834"></a><code>-</code></td>
+<td align=left valign=top><a name="30836"></a>44.1 kHz</td>
+<td align=left valign=top><a name="30838"></a>16 kHz</td>
+<td align=left valign=top><a name="32531"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30842"></a>32 Kbps Music-G2 Stereo</td>
+<td align=left valign=top><a name="30844"></a><code>X</code></td>
+<td align=left valign=top><a name="30846"></a><code>-</code></td>
+<td align=left valign=top><a name="30848"></a><code>-</code></td>
+<td align=left valign=top><a name="30850"></a><code>-</code></td>
+<td align=left valign=top><a name="30852"></a><code>-</code></td>
+<td align=left valign=top><a name="30854"></a><code>-</code></td>
+<td align=left valign=top><a name="30856"></a>44.1 kHz</td>
+<td align=left valign=top><a name="30858"></a>8 kHz</td>
+<td align=left valign=top><a name="32533"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30862"></a>32 Kbps Music-Mono </td>
+<td align=left valign=top><a name="30864"></a><code>X</code></td>
+<td align=left valign=top><a name="30866"></a><code>X</code></td>
+<td align=left valign=top><a name="30868"></a><code>X</code></td>
+<td align=left valign=top><a name="30870"></a><code>-</code></td>
+<td align=left valign=top><a name="30872"></a><code>-</code></td>
+<td align=left valign=top><a name="30874"></a><code>-</code></td>
+<td align=left valign=top><a name="30876"></a>16 kHz</td>
+<td align=left valign=top><a name="30878"></a>8 kHz</td>
+<td align=left valign=top><a name="30880"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30882"></a>32 Kbps Music-Stereo </td>
+<td align=left valign=top><a name="30884"></a><code>X</code></td>
+<td align=left valign=top><a name="30886"></a><code>X</code></td>
+<td align=left valign=top><a name="30888"></a><code>X</code></td>
+<td align=left valign=top><a name="30890"></a><code>-</code></td>
+<td align=left valign=top><a name="30892"></a><code>-</code></td>
+<td align=left valign=top><a name="30894"></a><code>-</code></td>
+<td align=left valign=top><a name="30896"></a>11.025 kHz</td>
+<td align=left valign=top><a name="30898"></a>5.5 kHz</td>
+<td align=left valign=top><a name="30900"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30902"></a>40 Kbps Music-Mono</td>
+<td align=left valign=top><a name="30904"></a><code>X</code></td>
+<td align=left valign=top><a name="30906"></a><code>X</code></td>
+<td align=left valign=top><a name="30908"></a><code>X</code></td>
+<td align=left valign=top><a name="30910"></a><code>X</code></td>
+<td align=left valign=top><a name="30912"></a><code>-</code></td>
+<td align=left valign=top><a name="30914"></a><code>-</code></td>
+<td align=left valign=top><a name="30916"></a>22.05 kHz</td>
+<td align=left valign=top><a name="30918"></a>11 kHz</td>
+<td align=left valign=top><a name="30920"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30922"></a>40 Kbps Music-Stereo</td>
+<td align=left valign=top><a name="30924"></a><code>X</code></td>
+<td align=left valign=top><a name="30926"></a><code>X</code></td>
+<td align=left valign=top><a name="30928"></a><code>X</code></td>
+<td align=left valign=top><a name="30930"></a><code>X</code></td>
+<td align=left valign=top><a name="30932"></a><code>-</code></td>
+<td align=left valign=top><a name="30934"></a><code>-</code></td>
+<td align=left valign=top><a name="30936"></a>16 kHz</td>
+<td align=left valign=top><a name="30938"></a>8 kHz</td>
+<td align=left valign=top><a name="30940"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30942"></a>44 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="30944"></a><code>X</code></td>
+<td align=left valign=top><a name="30946"></a><code>-</code></td>
+<td align=left valign=top><a name="30948"></a><code>-</code></td>
+<td align=left valign=top><a name="30950"></a><code>-</code></td>
+<td align=left valign=top><a name="30952"></a><code>-</code></td>
+<td align=left valign=top><a name="30954"></a><code>-</code></td>
+<td align=left valign=top><a name="30956"></a>44.1 kHz</td>
+<td align=left valign=top><a name="30958"></a>20 kHz</td>
+<td align=left valign=top><a name="32535"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30962"></a>44 Kbps Music-G2 Stereo</td>
+<td align=left valign=top><a name="30964"></a><code>X</code></td>
+<td align=left valign=top><a name="30966"></a><code>-</code></td>
+<td align=left valign=top><a name="30968"></a><code>-</code></td>
+<td align=left valign=top><a name="30970"></a><code>-</code></td>
+<td align=left valign=top><a name="30972"></a><code>-</code></td>
+<td align=left valign=top><a name="30974"></a><code>-</code></td>
+<td align=left valign=top><a name="30976"></a>44.1 kHz</td>
+<td align=left valign=top><a name="30978"></a>11 kHz</td>
+<td align=left valign=top><a name="32537"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="34105"></a>64 Kbps Voice-G2 Mono</td>
+<td align=left valign=top><a name="34107"></a><code>X</code></td>
+<td align=left valign=top><a name="34109"></a><code>-</code></td>
+<td align=left valign=top><a name="34111"></a><code>-</code></td>
+<td align=left valign=top><a name="34113"></a><code>-</code></td>
+<td align=left valign=top><a name="34115"></a><code>-</code></td>
+<td align=left valign=top><a name="34117"></a><code>-</code></td>
+<td align=left valign=top><a name="34119"></a>44.1 kHz</td>
+<td align=left valign=top><a name="34121"></a>20 kHz</td>
+<td align=left valign=top><a name="34123"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="30982"></a>64 Kbps Music-G2 Mono</td>
+<td align=left valign=top><a name="30984"></a><code>X</code></td>
+<td align=left valign=top><a name="30986"></a><code>-</code></td>
+<td align=left valign=top><a name="30988"></a><code>-</code></td>
+<td align=left valign=top><a name="30990"></a><code>-</code></td>
+<td align=left valign=top><a name="30992"></a><code>-</code></td>
+<td align=left valign=top><a name="30994"></a><code>-</code></td>
+<td align=left valign=top><a name="30996"></a>44.1 kHz</td>
+<td align=left valign=top><a name="30998"></a>20 kHz</td>
+<td align=left valign=top><a name="32539"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31002"></a>64 Kbps Music-G2 Stereo</td>
+<td align=left valign=top><a name="31004"></a><code>X</code></td>
+<td align=left valign=top><a name="31006"></a><code>-</code></td>
+<td align=left valign=top><a name="31008"></a><code>-</code></td>
+<td align=left valign=top><a name="31010"></a><code>-</code></td>
+<td align=left valign=top><a name="31012"></a><code>-</code></td>
+<td align=left valign=top><a name="31014"></a><code>-</code></td>
+<td align=left valign=top><a name="31016"></a>44.1 kHz</td>
+<td align=left valign=top><a name="31018"></a>16 kHz</td>
+<td align=left valign=top><a name="32541"></a>Use with SureStream clips.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31022"></a>80 Kbps Music-Mono</td>
+<td align=left valign=top><a name="31024"></a><code>X</code></td>
+<td align=left valign=top><a name="31026"></a><code>X</code></td>
+<td align=left valign=top><a name="31028"></a><code>X</code></td>
+<td align=left valign=top><a name="31030"></a><code>X</code></td>
+<td align=left valign=top><a name="31032"></a><code>-</code></td>
+<td align=left valign=top><a name="31034"></a><code>-</code></td>
+<td align=left valign=top><a name="31036"></a>44.1 kHz</td>
+<td align=left valign=top><a name="31038"></a>20 kHz</td>
+<td align=left valign=top><a name="31040"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31042"></a>80 Kbps Music-Stereo</td>
+<td align=left valign=top><a name="31044"></a><code>X</code></td>
+<td align=left valign=top><a name="31046"></a><code>X</code></td>
+<td align=left valign=top><a name="31048"></a><code>X</code></td>
+<td align=left valign=top><a name="31050"></a><code>X</code></td>
+<td align=left valign=top><a name="31052"></a><code>-</code></td>
+<td align=left valign=top><a name="31054"></a><code>-</code></td>
+<td align=left valign=top><a name="31056"></a>32 kHz</td>
+<td align=left valign=top><a name="31058"></a>16 kHz</td>
+<td align=left valign=top><a name="31060"></a>DolbyNet codec.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="31062"></a>96 Kbps Music-G2 Stereo</td>
+<td align=left valign=top><a name="31064"></a><code>X</code></td>
+<td align=left valign=top><a name="31066"></a><code>-</code></td>
+<td align=left valign=top><a name="31068"></a><code>-</code></td>
+<td align=left valign=top><a name="31070"></a><code>-</code></td>
+<td align=left valign=top><a name="31072"></a><code>-</code></td>
+<td align=left valign=top><a name="31074"></a><code>-</code></td>
+<td align=left valign=top><a name="31076"></a>44.1 kHz</td>
+<td align=left valign=top><a name="31078"></a>24 kHz</td>
+<td align=left valign=top><a name="32543"></a>Use with SureStream clips.</td>
+</tr>
+</table>
+</p>
+<h2><a name="27893"></a> Encoding RealAudio with RealSystem Tools</h2>
+<p><a name="22336"></a>When you encode RealAudio clips with a RealSystem G2 encoding tool, you simply set parameters such as audio type (voice or music) and compatibility with earlier versions of RealPlayer. You can also specify multiple bandwidth targets for the clip, such as both 28.8 Kbps modems and ISDN connections. The tool then chooses the best codec or codecs to use. The following sections give tips on using RealSystem tools.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="22337"></a>
+See the tool's manual or online help for step-by-step 
+instructions on encoding RealAudio. RealSystem 
+encoding tools are available for purchase or free 
+download at <a href="http://www.real.com/products/tools/" target="_top">http://www.real.com/products/tools/</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="36056"></a>
+Not all RealSystem tools may include the features 
+described here. Check the product description or 
+documentation for information on supported features.
+</td></tr>
+</table></p>
+<h4><a name="31746"></a> Retain Source Files</h4>
+<p><a name="31747"></a>Always keep a copy of the original audio source file. To edit the RealAudio clip or encode it with a different codec, modify the source file as necessary, then encode the file again as RealAudio. You cannot convert RealAudio clips to other audio formats.</p>
+<h4><a name="23575"></a> Using RealAudio in a MultiClip Presentation</h4>
+<p><a name="23585"></a>When you encode a RealAudio clip, consider whether it will play in parallel with another clip such as a RealPix. If you target 28.8 Kbps modems when encoding, for example, the tool may select a 20 Kbps codec, leaving no bandwidth for the second clip. Make sure you specify that the RealAudio clip is just one part of the presentation. The tool then lets you choose a lower bandwidth codec, such as 8 or 12 Kbps.</p>
+<h4><a name="18595"></a> Multiple Encoding in a Single SureStream Clip</h4>
+<p><a name="18596"></a>You can create a single RealAudio clip encoded for up to six bandwidths with SureStream technology introduced in RealSystem G2. You can also specify backwards compatibility with earlier versions of RealPlayer. The encoding tool then encodes the clip for your selected bandwidths with the new RealAudio G2 codecs. It also includes in the clip an encoding that uses an older codec and targets the lowest bandwidth choice.</p>
+<p><a name="17802"></a>For example, you can encode a single clip at 8, 16, and 32 Kbps using RealAudio G2 codecs. In the RealSystem encoding tool, you choose backwards compatibility to create an additional 8 Kbps stream with an older codec. Depending on its connection speed, RealPlayer G2 receives the 8, 16, or 32 Kbps RealAudio G2 stream. Earlier versions of RealPlayer receive the 8 Kbps stream encoded with the older codec regardless of their connection speeds.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="31329"></a>
+To support multiple bandwidths with codecs other than 
+RealAudio G2 codecs, you must encode a separate clip 
+with each codec. You then use SMIL to specify 
+bandwidth choices. For more on bandwidth selection 
+through SMIL, see <a href="smil.htm#10260">"Setting Bandwidth Choices"</a>.
+</td></tr>
+</table></p>
+<h4><a name="32987"></a> Batch Encoding</h4>
+<p><a name="32988"></a>Your encoding tool may have a batch mode that lets you encode several clips at once. The batch encoder may run through a command-line interface or a graphical user interface.</p>
+<h1><a name="7953"></a> Streaming Other Audio Formats</h1>
+<p><a name="32591"></a>RealSystem can stream several audio formats in addition to RealAudio. The following table lists the streamable formats and shows whether RealPlayer G2 for different operating systems (Windows 95 or NT, Macintosh, and UNIX) can play the audio. RealSystem typically does not stream audio formats that have been compressed with a codec. Where codec compression is supported, codecs are not included with RealPlayer G2 and must reside on the playback machine already.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="27093"></a>
+ Streamable Audio Formats </caption>
+<tr>
+<th align=left valign=bottom><a name="27103"></a>Format</th>
+<th align=left valign=bottom><a name="27105"></a>Codec compression</th>
+<th align=left valign=bottom><a name="27107"></a>Win32</th>
+<th align=left valign=bottom><a name="27109"></a>Mac</th>
+<th align=left valign=bottom><a name="27111"></a>UNIX</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="27123"></a>AIFF (<kbd>.aif</kbd>)</td>
+<td align=left valign=top><a name="27125"></a>uncompressed</td>
+<td align=left valign=top><a name="27127"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27129"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27131"></a><strong>yes</strong></td>
+</tr>
+<tr>
+<td align=left valign=top><a name="32597"></a>AU (<kbd>.au</kbd>)</td>
+<td align=left valign=top><a name="27146"></a>uncompressed</td>
+<td align=left valign=top><a name="27148"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27150"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27152"></a><strong>yes</strong></td>
+</tr>
+<tr>
+<td colspan=1 rowspan=2 align=left valign=top><a name="27154"></a>WAV (<kbd>.wav</kbd>)</td>
+<td align=left valign=top><a name="27156"></a>compressed</td>
+<td align=left valign=top><a name="27158"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27160"></a>no</td>
+<td align=left valign=top><a name="27162"></a>no</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="27166"></a>uncompressed</td>
+<td align=left valign=top><a name="27168"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27170"></a><strong>yes</strong></td>
+<td align=left valign=top><a name="27172"></a><strong>yes</strong></td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="26951"></a>
+RealSystem plug-ins may exist for additional audio 
+formats. Check <a href="http://www.real.com/devzone" target="_top">http://www.real.com/devzone</a> for 
+information about other audio formats you can stream.
+</td></tr>
+</table></p>
+<h4><a name="32568"></a> Tips for Streaming other Audio Formats</h4>
+<p><a name="27065"></a>Observe the following points when streaming audio formats other than RealAudio:</p>
+<ul>
+<p><li><a name="36263"></a>Test whether a codec-compressed audio clip plays in RealPlayer by copying the clip to each platform and opening it locally with RealPlayer.
+<p><li><a name="26796"></a>A-law compression is not supported for the AU format. It is supported for WAV, however.
+<p><li><a name="27078"></a>Most uncompressed WAV files work on Macintosh and Unix. Some may not, however. Before streaming an uncompressed WAV file, test playback locally by opening the file with RealPlayer G2 on these platforms.
+<p><li><a name="36274"></a>The audio formats listed above may not work for low bandwidth connections. Test bandwidth consumption by opening the file in RealPlayer G2 and watching the status panel, which will list the streaming bit rate. If the rate is too high, convert the file to RealAudio.
+</ul>
+<p><a name="27058"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:30.</font>
+<center><a href="bandwdth.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="video.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

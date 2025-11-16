@@ -1,0 +1,428 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="video.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="smil.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="22736"></a>
+ Chapter 6: 	Producing Animation
+
+</h1>
+<p><a name="19883"></a>RealFlash makes it easy to put animation on the World Wide Web. Combining the power of Macromedia Flash with the clarity of RealNetworks' RealAudio, RealFlash produces visually arresting animations with superb sound. This chapter explains how to create RealFlash content for different bandwidths. It also provides tips for optimizing RealFlash clips.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="24546"></a>
+For exciting examples of streaming animation, visit 
+<a href="http://www.real.com/showcase/animation/" target="_top">http://www.real.com/showcase/animation/</a>. For 
+instructions about using Macromedia Flash, refer to 
+Macromedia documentation. Find more information at 
+<a href="http://www.macromedia.com/software/flash/" target="_top">http://www.macromedia.com/software/flash/</a>.
+</td></tr>
+</table></p>
+<h1><a name="9795"></a> Preparing a RealFlash Clip</h1>
+<p><a name="24479"></a>RealFlash is well-suited for linear presentations that have continuous audio and images synchronized along a timeline, including:</p>
+<ul>
+<p><li><a name="24480"></a>full-length, television-like cartoons for entertainment and education,
+<p><li><a name="24481"></a>Internet or intranet demonstrations, training courses, and product overviews,
+<p><li><a name="24482"></a>product advertisements,
+<p><li><a name="24483"></a>movie trailers,
+<p><li><a name="24484"></a>and Karaoke.
+</ul>
+<p><a name="25095"></a><strong></strong>A RealFlash clip consists of two separate files streamed in parallel: a Shockwave Flash animation file and a RealAudio soundtrack. To create these components, you develop animation in Macromedia Flash 2.0 or 3.0 and synchronize it with an imported sound file, such as a WAV or AIFF file. You then export a Shockwave Flash file that contains the animation, and generate a RealAudio file from the soundtrack. RealServer streams the clip to RealPlayer, ensuring that animation and sound stay synchronized.</p>
+<h5><a name="8910"></a>
+ RealFlash Clips Consist of Shockwave Flash and RealAudio</h5>
+<p><a name="9744"></a>
+<img src="../graphics/streams.gif"></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="26283"></a>
+<strong></strong>Macromedia Flash provides different methods for 
+incorporating sound into an animation. For RealFlash 
+clips, use the stream synchronization setting.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="26780"></a>
+RealPlayer G2 supports Macromedia Flash 3.0 features 
+with the exception of transparency.
+</td></tr>
+</table></p>
+<h2><a name="25283"></a> Choosing a Target Bandwidth</h2>
+<p><a name="17074"></a>When you begin to develop your RealFlash clip, target an audience connection speed and create content with that bandwidth in mind. This helps ensure that both the Shockwave Flash animation and the RealAudio clip stream smoothly. If your target bit rate is 28.8 Kbps, for example, you have approximately 20 Kbps of bandwidth to divide between the RealAudio soundtrack stream and the Shockwave Flash animation stream.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="17121"></a>
+For an overview of bandwidth considerations, see 
+<a href="bandwdth.htm#1001523">Chapter 3</a> .
+</td></tr>
+</table></p>
+<p><a name="9718"></a>The good news is that designing Realflash content for a low bandwidth does not diminish the quality of the animation. RealFlash transmits vector information that the viewer's machine then renders. So unlike bitmap animations, Flash animation depends more on the machine's CPU and graphics capabilities than the amount of data downloaded. A well-designed 28.8 Kbps RealFlash animation can have the same visual impact as an animation requiring a significantly higher connection speed.</p>
+<h3><a name="9947"></a> Dividing Bandwidth Between Shockwave Flash and RealAudio</h3>
+<p><a name="9948"></a>Once you have determined the combined bit rate for Shockwave Flash and RealAudio, you need to divide the rate between the Shockwave Flash and RealAudio components. Your animation usually determines this division because it typically consumes more bandwidth. Although you may not have a final bandwidth figure until you create, export, and tune your animation, you should start with a target estimate. The table below lists possible RealAudio and Shockwave Flash bit rate combinations for a 28.8 Kbps connection (20 Kbps usable).
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="9954"></a>
+ Recommended Bandwidth Divisions between RealAudio and Flash at 20Kbps </caption>
+<tr>
+<th align=left valign=bottom><a name="9960"></a>Presentation Type</th>
+<th align=left valign=bottom><a name="9962"></a>RealAudio</th>
+<th align=left valign=bottom><a name="9964"></a>Shockwave Flash</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="9966"></a>Emphasis on animation with good quality spoken soundtrack for RealPlayer G2 and 5.0</td>
+<td align=left valign=top><a name="9968"></a><a href="audio.htm#28472">5 Kbps Voice</a></td>
+<td align=left valign=top><a name="9970"></a>15 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="9972"></a>Emphasis on animation with better quality spoken soundtrack for RealPlayer G2 and 5.0</td>
+<td align=left valign=top><a name="9974"></a><a href="audio.htm#28493">6.5 Kbps Voice</a></td>
+<td align=left valign=top><a name="9976"></a>13.5 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="9978"></a>Emphasis on animation with high quality spoken soundtrack for RealPlayer G2 and 5.0</td>
+<td align=left valign=top><a name="9980"></a><a href="audio.htm#28595">8.5 Kbps Voice</a></td>
+<td align=left valign=top><a name="9982"></a>11.5 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21567"></a>Emphasis on animation with good quality music soundtrack for RealPlayer G2 and 5.0</td>
+<td align=left valign=top><a name="21571"></a><a href="audio.htm#28574">8 Kbps Music</a></td>
+<td align=left valign=top><a name="21574"></a>12 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="21445"></a>Emphasis on animation with good quality music soundtrack for RealPlayer G2 only</td>
+<td align=left valign=top><a name="21449"></a><a href="audio.htm#28513">6 Kbps Music-G2 Mono</a></td>
+<td align=left valign=top><a name="21452"></a>14 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="9984"></a>Emphasis on animation with higher quality music soundtrack for RealPlayer G2 only</td>
+<td align=left valign=top><a name="9986"></a><a href="audio.htm#28554">8 Kbps Music-G2 Mono</a></td>
+<td align=left valign=top><a name="9988"></a>12 Kbps</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="9990"></a>Emphasis on high quality music soundtrack with animation for RealPlayer G2 only</td>
+<td align=left valign=top><a name="9992"></a><a href="audio.htm#28616">11 Kbps Music-G2 Mono</a></td>
+<td align=left valign=top><a name="9994"></a>9 Kbps</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="9634"></a>
+See <a href="audio.htm#12311">"Choosing RealAudio Codecs"</a> for a full list of 
+codecs.
+</td></tr>
+</table></p>
+<h4><a name="25550"></a> Tips for Choosing RealAudio Codecs</h4>
+<p><a name="25668"></a>Here are some tips for selecting a RealAudio codec:</p>
+<ul>
+<p><li><a name="27820"></a>Because RealAudio bandwidth consumption is flat, a soundtrack using an 8.5 Kbps codec, for example, will consistently consume 8.5 Kbps of bandwidth. The remainder of the combined bandwidth is available for Shockwave Flash.
+<p><li><a name="27710"></a>If sound quality takes precedence, start by selecting the RealAudio codec that supplies high-quality audio while leaving enough bandwidth for acceptable animation.
+<p><li><a name="25551"></a>When animation is complex, use low bit rate RealAudio codecs targeted for voice. This increases the bandwidth available for complex animation.
+<p><li><a name="27816"></a>The lowest bit rate for a RealSystem G2 music codec is 6 Kbps. The lowest bit rate for a music codec playable by RealPlayer G2 and RealPlayer 5.0 is 8 Kbps.
+<p><li><a name="25923"></a>With SureStream technology and the RealSystem G2 codecs, you can encode a single RealAudio file for multiple bandwidths. RealPlayer G2 then selects the bandwidth encoding appropriate to its connection speed.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="27823"></a>
+For the basics of SureStream, read <a href="bandwdth.htm#997522">"Using SureStream 
+Clips for Multiple Bandwidths"</a>.
+</td></tr>
+</table></p>
+</ul>
+<h2><a name="26654"></a> Adding RealPlayer 5.0 Compatibility</h2>
+<p><a name="27489"></a>RealPlayer G2 and RealPlayer 5.0 can both play RealFlash presentations, but RealPlayer 5.0 does not support all the options available with RealPlayer G2:</p>
+<ul>
+<p><li><a name="27497"></a>RealPlayer G2 supports Macromedia Flash 3.0 features with the exception of transparency. RealFlash for RealPlayer 5.0 supports only Flash 2.0 features, however. 
+<p><li><a name="27498"></a>RealPlayer 5.0 cannot read SMIL files or play a presentation that includes RealPix or RealText.
+<p><li><a name="27499"></a>RealPlayer 5.0 cannot play soundtracks encoded with RealAudio G2 codecs.
+</ul>
+<p><a name="27487"></a>To support RealPlayer 5.0 along with RealPlayer G2, avoid using Flash 3.0 features and use any of the following methods when encoding the soundtrack as RealAudio:</p>
+<ol>
+<p><li><a name="26369"> </a>Create a RealAudio SureStream clip that uses RealAudio G2 codecs for one or more bandwidths. When encoding, choose the backwards-compatibility option to create an encoding for RealPlayer 5.0.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="27584"></a>
+For more on SureStream and RealPlayer 5.0 
+compatibility, see <a href="audio.htm#18595">"Multiple Encoding in a Single 
+SureStream Clip"</a>.
+</td></tr>
+</table></p>
+<p><li><a name="26462"> </a>Create two separate encodings of the soundtrack: one that uses RealSystem G2 codecs and one that uses a codec playable by RealPlayer 5.0.
+<p><li><a name="26475"> </a>Create one soundtrack using a RealAudio 5.0 codec. This option does not deliver the highest-quality sound to RealPlayer G2 users, however.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="26399"></a>
+For information about creating Web page links to these 
+types of presentations, see <a href="animate.htm#26550">"Supporting RealPlayer 5.0"</a>.
+</td></tr>
+</table></p>
+</ol>
+<h1><a name="8695"></a> Maximizing Flash Efficiency</h1>
+<p><a name="8696"></a>Unlike RealAudio, Shockwave Flash does not consume bandwidth at an even rate. This is the nature of vector-based animation. At the start of a scene, for example, groups and symbols for the scene are streamed. This requires a lot of data transfer. After that, only "lightweight" instructions for manipulating groups and symbols are needed. This process results in bandwidth consumption like that shown in the following figure.</p>
+<h5><a name="8697"></a>
+ Shockwave Flash Sample Bit Rate Requirement</h5>
+<p><a name="8701"></a>
+<img src="../graphics/flshrate.gif"></p>
+<p><a name="8702"></a>This graph shows a sample Shockwave Flash clip that targets a bandwidth of 12 Kbps. At five and ten seconds into the clip, the bandwidth requirement spikes because the clip requires more than 12 Kb of data. These spikes typically correspond to scene changes or the introduction of new objects in a key frame. RealPlayer responds by buffering the data as it comes in, potentially delaying playback until all necessary data has arrived.</p>
+<p><a name="8703"></a>As you create your Macromedia Flash animation, you need to minimize the spikes that may cause RealPlayer to halt the presentation while it buffers data. There are two ways you can do this:</p>
+<ol>
+<p><li><a name="8704"> </a>As you create your animation, minimize the overall bit rate requirement of the Shockwave Flash stream by keeping the ratio of file size to clip length as low as possible. This doesn't eliminate spikes, but it helps keep the spikes smaller. The guidelines below explain how to do this.
+<p><li><a name="21266"> </a>After you export your animation file, use the Shockwave Flash tuning utility to change the streaming file's bandwidth consumption. You can also use the RealFlash Bit Rate Calculation Spreadsheet to view frame-by-frame bandwidth needs.
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="21267"></a>
+<a href="animate.htm#10582">"Tuning Shockwave Flash"</a>.
+</td></tr>
+</table></p>
+</ol>
+<h2><a name="21269"></a> Keeping Shockwave Flash Files Small</h2>
+<p><a name="8713"></a>The following are recommendations for keeping Shockwave Flash file size down as you develop the animation:</p>
+<ul>
+<p><li><a name="8714"></a>Reduce key frames.
+<p><a name="8715"></a>Excessive key frame changes increase bandwidth consumption. Minimize the number of key frames and simplify the objects within key frames.</p>
+<p><li><a name="8716"></a>Use symbols instead of groups.
+<p><a name="8717"></a>Flash stores a symbol once and can refer to it repeatedly, each reference adding little to the file size. However, it stores a group definition each time the group is used. Using a group three times, for example, stores the same data in the file three times. Using symbols instead of groups can therefore reduce file size significantly.</p>
+<p><li><a name="22290"></a>Minimize morphing.
+<p><a name="22294"></a>The Macromedia Flash 3.0 morphing feature creates additional key frames and hence increases the file size and streaming bit rate.</p>
+<p><li><a name="8718"></a>Simplify elements.
+<p><a name="20237"></a>Simplify the elements drawn in or imported into Macromedia Flash. Under <strong>Modify&gt;Curves</strong>, use the <strong>Smooth</strong> and <strong>Straighten</strong> commands on lines and curves to strip away unneeded point and path information. This reduces the data stored for each element. Use <strong>Optimize</strong> to optimize the data reduction while maintaining acceptable screen appearance. Because screen resolution is lower than print resolution, you can eliminate minute details without compromising appearance.</p>
+<p><li><a name="20238"></a>Adjust JPEG quality when exporting.
+<p><a name="20239"></a>When exporting <kbd>.fla</kbd> files to <kbd>.swf</kbd> files, set the JPEG quality to no greater than 50, possibly as low as 30.</p>
+</ul>
+<h2><a name="8722"></a> Minimizing CPU Usage</h2>
+<p><a name="8723"></a>Bandwidth is not the only consideration when optimizing files. Macromedia Flash's vector-based animation differs from raster or bitmap animation in that the user's machine must perform complex calculations to display the animation. Operations that require many calculations on top of the normal load may adversely affect playback. The following are ways to reduce RealFlash CPU requirements:</p>
+<ul>
+<p><li><a name="8724"></a>Set a frame rate of seven (7) fps for 28.8 Kbps connections. This provides acceptably smooth motion without overburdening most processors.
+<p><li><a name="8726"></a>Optimize tweening.
+<p><a name="8727"></a>Tweening interpolates the motion between key frames. Interpolating multiple objects and color effects at the same time will adversely affect playback. Other actions related to tweening that slow down playback are changing large areas of the screen between frames and using gradient fills.</p>
+<p><li><a name="8728"></a>Decrease the number and size of objects simultaneously moving on screen.
+<p><a name="8729"></a>RealPlayer must redraw areas where action occurs, thus consuming CPU cycles. To minimize this, localize tweening to a small portion of the screen so that the entire screen does not have to be redrawn. File size remains the same, but only one part of the screen is redrawn.</p>
+</ul>
+<h1><a name="8730"></a> Using Interactive Commands</h1>
+<p><a name="8731"></a>Although RealFlash is best suited for linear presentations, you can add interactivity through the Shockwave commands listed below. RealFlash maps these commands to RealPlayer functions. At the end of your RealFlash clip, for example, you might have a graphic that says, "Click here to visit our home page." The Shockwave <code>Get URL</code> command used with this graphic corresponds to an internal RealPlayer command that displays the URL in the browser window.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="8737"></a>
+ Shockwave and RealPlayer Interactive Commands </caption>
+<tr>
+<th align=left valign=bottom><a name="8743"></a>Shockwave<br>Command</th>
+<th align=left valign=bottom><a name="8745"></a>RealPlayer<br>Mapping</th>
+<th align=left valign=bottom><a name="8747"></a>Action</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="8749"></a><code>Play</code></td>
+<td align=left valign=top><a name="8751"></a><code>Play</code></td>
+<td align=left valign=top><a name="8753"></a>Playback begins or resumes.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="8755"></a><code>Stop</code></td>
+<td align=left valign=top><a name="8757"></a><code>Pause</code></td>
+<td align=left valign=top><a name="8759"></a>Clip pauses until action is performed or the Play button is pressed.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="8761"></a><code>Goto</code></td>
+<td align=left valign=top><a name="8763"></a><code>Seek and Pause</code></td>
+<td align=left valign=top><a name="8765"></a>RealPlayer seeks to the designated frame, buffers the clip preroll, and pauses. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="20007"></a><code>Goto and Play</code></td>
+<td align=left valign=top><a name="20009"></a><code>Seek and Play</code></td>
+<td align=left valign=top><a name="20153"></a>RealPlayer seeks to the designated frame, buffers the clip preroll, and begins playback. </td>
+</tr>
+<tr>
+<td align=left valign=top><a name="8767"></a><code>Get URL</code></td>
+<td align=left valign=top><a name="8769"></a>(internal)</td>
+<td align=left valign=top><a name="8771"></a>Displays URL in browser window. Because the user has to return to RealFlash manually, use this only at the end of a clip.</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="20135"></a>
+Because seeking requires buffering, do not use <code>Goto</code> 
+commands to advance from one scene to the next. When 
+you export your animation to Shockwave Flash, scenes 
+are concatenated so that the animation flows from one 
+scene to the next.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="26855"></a>
+A SMIL file can define clickable hyperlinks for the 
+presentation. See <a href="smil.htm#39148">"Linking to Other Media"</a>.
+</td></tr>
+</table></p>
+<h1><a name="10040"></a> Creating a RealFlash Clip</h1>
+<p><a name="10041"></a>The following sections explain the steps for creating a RealFlash clip once you finish developing your animation in Macromedia Flash. Refer to the manuals for the tools you use for step-by-step instructions on carrying out each task.</p>
+<h2><a name="10053"></a> Exporting Shockwave Flash</h2>
+<p><a name="10054"></a>You export your animation to a Shockwave Flash (<kbd>.swf</kbd>) file for use with RealSystem. This creates a compressed version of the animation suitable for streaming. When you export the Shockwave Flash file, you disable the audio stream. You later export the soundtrack separately and convert it to RealAudio. Here are tips on exporting Shockwave Flash:</p>
+<ul>
+<p><li><a name="10058"></a>Set JPEG quality between 30 and 50. This helps to keep the file size down.
+<p><li><a name="10059"></a>Click the <strong>Generate Size Report</strong> checkbox. This creates a movie report you can use with the tuning spreadsheet. RealNetworks recommends that you use the movie report and spreadsheet to evaluate your RealFlash clip for bandwidth efficiency.
+</ul>
+<p><a name="10063"></a>The ratio of Shockwave file size to clip length is a good indication of the overall bandwidth requirement. Convert the file size to Kilobits and divide by the number of seconds in the animation to get the average bandwidth. This number should be below your allowable bit rate for Shockwave Flash. For example, to find the average bandwidth of a 325 Kilobyte file that plays for 3 minutes, multiply 325 by 8 to get 2624 Kilobits. Then divide by 180 seconds to get an average bandwidth of 14.6 Kbps.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="10069"></a>
+ Converting File Size to Kilobits </caption>
+<tr>
+<th align=left valign=bottom><a name="10073"></a>Using This Measurement</th>
+<th align=left valign=bottom><a name="10075"></a>Do This to Get Kilobits</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="10077"></a>Megabytes</td>
+<td align=left valign=top><a name="10079"></a>Multiply by 8192</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="10081"></a>Kilobytes</td>
+<td align=left valign=top><a name="10083"></a>Multiply by 8</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="10085"></a>bytes</td>
+<td align=left valign=top><a name="10087"></a>Divide by 128</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="10089"></a>bits</td>
+<td align=left valign=top><a name="10091"></a>Divide by 1024</td>
+</tr>
+</table>
+</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/tip.gif"></th>
+<th align=left class=tip>Tip</th>
+<tr><td class=note>
+<a name="10099"></a>
+You can also find the average bit rate of a Shockwave 
+Flash file by dropping it onto RealPlayer G2 and 
+observing the RealPlayer status bar.
+</td></tr>
+</table></p>
+<p><a name="10100"></a>Keep in mind that even a clip with an acceptable average bandwidth may stall during playback because it contains bandwidth spikes. The spreadsheet indicates where spikes occur.</p>
+<h2><a name="10582"></a> Tuning Shockwave Flash</h2>
+<p><a name="24676"></a>After you generate a Shockwave Flash file and create the movie report, you must use the RealFlash Bandwidth Tuner to view bandwidth statistics and adjust the file's streaming bit rate. You can also use the RealFlash Bit Rate Calculation Spreadsheet to examine the file's bandwidth consumption frame-by-frame. You will need Microsoft Word and Microsoft Excel to use the spreadsheet. See the tuner online help for instructions on using the tuner and spreadsheet.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="21296"></a>
+These tools are included in the <kbd>utils</kbd> directory of this 
+manual.
+</td></tr>
+</table></p>
+<h2><a name="10107"></a> Exporting Audio</h2>
+<p><a name="10108"></a>After you have created and tuned your Shockwave Flash file, export the movie soundtrack as a Windows AVI or Macintosh QuickTime file, setting 32x21 as the height and width attributes to minimize disk space use. Next, encode the AVI or QuickTime soundtrack in the RealAudio format with a RealNetworks encoding tool, using the file extension <kbd>.rm</kbd>.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="25188"></a>
+For more on audio production, see <a href="audio.htm#34361">Chapter 4</a>. For codec 
+considerations in RealFlash, see <a href="animate.htm#9947">"Dividing Bandwidth 
+Between Shockwave Flash and RealAudio"</a>.
+</td></tr>
+</table></p>
+<h2><a name="10322"></a> Delivering the RealFlash Presentation</h2>
+<p><a name="10653"></a>When your Shockwave Flash and RealAudio files are complete, you create a SMIL file that lists the URLs for these files. <a href="smil.htm#100023">Chapter 7</a> explains how to create the SMIL file. In its simplest form, the SMIL file specifies that the two files play in parallel:</p>
+<pre><a name="10712"></a>
+&lt;smil&gt;<br>  &lt;body&gt;<br>    &lt;par&gt;<br>      &lt;audio src="rtsp://realserver.<I>company</I>.com:554/media/sound.rm"/&gt;<br>      &lt;animation src="rtsp://realserver.<I>company</I>.com:554/media/cartoon.swf"/&gt;<br>    &lt;/par&gt;<br>  &lt;/body&gt;<br>&lt;/smil&gt;
+</pre>
+<p><a name="27288"></a>You can also use the SMIL file to define clickable hypertext links, create timing offsets between the clips, or add presentation information such as title, author, and copyright. Next, move the Shockwave Flash, RealAudio, and SMIL files to RealServer and link your Web page to the SMIL file.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="27461"></a>
+For instructions on linking Web pages to clips on 
+RealServer, see <a href="server.htm#25299">"Streaming Clips from RealServer G2"</a>.
+</td></tr>
+</table></p>
+<h3><a name="26550"></a> Supporting RealPlayer 5.0</h3>
+<p><a name="26551"></a>As described in <a href="animate.htm#26654">"Adding RealPlayer 5.0 Compatibility"</a>, you can support RealPlayer 5.0 in a number of ways. The simplest means of delivering a 5.0-compatible presentation through a single URL is to create a SMIL file for RealPlayer G2 as described above. Then create a Ram file (extension <kbd>.ram</kbd>) that looks like this:</p>
+<pre><a name="26560"></a>
+rtsp://realserver.company.com:554/media/animation.smil<br>--stop--<br>pnm://realserver.company.com:7070/media/cartoon.swf+sound.rm
+</pre>
+<p><a name="27429"></a>You next link your Web page to this Ram file with a standard HTTP hypertext link. Users with RealServer G2 receive the SMIL-based presentation. Those with RealPlayer 5.0 receive the presentation defined below the <code>--stop--</code> marker. Note that this second link uses the older PNA protocol and associates the animation and soundtrack through the "<code>+</code>" operator.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="26568"></a>
+See <a href="server.htm#14171">"Creating a Ram File Manually"</a>. To embed the 
+presentation in a Web page, see <a href="control.htm#65923">Chapter 8</a>.
+</td></tr>
+</table></p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/note.gif"></th>
+<th align=left class=note>Note</th>
+<tr><td class=note>
+<a name="27452"></a>
+In the examples above, the same soundtrack (<kbd>sound.rm</kbd>) 
+is used for both RealPlayer 5.0 and RealPlayer G2. This 
+works if the soundtrack uses a RealAudio 5.0 codec or is 
+a RealAudio G2 SureStream clip with the 5.0 backwards-
+compatibility option.
+</td></tr>
+</table></p>
+<p><a name="25731"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:36:32.</font>
+<center><a href="video.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="smil.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+<head>
+<title></title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="texttag.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="livetext.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1002511"></a>
+ Chapter 4: 	Examples
+
+</h1>
+<p><a name="997716"></a>This following examples show how to create and tag the supported RealText window types.</p>
+<h1><a name="997718"></a> Generic Window</h1>
+<p><a name="997719"></a>The following example illustrates a RealText source document and resulting display for a generic RealText window. This is the RealText source file (extension <kbd>.rt</kbd>): </p>
+<pre><a name="997720"></a>
+&lt;window duration="30" bgcolor="yellow"&gt; <br>Mary had a little lamb, <br>&lt;br/&gt;&lt;time begin="3"/&gt;little lamb, <br>&lt;br/&gt;&lt;time begin="6"/&gt;little lamb. <br>&lt;br/&gt;&lt;time begin="9"/&gt;Mary had a little lamb, <br>&lt;br/&gt;&lt;time begin="12"/&gt;whose fleece was white as snow. <br>&lt;br/&gt;&lt;time begin="15"/&gt;&lt;clear/&gt;Everywhere that Mary went, <br>&lt;br/&gt;&lt;time begin="18"/&gt;Mary went, <br>&lt;br/&gt;&lt;time begin="21"/&gt;Mary went, <br>&lt;br/&gt;&lt;time begin="24"/&gt;Everywhere that Mary went, <br>&lt;br/&gt;&lt;time begin="27"/&gt;That lamb was sure to go. <br>&lt;/window&gt;
+</pre>
+<p><a name="999822"></a>When RealPlayer processes this file, it displays only the first line of the text from zero to three seconds into the stream:</p>
+<p><a name="999995"></a>
+<img src="../graphics/mary1.gif"><br></p>
+<p><a name="999991"></a>Every three seconds after the first line displays, a new line appears as specified by <code>&lt;time  begin="</code><code><I>seconds</I></code><code>"/&gt;</code>. At 15 seconds, <code>&lt;clear/&gt;</code> clears the displayed text and resets the text "cursor" to  the top, left-hand corner of the window. When the stream finishes, all lines of text following the last <code>&lt;clear/&gt;</code> tag appear in the window:</p>
+<p><a name="1000038"></a>
+<img src="../graphics/mary2.gif"><br></p>
+<p><a name="999869"></a>If you have RealPlayer G2 installed, you can <a href="../media/generic.rt">click here</a> to display this example. Note the following about this example: </p>
+<ul>
+<p><li><a name="997732"></a>Because it was not specified in the <code>&lt;window&gt;</code> tag, word wrapping defaults to true. However, word wrapping is not necessary because <code>&lt;br/&gt;</code> tags force line breaks. 
+<p><li><a name="997733"></a><code>&lt;time/&gt;</code> tags need not appear after a <code>&lt;br/&gt;</code> tag. They can appear anywhere in the text. 
+<p><li><a name="997734"></a>The example could have used <code>&lt;time end="</code><code><I>time</I></code><code>"/&gt;</code> tags to make individual lines of text disappear before the <code>&lt;clear/&gt;</code> tag cleared all the lines. 
+</ul>
+<h1><a name="997737"></a> TickerTape Window</h1>
+<p><a name="997738"></a>The following example shows the RealText source document and resulting display for a TickerTape window. This is the RealText (<kbd>.rt</kbd>) source file:</p>
+<pre><a name="997739"></a>
+&lt;window type="tickertape" duration="1:00" width="350" loop="true" underline_hyperlinks="false" link="white"&gt; <br>&lt;br/&gt;&lt;b&gt;<br>&lt;tu&gt;&lt;a href="http://www.dowjones.com/"&gt;DJIA&lt;/a&gt;&lt;/tu&gt;<br>&lt;tl&gt;7168.35 +36.52 &lt;/tl&gt;<br>&lt;tu&gt;NIKEI 225 Index&lt;/tu&gt;<br>&lt;tl&gt;20603.71 +203.11&lt;/tl&gt;<br>&lt;/b&gt; <br>&lt;/window&gt;
+</pre>
+<p><a name="997740"></a>This source file produces the following window in RealPlayer.</p>
+<p><a name="1000542"></a>
+<img src="../graphics/ticker.gif"></p>
+<p><a name="1000128"></a>If you have RealPlayer G2 installed, you can <a href="../media/ticker.rt">click here</a> to display this example. Note the following about this example: </p>
+<ul>
+<p><li><a name="1001045"></a>The text crawls from right to left at 20 pixels per second, the default crawlrate for a TickerTape window.
+<p><li><a name="1001046"></a>The <code>&lt;b&gt;</code> tag at the start <strong>bolds</strong> all following text.
+<p><li><a name="1001047"></a><code>&lt;a href="http://www.dowjones.com/"&gt;DJIA&lt;/a&gt;</code> makes <code>DJIA</code> a hyperlink that, when clicked, opens a browser to <a href="http://www.dowjones.com/" target="_top">http://www.dowjones.com/</a>. 
+<p><li><a name="997746"></a><code>DJIA</code> is not underlined because <code>underline_hyperlinks="false"</code> is declared in the <code>&lt;window&gt;</code> tag. It is drawn in white because <code>link="white"</code> is also in the <code>&lt;window&gt;</code> tag.
+<p><li><a name="997747"></a>The attribute <code>loop="true"</code> in the <code>&lt;window&gt;</code> tag means the text loops around and comes back in from the right side of the window as soon as the last character of the text has moved completely out of the window. It is not necessary to specify this attribute explicitly, because in TickerTape windows <code>loop="true"</code> is the default.
+<p><li><a name="997748"></a>The <code>&lt;br/&gt;</code> tag that comes before the first text item forces the text that follows to start just past the window's right edge. Any break or paragraph tag inside TickerTape text causes the text that follows to start at the right edge. If the <code>&lt;br/&gt;</code> tag were absent, the data would appear starting at the window's left edge.
+</ul>
+<h1><a name="997751"></a> Scrolling News Window</h1>
+<p><a name="997752"></a>The following example demonstrates a ScrollingNews window. This is the RealText (<kbd>.rt</kbd>) source file: </p>
+<pre><a name="997753"></a>
+&lt;window type="scrollingnews" duration="10" bgcolor="aqua"&gt; <br>&lt;br/&gt;&lt;br/&gt;News for Monday, March 3rd, 1997: <br>&lt;br/&gt;&lt;b&gt;&lt;u&gt;Top Stories:&lt;/u&gt;&lt;/b&gt; <br>&lt;p&gt;Top government official accused of working overtime. Hearings begin on Thursday.&lt;/p&gt;<br>&lt;time begin="1"/&gt;Canine serial killer put to sleep in Virginia. <br>&lt;p&gt;Death rate highest among those who don't breathe, study finds.&lt;/p&gt; <br>&lt;/window&gt;
+</pre>
+<p><a name="997754"></a>This source file produces the following window in RealPlayer. If you have RealPlayer G2 installed, you can <a href="../media/news.rt">click here</a> to display this example.</p>
+<p><a name="997762"></a>
+<img src="../graphics/scroll.gif"><br></p>
+<p><a name="1000173"></a>The example above shows what the text box looks like 1.5 seconds into the presentation. The text window and text appear at the 0,0 (top left) coordinates on the screen. At one second into the stream,  the second and third items appear as specified in the <code>&lt;time begin="1"/&gt;</code> tag. </p>
+<p><a name="997763"></a>Note that the second item becomes visible after it scrolls into the window. This demonstrates how you can control the visibility of text with the <code>&lt;time/&gt;</code> tag. Without the <code>&lt;time/&gt;</code> tag, the text would have appeared before one second and would have scrolled up from the bottom of the window.</p>
+<h1><a name="997765"></a> TelePrompter Window</h1>
+<p><a name="997766"></a>The following example demonstrates a TelePrompter window. This is the RealText (<kbd>.rt</kbd>) source file: </p>
+<pre><a name="997767"></a>
+&lt;window type="teleprompter" height="60" duration="25" bgcolor="lime" wordwrap="false"&gt; <br>Out, out, brief candle! <br>&lt;br/&gt;&lt;time begin="3.5"/&gt;Life's but a walking shadow, a poor player <br>&lt;br/&gt;&lt;time begin="7"/&gt;That struts <br>&lt;time begin="8"/&gt;and frets <br>&lt;time begin="9"/&gt;his hour upon the stage <br>&lt;br/&gt;&lt;time begin="12"/&gt;And then is heard no more: <br>&lt;time begin="15"/&gt;it is a tale <br>&lt;br/&gt;&lt;time begin="16"/&gt;Told by an idiot, <br>&lt;time begin="17.5"/&gt;full of sound and fury, <br>&lt;br/&gt;&lt;time begin="20"/&gt;Signifying <br>&lt;time begin="22"/&gt;&lt;font color="red"&gt;nothing.&lt;/font&gt;<br>&lt;/window&gt;
+</pre>
+<p><a name="997768"></a>When the window fills with text and a new line appears, all lines scroll up to make room for the new line. The following illustrates the window when the presentation ends. If you have RealPlayer G2 installed, you can <a href="../media/prompter.rt">click here</a> to display this example.</p>
+<p><a name="997773"></a>
+<img src="../graphics/prompter.gif"><br></p>
+<p><a name="1000235"></a>Note the following about TelePrompter windows: </p>
+<ul>
+<p><li><a name="997774"></a>The <code>wordwrap</code> attribute can be <code>true</code> or <code>false</code>.
+<p><li><a name="997775"></a>The <code>scrollrate</code> and <code>crawlrate</code> attributes are ignored.
+<p><li><a name="997776"></a>You can use a <code>&lt;clear/&gt;</code> tag to clear the window and start the next line at the window's upper, left-hand corner.
+<p><li><a name="997777"></a>Use <code>&lt;time begin/&gt;</code> tags at the start of each line and do not let word wrapping cause too many line breaks between <code>&lt;time/&gt;</code> tags.
+<p><li><a name="997778"></a>Multiple lines of text with the same begin time cause the preceding text to move up until all new lines appear at the bottom of the window.
+</ul>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 14:44:50.</font>
+<center><a href="texttag.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="livetext.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>

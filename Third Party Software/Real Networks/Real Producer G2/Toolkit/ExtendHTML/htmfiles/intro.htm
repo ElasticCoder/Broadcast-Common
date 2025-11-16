@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Introduction</title>
+<link rel=stylesheet href="../styles/body.css" type="text/css">
+</head>
+<body>
+<center><a href="notice.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="javaplug.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+
+<h1><a name="1072">
+ Introduction</a>
+</h1>
+<p><a name="12338"></a>RealPlayer G2 includes a Netscape plug-in and ActiveX control that expose RealPlayer functionality. This lets you play back a RealSystem presentation directly in a Web page without launching RealPlayer as a separate application. You simply add <code>&lt;EMBED&gt;</code> tag or <code>&lt;OBJECT&gt;</code> tag mark-up to a Web page. The embedded presentation typically includes an image window and one or more standard RealPlayer interface elements, such as the <strong>Stop</strong> button, the volume slider, and so on.</p>
+<p><table border=0>
+<th valign=top width=40 rowspan=2> 
+<img src="../icons/more.gif"></th>
+<th align=left class=fmi>Additional Information</th>
+<tr><td class=note>
+<a name="12390"></a>
+<I>RealSystem G2 Production Guide</I> available at 
+<a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a> 
+explains the basics of embedding a presentation.
+</td></tr>
+</table></p>
+<p><a name="12339"></a>Using a scripting language such as JavaScript or VBScript, you can use RealPlayer functions such as the stop, play, and volume controls without using RealPlayer's standard interface components. You can use your own graphic image for a Stop button, for example. When a user clicks the button image, a stop command is sent to RealPlayer's Netscape plug-in or ActiveX control. This document describes all the supported methods and events for extending RealPlayer's embedded functionality.</p>
+<h1><a name="11399"></a> RealSystem Components</h1>
+<p><a name="11400"></a>You need the following tools to create and test your embedded presentation:</p>
+<ul>
+<p><li><a name="11455"></a>RealPlayer G2
+<p><a name="11456"></a>Use RealPlayer G2, available free at <a href="http://www.real.com" target="_top">http://www.real.com</a>, to test your JavaScript or VBScript extensions. Installing RealPlayer G2 also installs its Netscape plug-in and ActiveX control for embedded playback. The RealPlayer G2 installation includes a ZIP file with Java classes for use with the Netscape plug-in.</p>
+<p><li><a name="11407"></a>RealServer
+<p><a name="11411"></a>RealServer streams clips to RealPlayer. RealServer is not necessary for testing local playback of embedded clips, but is necessary for streaming presentations to RealPlayer G2 over a network. <I>RealServer Administration Guide</I> is available at <a href="http://service.real.com/help/library/index.html" target="_top">http://service.real.com/help/library/index.html</a>.</p>
+<p><li><a name="11568"></a>RealSystem G2 Software Development Kit (SDK)
+<p><a name="11569"></a>The RealSystem G2 SDK is not necessary for extending RealPlayer's embedded playback features, but is required for advanced programming tasks such as building a new client interface on top of the RealPlayer G2 core. A knowledge of C++ programming is required to use the SDK. Register for and download the SDK at <a href="http://www.real.com/devzone/" target="_top">http://www.real.com/devzone/</a>.</p>
+</ul>
+<h1><a name="11611"></a> Conventions Used in this Manual</h1>
+<p><a name="11688"></a>The following table explains the conventions used in this manual.
+<p></p>
+<table border=1 cellpadding=3>
+<caption>
+<a name="11931"></a>
+ Notational Conventions</caption>
+<tr>
+<th align=left valign=bottom><a name="11935"></a>Convention</th>
+<th align=left valign=bottom><a name="11937"></a>Meaning</th>
+</tr>
+<tr>
+<td align=left valign=top><a name="11939"></a><I>variables</I></td>
+<td align=left valign=top><a name="11941"></a>Italicized text represents variables. Substitute values appropriate for your situation.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="11943"></a>[options]</td>
+<td align=left valign=top><a name="11945"></a>Square brackets indicate optional values you may or may not need to use.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="11947"></a>choice 1|choice 2</td>
+<td align=left valign=top><a name="11949"></a>Vertical lines separate values you can choose between.</td>
+</tr>
+<tr>
+<td align=left valign=top><a name="11951"></a>...</td>
+<td align=left valign=top><a name="11953"></a>Ellipses indicate nonessential information omitted from the example.</td>
+</tr>
+</table>
+</p>
+<h1><a name="12328"></a> Technical Support</h1>
+<p><a name="12442"></a>For technical support with RealSystem G2, please fill out the form at:</p>
+<ul>
+<p><li><a name="12330"></a><a href="http://service.real.com/contact/email.htm" target="_top">http://service.real.com/contact/email.htm</a>
+</ul>
+<p><a name="12331"></a>The information you provide in this form will help technical support personnel to give you a prompt response. For general information about RealNetworks' technical support, visit:</p>
+<ul>
+<p><li><a name="12332"></a><a href="http://service.real.com/help/call.html" target="_top">http://service.real.com/help/call.html</a>
+</ul>
+<h2><a name="11685"></a> RealForum</h2>
+<p><a name="12636"></a>RealNetworks also encourages you to join RealForum, an e-mail discussion group about RealSystem products in which developers and content producers post tips and ask for assistance. RealNetworks employees monitor the postings and offer suggestions as appropriate. You can sign up for RealForum at <a href="http://proforma.real.com/mario/devzone/realforum.html" target="_top">http://proforma.real.com/mario/devzone/realforum.html</a>.</p>
+<p><a name="12662"></a></p>
+<p><hr align=left size=2 width=100%>
+<font size=-1><a href=notice.htm>Copyright</a> &#169; 1998
+<a href="http://www.real.com/" target="_top">RealNetworks</a>
+<br>For information on RealNetworks' technical support, <a href="feedback.htm#support">click here</a>. 
+<br>Comments on this document? <a href="feedback.htm#techpubs">Click here</a>.
+<br><font size=-2>This file last updated on 12/18/98 at 17:51:29.</font>
+<center><a href="notice.htm">
+<img src="../icons/prev.gif" border="0" alt="previous"></a>
+<a href="javaplug.htm">
+<img src="../icons/next.gif" border="0" alt="next"></a>
+</center>
+</body>
+</html>
